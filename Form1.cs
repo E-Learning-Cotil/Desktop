@@ -36,22 +36,22 @@ namespace ElearningDesktop
 
         private void button1_Click(object sender, EventArgs e)
         {
-            changeActiveButtonColor((Button)sender);
+            changeActiveButtonColor( (Button)sender);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            changeActiveButtonColor((Button)sender);
+            changeActiveButtonColor( (Button)sender);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            changeActiveButtonColor((Button)sender);
+            changeActiveButtonColor( (Button)sender);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            changeActiveButtonColor((Button)sender);
+            changeActiveButtonColor( (Button)sender);
         }
     }
 }
