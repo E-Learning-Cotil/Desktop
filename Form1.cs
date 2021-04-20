@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ namespace ElearningDesktop
 {
     public partial class Form1 : Form
     {
-
         Color lightGray = Color.FromArgb(80, 80, 80);
         Color darkGray = Color.FromArgb(61, 61, 61);
         Button oldActiveButton;
@@ -21,12 +21,22 @@ namespace ElearningDesktop
         {
             InitializeComponent();
             oldActiveButton = button1;
-
             changeActiveButtonColor(button1);
+            changeButtonFormat(button1);
+            changeButtonFormat(button2);
+            changeButtonFormat(button3);
+            changeButtonFormat(button4);
             // this.ControlBox = false; //Ocultar barra superior
         }
 
-        public void changeActiveButtonColor(Button newActiveButton)
+        private void changeButtonFormat(Button button)
+        {
+            Rectangle rectangle = new Rectangle(0, 0, button.Width, button.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 15, true, true);
+            button.Region = new Region(roundedButton);
+        }
+
+        private void changeActiveButtonColor(Button newActiveButton)
         {
             oldActiveButton.BackColor = lightGray;
             newActiveButton.BackColor = darkGray;

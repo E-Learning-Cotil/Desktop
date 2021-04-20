@@ -34,7 +34,6 @@ namespace ElearningDesktop
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button_WOC1 = new ePOSOne.btnProduct.Button_WOC();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,7 +91,6 @@ namespace ElearningDesktop
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button_WOC1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button2);
@@ -101,23 +99,6 @@ namespace ElearningDesktop
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 426);
             this.panel1.TabIndex = 4;
-            // 
-            // button_WOC1
-            // 
-            this.button_WOC1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button_WOC1.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.button_WOC1.FlatAppearance.BorderSize = 0;
-            this.button_WOC1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC1.Location = new System.Drawing.Point(97, 3);
-            this.button_WOC1.Name = "button_WOC1";
-            this.button_WOC1.OnHoverBorderColor = System.Drawing.Color.Empty;
-            this.button_WOC1.OnHoverButtonColor = System.Drawing.Color.Empty;
-            this.button_WOC1.OnHoverTextColor = System.Drawing.Color.Empty;
-            this.button_WOC1.Size = new System.Drawing.Size(75, 23);
-            this.button_WOC1.TabIndex = 4;
-            this.button_WOC1.Text = "Série";
-            this.button_WOC1.TextColor = System.Drawing.Color.White;
-            this.button_WOC1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -141,7 +122,6 @@ namespace ElearningDesktop
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel1;
-        private ePOSOne.btnProduct.Button_WOC button_WOC1;
     }
 }
 
