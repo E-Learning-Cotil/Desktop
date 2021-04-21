@@ -10,40 +10,44 @@ namespace ElearningDesktop
 {
     class Transform
     {
-        public static GraphicsPath BorderRadius(Rectangle pRect, int pCanto, bool pTopo, bool pBase)
+        
+        public static GraphicsPath BorderRadius(Rectangle objectShape, int intensity, bool topLeft, bool topRight, bool bottomRight, bool bottomLeft)
         {
-            GraphicsPath gp = new GraphicsPath();
+            GraphicsPath desiredShape = new GraphicsPath();
 
-            if (pTopo)
+            if (topLeft && topRight)
             {
-                gp.AddArc(pRect.X - 1, pRect.Y - 1, pCanto, pCanto, 180, 90);
-                gp.AddArc(pRect.X + pRect.Width - pCanto, pRect.Y - 1, pCanto, pCanto, 270, 90);
+                desiredShape.AddArc(objectShape.X - 1, objectShape.Y - 1, intensity, intensity, 180, 90); // canto superior esquerdo
+                desiredShape.AddArc(objectShape.X + objectShape.Width - intensity, objectShape.Y - 1, intensity, intensity, 270, 90); // canto superior direito
+            }
+            else if (topLeft)
+            {
+                desiredShape.AddArc(objectShape.X - 1, objectShape.Y - 1, intensity, intensity, 180, 90); // canto superior esquerdo
+                desiredShape.AddLine(objectShape.X - 1 - intensity, objectShape.Y - 1, objectShape.X + objectShape.Width, objectShape.Y - 1);
             }
             else
             {
-                // Se não arredondar o topo, adiciona as linhas para poder fechar o retangulo junto com
-                // a base arredondada
-                gp.AddLine(pRect.X - 1, pRect.Y - 1, pRect.X + pRect.Width, pRect.Y - 1);
+                desiredShape.AddLine(objectShape.X - 1, objectShape.Y - 1, objectShape.X + objectShape.Width - intensity, objectShape.Y - 1);
+                desiredShape.AddArc(objectShape.X + objectShape.Width - intensity, objectShape.Y - 1, intensity, intensity, 270, 90); // canto superior direito
             }
 
-            if (pBase)
+            if(bottomLeft && bottomRight)
             {
-                gp.AddArc(pRect.X + pRect.Width - pCanto, pRect.Y + pRect.Height - pCanto, pCanto, pCanto, 0, 90);
-                gp.AddArc(pRect.X - 1, pRect.Y + pRect.Height - pCanto, pCanto, pCanto, 90, 90);
+                desiredShape.AddArc(objectShape.X + objectShape.Width - intensity, objectShape.Y + objectShape.Height - intensity, intensity, intensity, 0, 90); //canto inferior direito
+                desiredShape.AddArc(objectShape.X - 1, objectShape.Y + objectShape.Height - intensity, intensity, intensity, 90, 90);// canto inferior esquerdo
+            }
+            else if (bottomLeft)
+            {
+                desiredShape.AddLine(objectShape.Width, objectShape.Y + objectShape.Height, objectShape.X - 1 - intensity, objectShape.Y + objectShape.Height);
+                desiredShape.AddArc(objectShape.X - 1, objectShape.Y + objectShape.Height - intensity, intensity, intensity, 90, 90);// canto inferior esquerdo
             }
             else
             {
-                // Se não arredondar a base, adiciona as linhas para poder fechar o retangulo junto com
-                // o topo arredondado. Adiciona da direita para esquerda pois é na ordem contrária que 
-                // foi adicionado os arcos do topo. E pra fechar o retangulo tem que desenhar na ordem :
-                //  1 - Canto Superior Esquerdo
-                //  2 - Canto Superior Direito
-                //  3 - Canto Inferior Direito 
-                //  4 - Canto Inferior Esquerdo.
-                gp.AddLine(pRect.X + pRect.Width, pRect.Y + pRect.Height, pRect.X - 1, pRect.Y + pRect.Height);
+                desiredShape.AddArc(objectShape.X + objectShape.Width - intensity, objectShape.Y + objectShape.Height - intensity, intensity, intensity, 0, 90); //canto inferior direito
+                desiredShape.AddLine(objectShape.X + objectShape.Width, objectShape.Y + objectShape.Height, objectShape.X - 1, objectShape.Y + objectShape.Height);
             }
 
-            return gp;
+            return desiredShape;
         }
     }
 }
