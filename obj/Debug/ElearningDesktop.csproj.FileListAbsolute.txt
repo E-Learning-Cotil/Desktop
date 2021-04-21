@@ -8,3 +8,4 @@ C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.exe
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.pdb
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form1.resources
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.csprojAssemblyReference.cache
+C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form2.resources
