@@ -15,6 +15,10 @@ namespace ElearningDesktop
         public Form2()
         {
             InitializeComponent();
+            this.ControlBox = false; //Ocultar barra superior
+
+            this.BackColor = Colors.darkGray;
+            this.ForeColor = Colors.white; //cor da classe de cores criada
         }
     }
 }
