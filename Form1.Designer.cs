@@ -45,7 +45,7 @@ namespace ElearningDesktop
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Righteous", 28F);
+            this.button1.Font = new System.Drawing.Font("Righteous", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(112, 72);
             this.button1.Margin = new System.Windows.Forms.Padding(10);
             this.button1.Name = "button1";
@@ -60,7 +60,7 @@ namespace ElearningDesktop
             this.button2.BackColor = System.Drawing.Color.DimGray;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Righteous", 28F);
+            this.button2.Font = new System.Drawing.Font("Righteous", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(112, 196);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
@@ -75,7 +75,7 @@ namespace ElearningDesktop
             this.button3.BackColor = System.Drawing.Color.DimGray;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Righteous", 28F);
+            this.button3.Font = new System.Drawing.Font("Righteous", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(112, 320);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
@@ -90,7 +90,7 @@ namespace ElearningDesktop
             this.button4.BackColor = System.Drawing.Color.DimGray;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Righteous", 28F);
+            this.button4.Font = new System.Drawing.Font("Righteous", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(112, 444);
             this.button4.Margin = new System.Windows.Forms.Padding(10);
             this.button4.Name = "button4";
@@ -109,15 +109,15 @@ namespace ElearningDesktop
             this.panel1.Controls.Add(this.button3);
             this.panel1.Location = new System.Drawing.Point(0, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1183, 698);
+            this.panel1.Size = new System.Drawing.Size(1419, 743);
             this.panel1.TabIndex = 4;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.panel2.Location = new System.Drawing.Point(374, 72);
+            this.panel2.Location = new System.Drawing.Point(392, 72);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(704, 623);
+            this.panel2.Size = new System.Drawing.Size(1042, 668);
             this.panel2.TabIndex = 4;
             // 
             // pictureBox1
@@ -135,7 +135,7 @@ namespace ElearningDesktop
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(1182, 770);
+            this.ClientSize = new System.Drawing.Size(1416, 820);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.White;

@@ -14,7 +14,13 @@ namespace ElearningDesktop
 {
     public partial class Form1 : Form
     {
-        Button oldActiveButton;
+        Button oldActiveButton; // armazena o botão que estava ativo antes de solicitar a abertura de outro form
+
+        // Declara cada instância de formulário para verificar dentro de diversos métodos quem está aberto
+        Form2 form2;
+        Form3 form3;
+        Form4 form4;
+        Form5 form5;
 
         public Form1()
         {
@@ -22,20 +28,28 @@ namespace ElearningDesktop
 
             this.ForeColor = Colors.white; //cor da classe de cores criadas  
 
-            changeButtonFormat(button1);
-            changeButtonFormat(button2);
-            changeButtonFormat(button3);
-            changeButtonFormat(button4);
+            changeButtonFormat(button1); // chama a função que muda o formato do botão
+            changeButtonFormat(button2); // chama a função que muda o formato do botão
+            changeButtonFormat(button3); // chama a função que muda o formato do botão
+            changeButtonFormat(button4); // chama a função que muda o formato do botão
 
-            oldActiveButton = button1;
+            changePanelFormat(panel2); // chama a função que muda o formato do painel de formulários
+            oldActiveButton = button1; // declara o botão ativo anteriormente como button1, o primeiro a ser aberto
 
-            button1.PerformClick();
+            button1.PerformClick(); // simula um clique via código
+        }
+
+        private void changePanelFormat(Panel panel)
+        {
+            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 25, false, true, true, true);
+            panel.Region = new Region(roundedPanel);
         }
 
         private void changeButtonFormat(Button button)
         {
             Rectangle rectangle = new Rectangle(0, 0, button.Width, button.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 18, true, true);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 18, true, false,false,true);
             button.Region = new Region(roundedButton);
         }
 
@@ -46,36 +60,67 @@ namespace ElearningDesktop
             oldActiveButton = newActiveButton;
         }
 
+        private void closeOpenedForms() // verifica se tem formulários dessas clases abertos, se tiver fecha
+        {
+            if (Application.OpenForms.OfType<Form2>().Count() != 0) form2.Close();
+            if (Application.OpenForms.OfType<Form3>().Count() != 0) form3.Close();
+            if (Application.OpenForms.OfType<Form4>().Count() != 0) form4.Close();
+            if (Application.OpenForms.OfType<Form5>().Count() != 0) form5.Close();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             changeActiveButtonColor( (Button)sender);
+            closeOpenedForms();
 
-            Form2 form2 = new Form2();
+            form2 = new Form2();
             form2.TopLevel = false;
 
             panel2.Controls.Add(form2);
 
             form2.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
-            Rectangle rectangle = new Rectangle(0, 0, panel2.Width, panel2.Height);
-            GraphicsPath roundedForm = Transform.BorderRadius(rectangle, 22, true, true);
-            form2.Region = new Region(roundedForm);
-
             form2.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             changeActiveButtonColor( (Button)sender);
+            closeOpenedForms();
+
+            form3 = new Form3();
+            form3.TopLevel = false;
+
+            panel2.Controls.Add(form3);
+
+            form3.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+            form3.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             changeActiveButtonColor( (Button)sender);
+            closeOpenedForms();
+            form4 = new Form4();
+            form4.TopLevel = false;
+
+            panel2.Controls.Add(form4);
+
+            form4.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+            form4.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             changeActiveButtonColor( (Button)sender);
+            closeOpenedForms();
+
+            form5 = new Form5();
+            form5.TopLevel = false;
+
+            panel2.Controls.Add(form5);
+
+            form5.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+            form5.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
