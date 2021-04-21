@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ElearningDesktop
 {
-    public partial class Form3 : Form
+    public partial class Form4 : Form
     {
-        public Form3()
+        public Form4()
         {
             InitializeComponent();
 
