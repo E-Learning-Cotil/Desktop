@@ -12,3 +12,17 @@ C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form3.r
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form4.resources
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form5.resources
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.csprojAssemblyReference.cache
+C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.exe.config
+C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.exe
+C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.pdb
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.csprojAssemblyReference.cache
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.Form1.resources
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.Form2.resources
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.Form3.resources
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.Form4.resources
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.Form5.resources
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.Properties.Resources.resources
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.csproj.GenerateResource.cache
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.csproj.CoreCompileInputs.cache
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.exe
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.pdb
