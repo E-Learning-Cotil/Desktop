@@ -28,15 +28,13 @@ namespace ElearningDesktop
 
             this.ForeColor = Colors.white; //cor da classe de cores criadas  
 
-            changeButtonFormat(button1); // chama a função que muda o formato do botão
-            changeButtonFormat(button2); // chama a função que muda o formato do botão
-            changeButtonFormat(button3); // chama a função que muda o formato do botão
-            changeButtonFormat(button4); // chama a função que muda o formato do botão
+            changeButtonFormat(button1); // chama a função que muda o formato do botão 1
+            changeButtonFormat(button2); // chama a função que muda o formato do botão 2
+            changeButtonFormat(button3); // chama a função que muda o formato do botão 3
+            changeButtonFormat(button4); // chama a função que muda o formato do botão 4
 
             changePanelFormat(panel2); // chama a função que muda o formato do painel de formulários
             oldActiveButton = button1; // declara o botão ativo anteriormente como button1, o primeiro a ser aberto
-
-            button1.PerformClick(); // simula um clique via código
         }
 
         private void changePanelFormat(Panel panel)
@@ -125,8 +123,9 @@ namespace ElearningDesktop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox1.Size = new System.Drawing.Size(this.Width,80);
+            button1.PerformClick(); // simula um clique via código
             panel1.Size = new System.Drawing.Size(this.Width, this.Height);
+            panel3.Size = new System.Drawing.Size(this.Width, 90);
         }
     }
 }
