@@ -11,3 +11,4 @@ C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form2.r
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form3.resources
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form4.resources
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form5.resources
+C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.csprojAssemblyReference.cache
