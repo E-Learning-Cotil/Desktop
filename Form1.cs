@@ -126,6 +126,8 @@ namespace ElearningDesktop
             button1.PerformClick(); // simula um clique via código
             panel1.Size = new System.Drawing.Size(this.Width, this.Height);
             panel3.Size = new System.Drawing.Size(this.Width, 90);
+            Colors.setSize(this.Width,this.Height);
+            button1.Size = new Size( Convert.ToInt32(Colors.formSize.Width * 0.1), Convert.ToInt32(Colors.formSize.Height * 0.1));
         }
     }
 }
