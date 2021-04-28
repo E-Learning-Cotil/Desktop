@@ -13,5 +13,11 @@ namespace ElearningDesktop
         public static Color darkGray = Color.FromArgb(61, 61, 61);
         public static Color backgroundColor = Color.FromArgb(20, 20, 20);
         public static Color white = Color.FromArgb(255, 255, 255);
+        public static Size formSize;
+
+        public static void setSize(int width, int height)
+        {
+            formSize = new Size(width,height);
+        }
     }
 }
