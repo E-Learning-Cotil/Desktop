@@ -118,10 +118,11 @@ namespace ElearningDesktop
             // 
             // panel2
             // 
+            this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.panel2.Location = new System.Drawing.Point(261, 62);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(382, 363);
+            this.panel2.Size = new System.Drawing.Size(448, 393);
             this.panel2.TabIndex = 4;
             // 
             // panel3
@@ -170,6 +171,7 @@ namespace ElearningDesktop
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
