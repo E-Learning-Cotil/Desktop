@@ -18,8 +18,8 @@ namespace ElearningDesktop
 
             this.ControlBox = false; //Ocultar barra superior
 
-            this.BackColor = Colors.darkGray;
-            this.ForeColor = Colors.white;
+            this.BackColor = Styles.darkGray;
+            this.ForeColor = Styles.white;
         }
     }
 }
