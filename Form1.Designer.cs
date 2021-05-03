@@ -113,7 +113,7 @@ namespace ElearningDesktop
             this.panel1.Controls.Add(this.button3);
             this.panel1.Location = new System.Drawing.Point(0, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(709, 455);
+            this.panel1.Size = new System.Drawing.Size(723, 463);
             this.panel1.TabIndex = 4;
             // 
             // panel2
@@ -131,7 +131,7 @@ namespace ElearningDesktop
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(709, 72);
+            this.panel3.Size = new System.Drawing.Size(723, 90);
             this.panel3.TabIndex = 7;
             // 
             // label1
@@ -160,7 +160,7 @@ namespace ElearningDesktop
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(710, 527);
+            this.ClientSize = new System.Drawing.Size(724, 532);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.White;
@@ -170,6 +170,7 @@ namespace ElearningDesktop
             this.Text = "E-Learning";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
