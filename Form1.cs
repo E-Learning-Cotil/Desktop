@@ -30,53 +30,18 @@ namespace ElearningDesktop
             this.ForeColor = Styles.white; //cor da classe de cores criadas  
         }
 
-        private void configureButton()
+        private void Form1_Load(object sender, EventArgs e)
         {
-            button1.Size = button2.Size = button3.Size = button4.Size = Styles.buttonSize;
-            button1.Font = button2.Font = button3.Font = button4.Font = Styles.buttonFont;
-            changeButtonFormat(button1); // chama a função que muda o formato do botão 1
-            changeButtonFormat(button2); // chama a função que muda o formato do botão 2
-            changeButtonFormat(button3); // chama a função que muda o formato do botão 3
-            changeButtonFormat(button4); // chama a função que muda o formato do botão 4
+            changeItemsSize();
 
-            changeButtonLocation(button2, button1);
-            changeButtonLocation(button3, button2);
-            changeButtonLocation(button4, button3);
+            oldActiveButton = button1; // declara o botão ativo anteriormente como button1, o primeiro a ser aberto
+
+            button1.PerformClick(); // simula um clique via código
         }
 
-        private void changeButtonLocation(Button button, Button sourceButton)
+        private void Form1_Resize(object sender, EventArgs e)
         {
-            button.Location = new Point(sourceButton.Location.X, sourceButton.Location.Y + sourceButton.Size.Height + 30);
-
-        }
-
-        private void changePanelFormat(Panel panel)
-        {
-            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
-            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 25, false, true, true, true);
-            panel.Region = new Region(roundedPanel);
-        }
-
-        private void changeButtonFormat(Button button)
-        {
-            Rectangle rectangle = new Rectangle(0, 0, button.Width, button.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 18, true, false,false,true);
-            button.Region = new Region(roundedButton);
-        }
-
-        private void changeActiveButtonColor(Button newActiveButton)
-        {
-            oldActiveButton.BackColor = Styles.lightGray;
-            newActiveButton.BackColor = Styles.darkGray;
-            oldActiveButton = newActiveButton;
-        }
-
-        private void closeOpenedForms() // verifica se tem formulários dessas clases abertos, se tiver fecha
-        {
-            if (System.Windows.Forms.Application.OpenForms.OfType<Form2>().Count() != 0) form2.Close();
-            if (System.Windows.Forms.Application.OpenForms.OfType<Form3>().Count() != 0) form3.Close();
-            if (System.Windows.Forms.Application.OpenForms.OfType<Form4>().Count() != 0) form4.Close();
-            if (System.Windows.Forms.Application.OpenForms.OfType<Form5>().Count() != 0) form5.Close();
+            changeItemsSize();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -133,6 +98,63 @@ namespace ElearningDesktop
             form5.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
             form5.Show();
         }
+
+        private void configureButton()
+        {
+            button1.Size = button2.Size = button3.Size = button4.Size = Styles.buttonSize;
+            button1.Font = button2.Font = button3.Font = button4.Font = Styles.buttonFont;
+            
+            changeButtonFormat(button1); // chama a função que muda o formato do botão 1
+            changeButtonFormat(button2); // chama a função que muda o formato do botão 2
+            changeButtonFormat(button3); // chama a função que muda o formato do botão 3
+            changeButtonFormat(button4); // chama a função que muda o formato do botão 4
+
+            changeMarginSize(); 
+        }
+
+        private void changeMarginSize()
+        {
+            button1.Location = new Point(Convert.ToInt32(this.Width * 0.0745), button1.Height);
+            changeButtonLocation(button2, button1);
+            changeButtonLocation(button3, button2);
+            changeButtonLocation(button4, button3);
+        }
+
+        private void changeButtonFormat(Button button)
+        {
+            Rectangle rectangle = new Rectangle(0, 0, button.Width, button.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 18, true, false, false, true);
+            button.Region = new Region(roundedButton);
+        }
+
+        private void changeButtonLocation(Button button, Button sourceButton)
+        {
+            button.Location = new Point(sourceButton.Location.X, sourceButton.Location.Y + sourceButton.Size.Height + 30);
+        }
+
+        private void changePanelFormat(Panel panel)
+        {
+            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 25, false, true, true, true);
+            panel.Region = new Region(roundedPanel);
+        }
+
+
+        private void changeActiveButtonColor(Button newActiveButton)
+        {
+            oldActiveButton.BackColor = Styles.lightGray;
+            newActiveButton.BackColor = Styles.darkGray;
+            oldActiveButton = newActiveButton;
+        }
+
+        private void closeOpenedForms() // verifica se tem formulários dessas clases abertos, se tiver fecha
+        {
+            if (System.Windows.Forms.Application.OpenForms.OfType<Form2>().Count() != 0) form2.Close();
+            if (System.Windows.Forms.Application.OpenForms.OfType<Form3>().Count() != 0) form3.Close();
+            if (System.Windows.Forms.Application.OpenForms.OfType<Form4>().Count() != 0) form4.Close();
+            if (System.Windows.Forms.Application.OpenForms.OfType<Form5>().Count() != 0) form5.Close();
+        }
+
         
         private void changeItemsSize()
         {
@@ -142,29 +164,20 @@ namespace ElearningDesktop
             Styles.setMainPanelSize();
             Styles.changeLogoPanelSize();
 
-            panel1.Size = new System.Drawing.Size(this.Width, this.Height - Styles.logoPanelSize.Height);
-            panel1.Location = new Point(0, Styles.logoPanelSize.Height);
-            panel3.Size = Styles.logoPanelSize;
-
             configureButton(); //define o tamanho e estilo dos botões
 
-            panel2.Location = new Point(button1.Location.X + button1.Width, button1.Location.Y); // muda a posição do painel de formulários
+            panel1.Size = new System.Drawing.Size(this.Width, this.Height - Styles.logoPanelSize.Height);
+            panel1.Location = new Point(0, Styles.logoPanelSize.Height);
+
+            panel3.Size = Styles.logoPanelSize;
+            
+            panel2.Location = new Point(button1.Location.X + button1.Width, button1.Location.Y);
             panel2.Size = Styles.mainPanelSize;
+
             changePanelFormat(panel2); // chama a função que muda o formato do painel de formulários
+            
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            changeItemsSize();
 
-            oldActiveButton = button1; // declara o botão ativo anteriormente como button1, o primeiro a ser aberto
-
-            button1.PerformClick(); // simula um clique via código
-        }
-
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            changeItemsSize();
-        }
     }
 }
