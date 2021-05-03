@@ -27,13 +27,13 @@ namespace ElearningDesktop
         {
             InitializeComponent();
 
-            this.ForeColor = Colors.white; //cor da classe de cores criadas  
+            this.ForeColor = Styles.white; //cor da classe de cores criadas  
         }
 
         private void configureButton()
         {
-            button1.Size = button2.Size = button3.Size = button4.Size = Colors.buttonSize;
-            button1.Font = button2.Font = button3.Font = button4.Font = Colors.buttonFont;
+            button1.Size = button2.Size = button3.Size = button4.Size = Styles.buttonSize;
+            button1.Font = button2.Font = button3.Font = button4.Font = Styles.buttonFont;
             changeButtonFormat(button1); // chama a função que muda o formato do botão 1
             changeButtonFormat(button2); // chama a função que muda o formato do botão 2
             changeButtonFormat(button3); // chama a função que muda o formato do botão 3
@@ -66,8 +66,8 @@ namespace ElearningDesktop
 
         private void changeActiveButtonColor(Button newActiveButton)
         {
-            oldActiveButton.BackColor = Colors.lightGray;
-            newActiveButton.BackColor = Colors.darkGray;
+            oldActiveButton.BackColor = Styles.lightGray;
+            newActiveButton.BackColor = Styles.darkGray;
             oldActiveButton = newActiveButton;
         }
 
@@ -133,29 +133,38 @@ namespace ElearningDesktop
             form5.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
             form5.Show();
         }
+        
+        private void changeItemsSize()
+        {
+            Styles.setFormSize(this.Width, this.Height);
+            Styles.setButtonSize();
+            Styles.setButtonFont();
+            Styles.setMainPanelSize();
+            Styles.changeLogoPanelSize();
+
+            panel1.Size = new System.Drawing.Size(this.Width, this.Height - Styles.logoPanelSize.Height);
+            panel1.Location = new Point(0, Styles.logoPanelSize.Height);
+            panel3.Size = Styles.logoPanelSize;
+
+            configureButton(); //define o tamanho e estilo dos botões
+
+            panel2.Location = new Point(button1.Location.X + button1.Width, button1.Location.Y); // muda a posição do painel de formulários
+            panel2.Size = Styles.mainPanelSize;
+            changePanelFormat(panel2); // chama a função que muda o formato do painel de formulários
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            panel1.Size = new System.Drawing.Size(this.Width, this.Height);
-            panel3.Size = new System.Drawing.Size(this.Width, 90);
-
-
-            Colors.setFormSize(this.Width, this.Height);
-            Colors.setButtonSize();
-            Colors.setButtonFont();
-            Colors.setPanelSize();
-
-
-            configureButton();
-
-            changePanelFormat(panel2); // chama a função que muda o formato do painel de formulários
-
-            panel2.Location = new Point(button1.Location.X + button1.Width, button1.Location.Y); // muda a posição do painel de formulários
-            panel2.Size = Colors.panelSize;
+            changeItemsSize();
 
             oldActiveButton = button1; // declara o botão ativo anteriormente como button1, o primeiro a ser aberto
 
             button1.PerformClick(); // simula um clique via código
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            changeItemsSize();
         }
     }
 }
