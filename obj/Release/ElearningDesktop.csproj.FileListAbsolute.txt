@@ -1,0 +1,14 @@
+C:\Users\correa\source\repos\ElearningDesktop\bin\Release\ElearningDesktop.exe.config
+C:\Users\correa\source\repos\ElearningDesktop\bin\Release\ElearningDesktop.exe
+C:\Users\correa\source\repos\ElearningDesktop\bin\Release\ElearningDesktop.pdb
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.csprojAssemblyReference.cache
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.Form1.resources
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.Form2.resources
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.Form3.resources
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.Form4.resources
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.Form5.resources
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.Properties.Resources.resources
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.csproj.GenerateResource.cache
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.csproj.CoreCompileInputs.cache
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.exe
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.pdb

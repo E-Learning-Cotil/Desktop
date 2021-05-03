@@ -26,3 +26,7 @@ C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.csproj.GenerateRe
 C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.csproj.CoreCompileInputs.cache
 C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.exe
 C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.pdb
+C:\Users\correa\source\repos\ElearningDesktop\bin\Debug\ElearningDesktop.exe.manifest
+C:\Users\correa\source\repos\ElearningDesktop\bin\Debug\ElearningDesktop.application
+C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.exe.manifest
+C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.application
