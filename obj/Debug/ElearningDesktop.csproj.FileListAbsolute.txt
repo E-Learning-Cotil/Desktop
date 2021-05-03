@@ -30,3 +30,7 @@ C:\Users\correa\source\repos\ElearningDesktop\bin\Debug\ElearningDesktop.exe.man
 C:\Users\correa\source\repos\ElearningDesktop\bin\Debug\ElearningDesktop.application
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.exe.manifest
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.application
+C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.exe.manifest
+C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.application
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.exe.manifest
+C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.application

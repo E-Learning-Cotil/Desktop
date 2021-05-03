@@ -28,7 +28,7 @@ namespace ElearningDesktop
 
         public static void setButtonSize()
         {
-            int buttonWidth = Convert.ToInt32(formSize.Width * 0.1833);
+            int buttonWidth = Convert.ToInt32(formSize.Width * 0.1834);
             int buttonHeight = Convert.ToInt32(formSize.Height * 0.102);
 
             buttonSize = new Size(buttonWidth, buttonHeight);

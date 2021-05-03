@@ -44,6 +44,26 @@ namespace ElearningDesktop
             changeItemsSize();
         }
 
+        private void configureButton()
+        {
+            button1.Size = button2.Size = button3.Size = button4.Size = Styles.buttonSize;
+            button1.Font = button2.Font = button3.Font = button4.Font = Styles.buttonFont;
+            
+            changeButtonFormat(button1); // chama a função que muda o formato do botão 1
+            changeButtonFormat(button2); // chama a função que muda o formato do botão 2
+            changeButtonFormat(button3); // chama a função que muda o formato do botão 3
+            changeButtonFormat(button4); // chama a função que muda o formato do botão 4
+
+            changeMarginSize(); 
+        }
+
+        private void changeMarginSize()
+        {
+            button1.Location = new Point(Convert.ToInt32(this.Width * 0.07445), button1.Height);
+            changeButtonLocation(button2, button1);
+            changeButtonLocation(button3, button2);
+            changeButtonLocation(button4, button3);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             changeActiveButtonColor( (Button)sender);
@@ -99,26 +119,6 @@ namespace ElearningDesktop
             form5.Show();
         }
 
-        private void configureButton()
-        {
-            button1.Size = button2.Size = button3.Size = button4.Size = Styles.buttonSize;
-            button1.Font = button2.Font = button3.Font = button4.Font = Styles.buttonFont;
-            
-            changeButtonFormat(button1); // chama a função que muda o formato do botão 1
-            changeButtonFormat(button2); // chama a função que muda o formato do botão 2
-            changeButtonFormat(button3); // chama a função que muda o formato do botão 3
-            changeButtonFormat(button4); // chama a função que muda o formato do botão 4
-
-            changeMarginSize(); 
-        }
-
-        private void changeMarginSize()
-        {
-            button1.Location = new Point(Convert.ToInt32(this.Width * 0.0745), button1.Height);
-            changeButtonLocation(button2, button1);
-            changeButtonLocation(button3, button2);
-            changeButtonLocation(button4, button3);
-        }
 
         private void changeButtonFormat(Button button)
         {
