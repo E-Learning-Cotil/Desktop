@@ -36,7 +36,7 @@ namespace ElearningDesktop
 
         public static void setButtonFont()
         {
-            buttonFontSize = 32;
+            buttonFontSize = Convert.ToInt32(formSize.Width / 60) ;
             buttonFont = new Font("Righteous", buttonFontSize);
         }
 
