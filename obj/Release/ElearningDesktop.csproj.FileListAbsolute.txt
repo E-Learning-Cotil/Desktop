@@ -12,3 +12,7 @@ C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.cspro
 C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.csproj.CoreCompileInputs.cache
 C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.exe
 C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.pdb
+C:\Users\correa\source\repos\ElearningDesktop\bin\Release\ElearningDesktop.exe.manifest
+C:\Users\correa\source\repos\ElearningDesktop\bin\Release\ElearningDesktop.application
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.exe.manifest
+C:\Users\correa\source\repos\ElearningDesktop\obj\Release\ElearningDesktop.application
