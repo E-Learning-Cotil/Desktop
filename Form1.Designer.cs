@@ -148,10 +148,11 @@ namespace ElearningDesktop
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ElearningDesktop.Properties.Resources.logo1;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(40, 20);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(68, 52);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.Size = new System.Drawing.Size(68, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
