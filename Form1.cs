@@ -75,7 +75,8 @@ namespace ElearningDesktop
 
             panel2.Controls.Add(form2);
 
-            form2.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+            form2.Size = Styles.mainPanelSize;
+            changePanelFormat(panel2);
             form2.Show();
         }
 
@@ -89,7 +90,8 @@ namespace ElearningDesktop
 
             panel2.Controls.Add(form3);
 
-            form3.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+            form3.Size = Styles.mainPanelSize;
+            changePanelFormat(panel2);
             form3.Show();
         }
 
@@ -102,7 +104,8 @@ namespace ElearningDesktop
 
             panel2.Controls.Add(form4);
 
-            form4.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+            form4.Size = Styles.mainPanelSize;
+            changePanelFormat(panel2);
             form4.Show();
         }
 
@@ -116,7 +119,8 @@ namespace ElearningDesktop
 
             panel2.Controls.Add(form5);
 
-            form5.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+            form5.Size = Styles.mainPanelSize;
+            changePanelFormat(panel2);
             form5.Show();
         }
 
@@ -130,7 +134,7 @@ namespace ElearningDesktop
 
         private void changeButtonLocation(Button button, Button sourceButton)
         {
-            button.Location = new Point(sourceButton.Location.X, Convert.ToInt32(sourceButton.Location.Y + sourceButton.Size.Height + this.Height * 0.0254));
+            button.Location = new Point(sourceButton.Location.X, Convert.ToInt32(sourceButton.Location.Y + sourceButton.Size.Height + this.Height * 0.02));
         }
 
         private void changePanelFormat(Panel panel)
@@ -160,19 +164,19 @@ namespace ElearningDesktop
         {
             if (System.Windows.Forms.Application.OpenForms.OfType<Form2>().Count() != 0)
             {
-                form2.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+                form2.Size = Styles.mainPanelSize;
             }
             if (System.Windows.Forms.Application.OpenForms.OfType<Form3>().Count() != 0)
             {
-                form3.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+                form3.Size = Styles.mainPanelSize;
             }
             if (System.Windows.Forms.Application.OpenForms.OfType<Form4>().Count() != 0)
             {
-                form4.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+                form4.Size = Styles.mainPanelSize;
             }
             if (System.Windows.Forms.Application.OpenForms.OfType<Form5>().Count() != 0)
             {
-                form5.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
+                form5.Size = Styles.mainPanelSize;
             }
         }
 
