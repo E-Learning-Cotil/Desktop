@@ -174,7 +174,6 @@ namespace ElearningDesktop
             {
                 form5.Size = new System.Drawing.Size(panel2.Width, panel2.Height);
             }
-            changePanelFormat(panel2);
         }
 
 
@@ -201,6 +200,7 @@ namespace ElearningDesktop
             panel2.Size = Styles.mainPanelSize;
            
             resizeOpenedForms();
+            changePanelFormat(panel2);
         }
     }
 }
