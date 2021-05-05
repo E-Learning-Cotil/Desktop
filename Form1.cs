@@ -206,5 +206,12 @@ namespace ElearningDesktop
             resizeOpenedForms();
             changePanelFormat(panel2);
         }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            resizeOpenedForms();
+            changePanelFormat(panel2);
+            oldActiveButton.PerformClick();
+        }
     }
 }
