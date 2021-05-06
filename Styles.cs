@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -19,12 +20,18 @@ namespace ElearningDesktop
         public static Font buttonFont;
         public static Size mainPanelSize;
         public static Size logoPanelSize;
+        public static Size seriesSize;
+        public static Point mainPanelLocation;
 
         public static void setFormSize(int FormWidth, int FormHeight)
         {
             formSize = new Size(FormWidth, FormHeight);
         }
 
+        public static void setSeriesSize()
+        {
+            seriesSize = new Size(Convert.ToInt32(formSize.Width * 0.419),Convert.ToInt32(formSize.Height * 0.0625));
+        }
 
         public static void setButtonSize()
         {
@@ -52,6 +59,11 @@ namespace ElearningDesktop
         {
             int panelHeight = Convert.ToInt32(formSize.Height * 0.082);
             logoPanelSize = new Size(formSize.Width, panelHeight);
+        }
+
+        public static void setMainPanelLocation(int x, int y)
+        {
+            mainPanelLocation = new Point(x, y);
         }
     }
 }
