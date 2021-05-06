@@ -42,6 +42,10 @@ namespace ElearningDesktop
             this.Controls.Add( createSerie() );
             this.Controls.Add( createSerie() );
             this.Controls.Add( createSerie() );
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
         }
 
         private Panel createSerie()
