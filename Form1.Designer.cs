@@ -165,6 +165,7 @@ namespace ElearningDesktop
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.IsMdiContainer = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
