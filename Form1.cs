@@ -188,7 +188,9 @@ namespace ElearningDesktop
             Styles.setButtonSize();
             Styles.setButtonFont();
             Styles.setMainPanelSize();
+            Styles.setSeriesSize();
             Styles.changeLogoPanelSize();
+            Styles.setMainPanelLocation(panel2.Location.X,panel2.Location.Y);
 
             configureButtonLayout();
 
