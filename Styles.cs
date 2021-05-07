@@ -14,14 +14,20 @@ namespace ElearningDesktop
         public static Color darkGray = Color.FromArgb(61, 61, 61);
         public static Color backgroundColor = Color.FromArgb(20, 20, 20);
         public static Color white = Color.FromArgb(255, 255, 255);
+
         public static Size formSize;
         public static Size buttonSize;
-        public static float buttonFontSize;
-        public static Font defaultFont;
         public static Size mainPanelSize;
         public static Size logoPanelSize;
         public static Size seriesSize;
+
         public static Point mainPanelLocation;
+
+        public static Font defaultFont;
+        public static float defaultFontLetterSize;
+
+        public static Font customFont;
+        public static float customFontLetterSize;
 
         public static void setFormSize(int FormWidth, int FormHeight)
         {
@@ -43,8 +49,8 @@ namespace ElearningDesktop
 
         public static void setDefaultFont()
         {
-            buttonFontSize = Convert.ToInt32(formSize.Width / 60) ;
-            defaultFont = new Font("Righteous", buttonFontSize);
+            defaultFontLetterSize = Convert.ToInt32(formSize.Width / 72) ;
+            defaultFont = new Font("Righteous", defaultFontLetterSize);
         }
 
         public static void setMainPanelSize()
@@ -64,6 +70,12 @@ namespace ElearningDesktop
         public static void setMainPanelLocation(int x, int y)
         {
             mainPanelLocation = new Point(x, y);
+        }
+
+        public static void setCustomFont()
+        {
+            customFontLetterSize = Convert.ToInt32(formSize.Width / 120);
+            customFont = new Font("Quicksand", customFontLetterSize);
         }
     }
 }
