@@ -33,6 +33,7 @@ namespace ElearningDesktop
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
             changeItemsSize();
 
             oldActiveButton = button1; // declara o botão ativo anteriormente como button1, o primeiro a ser aberto
@@ -40,15 +41,10 @@ namespace ElearningDesktop
             button1.PerformClick(); // simula um clique via código
         }
 
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            changeItemsSize();
-        }
-
         private void configureButtonLayout()
         {
             button1.Size = button2.Size = button3.Size = button4.Size = Styles.buttonSize;
-            label1.Font = button1.Font = button2.Font = button3.Font = button4.Font = Styles.buttonFont;
+            label1.Font = button1.Font = button2.Font = button3.Font = button4.Font = Styles.defaultFont;
             
             changeButtonFormat(button1); // chama a função que muda o formato do botão 1
             changeButtonFormat(button2); // chama a função que muda o formato do botão 2
@@ -74,7 +70,6 @@ namespace ElearningDesktop
             form2.TopLevel = false;
 
             panel2.Controls.Add(form2);
-
             form2.Size = Styles.mainPanelSize;
             changePanelFormat(panel2);
             form2.Show();
@@ -186,7 +181,7 @@ namespace ElearningDesktop
             button1.Location = new Point(Convert.ToInt32(this.Width * 0.078),Convert.ToInt32(this.Height*0.213));
             Styles.setFormSize(this.Width, this.Height);
             Styles.setButtonSize();
-            Styles.setButtonFont();
+            Styles.setDefaultFont();
             Styles.setMainPanelSize();
             Styles.setSeriesSize();
             Styles.changeLogoPanelSize();
@@ -211,9 +206,12 @@ namespace ElearningDesktop
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
-            resizeOpenedForms();
-            changePanelFormat(panel2);
-            oldActiveButton.PerformClick();
+            this.WindowState = FormWindowState.Maximized;
+            Size oldFormSize = Styles.formSize;
+            changeItemsSize();
+            if (oldFormSize != this.Size) { 
+                oldActiveButton.PerformClick();
+            }
         }
     }
 }
