@@ -17,7 +17,7 @@ namespace ElearningDesktop
         public static Size formSize;
         public static Size buttonSize;
         public static float buttonFontSize;
-        public static Font buttonFont;
+        public static Font defaultFont;
         public static Size mainPanelSize;
         public static Size logoPanelSize;
         public static Size seriesSize;
@@ -41,10 +41,10 @@ namespace ElearningDesktop
             buttonSize = new Size(buttonWidth, buttonHeight);
         }
 
-        public static void setButtonFont()
+        public static void setDefaultFont()
         {
             buttonFontSize = Convert.ToInt32(formSize.Width / 60) ;
-            buttonFont = new Font("Righteous", buttonFontSize);
+            defaultFont = new Font("Righteous", buttonFontSize);
         }
 
         public static void setMainPanelSize()
