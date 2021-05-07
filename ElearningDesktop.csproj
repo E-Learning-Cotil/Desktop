@@ -168,5 +168,14 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\num1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\num2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\num3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
