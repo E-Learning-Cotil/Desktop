@@ -52,13 +52,14 @@ namespace ElearningDesktop
         private Panel createSerie()
         {
             int gradeNumber = 1;
+            int serieQuantity = seriesCounter;
 
-            Panel serie = new Panel(); //cria uma div
-            serie.Size = Styles.seriesSize; //define o tamanho da div
+            Panel seriePanel = new Panel(); //cria uma div
+            seriePanel.Size = Styles.seriesSize; //define o tamanho da div
 
-            serie.Location = new Point(20, 20 + (20 + Styles.seriesSize.Height) * seriesCounter); // define a posição da div
+            seriePanel.Location = new Point(20, 20 + (20 + Styles.seriesSize.Height) * seriesCounter); // define a posição da div
 
-            serie.BackColor = Styles.backgroundColor; //define a cor preta para fundo da div
+            seriePanel.BackColor = Styles.backgroundColor; //define a cor preta para fundo da div
 
             PictureBox gradePicture = new PictureBox();
 
@@ -79,24 +80,34 @@ namespace ElearningDesktop
 
             gradePicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
             gradePicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            gradePicture.Location = new Point(Convert.ToInt32(serie.Location.X + 2), Convert.ToInt32((serie.Size.Height / 2) - (gradePicture.Size.Height / 2)));
+            gradePicture.Location = new Point(Convert.ToInt32(seriePanel.Location.X + 2), Convert.ToInt32((seriePanel.Size.Height / 2) - (gradePicture.Size.Height / 2)));
 
 
-            serie.Controls.Add(gradePicture);//adiciona o pictureBox na div
+            seriePanel.Controls.Add(gradePicture);//adiciona o pictureBox na div
 
-            Label classroom = new Label(); //cria a serie
-            classroom.Text = "INF Diurno"; //define o nome da serie
-            classroom.Font = Styles.defaultFont;//define a estilização do texto
-            classroom.Size = new Size(Convert.ToInt32(classroom.Text.Length * Styles.buttonFontSize),Convert.ToInt32(Styles.buttonFontSize * 2));//define o tamanho que o texto ocupa na div
-            classroom.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
-            classroom.Location = new Point(Convert.ToInt32(gradePicture.Location.X + gradePicture.Size.Width + 10), Convert.ToInt32((serie.Size.Height / 2) - (serie.Size.Height / 2)));
+            Label serieName = new Label(); //cria a serie
+            serieName.Text = "INF Diurno"; //define o nome da serie
+            serieName.Font = Styles.defaultFont;//define a estilização do texto
+            serieName.AutoSize = true;
+            serieName.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
+            serieName.Location = new Point(Convert.ToInt32(gradePicture.Location.X + gradePicture.Size.Width + 10), Convert.ToInt32((seriePanel.Size.Height / 2) - (serieName.Font.Height / 2)));
 
-            serie.Controls.Add(classroom);//adiciona o label na div
+            seriePanel.Controls.Add(serieName);//adiciona o label na div
 
-            changePanelFormat(serie);//arredonda cada div
+            Label assignedClass = new Label();
+            assignedClass.Text = serieQuantity + " turmas atribuídas";
+            assignedClass.Font = Styles.customFont;//define a estilização do texto
+
+            assignedClass.AutoSize = true;
+            assignedClass.TextAlign = ContentAlignment.MiddleLeft;
+
+            assignedClass.Location = new Point(seriePanel.Width - Convert.ToInt32(Styles.formSize.Width * 0.115), Convert.ToInt32((seriePanel.Size.Height / 2) - (assignedClass.Font.Height / 2)));
+            seriePanel.Controls.Add(assignedClass);
+             
+            changePanelFormat(seriePanel);//arredonda cada div
 
             seriesCounter++; //aumenta em 1 a quantidade 
-            return serie;
+            return seriePanel;
         }
 
         private void changePanelFormat(Panel panel)
