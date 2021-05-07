@@ -182,6 +182,7 @@ namespace ElearningDesktop
             Styles.setFormSize(this.Width, this.Height);
             Styles.setButtonSize();
             Styles.setDefaultFont();
+            Styles.setCustomFont();
             Styles.setMainPanelSize();
             Styles.setSeriesSize();
             Styles.changeLogoPanelSize();

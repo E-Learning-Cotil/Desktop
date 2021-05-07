@@ -121,6 +121,7 @@ namespace ElearningDesktop
             this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.panel2.Location = new System.Drawing.Point(261, 62);
+            this.panel2.Margin = new System.Windows.Forms.Padding(20);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(448, 393);
             this.panel2.TabIndex = 4;
