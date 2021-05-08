@@ -146,6 +146,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Quicksand-Regular.ttf" />
+    <Content Include="Righteous-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

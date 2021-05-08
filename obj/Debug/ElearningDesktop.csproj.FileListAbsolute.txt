@@ -11,7 +11,6 @@ C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form2.r
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form3.resources
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form4.resources
 C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.Form5.resources
-C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.csprojAssemblyReference.cache
 C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.exe.config
 C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.exe
 C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.pdb
@@ -34,3 +33,4 @@ C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.exe.manifest
 C:\Users\mathe\source\repos\Desktop\bin\Debug\ElearningDesktop.application
 C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.exe.manifest
 C:\Users\mathe\source\repos\Desktop\obj\Debug\ElearningDesktop.application
+C:\Users\correa\source\repos\ElearningDesktop\obj\Debug\ElearningDesktop.csprojAssemblyReference.cache

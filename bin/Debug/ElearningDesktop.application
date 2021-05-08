@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ElearningDesktop.exe.manifest" size="3531">
+    <dependentAssembly dependencyType="install" codebase="ElearningDesktop.exe.manifest" size="4331">
       <assemblyIdentity name="ElearningDesktop.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IZYbNxoR9ZVk9iG5hOPczPh83v5PW+MMpaHoEyHvC0U=</dsig:DigestValue>
+        <dsig:DigestValue>FvtGHE+7drMEvyrvE0hv7/Q6RwSVL8lydMB1ivj8UgM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
