@@ -21,6 +21,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4253DAFC8D8D444DB3ECD040B4865D1E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_957019AB3C134CCA9E8B760E124BAD76"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B147B0A06D5DC0F09E8899E61F70558B"
         "OwnerKey" = "8:_ECD197C6872947A18BDF609D5FF25814"
         "MsmSig" = "8:_UNDEFINED"
@@ -156,6 +168,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4253DAFC8D8D444DB3ECD040B4865D1E"
+            {
+            "SourcePath" = "8:..\\..\\obj\\Debug\\logo.png"
+            "TargetName" = "8:logo.png"
+            "Tag" = "8:"
+            "Folder" = "8:_DA5A1022027346B39F87713C4FB9C76E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_957019AB3C134CCA9E8B760E124BAD76"
+            {
+            "SourcePath" = "8:..\\..\\obj\\Debug\\logo.ico"
+            "TargetName" = "8:logo.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_DA5A1022027346B39F87713C4FB9C76E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B147B0A06D5DC0F09E8899E61F70558B"
             {
             "AssemblyRegister" = "3:1"
@@ -227,7 +279,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_BAA7AAD3409F4A33A523C317B84B805D"
             {
             "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:DesktopFolder"
@@ -264,7 +316,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ELearning Desktop"
         "ProductCode" = "8:{E98EDDC0-D3ED-4A8F-858B-41B741FA6D92}"
-        "PackageCode" = "8:{5044B969-AF90-43E0-B2A5-977D66E2E694}"
+        "PackageCode" = "8:{53078EE5-2DFA-4A8F-9F67-A7BE97E61FC2}"
         "UpgradeCode" = "8:{689D69CD-5F2C-40EF-B259-E3085D00745E}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -384,6 +436,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3FF4EDC3C1EE428C9272434642D36DCB"
+            {
+            "Name" = "8:ELearning Desktop"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_ECD197C6872947A18BDF609D5FF25814"
+            "Folder" = "8:_7969FD526C8141ACBE877D01EC8F7659"
+            "WorkingFolder" = "8:_DA5A1022027346B39F87713C4FB9C76E"
+            "Icon" = "8:_957019AB3C134CCA9E8B760E124BAD76"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B922711FA8BA4D57B0247A259D28F301"
+            {
+            "Name" = "8:ELearning Desktop"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_ECD197C6872947A18BDF609D5FF25814"
+            "Folder" = "8:_BAA7AAD3409F4A33A523C317B84B805D"
+            "WorkingFolder" = "8:_DA5A1022027346B39F87713C4FB9C76E"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
