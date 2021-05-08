@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,17 +24,18 @@ namespace ElearningDesktop
         Form4 form4;
         Form5 form5;
 
-
         public Form1()
         {
-            InitializeComponent();
-
             this.ForeColor = Styles.white; 
+
+            InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.MaximizeBox = false;
+            Styles.setProjectFonts();
+
+            this.MaximizeBox = false;// desabilita botão de maximizar
             changeItemsSize();
 
             oldActiveButton = button1; // declara o botão ativo anteriormente como button1, o primeiro a ser aberto
