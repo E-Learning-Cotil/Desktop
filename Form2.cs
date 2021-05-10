@@ -52,7 +52,16 @@ namespace ElearningDesktop
             label1.Font = label2.Font = label3.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             label1.ForeColor = label2.ForeColor = label3.ForeColor = Styles.filterTitle;
             filterPosition();
+
+            //IEnumerable<CheckBox> check = this.Controls.OfType<CheckBox>();
+            /*foreach (var c in this.Controls.OfType<CheckBox>())
+            {
+                (CheckBox)c).Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+            }*/
+            
             checkBox1.Font = checkBox2.Font = checkBox3.Font = checkBox4.Font = checkBox5.Font = checkBox6.Font = checkBox7.Font = checkBox8.Font = checkBox9.Font = checkBox10.Font = checkBox11.Font = checkBox12.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+
+
             #region series
             /*this.Controls.Add(createSerie());// adiciona ao form, o panel criado 
             this.Controls.Add(createSerie());
