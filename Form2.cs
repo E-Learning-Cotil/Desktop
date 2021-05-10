@@ -51,7 +51,7 @@ namespace ElearningDesktop
 
         private Panel createSerie()
         {
-            int gradeNumber = 1;
+            int gradeNumber = 3;
             int serieQuantity = seriesCounter;
 
             Panel seriePanel = new Panel(); //cria uma div
