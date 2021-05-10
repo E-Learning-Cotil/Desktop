@@ -27,25 +27,34 @@ namespace ElearningDesktop
 
         private void filterPosition()
         {
-            panel1.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
-            Rectangle rectangle = new Rectangle(0, 0, panel1.Width, panel1.Height);
+            filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
+            filterPanel.Location = new Point(Convert.ToInt32(this.Width * 0.712), Convert.ToInt32(this.Height * 0.043));
+            //filterPanel.Location = new Point(Convert.ToInt32(this.Width - filterPanel.Size.Width),  Convert.ToInt32(this.Height * 0.043));
+            Rectangle rectangle = new Rectangle(0, 0, filterPanel.Width, filterPanel.Height);
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, false, false);
-            panel1.Region = new Region(roundedPanel);
+            filterPanel.Region = new Region(roundedPanel);
 
-            panel2.Location = new Point(panel1.Location.X, Convert.ToInt32(panel1.Height + panel1.Location.Y));
-            panel2.Size = new Size(Convert.ToInt32(this.Width*0.263),Convert.ToInt32(this.Height*0.103));
-            rectangle = new Rectangle(0, 0, panel2.Width, panel2.Height);
+            filterButtonPanel.Location = new Point(filterPanel.Location.X, Convert.ToInt32(filterPanel.Height + filterPanel.Location.Y));
+            filterButtonPanel.Size = new Size(Convert.ToInt32(this.Width*0.263),Convert.ToInt32(this.Height*0.103));
+            rectangle = new Rectangle(0, 0, filterButtonPanel.Width, filterButtonPanel.Height);
             roundedPanel = Transform.BorderRadius(rectangle, 20, false, false, true, true);
-            panel2.Region = new Region(roundedPanel);
+            filterButtonPanel.Region = new Region(roundedPanel);
 
-            panel3.Location = new Point(panel2.Location.X,panel2.Location.Y);
-            panel3.Size = new Size(panel2.Width, 2);
+            linePanel.Location = new Point(filterButtonPanel.Location.X,filterButtonPanel.Location.Y);
+            linePanel.Size = new Size(filterButtonPanel.Width, 2);
+
+            seriesPanel.Location = new Point(0, 0);
+            seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673),this.Height);
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            label1.Font = label2.Font = label3.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = Styles.filterTitle;
             filterPosition();
-            this.Controls.Add(createSerie());// adiciona ao form, o panel criado 
+            checkBox1.Font = checkBox2.Font = checkBox3.Font = checkBox4.Font = checkBox5.Font = checkBox6.Font = checkBox7.Font = checkBox8.Font = checkBox9.Font = checkBox10.Font = checkBox11.Font = checkBox12.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+            #region series
+            /*this.Controls.Add(createSerie());// adiciona ao form, o panel criado 
             this.Controls.Add(createSerie());
             this.Controls.Add(createSerie());
             this.Controls.Add(createSerie());
@@ -64,10 +73,25 @@ namespace ElearningDesktop
             this.Controls.Add(createSerie());
             this.Controls.Add(createSerie());
             this.Controls.Add(createSerie());
-            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());*/
+            #endregion
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
+            createSerie();
         }
 
-        private Panel createSerie()
+        private void createSerie()
         {
             int gradeNumber = 3;
             int serieQuantity = seriesCounter;
@@ -124,8 +148,10 @@ namespace ElearningDesktop
              
             changePanelFormat(seriePanel);//arredonda cada div
 
+            seriesPanel.Controls.Add(seriePanel);
+
             seriesCounter++; //aumenta em 1 a quantidade 
-            return seriePanel;
+            //return seriePanel;
         }
 
         private void changePanelFormat(Panel panel)
