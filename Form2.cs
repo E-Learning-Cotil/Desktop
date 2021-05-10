@@ -25,24 +25,42 @@ namespace ElearningDesktop
             seriesCounter = 0;
         }
 
+        private void filterPosition()
+        {
+            panel1.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
+            Rectangle rectangle = new Rectangle(0, 0, panel1.Width, panel1.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, false, false);
+            panel1.Region = new Region(roundedPanel);
+
+            panel2.Location = new Point(panel1.Location.X, Convert.ToInt32(panel1.Height + panel1.Location.Y));
+            panel2.Size = new Size(Convert.ToInt32(this.Width*0.263),Convert.ToInt32(this.Height*0.103));
+            rectangle = new Rectangle(0, 0, panel2.Width, panel2.Height);
+            roundedPanel = Transform.BorderRadius(rectangle, 20, false, false, true, true);
+            panel2.Region = new Region(roundedPanel);
+
+            panel3.Location = new Point(panel2.Location.X,panel2.Location.Y);
+            panel3.Size = new Size(panel2.Width, 2);
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
-            this.Controls.Add( createSerie() );// adiciona ao form, o panel criado 
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
-            this.Controls.Add( createSerie() );
+            filterPosition();
+            this.Controls.Add(createSerie());// adiciona ao form, o panel criado 
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
+            this.Controls.Add(createSerie());
             this.Controls.Add(createSerie());
             this.Controls.Add(createSerie());
             this.Controls.Add(createSerie());
