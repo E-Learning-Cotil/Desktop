@@ -29,7 +29,6 @@ namespace ElearningDesktop
         {
             filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
             filterPanel.Location = new Point(Convert.ToInt32(this.Width * 0.712), Convert.ToInt32(this.Height * 0.043));
-            //filterPanel.Location = new Point(Convert.ToInt32(this.Width - filterPanel.Size.Width),  Convert.ToInt32(this.Height * 0.043));
             Rectangle rectangle = new Rectangle(0, 0, filterPanel.Width, filterPanel.Height);
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, false, false);
             filterPanel.Region = new Region(roundedPanel);
@@ -52,10 +51,18 @@ namespace ElearningDesktop
             label1.Font = label2.Font = label3.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             label1.ForeColor = label2.ForeColor = label3.ForeColor = Styles.filterTitle;
             filterPosition();
-            
-            foreach(CheckBox c in filterPanel.Controls.OfType<CheckBox>().ToArray())
+
+            int checkBoxCount = filterPanel.Controls.OfType<CheckBox>().ToArray().Count();
+            CheckBox[] checkBoxArray = filterPanel.Controls.OfType<CheckBox>().ToArray();
+
+            for(int i = checkBoxCount -1;i >= 0; i--)
             {
-                c.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+                checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+
+                if(i < 2) checkBoxArray[i].Location = new Point(label1.Location.X, label1.Location.Y + label1.Height + 40 * i);
+                else if(i < 5) checkBoxArray[i].Location = new Point(label2.Location.X, label2.Location.Y + label2.Height + 40 * i);
+                else checkBoxArray[i].Location = new Point(label3.Location.X, label3.Location.Y + label3.Height + 40 * i);
+
             }
 
         #region series
@@ -154,9 +161,9 @@ namespace ElearningDesktop
             changePanelFormat(seriePanel);//arredonda cada div
 
             seriesPanel.Controls.Add(seriePanel);
+            seriesPanel.Size = new Size(seriesPanel.Width, seriesPanel.Height - 1);
 
             seriesCounter++; //aumenta em 1 a quantidade 
-            //return seriePanel;
         }
 
         private void changePanelFormat(Panel panel)
