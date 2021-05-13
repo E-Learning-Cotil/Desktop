@@ -54,14 +54,33 @@ namespace ElearningDesktop
 
             int checkBoxCount = filterPanel.Controls.OfType<CheckBox>().ToArray().Count();
             CheckBox[] checkBoxArray = filterPanel.Controls.OfType<CheckBox>().ToArray();
-
-            for(int i = checkBoxCount -1;i >= 0; i--)
+            //Label[] labelArray = filterPanel.Controls.OfType<Label>().ToArray();
+            //int labelCount = filterPanel.Controls.OfType<Label>().ToArray().Count();
+            int heightNeeded = filterPanel.Location.Y + 10;
+            for(int i = 0;i <= checkBoxCount-1; i++)
             {
-                checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+                switch (i)
+                {
+                    case 0:
+                        label1.Location = new Point(10 , heightNeeded);
+                        heightNeeded += label1.Height;
+                        break;
+                    case 3:
+                        label2.Location = new Point(10 , heightNeeded);
+                        heightNeeded += label2.Height;
+                        break;
+                    case 6:
+                        label3.Location = new Point(10 , heightNeeded);
+                        heightNeeded += label3.Height;
+                        break;
+                }
+                checkBoxArray[checkBoxCount - i - 1].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+                checkBoxArray[checkBoxCount - i - 1].Location = new Point(10 , heightNeeded);
+                heightNeeded += checkBoxArray[i].Height; 
 
-                if(i < 2) checkBoxArray[i].Location = new Point(label1.Location.X, label1.Location.Y + label1.Height + 40 * i);
-                else if(i < 5) checkBoxArray[i].Location = new Point(label2.Location.X, label2.Location.Y + label2.Height + 40 * i);
-                else checkBoxArray[i].Location = new Point(label3.Location.X, label3.Location.Y + label3.Height + 40 * i);
+                /*if(i <= 2) checkBoxArray[i].Location = c
+                else if(i <= 5) checkBoxArray[i].Location = new Point(label2.Location.X, label2.Location.Y + (label2.Height + 10) * i);
+                else checkBoxArray[i].Location = new Point(label3.Location.X, label3.Location.Y + (label3.Height + 10) * i);*/
 
             }
 
