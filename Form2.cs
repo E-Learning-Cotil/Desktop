@@ -25,6 +25,16 @@ namespace ElearningDesktop
             seriesCounter = 0;
         }
 
+        private void filterButtonStyle()
+        {
+            button1.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.7));
+            button1.Size = new Size(Convert.ToInt32(filterButtonPanel.Width * 0.830), Convert.ToInt32(filterButtonPanel.Height * 0.574));
+            button1.Location = new Point(Convert.ToInt32(filterButtonPanel.Width/2 - button1.Width/2), Convert.ToInt32(filterButtonPanel.Height / 2 - button1.Height / 2));
+            Rectangle rectangle = new Rectangle(0, 0, button1.Width, button1.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 18, true, true, true, true);
+            button1.Region = new Region(roundedButton);
+        }
+
         private void filterPosition()
         {
             filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
@@ -46,65 +56,46 @@ namespace ElearningDesktop
             seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673),this.Height);
         }
 
+        private void checkboxStyle()
+        {
+            int checkBoxCount = filterPanel.Controls.OfType<CheckBox>().ToArray().Count();
+            CheckBox[] checkBoxArray = filterPanel.Controls.OfType<CheckBox>().ToArray();
+            Array.Reverse(checkBoxArray, 0, checkBoxCount); // inverte os elementos do array
+            //Label[] labelArray = filterPanel.Controls.OfType<Label>().ToArray();
+            //int labelCount = filterPanel.Controls.OfType<Label>().ToArray().Count();
+            int heightNeeded = filterPanel.Location.Y;
+            for (int i = 0; i <= checkBoxCount - 1; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        label1.Location = new Point(10, heightNeeded);
+                        heightNeeded += label1.Height;
+                        break;
+                    case 3:
+                        label2.Location = new Point(10, heightNeeded);
+                        heightNeeded += label2.Height;
+                        break;
+                    case 6:
+                        label3.Location = new Point(10, heightNeeded);
+                        heightNeeded += label3.Height;
+                        break;
+                }
+                checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+                checkBoxArray[i].Location = new Point(10, heightNeeded);
+                heightNeeded += checkBoxArray[i].Height;
+            }
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             label1.Font = label2.Font = label3.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             label1.ForeColor = label2.ForeColor = label3.ForeColor = Styles.filterTitle;
             filterPosition();
+            checkboxStyle();
+            filterButtonStyle();
 
-            int checkBoxCount = filterPanel.Controls.OfType<CheckBox>().ToArray().Count();
-            CheckBox[] checkBoxArray = filterPanel.Controls.OfType<CheckBox>().ToArray();
-            Array.Reverse(checkBoxArray,0,checkBoxCount); // inverte os elementos do array
-            //Label[] labelArray = filterPanel.Controls.OfType<Label>().ToArray();
-            //int labelCount = filterPanel.Controls.OfType<Label>().ToArray().Count();
-            int heightNeeded = filterPanel.Location.Y ;
-            for(int i = 0; i <= checkBoxCount - 1; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        label1.Location = new Point(10 , heightNeeded);
-                        heightNeeded += label1.Height;
-                        break;
-                    case 3:
-                        label2.Location = new Point(10 , heightNeeded);
-                        heightNeeded += label2.Height;
-                        break;
-                    case 6:
-                        label3.Location = new Point(10 , heightNeeded);
-                        heightNeeded += label3.Height;
-                        break;
-                }
-                //checkBoxArray[checkBoxCount - i - 1].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
-                //checkBoxArray[checkBoxCount - i - 1].Location = new Point(10 , heightNeeded);
-                checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
-                checkBoxArray[i].Location = new Point(10 , heightNeeded);
-                heightNeeded += checkBoxArray[i].Height; 
-            }
-
-        #region series
-        /*this.Controls.Add(createSerie());// adiciona ao form, o panel criado 
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());
-        this.Controls.Add(createSerie());*/
-        #endregion
-        createSerie();
+            #region Criando Series
             createSerie();
             createSerie();
             createSerie();
@@ -118,6 +109,8 @@ namespace ElearningDesktop
             createSerie();
             createSerie();
             createSerie();
+            createSerie();
+            #endregion
         }
 
         private void createSerie()
