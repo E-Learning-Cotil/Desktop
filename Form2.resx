@@ -516,6 +516,9 @@
   <data name="checkBox2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="checkBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Righteous, 8.25pt</value>
   </data>
@@ -526,7 +529,7 @@
     <value>6, 49</value>
   </data>
   <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 18</value>
+    <value>56, 18</value>
   </data>
   <data name="checkBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -549,6 +552,9 @@
   <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="checkBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Righteous, 8.25pt</value>
   </data>
@@ -556,7 +562,7 @@
     <value>6, 26</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>53, 18</value>
   </data>
   <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

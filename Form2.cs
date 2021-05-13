@@ -56,41 +56,12 @@ namespace ElearningDesktop
             seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673),this.Height);
         }
 
-        private void checkboxStyle()
-        {
-            int checkBoxCount = filterPanel.Controls.OfType<CheckBox>().ToArray().Count();
-            CheckBox[] checkBoxArray = filterPanel.Controls.OfType<CheckBox>().ToArray();
-            Array.Reverse(checkBoxArray, 0, checkBoxCount); // inverte os elementos do array
-            //Label[] labelArray = filterPanel.Controls.OfType<Label>().ToArray();
-            //int labelCount = filterPanel.Controls.OfType<Label>().ToArray().Count();
-            int heightNeeded = filterPanel.Location.Y;
-            for (int i = 0; i <= checkBoxCount - 1; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        label1.Location = new Point(10, heightNeeded);
-                        heightNeeded += label1.Height;
-                        break;
-                    case 3:
-                        label2.Location = new Point(10, heightNeeded);
-                        heightNeeded += label2.Height;
-                        break;
-                    case 6:
-                        label3.Location = new Point(10, heightNeeded);
-                        heightNeeded += label3.Height;
-                        break;
-                }
-                checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
-                checkBoxArray[i].Location = new Point(10, heightNeeded);
-                heightNeeded += checkBoxArray[i].Height;
-            }
-        }
-
         private void Form2_Load(object sender, EventArgs e)
         {
             label1.Font = label2.Font = label3.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             label1.ForeColor = label2.ForeColor = label3.ForeColor = Styles.filterTitle;
+
+
             filterPosition();
             checkboxStyle();
             filterButtonStyle();
@@ -111,6 +82,41 @@ namespace ElearningDesktop
             createSerie();
             createSerie();
             #endregion
+
+        }
+
+        private void checkboxStyle()
+        {
+            int checkBoxCount = filterPanel.Controls.OfType<CheckBox>().ToArray().Count();
+
+            CheckBox[] checkBoxArray = filterPanel.Controls.OfType<CheckBox>().ToArray();
+
+            Array.Reverse(checkBoxArray, 0, checkBoxCount); // inverte os elementos do array
+
+            int heightNeeded = filterPanel.Location.Y;
+
+            for (int i = 0; i <= checkBoxCount - 1; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        label1.Location = new Point(10, heightNeeded);
+                        heightNeeded += label1.Height;
+                        break;
+                    case 3:
+                        label2.Location = new Point(10, heightNeeded);
+                        heightNeeded += label2.Height;
+                        break;
+                    case 6:
+                        label3.Location = new Point(10, heightNeeded);
+                        heightNeeded += label3.Height;
+                        break;
+                }
+
+                checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
+                checkBoxArray[i].Location = new Point(10, heightNeeded);
+                heightNeeded += checkBoxArray[i].Height;
+            }
         }
 
         private void createSerie()
@@ -182,5 +188,6 @@ namespace ElearningDesktop
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 13, true, true, true, true);
             panel.Region = new Region(roundedPanel);
         }
+
     }
 }
