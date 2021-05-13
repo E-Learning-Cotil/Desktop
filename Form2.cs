@@ -31,7 +31,7 @@ namespace ElearningDesktop
             button1.Size = new Size(Convert.ToInt32(filterButtonPanel.Width * 0.830), Convert.ToInt32(filterButtonPanel.Height * 0.574));
             button1.Location = new Point(Convert.ToInt32(filterButtonPanel.Width/2 - button1.Width/2), Convert.ToInt32(filterButtonPanel.Height / 2 - button1.Height / 2));
             Rectangle rectangle = new Rectangle(0, 0, button1.Width, button1.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 18, true, true, true, true);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 20, true, true, true, true);
             button1.Region = new Region(roundedButton);
         }
 

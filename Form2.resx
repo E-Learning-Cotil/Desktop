@@ -202,13 +202,13 @@
     <value>6, 277</value>
   </data>
   <data name="checkBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 18</value>
+    <value>86, 18</value>
   </data>
   <data name="checkBox10.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="checkBox10.Text" xml:space="preserve">
-    <value>Edificação</value>
+    <value>Informática</value>
   </data>
   <data name="&gt;&gt;checkBox10.Name" xml:space="preserve">
     <value>checkBox10</value>
@@ -268,13 +268,13 @@
     <value>6, 231</value>
   </data>
   <data name="checkBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 18</value>
+    <value>92, 18</value>
   </data>
   <data name="checkBox8.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="checkBox8.Text" xml:space="preserve">
-    <value>Informática</value>
+    <value>Enfermagem </value>
   </data>
   <data name="&gt;&gt;checkBox8.Name" xml:space="preserve">
     <value>checkBox8</value>
@@ -301,13 +301,13 @@
     <value>6, 208</value>
   </data>
   <data name="checkBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 18</value>
+    <value>86, 18</value>
   </data>
   <data name="checkBox9.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="checkBox9.Text" xml:space="preserve">
-    <value>Enfermagem</value>
+    <value>Edificações</value>
   </data>
   <data name="&gt;&gt;checkBox9.Name" xml:space="preserve">
     <value>checkBox9</value>
@@ -364,13 +364,13 @@
     <value>6, 161</value>
   </data>
   <data name="checkBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 18</value>
+    <value>68, 18</value>
   </data>
   <data name="checkBox4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="checkBox4.Text" xml:space="preserve">
-    <value>3º ano</value>
+    <value>Noturno</value>
   </data>
   <data name="&gt;&gt;checkBox4.Name" xml:space="preserve">
     <value>checkBox4</value>
@@ -403,7 +403,7 @@
     <value>6</value>
   </data>
   <data name="checkBox5.Text" xml:space="preserve">
-    <value>2º ano</value>
+    <value>Diurno</value>
   </data>
   <data name="&gt;&gt;checkBox5.Name" xml:space="preserve">
     <value>checkBox5</value>
@@ -430,13 +430,13 @@
     <value>6, 115</value>
   </data>
   <data name="checkBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>39, 18</value>
   </data>
   <data name="checkBox6.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="checkBox6.Text" xml:space="preserve">
-    <value>1º ano</value>
+    <value>CT</value>
   </data>
   <data name="&gt;&gt;checkBox6.Name" xml:space="preserve">
     <value>checkBox6</value>
