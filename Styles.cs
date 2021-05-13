@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace ElearningDesktop
 {
-    abstract class Styles
+    static class Styles
     {
         public static Color lightGray = Color.FromArgb(80, 80, 80);
         public static Color darkGray = Color.FromArgb(61, 61, 61);
@@ -91,4 +91,4 @@ namespace ElearningDesktop
             usedFonts.AddFontFile(Path.Combine(System.Windows.Forms.Application.StartupPath, "Righteous-Regular.ttf"));
         }
     }
-}
+} //END NAMESPACE
