@@ -70,3 +70,6 @@ D:\Bruno\Documents\E-Learning\Desktop\obj\Debug\ElearningDesktop.exe.manifest
 D:\Bruno\Documents\E-Learning\Desktop\obj\Debug\ElearningDesktop.application
 D:\Bruno\Documents\E-Learning\Desktop\obj\Debug\ElearningDesktop.exe
 D:\Bruno\Documents\E-Learning\Desktop\obj\Debug\ElearningDesktop.pdb
+D:\Bruno\Documents\E-Learning\Desktop\bin\Debug\Newtonsoft.Json.dll
+D:\Bruno\Documents\E-Learning\Desktop\bin\Debug\Newtonsoft.Json.xml
+D:\Bruno\Documents\E-Learning\Desktop\obj\Debug\ElearningDesktop.csproj.CopyComplete
