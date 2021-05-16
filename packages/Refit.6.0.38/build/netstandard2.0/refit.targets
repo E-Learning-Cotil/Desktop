@@ -1,0 +1,27 @@
+<Project>
+
+  <PropertyGroup>
+
+    <!--
+    Refit internal namespace to be added to internally generated Refit code. 
+    Can be overriden by user in case of namespace clashes.
+    -->
+    <RefitInternalNamespace Condition=" '$(RefitInternalNamespace)' == '' ">$(RootNamespace)</RefitInternalNamespace>
+
+    <_RefitMSBuildMinVersion>16.8.0</_RefitMSBuildMinVersion>
+    
+  </PropertyGroup>
+
+
+  <Target Name="_RefitMSBuildVersionCheck"
+          Condition=" '$([System.Version]::Parse($(_RefitMSBuildMinVersion)).CompareTo($([System.Version]::Parse($(MSBuildVersion)))))' &gt; '0' "
+     BeforeTargets="ResolveAssemblyReferences;Build;Rebuild" >
+    <Error
+        Text = "Projects using Refit cannot build using MSBuild '$(MSBuildVersion)'. MSBuild '$(_RefitMSBuildMinVersion)' or later is required." />
+  </Target>
+
+  <Target Name="_RefitProjectRestoreTypeCheck" BeforeTargets="ResolveAssemblyReferences;Build;Rebuild" DependsOnTargets="_GetRestoreProjectStyle">
+    <Error Condition="'$(RestoreProjectStyle)' == 'PackagesConfig'"
+           Text="Packages.config does not support Analyzers, including Source Generators. Migrate to PackageReference: 'https://devblogs.microsoft.com/nuget/migrate-packages-config-to-package-reference/'" />
+  </Target>
+</Project>
