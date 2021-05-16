@@ -52,7 +52,7 @@ namespace ElearningDesktop
             linePanel.Location = new Point(filterButtonPanel.Location.X,filterButtonPanel.Location.Y);
             linePanel.Size = new Size(filterButtonPanel.Width, 2);
 
-            seriesPanel.Location = new Point(0, 0);
+            seriesPanel.Location = new Point(0, 7);
             seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673),this.Height);
         }
 
