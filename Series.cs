@@ -12,18 +12,21 @@ namespace ElearningDesktop
     class Series
     {
         private int gradeNumber;
-        private int serieQuantity = 20;
+        private int serieQuantity;
         private string courseName;
         private string classType;
         private string period;
         private Panel seriePanel;
+        private string initials;
 
-        public Series(int id, string curso, string tipo, int ano, string periodo)
+        public Series(int id, string curso, string tipo, int ano, string periodo,string sigla, int turmas)
         {
             gradeNumber = ano;
             courseName = curso;
             classType = tipo;
             period = periodo;
+            initials = sigla;
+            serieQuantity = turmas;
 
             seriePanel = new Panel(); //cria uma div
             seriePanel.Size = Styles.seriesSize; //define o tamanho da div
@@ -51,11 +54,10 @@ namespace ElearningDesktop
             gradePicture.SizeMode = PictureBoxSizeMode.StretchImage;
             gradePicture.Location = new Point(Convert.ToInt32(seriePanel.Location.X + 2), Convert.ToInt32((seriePanel.Size.Height / 2) - (gradePicture.Size.Height / 2)));
 
-
             seriePanel.Controls.Add(gradePicture);//adiciona o pictureBox na div
 
             Label serieName = new Label(); //cria a serie
-            serieName.Text = courseName; //define o nome da serie
+            serieName.Text = initials; //define o nome da serie
             serieName.Font = Styles.defaultFont;//define a estilização do texto
             serieName.AutoSize = true;
             serieName.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
