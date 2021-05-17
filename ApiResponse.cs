@@ -23,5 +23,11 @@ namespace ElearningDesktop
 
         [JsonProperty("periodo")]
         public string Periodo { get; set; }
+
+        [JsonProperty("sigla")]
+        public string Sigla { get; set; }
+
+        [JsonProperty("_count")]
+        public Count _count { get; set; }
     }
 }
