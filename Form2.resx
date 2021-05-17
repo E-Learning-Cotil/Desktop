@@ -125,8 +125,11 @@
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox12.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBox12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -136,7 +139,7 @@
     <value>6, 323</value>
   </data>
   <data name="checkBox12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 18</value>
+    <value>83, 19</value>
   </data>
   <data name="checkBox12.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -159,8 +162,11 @@
   <data name="checkBox11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox11.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -169,7 +175,7 @@
     <value>6, 300</value>
   </data>
   <data name="checkBox11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 18</value>
+    <value>80, 19</value>
   </data>
   <data name="checkBox11.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -192,8 +198,11 @@
   <data name="checkBox10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox10.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -202,7 +211,7 @@
     <value>6, 277</value>
   </data>
   <data name="checkBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 18</value>
+    <value>87, 19</value>
   </data>
   <data name="checkBox10.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -225,8 +234,11 @@
   <data name="checkBox7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox7.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -235,7 +247,7 @@
     <value>6, 254</value>
   </data>
   <data name="checkBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 18</value>
+    <value>79, 19</value>
   </data>
   <data name="checkBox7.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -258,8 +270,11 @@
   <data name="checkBox8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox8.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -268,7 +283,7 @@
     <value>6, 231</value>
   </data>
   <data name="checkBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 18</value>
+    <value>101, 19</value>
   </data>
   <data name="checkBox8.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -291,8 +306,11 @@
   <data name="checkBox9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox9.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -301,7 +319,7 @@
     <value>6, 208</value>
   </data>
   <data name="checkBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 18</value>
+    <value>89, 19</value>
   </data>
   <data name="checkBox9.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -354,8 +372,11 @@
   <data name="checkBox4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox4.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -364,7 +385,7 @@
     <value>6, 161</value>
   </data>
   <data name="checkBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 18</value>
+    <value>70, 19</value>
   </data>
   <data name="checkBox4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -387,8 +408,11 @@
   <data name="checkBox5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox5.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -397,7 +421,7 @@
     <value>6, 138</value>
   </data>
   <data name="checkBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 18</value>
+    <value>63, 19</value>
   </data>
   <data name="checkBox5.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -420,8 +444,11 @@
   <data name="checkBox6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox6.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -430,7 +457,7 @@
     <value>6, 115</value>
   </data>
   <data name="checkBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 18</value>
+    <value>41, 19</value>
   </data>
   <data name="checkBox6.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -483,8 +510,11 @@
   <data name="checkBox3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox3.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -493,7 +523,7 @@
     <value>6, 72</value>
   </data>
   <data name="checkBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 18</value>
+    <value>61, 19</value>
   </data>
   <data name="checkBox3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -516,11 +546,14 @@
   <data name="checkBox2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox2.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
   <data name="checkBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="checkBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -529,7 +562,7 @@
     <value>6, 49</value>
   </data>
   <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>58, 19</value>
   </data>
   <data name="checkBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -552,17 +585,23 @@
   <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox1.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
   <data name="checkBox1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
   <data name="checkBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Righteous, 8.25pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="checkBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 26</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 18</value>
+    <value>58, 19</value>
   </data>
   <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -584,6 +623,9 @@
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 10</value>
@@ -628,22 +670,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;filterPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 19</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Filtrar</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
@@ -676,7 +703,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;filterButtonPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 19</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>filterButtonPanel</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="linePanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>503, 371</value>
@@ -697,7 +754,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;linePanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="seriesPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -721,6 +778,33 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;seriesPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plusButtonPictureBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>447, 411</value>
+  </data>
+  <data name="plusButtonPictureBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="plusButtonPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 50</value>
+  </data>
+  <data name="plusButtonPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="plusButtonPictureBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;plusButtonPictureBox.Name" xml:space="preserve">
+    <value>plusButtonPictureBox</value>
+  </data>
+  <data name="&gt;&gt;plusButtonPictureBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plusButtonPictureBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;plusButtonPictureBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -731,6 +815,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>740, 571</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form2</value>

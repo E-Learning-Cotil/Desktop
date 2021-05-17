@@ -50,8 +50,10 @@ namespace ElearningDesktop
             this.button1 = new System.Windows.Forms.Button();
             this.linePanel = new System.Windows.Forms.Panel();
             this.seriesPanel = new System.Windows.Forms.Panel();
+            this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
             this.filterPanel.SuspendLayout();
             this.filterButtonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // filterPanel
@@ -203,11 +205,20 @@ namespace ElearningDesktop
             resources.ApplyResources(this.seriesPanel, "seriesPanel");
             this.seriesPanel.Name = "seriesPanel";
             // 
+            // plusButtonPictureBox
+            // 
+            this.plusButtonPictureBox.BackColor = System.Drawing.Color.White;
+            this.plusButtonPictureBox.Image = global::ElearningDesktop.Properties.Resources.plus;
+            resources.ApplyResources(this.plusButtonPictureBox, "plusButtonPictureBox");
+            this.plusButtonPictureBox.Name = "plusButtonPictureBox";
+            this.plusButtonPictureBox.TabStop = false;
+            // 
             // Form2
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.Controls.Add(this.plusButtonPictureBox);
             this.Controls.Add(this.seriesPanel);
             this.Controls.Add(this.linePanel);
             this.Controls.Add(this.filterButtonPanel);
@@ -221,6 +232,7 @@ namespace ElearningDesktop
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
             this.filterButtonPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -247,5 +259,6 @@ namespace ElearningDesktop
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel linePanel;
         private System.Windows.Forms.Panel seriesPanel;
+        private System.Windows.Forms.PictureBox plusButtonPictureBox;
     }
 }

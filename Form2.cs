@@ -65,9 +65,22 @@ namespace ElearningDesktop
             filterPosition();
             checkboxStyle();
             filterButtonStyle();
-            
+
+            stylePlusButton();
+
             createSerie();
 
+        }
+
+        private void stylePlusButton()
+        {
+            plusButtonPictureBox.Size = new Size(Convert.ToInt32(this.Height * 0.083), Convert.ToInt32(this.Height * 0.083));
+
+            plusButtonPictureBox.Location = new Point(Convert.ToInt32(seriesPanel.Width - plusButtonPictureBox.Width), Convert.ToInt32(seriesPanel.Height - (plusButtonPictureBox.Height + 20)));
+
+            Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 60, true, true, true, true);
+            plusButtonPictureBox.Region = new Region(roundedButton);
         }
 
         private void checkboxStyle()
@@ -98,6 +111,14 @@ namespace ElearningDesktop
                         break;
                 }
 
+                checkBoxArray[i].Size = new Size(200,200);
+                checkBoxArray[i].BackColor = Styles.white;
+                checkBoxArray[i].Text = "  ";
+
+                Rectangle rectangle = new Rectangle(0, 0, checkBoxArray[i].Width, checkBoxArray[i].Height);
+                GraphicsPath roundedCheckBox = Transform.BorderRadius(rectangle, 13, true, true, true, true);
+                checkBoxArray[i].Region = new Region(roundedCheckBox);
+
                 checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
                 checkBoxArray[i].Location = new Point(10, heightNeeded);
                 heightNeeded += checkBoxArray[i].Height;
@@ -109,6 +130,7 @@ namespace ElearningDesktop
             try
             {
                 var apiPath = RestService.For<ApiService>("https://elearning-tcc.herokuapp.com");
+                //var apiPath = RestService.For<ApiService>("http://50f46cb72afc.ngrok.io"); // rota de teste
                 var dataResponse = await apiPath.GetSeriesAsync();
 
                 ApiResponse[] series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
@@ -127,7 +149,9 @@ namespace ElearningDesktop
                     for (int i = 0; i < series.Length; i++)
                     {
                         ApiResponse serieData = series[i];
-                        Series serie = new Series(serieData.Id, serieData.Curso, serieData.Tipo, serieData.Ano, serieData.Periodo);
+                        //Count count = JsonConvert.DeserializeObject<Count>(serieData._count.ToString());
+
+                        Series serie = new Series(serieData.Id, serieData.Curso, serieData.Tipo, serieData.Ano, serieData.Periodo, serieData.Sigla, serieData._count.Turmas);
                         seriesPanel.Controls.Add(serie.getSeriePanel());
                         seriesPanel.Size = new Size(seriesPanel.Width, seriesPanel.Height - 1);
                     }
