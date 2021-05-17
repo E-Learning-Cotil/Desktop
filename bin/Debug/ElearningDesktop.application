@@ -7,14 +7,18 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ElearningDesktop.exe.manifest" size="4331">
+    <dependentAssembly dependencyType="install" codebase="ElearningDesktop.exe.manifest" size="12657">
       <assemblyIdentity name="ElearningDesktop.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< Updated upstream
         <dsig:DigestValue>YwsCb6Ca8wKAfuoqfN2qa7vs9JOipl53QxrBT6SoCBQ=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>9wJ3fdC3jwCTvijpxxFj7ZA8Om1c+oDykBAvh3CA25Q=</dsig:DigestValue>
+>>>>>>> Stashed changes
       </hash>
     </dependentAssembly>
   </dependency>
