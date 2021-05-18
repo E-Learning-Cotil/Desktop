@@ -154,6 +154,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="obj\Debug\plus.png" />
+    <None Include="obj\Debug\Group 21.png" />
+    <None Include="obj\Debug\Rectangle 247.png" />
     <Content Include="Quicksand-Regular.ttf" />
     <Content Include="Righteous-Regular.ttf" />
   </ItemGroup>
