@@ -16,6 +16,9 @@ namespace ElearningDesktop
 {
     public partial class Form2 : Form
     {
+        Button selectedSeries;
+        Button selectedShift;
+        Button selectedCourse;
 
         public Form2()
         {
@@ -85,44 +88,62 @@ namespace ElearningDesktop
 
         private void checkboxStyle()
         {
-            int checkBoxCount = filterPanel.Controls.OfType<CheckBox>().ToArray().Count();
-
-            CheckBox[] checkBoxArray = filterPanel.Controls.OfType<CheckBox>().ToArray();
-
-            Array.Reverse(checkBoxArray, 0, checkBoxCount); // inverte os elementos do array
-
             int heightNeeded = filterPanel.Location.Y;
 
-            for (int i = 0; i <= checkBoxCount - 1; i++)
+            Button[] buttonArray = filterPanel.Controls.OfType<Button>().ToArray();
+            Label[] labelArray = filterPanel.Controls.OfType<Label>().ToArray();
+
+            int buttonCount = buttonArray.Count();
+            int labelCount = labelArray.Count();
+
+
+            Array.Reverse(buttonArray, 0, buttonCount); // inverte os elementos do array
+            Array.Reverse(labelArray, 0, labelCount);
+
+            for (int i = 0; i < labelCount; i++)
+            {
+                labelArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.5));
+
+            }
+
+            for (int i = 0; i < buttonCount; i++)
             {
                 switch (i)
                 {
                     case 0:
-                        label1.Location = new Point(10, heightNeeded);
-                        heightNeeded += label1.Height;
+                        labelArray[0].Location = new Point(10, heightNeeded);
+                        labelArray[0].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
+                        heightNeeded += labelArray[0].Height + 10;
                         break;
                     case 3:
-                        label2.Location = new Point(10, heightNeeded);
-                        heightNeeded += label2.Height;
+                        labelArray[1].Location = new Point(10, heightNeeded);
+                        labelArray[1].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
+                        heightNeeded += labelArray[1].Height + 10;
                         break;
                     case 6:
-                        label3.Location = new Point(10, heightNeeded);
-                        heightNeeded += label3.Height;
+                        labelArray[2].Location = new Point(10, heightNeeded);
+                        labelArray[2].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
+                        heightNeeded += labelArray[2].Height + 10;
                         break;
                 }
 
-                checkBoxArray[i].Size = new Size(200,200);
-                checkBoxArray[i].BackColor = Styles.white;
-                checkBoxArray[i].Text = "  ";
 
-                Rectangle rectangle = new Rectangle(0, 0, checkBoxArray[i].Width, checkBoxArray[i].Height);
-                GraphicsPath roundedCheckBox = Transform.BorderRadius(rectangle, 13, true, true, true, true);
-                checkBoxArray[i].Region = new Region(roundedCheckBox);
+                buttonArray[i].BackColor = Styles.white;
+                buttonArray[i].Text = "";
 
-                checkBoxArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.625));
-                checkBoxArray[i].Location = new Point(10, heightNeeded);
-                heightNeeded += checkBoxArray[i].Height;
-            }
+                buttonArray[i].Size = new Size(25, 27);
+
+                Rectangle rectangle = new Rectangle(0, 0, buttonArray[i].Width, buttonArray[i].Height);
+                GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 12, true, true, true, true);
+                buttonArray[i].Region = new Region(roundedButton);
+
+                buttonArray[i].Location = new Point(10, heightNeeded);
+
+                if(i+3 <= labelCount)
+                    labelArray[i +3].Location = new Point(10 + buttonArray[i].Width + 5, heightNeeded); 
+
+                heightNeeded += buttonArray[i].Height + 5;
+            } //FIM DO FOR
         }
 
         private async void createSerie()
@@ -164,5 +185,56 @@ namespace ElearningDesktop
             }
         }
 
+        #region Filtro das Series
+        private void activeSerieFilter(Button sourceButton)
+        {
+            if(selectedSeries != null) selectedSeries.BackgroundImage = Properties.Resources.Rectangle_247;
+            selectedSeries = sourceButton;
+            selectedSeries.ImageAlign = ContentAlignment.MiddleCenter;
+            selectedSeries.BackgroundImage = Properties.Resources.Group_21;
+            selectedSeries.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            activeSerieFilter(button2);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            activeSerieFilter(button3);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            activeSerieFilter(button4);
+        }
+        #endregion
+
+        #region Filtro dos Turnos
+        private void activeShiftFilter(Button sourceButton)
+        {
+            if (selectedShift != null) selectedShift.BackgroundImage = Properties.Resources.Rectangle_247;
+            selectedShift = sourceButton;
+            selectedShift.ImageAlign = ContentAlignment.MiddleCenter;
+            selectedShift.BackgroundImage = Properties.Resources.Group_21;
+            selectedShift.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            activeShiftFilter(button5);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            activeShiftFilter(button6);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            activeShiftFilter(button7);
+        }
+        #endregion
     }
 }
