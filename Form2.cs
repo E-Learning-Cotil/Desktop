@@ -30,12 +30,12 @@ namespace ElearningDesktop
 
         private void filterButtonStyle()
         {
-            button1.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.7));
-            button1.Size = new Size(Convert.ToInt32(filterButtonPanel.Width * 0.830), Convert.ToInt32(filterButtonPanel.Height * 0.574));
-            button1.Location = new Point(Convert.ToInt32(filterButtonPanel.Width/2 - button1.Width/2), Convert.ToInt32(filterButtonPanel.Height / 2 - button1.Height / 2));
-            Rectangle rectangle = new Rectangle(0, 0, button1.Width, button1.Height);
+            filterButton.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.7));
+            filterButton.Size = new Size(Convert.ToInt32(filterButtonPanel.Width * 0.830), Convert.ToInt32(filterButtonPanel.Height * 0.574));
+            filterButton.Location = new Point(Convert.ToInt32(filterButtonPanel.Width/2 - filterButton.Width/2), Convert.ToInt32(filterButtonPanel.Height / 2 - filterButton.Height / 2));
+            Rectangle rectangle = new Rectangle(0, 0, filterButton.Width, filterButton.Height);
             GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 20, true, true, true, true);
-            button1.Region = new Region(roundedButton);
+            filterButton.Region = new Region(roundedButton);
         }
 
         private void filterPosition()
@@ -90,20 +90,41 @@ namespace ElearningDesktop
         {
             int heightNeeded = filterPanel.Location.Y;
 
-            Button[] buttonArray = filterPanel.Controls.OfType<Button>().ToArray();
-            Label[] labelArray = filterPanel.Controls.OfType<Label>().ToArray();
+            Button[] buttonArray = filterPanel.Controls.OfType<Button>().Reverse().ToArray();
+            Label[] labelArray = filterPanel.Controls.OfType<Label>().Reverse().ToArray();
 
             int buttonCount = buttonArray.Count();
             int labelCount = labelArray.Count();
 
+            string[] buttonNameArray = new string[buttonCount];
 
-            Array.Reverse(buttonArray, 0, buttonCount); // inverte os elementos do array
-            Array.Reverse(labelArray, 0, labelCount);
+            for (int i = 0; i < buttonCount; i++)
+            {
+                 buttonNameArray[i] = buttonArray[i].Name;
+            }
+            
+            Array.Sort(buttonNameArray);
+
+            #region Carregando Button Array
+            for (int i = 0; i < buttonCount; i++)
+            {
+                if (buttonArray[i].Name != buttonNameArray[i])
+                    for(int j = 0;j < buttonCount; j++)
+                    {
+                        if(buttonArray[j].Name == buttonNameArray[i])
+                        {
+                            Button x = buttonArray[i];
+                            buttonArray[i] = buttonArray[j];
+                            buttonArray[j] = x;
+                        }
+                    }
+            }
+            #endregion
+
 
             for (int i = 0; i < labelCount; i++)
             {
                 labelArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.5));
-
             }
 
             for (int i = 0; i < buttonCount; i++)
@@ -143,6 +164,7 @@ namespace ElearningDesktop
                     labelArray[i +3].Location = new Point(10 + buttonArray[i].Width + 5, heightNeeded); 
 
                 heightNeeded += buttonArray[i].Height + 5;
+                MessageBox.Show(buttonArray[i].Name);
             } //FIM DO FOR
         }
 
@@ -197,17 +219,17 @@ namespace ElearningDesktop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            activeSerieFilter(button2);
+            activeSerieFilter(button02);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            activeSerieFilter(button3);
+            activeSerieFilter(button03);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            activeSerieFilter(button4);
+            activeSerieFilter(button04);
         }
         #endregion
 
@@ -223,17 +245,17 @@ namespace ElearningDesktop
 
         private void button5_Click(object sender, EventArgs e)
         {
-            activeShiftFilter(button5);
+            activeShiftFilter(button05);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            activeShiftFilter(button6);
+            activeShiftFilter(button06);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            activeShiftFilter(button7);
+            activeShiftFilter(button07);
         }
         #endregion
     }

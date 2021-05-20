@@ -36,6 +36,9 @@ namespace ElearningDesktop
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button07 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -43,23 +46,20 @@ namespace ElearningDesktop
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button08 = new System.Windows.Forms.Button();
+            this.button09 = new System.Windows.Forms.Button();
+            this.button05 = new System.Windows.Forms.Button();
+            this.button06 = new System.Windows.Forms.Button();
+            this.button04 = new System.Windows.Forms.Button();
+            this.button03 = new System.Windows.Forms.Button();
+            this.button02 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.filterButtonPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.filterButton = new System.Windows.Forms.Button();
             this.linePanel = new System.Windows.Forms.Panel();
             this.seriesPanel = new System.Windows.Forms.Panel();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
@@ -79,7 +79,7 @@ namespace ElearningDesktop
             this.filterPanel.Controls.Add(this.label11);
             this.filterPanel.Controls.Add(this.button11);
             this.filterPanel.Controls.Add(this.button10);
-            this.filterPanel.Controls.Add(this.button7);
+            this.filterPanel.Controls.Add(this.button07);
             this.filterPanel.Controls.Add(this.label10);
             this.filterPanel.Controls.Add(this.label9);
             this.filterPanel.Controls.Add(this.label8);
@@ -89,13 +89,13 @@ namespace ElearningDesktop
             this.filterPanel.Controls.Add(this.label4);
             this.filterPanel.Controls.Add(this.button12);
             this.filterPanel.Controls.Add(this.button13);
-            this.filterPanel.Controls.Add(this.button8);
-            this.filterPanel.Controls.Add(this.button9);
-            this.filterPanel.Controls.Add(this.button5);
-            this.filterPanel.Controls.Add(this.button6);
-            this.filterPanel.Controls.Add(this.button4);
-            this.filterPanel.Controls.Add(this.button3);
-            this.filterPanel.Controls.Add(this.button2);
+            this.filterPanel.Controls.Add(this.button08);
+            this.filterPanel.Controls.Add(this.button09);
+            this.filterPanel.Controls.Add(this.button05);
+            this.filterPanel.Controls.Add(this.button06);
+            this.filterPanel.Controls.Add(this.button04);
+            this.filterPanel.Controls.Add(this.button03);
+            this.filterPanel.Controls.Add(this.button02);
             this.filterPanel.Controls.Add(this.label3);
             this.filterPanel.Controls.Add(this.label2);
             this.filterPanel.Controls.Add(this.label1);
@@ -125,6 +125,31 @@ namespace ElearningDesktop
             // 
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.White;
+            this.button11.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button11, "button11");
+            this.button11.Name = "button11";
+            this.button11.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.White;
+            this.button10.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button10, "button10");
+            this.button10.Name = "button10";
+            this.button10.UseVisualStyleBackColor = false;
+            // 
+            // button07
+            // 
+            this.button07.BackColor = System.Drawing.Color.White;
+            this.button07.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button07, "button07");
+            this.button07.Name = "button07";
+            this.button07.UseVisualStyleBackColor = false;
+            this.button07.Click += new System.EventHandler(this.button7_Click);
             // 
             // label10
             // 
@@ -161,14 +186,6 @@ namespace ElearningDesktop
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.White;
-            this.button11.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button11, "button11");
-            this.button11.Name = "button11";
-            this.button11.UseVisualStyleBackColor = false;
-            // 
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.White;
@@ -185,83 +202,66 @@ namespace ElearningDesktop
             this.button13.Name = "button13";
             this.button13.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // button08
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = false;
+            this.button08.BackColor = System.Drawing.Color.White;
+            this.button08.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button08, "button08");
+            this.button08.Name = "button08";
+            this.button08.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // button09
             // 
-            this.button9.BackColor = System.Drawing.Color.White;
-            this.button9.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button9, "button9");
-            this.button9.Name = "button9";
-            this.button9.UseVisualStyleBackColor = false;
+            this.button09.BackColor = System.Drawing.Color.White;
+            this.button09.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button09, "button09");
+            this.button09.Name = "button09";
+            this.button09.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // button05
             // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.button10.UseVisualStyleBackColor = false;
+            this.button05.BackColor = System.Drawing.Color.White;
+            this.button05.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button05, "button05");
+            this.button05.Name = "button05";
+            this.button05.UseVisualStyleBackColor = false;
+            this.button05.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button5
+            // button06
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button06.BackColor = System.Drawing.Color.White;
+            this.button06.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button06, "button06");
+            this.button06.Name = "button06";
+            this.button06.UseVisualStyleBackColor = false;
+            this.button06.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button6
+            // button04
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button04.BackColor = System.Drawing.Color.White;
+            this.button04.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button04, "button04");
+            this.button04.Name = "button04";
+            this.button04.UseVisualStyleBackColor = false;
+            this.button04.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button7
+            // button03
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button03.BackColor = System.Drawing.Color.White;
+            this.button03.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button03, "button03");
+            this.button03.Name = "button03";
+            this.button03.UseVisualStyleBackColor = false;
+            this.button03.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // button02
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button02.BackColor = System.Drawing.Color.White;
+            this.button02.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button02, "button02");
+            this.button02.Name = "button02";
+            this.button02.UseVisualStyleBackColor = false;
+            this.button02.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -284,17 +284,17 @@ namespace ElearningDesktop
             // filterButtonPanel
             // 
             this.filterButtonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.filterButtonPanel.Controls.Add(this.button1);
+            this.filterButtonPanel.Controls.Add(this.filterButton);
             resources.ApplyResources(this.filterButtonPanel, "filterButtonPanel");
             this.filterButtonPanel.Name = "filterButtonPanel";
             // 
-            // button1
+            // filterButton
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.filterButton.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.filterButton, "filterButton");
+            this.filterButton.ForeColor = System.Drawing.Color.Black;
+            this.filterButton.Name = "filterButton";
+            this.filterButton.UseVisualStyleBackColor = false;
             // 
             // linePanel
             // 
@@ -346,22 +346,22 @@ namespace ElearningDesktop
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel filterButtonPanel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Panel linePanel;
         private System.Windows.Forms.Panel seriesPanel;
         private System.Windows.Forms.PictureBox plusButtonPictureBox;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button02;
+        private System.Windows.Forms.Button button04;
+        private System.Windows.Forms.Button button03;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button08;
+        private System.Windows.Forms.Button button09;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button05;
+        private System.Windows.Forms.Button button06;
+        private System.Windows.Forms.Button button07;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
