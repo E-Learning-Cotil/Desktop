@@ -63,8 +63,10 @@ namespace ElearningDesktop
             this.linePanel = new System.Windows.Forms.Panel();
             this.seriesPanel = new System.Windows.Forms.Panel();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.filterPanel.SuspendLayout();
             this.filterButtonPanel.SuspendLayout();
+            this.seriesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -305,15 +307,20 @@ namespace ElearningDesktop
             // seriesPanel
             // 
             resources.ApplyResources(this.seriesPanel, "seriesPanel");
+            this.seriesPanel.Controls.Add(this.label16);
             this.seriesPanel.Name = "seriesPanel";
             // 
             // plusButtonPictureBox
             // 
             this.plusButtonPictureBox.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.plusButtonPictureBox, "plusButtonPictureBox");
-            this.plusButtonPictureBox.Image = global::ElearningDesktop.Properties.Resources.plus;
             this.plusButtonPictureBox.Name = "plusButtonPictureBox";
             this.plusButtonPictureBox.TabStop = false;
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
             // 
             // Form2
             // 
@@ -334,6 +341,8 @@ namespace ElearningDesktop
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
             this.filterButtonPanel.ResumeLayout(false);
+            this.seriesPanel.ResumeLayout(false);
+            this.seriesPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -374,5 +383,6 @@ namespace ElearningDesktop
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label16;
     }
 }

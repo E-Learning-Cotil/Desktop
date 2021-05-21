@@ -96,6 +96,7 @@ namespace ElearningDesktop
             int buttonCount = buttonArray.Count();
             int labelCount = labelArray.Count();
 
+            #region Carregando Button Array
             string[] buttonNameArray = new string[buttonCount];
 
             for (int i = 0; i < buttonCount; i++)
@@ -105,7 +106,6 @@ namespace ElearningDesktop
             
             Array.Sort(buttonNameArray);
 
-            #region Carregando Button Array
             for (int i = 0; i < buttonCount; i++)
             {
                 if (buttonArray[i].Name != buttonNameArray[i])
@@ -164,7 +164,6 @@ namespace ElearningDesktop
                     labelArray[i +3].Location = new Point(10 + buttonArray[i].Width + 5, heightNeeded); 
 
                 heightNeeded += buttonArray[i].Height + 5;
-                MessageBox.Show(buttonArray[i].Name);
             } //FIM DO FOR
         }
 
@@ -174,7 +173,10 @@ namespace ElearningDesktop
             {
                 var apiPath = RestService.For<ApiService>("https://elearning-tcc.herokuapp.com");
                 //var apiPath = RestService.For<ApiService>("http://50f46cb72afc.ngrok.io"); // rota de teste
+
                 var dataResponse = await apiPath.GetSeriesAsync();
+                label16.Visible = false;
+
 
                 ApiResponse[] series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
 
