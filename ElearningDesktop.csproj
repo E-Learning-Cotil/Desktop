@@ -63,6 +63,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MRG.Controls.UI">
+      <HintPath>obj\Debug\LoadingCircle\MRG.Controls.UI\bin\Debug\MRG.Controls.UI.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
