@@ -915,6 +915,24 @@
   <data name="&gt;&gt;filterPanel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="filterButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="filterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="filterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 19</value>
+  </data>
+  <data name="filterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="filterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="filterButton.Text" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
   <data name="&gt;&gt;filterButton.Name" xml:space="preserve">
     <value>filterButton</value>
   </data>
@@ -948,36 +966,6 @@
   <data name="&gt;&gt;filterButtonPanel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="filterButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="filterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="filterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 19</value>
-  </data>
-  <data name="filterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="filterButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="filterButton.Text" xml:space="preserve">
-    <value>Filtrar</value>
-  </data>
-  <data name="&gt;&gt;filterButton.Name" xml:space="preserve">
-    <value>filterButton</value>
-  </data>
-  <data name="&gt;&gt;filterButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterButton.Parent" xml:space="preserve">
-    <value>filterButtonPanel</value>
-  </data>
-  <data name="&gt;&gt;filterButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="linePanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>503, 371</value>
   </data>
@@ -1002,23 +990,17 @@
   <data name="seriesPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
+    <value>loadingCircle1</value>
   </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Wide Latin, 27.75pt, style=Bold</value>
+  <data name="&gt;&gt;loadingCircle1.Type" xml:space="preserve">
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.7814.27065, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 16</value>
+  <data name="&gt;&gt;loadingCircle1.Parent" xml:space="preserve">
+    <value>seriesPanel</value>
   </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 46</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Carregando ...</value>
   </data>
   <data name="&gt;&gt;label16.Name" xml:space="preserve">
     <value>label16</value>
@@ -1030,7 +1012,7 @@
     <value>seriesPanel</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="seriesPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
@@ -1054,6 +1036,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;seriesPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Wide Latin, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 19</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 14</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Carregando ...</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>seriesPanel</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="plusButtonPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
@@ -1105,6 +1117,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;plusButtonPictureBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="loadingCircle1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 10</value>
+  </data>
+  <data name="loadingCircle1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 23</value>
+  </data>
+  <data name="loadingCircle1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="loadingCircle1.Text" xml:space="preserve">
+    <value>loadingCircle1</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
+    <value>loadingCircle1</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Type" xml:space="preserve">
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.7814.27065, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Parent" xml:space="preserve">
+    <value>seriesPanel</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

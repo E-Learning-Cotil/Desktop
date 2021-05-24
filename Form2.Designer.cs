@@ -62,8 +62,9 @@ namespace ElearningDesktop
             this.filterButton = new System.Windows.Forms.Button();
             this.linePanel = new System.Windows.Forms.Panel();
             this.seriesPanel = new System.Windows.Forms.Panel();
-            this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
+            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.filterPanel.SuspendLayout();
             this.filterButtonPanel.SuspendLayout();
             this.seriesPanel.SuspendLayout();
@@ -135,6 +136,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.button11, "button11");
             this.button11.Name = "button11";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -143,6 +145,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.button10, "button10");
             this.button10.Name = "button10";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button07
             // 
@@ -195,6 +198,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.button12, "button12");
             this.button12.Name = "button12";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button13
             // 
@@ -203,6 +207,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.button13, "button13");
             this.button13.Name = "button13";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button08
             // 
@@ -211,6 +216,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.button08, "button08");
             this.button08.Name = "button08";
             this.button08.UseVisualStyleBackColor = false;
+            this.button08.Click += new System.EventHandler(this.button08_Click);
             // 
             // button09
             // 
@@ -219,6 +225,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.button09, "button09");
             this.button09.Name = "button09";
             this.button09.UseVisualStyleBackColor = false;
+            this.button09.Click += new System.EventHandler(this.button09_Click);
             // 
             // button05
             // 
@@ -307,8 +314,14 @@ namespace ElearningDesktop
             // seriesPanel
             // 
             resources.ApplyResources(this.seriesPanel, "seriesPanel");
+            this.seriesPanel.Controls.Add(this.loadingCircle1);
             this.seriesPanel.Controls.Add(this.label16);
             this.seriesPanel.Name = "seriesPanel";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
             // 
             // plusButtonPictureBox
             // 
@@ -317,10 +330,19 @@ namespace ElearningDesktop
             this.plusButtonPictureBox.Name = "plusButtonPictureBox";
             this.plusButtonPictureBox.TabStop = false;
             // 
-            // label16
+            // loadingCircle1
             // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
+            this.loadingCircle1.Active = true;
+            this.loadingCircle1.BackColor = System.Drawing.Color.Transparent;
+            this.loadingCircle1.Color = System.Drawing.Color.DarkGray;
+            this.loadingCircle1.InnerCircleRadius = 8;
+            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
+            this.loadingCircle1.Name = "loadingCircle1";
+            this.loadingCircle1.NumberSpoke = 24;
+            this.loadingCircle1.OuterCircleRadius = 9;
+            this.loadingCircle1.RotationSpeed = 20;
+            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             // 
             // Form2
             // 
@@ -384,5 +406,6 @@ namespace ElearningDesktop
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
+        private MRG.Controls.UI.LoadingCircle loadingCircle1;
     }
 }

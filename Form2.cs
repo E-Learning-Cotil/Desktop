@@ -59,6 +59,15 @@ namespace ElearningDesktop
             seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673),this.Height);
         }
 
+        private void loadingMessageStyle()
+        {
+            label16.Font = Styles.defaultFont;
+            
+            loadingCircle1.Location = new Point(Convert.ToInt32((seriesPanel.Width/2) - (loadingCircle1.Width/2)), Convert.ToInt32(this.Height / 2 - loadingCircle1.Height / 2));
+            
+            label16.Location = new Point(Convert.ToInt32((seriesPanel.Width / 2) - (label16.Width / 2)) + 10, loadingCircle1.Location.Y - label16.Height - 10);
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             label1.Font = label2.Font = label3.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
@@ -70,6 +79,8 @@ namespace ElearningDesktop
             filterButtonStyle();
 
             stylePlusButton();
+
+            loadingMessageStyle();
 
             createSerie();
 
@@ -176,6 +187,7 @@ namespace ElearningDesktop
 
                 var dataResponse = await apiPath.GetSeriesAsync();
                 label16.Visible = false;
+                loadingCircle1.Visible = false;
 
 
                 ApiResponse[] series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
@@ -260,5 +272,47 @@ namespace ElearningDesktop
             activeShiftFilter(button07);
         }
         #endregion
+
+        #region Filtro dos Cursos
+
+        private void activeCourseFilter(Button sourceButton)
+        {
+            if (selectedCourse != null) selectedCourse.BackgroundImage = Properties.Resources.Rectangle_247;
+            selectedCourse = sourceButton;
+            selectedCourse.ImageAlign = ContentAlignment.MiddleCenter;
+            selectedCourse.BackgroundImage = Properties.Resources.Group_21;
+            selectedCourse.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
+        private void button08_Click(object sender, EventArgs e)
+        {
+            activeCourseFilter(button08);
+        }
+        #endregion
+
+        private void button09_Click(object sender, EventArgs e)
+        {
+            activeCourseFilter(button09);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            activeCourseFilter(button10);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            activeCourseFilter(button11);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            activeCourseFilter(button12);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            activeCourseFilter(button13);
+        }
     }
 }
