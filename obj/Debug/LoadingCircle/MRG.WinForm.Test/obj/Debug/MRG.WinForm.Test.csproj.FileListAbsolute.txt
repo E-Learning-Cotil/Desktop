@@ -1,0 +1,12 @@
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\bin\Debug\MRG.WinForm.Test.exe
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\bin\Debug\MRG.WinForm.Test.pdb
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\bin\Debug\MRG.Controls.UI.dll
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\bin\Debug\MRG.Controls.UI.pdb
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.csprojAssemblyReference.cache
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.frmMain.resources
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.Properties.Resources.resources
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.csproj.GenerateResource.cache
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.csproj.CopyComplete
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.exe
+C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\LoadingCircle\MRG.WinForm.Test\obj\Debug\MRG.WinForm.Test.pdb
