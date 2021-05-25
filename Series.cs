@@ -19,7 +19,7 @@ namespace ElearningDesktop
         private Panel seriePanel;
         private string initials;
 
-        public Series(int id, string curso, string tipo, int ano, string periodo,string sigla, int turmas)
+        public Series(int id, string curso, string tipo, int ano, string periodo,string sigla, int turmas, int position)
         {
             gradeNumber = ano;
             courseName = curso;
@@ -30,7 +30,7 @@ namespace ElearningDesktop
 
             seriePanel = new Panel(); //cria uma div
             seriePanel.Size = Styles.seriesSize; //define o tamanho da div
-            seriePanel.Location = new Point(20, 20 + (20 + Styles.seriesSize.Height) * (id-1)); // define a posição da div
+            seriePanel.Location = new Point(20, 20 + (20 + Styles.seriesSize.Height) * (position)); // define a posição da div
             seriePanel.BackColor = Styles.backgroundColor; //define a cor preta para fundo da div
 
             PictureBox gradePicture = new PictureBox();
