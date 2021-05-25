@@ -16,9 +16,10 @@ namespace ElearningDesktop
 {
     public partial class Form2 : Form
     {
-        Button selectedSeries;
-        Button selectedShift;
-        Button selectedCourse;
+        Button selectedSeries = null;
+        Button selectedShift = null;
+        Button selectedCourse = null;
+        ApiResponse[] series;
 
         public Form2()
         {
@@ -61,11 +62,11 @@ namespace ElearningDesktop
 
         private void loadingMessageStyle()
         {
-            label16.Font = Styles.defaultFont;
+            loadingText.Font = Styles.defaultFont;
             
             loadingCircle1.Location = new Point(Convert.ToInt32((seriesPanel.Width/2) - (loadingCircle1.Width/2)), Convert.ToInt32(this.Height / 2 - loadingCircle1.Height / 2));
             
-            label16.Location = new Point(Convert.ToInt32((seriesPanel.Width / 2) - (label16.Width / 2)) + 10, loadingCircle1.Location.Y - label16.Height - 10);
+            loadingText.Location = new Point(Convert.ToInt32((seriesPanel.Width / 2) - (loadingText.Width / 2)) + 10, loadingCircle1.Location.Y - loadingText.Height - 10);
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace ElearningDesktop
 
             loadingMessageStyle();
 
-            createSerie();
+            listSeries(null);
 
         }
 
@@ -178,24 +179,31 @@ namespace ElearningDesktop
             } //FIM DO FOR
         }
 
-        private async void createSerie()
+        private async void listSeries(QueryParameters filters)
         {
             try
             {
-                var apiPath = RestService.For<ApiService>("https://elearning-tcc.herokuapp.com");
-                //var apiPath = RestService.For<ApiService>("http://50f46cb72afc.ngrok.io"); // rota de teste
+                var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+                //implementar verificação de filtro e escolha das rotas
+                if(filters == null)
+                {
+                    var dataResponse = await apiPath.GetSeriesAsync();
+                    series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
+                }
+                else
+                {
+                    var dataResponse = await apiPath.GetSeriesFilteredAsync(filters);
+                    series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
+                }
 
-                var dataResponse = await apiPath.GetSeriesAsync();
-                label16.Visible = false;
+                loadingText.Visible = false;
                 loadingCircle1.Visible = false;
-
-
-                ApiResponse[] series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
+                
 
                 if(series.Length == 0)
                 {
                     Label noSeries = new Label();
-                    noSeries.Text = "Não há turmas cadastradas!";
+                    noSeries.Text = "Não há séries cadastradas!";
                     noSeries.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints));
                     noSeries.AutoSize = true;
                     noSeries.Location = new Point(20, 20);
@@ -206,9 +214,8 @@ namespace ElearningDesktop
                     for (int i = 0; i < series.Length; i++)
                     {
                         ApiResponse serieData = series[i];
-                        //Count count = JsonConvert.DeserializeObject<Count>(serieData._count.ToString());
 
-                        Series serie = new Series(serieData.Id, serieData.Curso, serieData.Tipo, serieData.Ano, serieData.Periodo, serieData.Sigla, serieData._count.Turmas);
+                        Series serie = new Series(serieData.Id, serieData.Curso, serieData.Tipo, serieData.Ano, serieData.Periodo, serieData.Sigla, serieData._count.Turmas,i);
                         seriesPanel.Controls.Add(serie.getSeriePanel());
                         seriesPanel.Size = new Size(seriesPanel.Width, seriesPanel.Height - 1);
                     }
@@ -217,7 +224,7 @@ namespace ElearningDesktop
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro na Consulta: " + ex.Message);
+                MessageBox.Show("Ocorreu um erro durante a conexão com a base de dados. " + ex.Message);
             }
         }
 
@@ -288,7 +295,6 @@ namespace ElearningDesktop
         {
             activeCourseFilter(button08);
         }
-        #endregion
 
         private void button09_Click(object sender, EventArgs e)
         {
@@ -313,6 +319,36 @@ namespace ElearningDesktop
         private void button13_Click(object sender, EventArgs e)
         {
             activeCourseFilter(button13);
+        }
+        #endregion
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            int itemsCount = seriesPanel.Controls.Count;
+            if (itemsCount == 2) MessageBox.Show("Não há elementos a ser filtrados!");
+            else
+            {
+                for (int i = itemsCount - 1; i > 0; i--)
+                {
+                    Type objectType = seriesPanel.Controls[i].GetType();
+
+                    if (objectType == typeof(Panel))
+                    {
+                        seriesPanel.Controls.Remove(seriesPanel.Controls[i]);
+                        itemsCount--;
+                    }
+                }
+
+            loadingText.Visible = true;
+            loadingCircle1.Visible = true;
+
+            QueryParameters filters = new QueryParameters();
+            filters.curso = "INFORMATICA";
+            filters.ano = "1";
+            
+            
+            listSeries(filters);
+            }
         }
     }
 }

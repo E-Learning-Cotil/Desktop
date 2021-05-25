@@ -121,16 +121,151 @@
   <data name="filterPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 420</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>filterPanel</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 484</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 23</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>filterPanel</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 489</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 13</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Médio + Técnico</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>filterPanel</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 460</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 13</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>CT</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>filterPanel</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button13.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="button13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 450</value>
+  </data>
+  <data name="button13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 23</value>
+  </data>
+  <data name="button13.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;button13.Name" xml:space="preserve">
+    <value>button13</value>
+  </data>
+  <data name="&gt;&gt;button13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button13.Parent" xml:space="preserve">
+    <value>filterPanel</value>
+  </data>
+  <data name="&gt;&gt;button13.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 402</value>
+    <value>47, 385</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
@@ -151,7 +286,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -160,7 +295,7 @@
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 371</value>
+    <value>47, 354</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
@@ -181,7 +316,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -190,7 +325,7 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 342</value>
+    <value>47, 325</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -211,7 +346,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,7 +355,7 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 313</value>
+    <value>47, 296</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
@@ -241,7 +376,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -250,7 +385,7 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 284</value>
+    <value>47, 267</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 13</value>
@@ -271,7 +406,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="button11.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -280,7 +415,7 @@
     <value>NoControl</value>
   </data>
   <data name="button11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 337</value>
+    <value>13, 349</value>
   </data>
   <data name="button11.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 23</value>
@@ -298,7 +433,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button11.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>10</value>
   </data>
   <data name="button10.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -307,7 +442,7 @@
     <value>NoControl</value>
   </data>
   <data name="button10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 308</value>
+    <value>12, 320</value>
   </data>
   <data name="button10.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 23</value>
@@ -325,7 +460,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button10.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>11</value>
   </data>
   <data name="button07.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -334,7 +469,7 @@
     <value>NoControl</value>
   </data>
   <data name="button07.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 201</value>
+    <value>13, 233</value>
   </data>
   <data name="button07.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 23</value>
@@ -352,7 +487,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button07.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -361,7 +496,7 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 255</value>
+    <value>47, 238</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
@@ -382,37 +517,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 206</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 13</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>CT</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>filterPanel</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -442,7 +547,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -472,7 +577,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -502,7 +607,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -532,7 +637,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>17</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -559,7 +664,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>18</value>
   </data>
   <data name="button12.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -568,7 +673,7 @@
     <value>NoControl</value>
   </data>
   <data name="button12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 366</value>
+    <value>13, 380</value>
   </data>
   <data name="button12.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 23</value>
@@ -586,34 +691,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button12.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="button13.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="button13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 397</value>
-  </data>
-  <data name="button13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 23</value>
-  </data>
-  <data name="button13.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;button13.Name" xml:space="preserve">
-    <value>button13</value>
-  </data>
-  <data name="&gt;&gt;button13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button13.Parent" xml:space="preserve">
-    <value>filterPanel</value>
-  </data>
-  <data name="&gt;&gt;button13.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="button08.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -622,7 +700,7 @@
     <value>NoControl</value>
   </data>
   <data name="button08.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 250</value>
+    <value>12, 262</value>
   </data>
   <data name="button08.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 23</value>
@@ -640,7 +718,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button08.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="button09.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -649,7 +727,7 @@
     <value>NoControl</value>
   </data>
   <data name="button09.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 279</value>
+    <value>13, 291</value>
   </data>
   <data name="button09.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 23</value>
@@ -667,7 +745,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button09.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="button05.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -694,7 +772,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button05.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="button06.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -721,7 +799,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button06.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="button04.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -748,7 +826,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button04.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>24</value>
   </data>
   <data name="button03.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -775,7 +853,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button03.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="button02.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -799,7 +877,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;button02.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -808,7 +886,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 234</value>
+    <value>4, 207</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
@@ -829,7 +907,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>27</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -859,7 +937,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>28</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -889,7 +967,7 @@
     <value>filterPanel</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>29</value>
   </data>
   <data name="filterPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>503, 12</value>
@@ -898,7 +976,7 @@
     <value>0, 0, 0, 20</value>
   </data>
   <data name="filterPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 359</value>
+    <value>225, 644</value>
   </data>
   <data name="filterPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -946,7 +1024,7 @@
     <value>0</value>
   </data>
   <data name="filterButtonPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>503, 371</value>
+    <value>29, 475</value>
   </data>
   <data name="filterButtonPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 61</value>
@@ -967,7 +1045,7 @@
     <value>3</value>
   </data>
   <data name="linePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>503, 371</value>
+    <value>29, 475</value>
   </data>
   <data name="linePanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 10</value>
@@ -990,6 +1068,18 @@
   <data name="seriesPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="loadingCircle1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 10</value>
+  </data>
+  <data name="loadingCircle1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 23</value>
+  </data>
+  <data name="loadingCircle1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="loadingCircle1.Text" xml:space="preserve">
+    <value>loadingCircle1</value>
+  </data>
   <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
     <value>loadingCircle1</value>
   </data>
@@ -1002,16 +1092,34 @@
   <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
+  <data name="loadingText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+  <data name="loadingText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Wide Latin, 8.25pt, style=Bold</value>
+  </data>
+  <data name="loadingText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 19</value>
+  </data>
+  <data name="loadingText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 14</value>
+  </data>
+  <data name="loadingText.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="loadingText.Text" xml:space="preserve">
+    <value>Carregando ...</value>
+  </data>
+  <data name="&gt;&gt;loadingText.Name" xml:space="preserve">
+    <value>loadingText</value>
+  </data>
+  <data name="&gt;&gt;loadingText.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+  <data name="&gt;&gt;loadingText.Parent" xml:space="preserve">
     <value>seriesPanel</value>
   </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;loadingText.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="seriesPanel.Location" type="System.Drawing.Point, System.Drawing">
@@ -1036,36 +1144,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;seriesPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Wide Latin, 8.25pt, style=Bold</value>
-  </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 19</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 14</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Carregando ...</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>seriesPanel</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="plusButtonPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
@@ -1117,30 +1195,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;plusButtonPictureBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="loadingCircle1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 10</value>
-  </data>
-  <data name="loadingCircle1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 23</value>
-  </data>
-  <data name="loadingCircle1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="loadingCircle1.Text" xml:space="preserve">
-    <value>loadingCircle1</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
-    <value>loadingCircle1</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.7814.27065, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.Parent" xml:space="preserve">
-    <value>seriesPanel</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
