@@ -32,7 +32,7 @@ namespace ElearningDesktop
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.filterPanel = new System.Windows.Forms.Panel();
             this.tipoTitle = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
@@ -79,7 +79,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.filterPanel, "filterPanel");
             this.filterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.filterPanel.Controls.Add(this.tipoTitle);
-            this.filterPanel.Controls.Add(this.button1);
+            this.filterPanel.Controls.Add(this.button14);
             this.filterPanel.Controls.Add(this.label17);
             this.filterPanel.Controls.Add(this.label16);
             this.filterPanel.Controls.Add(this.button13);
@@ -115,13 +115,14 @@ namespace ElearningDesktop
             resources.ApplyResources(this.tipoTitle, "tipoTitle");
             this.tipoTitle.Name = "tipoTitle";
             // 
-            // button1
+            // button14
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.button14.BackColor = System.Drawing.Color.White;
+            this.button14.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button14, "button14");
+            this.button14.Name = "button14";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // label17
             // 
@@ -431,7 +432,7 @@ namespace ElearningDesktop
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label loadingText;
         private MRG.Controls.UI.LoadingCircle loadingCircle1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label tipoTitle;

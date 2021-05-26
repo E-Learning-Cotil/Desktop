@@ -19,6 +19,8 @@ namespace ElearningDesktop
         Button selectedSeries = null;
         Button selectedShift = null;
         Button selectedCourse = null;
+        Button selectedType = null;
+        string curso = null, tipo = null, ano = null, periodo = null;
         ApiResponse[] series;
 
         public Form2()
@@ -165,37 +167,6 @@ namespace ElearningDesktop
                         break;
                 }
 
-                /*switch (i)
-                {
-                    case 0:
-                        labelArray[0].Location = new Point(10, heightNeeded);
-                        labelArray[0].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
-                        heightNeeded += labelArray[0].Height + 10;
-                        break;
-                    case 3:
-                        labelArray[1].Location = new Point(10, heightNeeded);
-                        labelArray[1].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
-                        heightNeeded += labelArray[1].Height + 10;
-                        break;
-                    case 6:
-                        labelArray[2].Location = new Point(10, heightNeeded);
-                        labelArray[2].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
-                        heightNeeded += labelArray[2].Height + 10;
-                        break;
-                    case 12:
-                        labelArray[16].Location = new Point(10, heightNeeded);
-                        labelArray[16].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
-                        heightNeeded += labelArray[3].Height + 10;
-                        break;
-                }*/
-
-                /*if (labelArray[i].Name.ToUpper().Contains("TITLE"))
-                {
-                    labelArray[i].Location = new Point(10, heightNeeded);
-                    labelArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
-                    heightNeeded += labelArray[i].Height + 10;
-                }*/
-
                 buttonArray[i].BackColor = Styles.white;
                 buttonArray[i].Text = "";
 
@@ -236,6 +207,7 @@ namespace ElearningDesktop
                 if(series.Length == 0)
                 {
                     Label noSeries = new Label();
+                    noSeries.Name = "noSeries";
                     noSeries.Text = "Não há séries cadastradas!";
                     noSeries.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints));
                     noSeries.AutoSize = true;
@@ -273,16 +245,19 @@ namespace ElearningDesktop
 
         private void button2_Click(object sender, EventArgs e)
         {
+            ano = "1";
             activeSerieFilter(button02);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            ano = "2";
             activeSerieFilter(button03);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            ano = "3";
             activeSerieFilter(button04);
         }
         #endregion
@@ -299,18 +274,16 @@ namespace ElearningDesktop
 
         private void button5_Click(object sender, EventArgs e)
         {
+            periodo = "DIURNO";
             activeShiftFilter(button05);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            periodo = "NOTURNO";
             activeShiftFilter(button06);
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            activeShiftFilter(button07);
-        }
         #endregion
 
         #region Filtro dos Cursos
@@ -324,64 +297,99 @@ namespace ElearningDesktop
             selectedCourse.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            curso = "EDIFICACOES";
+            activeCourseFilter(button07);
+        }
+
         private void button08_Click(object sender, EventArgs e)
         {
+            curso = "ENFERMAGEM";
             activeCourseFilter(button08);
         }
 
         private void button09_Click(object sender, EventArgs e)
         {
+            curso = "INFORMATICA";
             activeCourseFilter(button09);
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
+            curso = "GEODESIA";
             activeCourseFilter(button10);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
+            curso = "MECANICA";
             activeCourseFilter(button11);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
+            curso = "QUALIDADE";
             activeCourseFilter(button12);
         }
+        #endregion
+
+        #region Filtro dos Tipo
+
+        private void activeTypeFilter(Button sourceButton)
+        {
+            if (selectedType != null) selectedType.BackgroundImage = Properties.Resources.Rectangle_247;
+            selectedType = sourceButton;
+            selectedType.ImageAlign = ContentAlignment.MiddleCenter;
+            selectedType.BackgroundImage = Properties.Resources.Group_21;
+            selectedType.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
 
         private void button13_Click(object sender, EventArgs e)
         {
-            activeCourseFilter(button13);
+            tipo = "TECNICO";
+            activeTypeFilter(button13);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            tipo = "MEDIOTECNICO";
+            activeTypeFilter(button14);
         }
         #endregion
 
         private void filterButton_Click(object sender, EventArgs e)
         {
             int itemsCount = seriesPanel.Controls.Count;
-            if (itemsCount == 2) MessageBox.Show("Não há elementos a ser filtrados!");
-            else
+            for (int i = itemsCount - 1; i > 0; i--)
             {
-                for (int i = itemsCount - 1; i > 0; i--)
+                if (seriesPanel.Controls[i].Name == "noSeries")
                 {
-                    Type objectType = seriesPanel.Controls[i].GetType();
-
-                    if (objectType == typeof(Panel))
-                    {
-                        seriesPanel.Controls.Remove(seriesPanel.Controls[i]);
-                        itemsCount--;
-                    }
+                    seriesPanel.Controls.Remove(seriesPanel.Controls[i]);
+                    continue;
                 }
+
+                Type objectType = seriesPanel.Controls[i].GetType();
+
+                if (objectType == typeof(Panel))
+                {
+                    seriesPanel.Controls.Remove(seriesPanel.Controls[i]);
+                    itemsCount--;
+                }
+            }
 
             loadingText.Visible = true;
             loadingCircle1.Visible = true;
 
             QueryParameters filters = new QueryParameters();
-            filters.curso = "INFORMATICA";
-            filters.ano = "1";
-            
+            filters.curso = curso;
+            filters.ano = ano;
+            filters.periodo = periodo;
+            filters.tipo = tipo;
             
             listSeries(filters);
-            }
         }
+
     }
 }
