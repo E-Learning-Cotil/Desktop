@@ -369,6 +369,7 @@ namespace ElearningDesktop
             resources.ApplyResources(this.plusButtonPictureBox, "plusButtonPictureBox");
             this.plusButtonPictureBox.Name = "plusButtonPictureBox";
             this.plusButtonPictureBox.TabStop = false;
+            this.plusButtonPictureBox.Click += new System.EventHandler(this.plusButtonPictureBox_Click);
             // 
             // Form2
             // 

@@ -23,12 +23,15 @@ namespace ElearningDesktop
         string curso = null, tipo = null, ano = null, periodo = null;
         ApiResponse[] series;
 
-        public Form2()
+        Form1 parentForm = null;
+
+        public Form2(Form1 parentForm)
         {
             InitializeComponent();
             this.ControlBox = false; //Ocultar barra superior
             this.BackColor = Styles.darkGray;
             this.ForeColor = Styles.white; //cor da classe de estilos criada
+            this.parentForm = parentForm;
         }
 
         private void filterButtonStyle()
@@ -76,7 +79,6 @@ namespace ElearningDesktop
             serieTitle.Font = turnoTitle.Font = cursoTitle.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             serieTitle.ForeColor = turnoTitle.ForeColor = cursoTitle.ForeColor = tipoTitle.ForeColor = Styles.filterTitle;
 
-
             filterPosition();
             checkboxStyle();
             filterButtonStyle();
@@ -86,7 +88,6 @@ namespace ElearningDesktop
             loadingMessageStyle();
 
             listSeries(null);
-
         }
 
         private void stylePlusButton()
@@ -358,6 +359,62 @@ namespace ElearningDesktop
             activeTypeFilter(button14);
         }
         #endregion
+
+        private Panel styleCreationPanel()
+        {
+            Panel panel = new Panel();
+            
+            panel.Size = Styles.creationPanelSize;
+            panel.Location = new Point(Convert.ToInt32(parentForm.Width / 2 - panel.Width / 2), Convert.ToInt32(parentForm.Height / 2 - panel.Height / 2));
+            panel.BackColor = Styles.secondaryColor;
+
+            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 25, true, true, true, true);
+            panel.Region = new Region(roundedPanel);
+
+            return panel;
+        }
+
+        private void finishSerieCreation_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < parentForm.Controls.Count;i++)
+            {
+                if (parentForm.Controls[i].Name == "creationSeriePanel")
+                {
+                    parentForm.Controls.Remove(parentForm.Controls[i]);
+                    break;
+                }
+            }
+        }
+
+        private void plusButtonPictureBox_Click(object sender, EventArgs e)
+        {
+            Panel panel = styleCreationPanel();
+            panel.Name = "creationSeriePanel";
+            parentForm.Controls.Add(panel);
+            panel.BringToFront();
+
+            Button finishSerieCreation = new Button();
+
+            finishSerieCreation.Font = Styles.customFont;
+            finishSerieCreation.Text = "Finalizar";
+            finishSerieCreation.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Height * 0.042));
+
+            Rectangle rectangle = new Rectangle(0, 0, finishSerieCreation.Width, finishSerieCreation.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 25, true, true, true, true);
+            finishSerieCreation.Region = new Region(roundedButton);
+
+            finishSerieCreation.Location = new Point(panel.Width - finishSerieCreation.Width - 20, panel.Height - finishSerieCreation.Height - 20);
+            finishSerieCreation.FlatStyle = FlatStyle.Flat;
+
+            finishSerieCreation.ForeColor = Color.Black;
+            finishSerieCreation.BackColor = Styles.white;
+;
+            finishSerieCreation.Click += new EventHandler(this.finishSerieCreation_Click);
+
+            panel.Controls.Add(finishSerieCreation);
+
+        }
 
         private void filterButton_Click(object sender, EventArgs e)
         {
