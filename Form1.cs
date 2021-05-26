@@ -68,7 +68,7 @@ namespace ElearningDesktop
             changeActiveButtonColor( (Button)sender);
             closeOpenedForms();
 
-            form2 = new Form2();
+            form2 = new Form2(this);
             form2.TopLevel = false;
 
             panel2.Controls.Add(form2);
@@ -188,6 +188,7 @@ namespace ElearningDesktop
             Styles.setMainPanelSize();
             Styles.setSeriesSize();
             Styles.changeLogoPanelSize();
+            Styles.setCreationPanelSize();
             Styles.setMainPanelLocation(panel2.Location.X,panel2.Location.Y);
 
             configureButtonLayout();
