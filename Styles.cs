@@ -15,6 +15,7 @@ namespace ElearningDesktop
     {
         public static Color lightGray = Color.FromArgb(80, 80, 80);
         public static Color darkGray = Color.FromArgb(61, 61, 61);
+        public static Color secondaryColor = Color.FromArgb(40, 40, 40);
         public static Color backgroundColor = Color.FromArgb(20, 20, 20);
         public static Color white = Color.FromArgb(255, 255, 255);
         public static Color filterTitle = Color.FromArgb(187, 187, 187);
@@ -24,6 +25,7 @@ namespace ElearningDesktop
         public static Size mainPanelSize;
         public static Size logoPanelSize;
         public static Size seriesSize;
+        public static Size creationPanelSize;
 
         public static Point mainPanelLocation;
 
@@ -38,6 +40,11 @@ namespace ElearningDesktop
         public static void setFormSize(int FormWidth, int FormHeight)
         {
             formSize = new Size(FormWidth, FormHeight);
+        }
+
+        public static void setCreationPanelSize()
+        {
+            creationPanelSize = new Size(Convert.ToInt32(formSize.Width*0.688), Convert.ToInt32(formSize.Height * 0.558));
         }
 
         public static void setSeriesSize()
