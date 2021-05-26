@@ -31,6 +31,11 @@ namespace ElearningDesktop
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.filterPanel = new System.Windows.Forms.Panel();
+            this.tipoTitle = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -46,7 +51,6 @@ namespace ElearningDesktop
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
             this.button08 = new System.Windows.Forms.Button();
             this.button09 = new System.Windows.Forms.Button();
             this.button05 = new System.Windows.Forms.Button();
@@ -54,9 +58,9 @@ namespace ElearningDesktop
             this.button04 = new System.Windows.Forms.Button();
             this.button03 = new System.Windows.Forms.Button();
             this.button02 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cursoTitle = new System.Windows.Forms.Label();
+            this.turnoTitle = new System.Windows.Forms.Label();
+            this.serieTitle = new System.Windows.Forms.Label();
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
             this.linePanel = new System.Windows.Forms.Panel();
@@ -64,10 +68,6 @@ namespace ElearningDesktop
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.loadingText = new System.Windows.Forms.Label();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.filterPanel.SuspendLayout();
             this.filterButtonPanel.SuspendLayout();
             this.seriesPanel.SuspendLayout();
@@ -78,7 +78,7 @@ namespace ElearningDesktop
             // 
             resources.ApplyResources(this.filterPanel, "filterPanel");
             this.filterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.filterPanel.Controls.Add(this.label9);
+            this.filterPanel.Controls.Add(this.tipoTitle);
             this.filterPanel.Controls.Add(this.button1);
             this.filterPanel.Controls.Add(this.label17);
             this.filterPanel.Controls.Add(this.label16);
@@ -105,10 +105,42 @@ namespace ElearningDesktop
             this.filterPanel.Controls.Add(this.button04);
             this.filterPanel.Controls.Add(this.button03);
             this.filterPanel.Controls.Add(this.button02);
-            this.filterPanel.Controls.Add(this.label3);
-            this.filterPanel.Controls.Add(this.label2);
-            this.filterPanel.Controls.Add(this.label1);
+            this.filterPanel.Controls.Add(this.cursoTitle);
+            this.filterPanel.Controls.Add(this.turnoTitle);
+            this.filterPanel.Controls.Add(this.serieTitle);
             this.filterPanel.Name = "filterPanel";
+            // 
+            // tipoTitle
+            // 
+            resources.ApplyResources(this.tipoTitle, "tipoTitle");
+            this.tipoTitle.Name = "tipoTitle";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.White;
+            this.button13.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button13, "button13");
+            this.button13.Name = "button13";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // label15
             // 
@@ -201,15 +233,6 @@ namespace ElearningDesktop
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.White;
-            this.button13.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button13, "button13");
-            this.button13.Name = "button13";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
             // button08
             // 
             this.button08.BackColor = System.Drawing.Color.White;
@@ -273,23 +296,23 @@ namespace ElearningDesktop
             this.button02.UseVisualStyleBackColor = false;
             this.button02.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label3
+            // cursoTitle
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.cursoTitle, "cursoTitle");
+            this.cursoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.cursoTitle.Name = "cursoTitle";
             // 
-            // label2
+            // turnoTitle
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.turnoTitle, "turnoTitle");
+            this.turnoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.turnoTitle.Name = "turnoTitle";
             // 
-            // label1
+            // serieTitle
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.serieTitle, "serieTitle");
+            this.serieTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.serieTitle.Name = "serieTitle";
             // 
             // filterButtonPanel
             // 
@@ -346,29 +369,6 @@ namespace ElearningDesktop
             this.plusButtonPictureBox.Name = "plusButtonPictureBox";
             this.plusButtonPictureBox.TabStop = false;
             // 
-            // label16
-            // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            // 
-            // label17
-            // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
             // Form2
             // 
             resources.ApplyResources(this, "$this");
@@ -398,9 +398,9 @@ namespace ElearningDesktop
         #endregion
 
         private System.Windows.Forms.Panel filterPanel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label cursoTitle;
+        private System.Windows.Forms.Label turnoTitle;
+        private System.Windows.Forms.Label serieTitle;
         private System.Windows.Forms.Panel filterButtonPanel;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Panel linePanel;
@@ -434,6 +434,6 @@ namespace ElearningDesktop
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label tipoTitle;
     }
 }
