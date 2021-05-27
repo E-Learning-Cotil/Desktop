@@ -237,11 +237,21 @@ namespace ElearningDesktop
         #region Filtro das Series
         private void activeSerieFilter(Button sourceButton)
         {
-            if(selectedSeries != null) selectedSeries.BackgroundImage = Properties.Resources.Rectangle_247;
+            if (selectedSeries != null)
+            {
+                if (sourceButton == selectedSeries)
+                {
+                    ano = null;
+                    selectedSeries.BackgroundImage = Properties.Resources.Rectangle_247;
+                    selectedSeries = null;
+                    return;
+                }
+            }
+
             selectedSeries = sourceButton;
             selectedSeries.ImageAlign = ContentAlignment.MiddleCenter;
-            selectedSeries.BackgroundImage = Properties.Resources.Group_21;
             selectedSeries.BackgroundImageLayout = ImageLayout.Stretch;
+            selectedSeries.BackgroundImage = Properties.Resources.Group_21;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -266,11 +276,22 @@ namespace ElearningDesktop
         #region Filtro dos Turnos
         private void activeShiftFilter(Button sourceButton)
         {
-            if (selectedShift != null) selectedShift.BackgroundImage = Properties.Resources.Rectangle_247;
+            if (selectedShift != null)
+            {
+                selectedShift.BackgroundImage = Properties.Resources.Rectangle_247;
+                if (sourceButton == selectedShift)
+                {
+                    periodo = null;
+                    selectedShift.BackgroundImage = Properties.Resources.Rectangle_247;
+                    selectedShift = null;
+                    return;
+                }
+            }
+
             selectedShift = sourceButton;
             selectedShift.ImageAlign = ContentAlignment.MiddleCenter;
-            selectedShift.BackgroundImage = Properties.Resources.Group_21;
             selectedShift.BackgroundImageLayout = ImageLayout.Stretch;
+            selectedShift.BackgroundImage = Properties.Resources.Group_21;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -288,14 +309,24 @@ namespace ElearningDesktop
         #endregion
 
         #region Filtro dos Cursos
-
         private void activeCourseFilter(Button sourceButton)
         {
-            if (selectedCourse != null) selectedCourse.BackgroundImage = Properties.Resources.Rectangle_247;
+            if (selectedCourse != null)
+            {
+                selectedCourse.BackgroundImage = Properties.Resources.Rectangle_247;
+                if (sourceButton == selectedCourse)
+                {
+                    curso = null;
+                    selectedCourse.BackgroundImage = Properties.Resources.Rectangle_247;
+                    selectedCourse = null;
+                    return;
+                }
+            }
+
             selectedCourse = sourceButton;
             selectedCourse.ImageAlign = ContentAlignment.MiddleCenter;
-            selectedCourse.BackgroundImage = Properties.Resources.Group_21;
             selectedCourse.BackgroundImageLayout = ImageLayout.Stretch;
+            selectedCourse.BackgroundImage = Properties.Resources.Group_21;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -339,11 +370,22 @@ namespace ElearningDesktop
 
         private void activeTypeFilter(Button sourceButton)
         {
-            if (selectedType != null) selectedType.BackgroundImage = Properties.Resources.Rectangle_247;
+            if (selectedType != null)
+            {
+                selectedType.BackgroundImage = Properties.Resources.Rectangle_247;
+                if (sourceButton == selectedType)
+                {
+                    tipo = null;
+                    selectedType.BackgroundImage = Properties.Resources.Rectangle_247;
+                    selectedType = null;
+                    return;
+                }
+            } 
+            
             selectedType = sourceButton;
             selectedType.ImageAlign = ContentAlignment.MiddleCenter;
-            selectedType.BackgroundImage = Properties.Resources.Group_21;
             selectedType.BackgroundImageLayout = ImageLayout.Stretch;
+            selectedType.BackgroundImage = Properties.Resources.Group_21;
         }
 
 
