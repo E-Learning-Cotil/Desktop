@@ -27,13 +27,13 @@ namespace ElearningDesktop
         string[] coursesName = { "Edificações", "Enfermagem", "Geodésia", "Informática", "Mecânica", "Qualidade" };
 
         string[] type = { "TECNICO", "MEDIOTECNICO" };
-        string[] typeName = { };
+        string[] typeName = { "Curso Técnico", "Médio + Técnico" };
 
         string[] serie = { "1", "2", "3" };
-        string[] serieName = { };
+        string[] serieName = { "1º ano", "2º ano", "3º ano" };
 
         string[] period = { "DIURNO", "NOTURNO" };
-        string[] periodName = { };
+        string[] periodName = { "Diurno", "Noturno" };
 
         ApiResponse[] series;
 
@@ -421,7 +421,7 @@ namespace ElearningDesktop
         private Panel styleCreationPanel()
         {
             Panel panel = new Panel();
-            
+
             panel.Size = Styles.creationPanelSize;
             panel.Location = new Point(Convert.ToInt32(parentForm.Width / 2 - panel.Width / 2), Convert.ToInt32(parentForm.Height / 2 - panel.Height / 2));
             panel.BackColor = Styles.secondaryColor;
@@ -449,6 +449,7 @@ namespace ElearningDesktop
 
         private void plusButtonPictureBox_Click(object sender, EventArgs e)
         {
+
             Panel creationSeriePanel = styleCreationPanel();
             creationSeriePanel.Name = "creationSeriePanel";
             parentForm.Controls.Add(creationSeriePanel);
@@ -485,30 +486,105 @@ namespace ElearningDesktop
             //fim do titulo
 
             Label labelAno = new Label();
+            labelAno.Name = "labelAno";
             labelAno.Text = "Ano: ";
             labelAno.Font = Styles.customFont;
             labelAno.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.034), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
-            labelAno.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 50);
+            labelAno.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.129));
             creationSeriePanel.Controls.Add(labelAno);
 
             ComboBox comboBoxAno = new ComboBox();
+
+            comboBoxAno.Name = "comboBoxAno";
+
+            comboBoxAno.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 3));
+            comboBoxAno.FlatStyle = FlatStyle.Flat;
+            comboBoxAno.BackColor = Styles.backgroundColor;
+            comboBoxAno.ForeColor = Styles.white;
+
+            comboBoxAno.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55),Convert.ToInt32(Styles.formSize.Height * 0.039));
+            comboBoxAno.Location = new Point(labelAno.Location.X, labelAno.Location.Y + labelAno.Height + 10);
+
+            comboBoxAno.Items.AddRange(serieName);
+
+            rectangle = new Rectangle(2, 2, comboBoxAno.Width - 20, comboBoxAno.Height - 3);
+            GraphicsPath roundedCheckBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
+            comboBoxAno.Region = new Region(roundedCheckBox);
+
+            creationSeriePanel.Controls.Add(comboBoxAno);
+
+            Button checkBoxAnoButton = new Button();
+            checkBoxAnoButton.FlatStyle = FlatStyle.Flat;
+            checkBoxAnoButton.FlatAppearance.BorderSize = 0;
+            checkBoxAnoButton.BackgroundImage = Properties.Resources.seta;
+            checkBoxAnoButton.ImageAlign = ContentAlignment.MiddleCenter;
+            checkBoxAnoButton.BackgroundImageLayout = ImageLayout.Center;
+            checkBoxAnoButton.BackColor = Styles.backgroundColor;
+            checkBoxAnoButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), comboBoxAno.Height - 1);
+
+            rectangle = new Rectangle(0, 2, checkBoxAnoButton.Width - 1, checkBoxAnoButton.Height - 1);
+            roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
+            checkBoxAnoButton.Region = new Region(roundedButton);
+
+            checkBoxAnoButton.Location = new Point(comboBoxAno.Location.X + comboBoxAno.Width - 21, comboBoxAno.Location.Y);
+
+            checkBoxAnoButton.Click += new EventHandler(showAnoComboBox_Click);
+
+            creationSeriePanel.Controls.Add(checkBoxAnoButton);
             //fim do ano
-            
+
             Label labelCurso = new Label();
             labelCurso.Text = "Curso: ";
             labelCurso.Font = Styles.customFont;
             labelCurso.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.048), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
-            labelCurso.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 80);
+            labelCurso.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.209));
             creationSeriePanel.Controls.Add(labelCurso);
 
             ComboBox comboBoxCurso = new ComboBox();
+
+            comboBoxCurso.Name = "comboBoxCurso";
+
+            comboBoxCurso.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 3));
+            comboBoxCurso.FlatStyle = FlatStyle.Flat;
+            comboBoxCurso.BackColor = Styles.backgroundColor;
+            comboBoxCurso.ForeColor = Styles.white;
+
+            comboBoxCurso.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
+            comboBoxCurso.Location = new Point(labelCurso.Location.X, labelCurso.Location.Y + labelCurso.Height + 10);
+
+            comboBoxCurso.Items.AddRange(coursesName);
+
+            rectangle = new Rectangle(2, 2, comboBoxCurso.Width - 20, comboBoxCurso.Height - 3);
+            roundedCheckBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
+            comboBoxCurso.Region = new Region(roundedCheckBox);
+
+            creationSeriePanel.Controls.Add(comboBoxCurso);
+
+            Button checkBoxCursoButton = new Button();
+            checkBoxCursoButton.FlatStyle = FlatStyle.Flat;
+            checkBoxCursoButton.FlatAppearance.BorderSize = 0;
+            checkBoxCursoButton.BackgroundImage = Properties.Resources.seta;
+            checkBoxCursoButton.ImageAlign = ContentAlignment.MiddleCenter;
+            checkBoxCursoButton.BackgroundImageLayout = ImageLayout.Center;
+            checkBoxCursoButton.BackColor = Styles.backgroundColor;
+            checkBoxCursoButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), comboBoxCurso.Height - 1);
+
+            rectangle = new Rectangle(0, 2, checkBoxCursoButton.Width - 1, checkBoxCursoButton.Height - 1);
+            roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
+            checkBoxCursoButton.Region = new Region(roundedButton);
+
+            checkBoxCursoButton.Location = new Point(comboBoxCurso.Location.X + comboBoxCurso.Width - 21, comboBoxCurso.Location.Y);
+
+            checkBoxCursoButton.Click += new EventHandler(showCursoComboBox_Click);
+
+            creationSeriePanel.Controls.Add(checkBoxCursoButton);
             //fim do curso
 
             Label labelPeriodo = new Label();
             labelPeriodo.Text = "Periodo: ";
             labelPeriodo.Font = Styles.customFont;
             labelPeriodo.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.063), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
-            labelPeriodo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 110);
+            labelPeriodo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.285));
             creationSeriePanel.Controls.Add(labelPeriodo);
 
             ComboBox comboBoxPeriodo = new ComboBox();
@@ -518,7 +594,7 @@ namespace ElearningDesktop
             labelTipo.Text = "Tipo: ";
             labelTipo.Font = Styles.customFont;
             labelTipo.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.037), Convert.ToInt32(Styles.formSize.Height * 0.029));
-            labelTipo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 140);
+            labelTipo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.359));
             creationSeriePanel.Controls.Add(labelTipo);
 
             ComboBox comboBoxTipo = new ComboBox();
@@ -526,6 +602,52 @@ namespace ElearningDesktop
         }
 
         #endregion
+
+        private void showCursoComboBox_Click(object sender, EventArgs e)
+        {
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+            for (int i = itemsCount - 1; i >= 0; i--)
+            {
+                if (parentForm.Controls[i].Name == "creationSeriePanel")
+                {
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            {
+                if (creationPanel.Controls[i].Name == "comboBoxCurso")
+                {
+                    ((ComboBox)creationPanel.Controls[i]).Focus();
+                    ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
+                    break;
+                }
+            }
+        }
+        private void showAnoComboBox_Click(object sender, EventArgs e)
+        {
+
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+            for (int i = itemsCount - 1; i >= 0; i--)
+            {
+                if (parentForm.Controls[i].Name == "creationSeriePanel")
+                {
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            {
+                if (creationPanel.Controls[i].Name == "comboBoxAno")
+                {
+                    ((ComboBox)creationPanel.Controls[i]).Focus();
+                    ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
+                    break;
+                }
+            }
+        }
 
         private void filterButton_Click(object sender, EventArgs e)
         {

@@ -124,6 +124,10 @@
   <data name="tipoTitle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tipoTitle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tipoTitle.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 420</value>
@@ -149,7 +153,6 @@
   <data name="&gt;&gt;tipoTitle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button14.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -183,6 +186,9 @@
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>46, 489</value>
   </data>
@@ -212,6 +218,9 @@
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 460</value>
@@ -867,6 +876,9 @@
   <data name="button02.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <data name="button02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="button02.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 29</value>
   </data>
@@ -1005,24 +1017,6 @@
   <data name="&gt;&gt;filterPanel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="filterButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="filterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="filterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 19</value>
-  </data>
-  <data name="filterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="filterButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="filterButton.Text" xml:space="preserve">
-    <value>Filtrar</value>
-  </data>
   <data name="&gt;&gt;filterButton.Name" xml:space="preserve">
     <value>filterButton</value>
   </data>
@@ -1056,6 +1050,36 @@
   <data name="&gt;&gt;filterButtonPanel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="filterButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="filterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="filterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 19</value>
+  </data>
+  <data name="filterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="filterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="filterButton.Text" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
+  <data name="&gt;&gt;filterButton.Name" xml:space="preserve">
+    <value>filterButton</value>
+  </data>
+  <data name="&gt;&gt;filterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;filterButton.Parent" xml:space="preserve">
+    <value>filterButtonPanel</value>
+  </data>
+  <data name="&gt;&gt;filterButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="linePanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>503, 435</value>
   </data>
@@ -1080,18 +1104,6 @@
   <data name="seriesPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="loadingCircle1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 10</value>
-  </data>
-  <data name="loadingCircle1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 23</value>
-  </data>
-  <data name="loadingCircle1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="loadingCircle1.Text" xml:space="preserve">
-    <value>loadingCircle1</value>
-  </data>
   <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
     <value>loadingCircle1</value>
   </data>
@@ -1103,24 +1115,6 @@
   </data>
   <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="loadingText.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="loadingText.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Wide Latin, 8.25pt, style=Bold</value>
-  </data>
-  <data name="loadingText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 19</value>
-  </data>
-  <data name="loadingText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 14</value>
-  </data>
-  <data name="loadingText.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="loadingText.Text" xml:space="preserve">
-    <value>Carregando ...</value>
   </data>
   <data name="&gt;&gt;loadingText.Name" xml:space="preserve">
     <value>loadingText</value>
@@ -1158,26 +1152,65 @@
   <data name="&gt;&gt;seriesPanel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="loadingCircle1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 10</value>
+  </data>
+  <data name="loadingCircle1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 23</value>
+  </data>
+  <data name="loadingCircle1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="loadingCircle1.Text" xml:space="preserve">
+    <value>loadingCircle1</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
+    <value>loadingCircle1</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Type" xml:space="preserve">
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.7814.27065, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Parent" xml:space="preserve">
+    <value>seriesPanel</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="loadingText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="loadingText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Wide Latin, 8.25pt, style=Bold</value>
+  </data>
+  <data name="loadingText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="loadingText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 19</value>
+  </data>
+  <data name="loadingText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 14</value>
+  </data>
+  <data name="loadingText.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="loadingText.Text" xml:space="preserve">
+    <value>Carregando ...</value>
+  </data>
+  <data name="&gt;&gt;loadingText.Name" xml:space="preserve">
+    <value>loadingText</value>
+  </data>
+  <data name="&gt;&gt;loadingText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loadingText.Parent" xml:space="preserve">
+    <value>seriesPanel</value>
+  </data>
+  <data name="&gt;&gt;loadingText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="plusButtonPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
-  </data>
-  <data name="plusButtonPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAYAAACrHtS+AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAArNJREFUeF7tnf1t01AURzMCIzACG8Am7QawAWzACIzCKIzACPB+FlSovVFqYcfP
-        95wjnX9e81HlyHHa2NeXprwZfhx+H/4c/nqluW3u8zB8O5QT8Gm4JvI1fwzzWDIxX4ZVvP8xjykTskfs
-        v7qlT0b2t1WoLXWfPhHfhlWkLf06lEnY4kPaLfMcMgHvhlWgPcxzycF8GFZx9vD9UA7G4DAMDsPgMAwO
-        w+AwDA7D4DAMDsPgMAwOw+AwDA7D4DAMDsPgMAwOw+AwDA7D4DAMDsPgMAwOw+AwDA7D4DAMDsPgMAwO
-        w+AwDA7D4DAMDsPgMAwOw+AwDA7D4DAMDsPgG5JBdHlBZzZz0as4e5jnqn6HmVw9PDBDZDNX9B7jLHUf
-        0y7zZ28OBM6Y6OoB9Lxenfe+57xxPdYX0d2y+/s05D/v87m+R3Uj7WP267n4z+Xxz4L2N39lLJdtqn6o
-        /Uxr//wCuVzVofqB9rVc1L6Wi9rXclH7Wi5qX8tF7Wu5qH0tF7Wv5aL2tVzUvvqvVZDLv1b98oTj8uXJ
-        PQ8C1GN9GC5fivu23t8c5PJ0UKOHOPV3OfjhXz4Pqxvq+U3bEqP388WW/Zy8z+cgdvfr5zXtcjLJzRMR
-        npPTVnI+1cze8/NHtpbqd5jJ1acanY2cT1XF2cO8oHIwBodhcBgGh2FwGAaHYXAYBodhcBgGh2FwGAaH
-        YXAYBodhcBgGh2FwGAaHYXAYBodhcBgGh2FwGAaHYXAYBodhcBgGh2FwGAaHYXAYBodhcBgGh2FwGAaH
-        YXAYBodhcBgGh5FBdFWcPWw/9O4s3GNM6HI1AZmDzBWtIm1p5s/KJGSIbBVpS1cPqpV92XPI7tV543Is
-        e8x7N/bkZEvP9T2qeGvMh7Sbw+VlDrK/fRzmsk1rPsHntrlPQufiP824XH4D1AJTDWAxpy4AAAAASUVO
-        RK5CYII=
-</value>
   </data>
   <data name="plusButtonPictureBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1217,6 +1250,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>740, 571</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form2</value>

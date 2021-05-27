@@ -367,6 +367,7 @@ namespace ElearningDesktop
             // 
             this.plusButtonPictureBox.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.plusButtonPictureBox, "plusButtonPictureBox");
+            this.plusButtonPictureBox.Image = global::ElearningDesktop.Properties.Resources.plus;
             this.plusButtonPictureBox.Name = "plusButtonPictureBox";
             this.plusButtonPictureBox.TabStop = false;
             this.plusButtonPictureBox.Click += new System.EventHandler(this.plusButtonPictureBox_Click);
