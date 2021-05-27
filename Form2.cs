@@ -20,7 +20,21 @@ namespace ElearningDesktop
         Button selectedShift = null;
         Button selectedCourse = null;
         Button selectedType = null;
+
         string curso = null, tipo = null, ano = null, periodo = null;
+
+        string[] courses = { "EDIFICACOES", "ENFERMAGEM", "GEODESIA", "INFORMATICA", "MECANICA", "QUALIDADE" };
+        string[] coursesName = { "Edificações", "Enfermagem", "Geodésia", "Informática", "Mecânica", "Qualidade" };
+
+        string[] type = { "TECNICO", "MEDIOTECNICO" };
+        string[] typeName = { };
+
+        string[] serie = { "1", "2", "3" };
+        string[] serieName = { };
+
+        string[] period = { "DIURNO", "NOTURNO" };
+        string[] periodName = { };
+
         ApiResponse[] series;
 
         Form1 parentForm = null;
@@ -256,19 +270,19 @@ namespace ElearningDesktop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ano = "1";
+            ano = serie[0];
             activeSerieFilter(button02);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ano = "2";
+            ano = serie[1];
             activeSerieFilter(button03);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ano = "3";
+            ano = serie[2];
             activeSerieFilter(button04);
         }
         #endregion
@@ -296,13 +310,13 @@ namespace ElearningDesktop
 
         private void button5_Click(object sender, EventArgs e)
         {
-            periodo = "DIURNO";
+            periodo = period[0];
             activeShiftFilter(button05);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            periodo = "NOTURNO";
+            periodo = period[1];
             activeShiftFilter(button06);
         }
 
@@ -331,37 +345,37 @@ namespace ElearningDesktop
 
         private void button7_Click(object sender, EventArgs e)
         {
-            curso = "EDIFICACOES";
+            curso = courses[0];
             activeCourseFilter(button07);
         }
 
         private void button08_Click(object sender, EventArgs e)
         {
-            curso = "ENFERMAGEM";
+            curso = courses[1];
             activeCourseFilter(button08);
         }
 
         private void button09_Click(object sender, EventArgs e)
         {
-            curso = "INFORMATICA";
+            curso = courses[2];
             activeCourseFilter(button09);
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            curso = "GEODESIA";
+            curso = courses[3];
             activeCourseFilter(button10);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            curso = "MECANICA";
+            curso = courses[4];
             activeCourseFilter(button11);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            curso = "QUALIDADE";
+            curso = courses[5];
             activeCourseFilter(button12);
         }
         #endregion
@@ -391,16 +405,18 @@ namespace ElearningDesktop
 
         private void button13_Click(object sender, EventArgs e)
         {
-            tipo = "TECNICO";
+            tipo = type[0];
             activeTypeFilter(button13);
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            tipo = "MEDIOTECNICO";
+            tipo = type[1];
             activeTypeFilter(button14);
         }
         #endregion
+
+        #region Botão Criar Série
 
         private Panel styleCreationPanel()
         {
@@ -429,12 +445,15 @@ namespace ElearningDesktop
             }
         }
 
+
+
         private void plusButtonPictureBox_Click(object sender, EventArgs e)
         {
-            Panel panel = styleCreationPanel();
-            panel.Name = "creationSeriePanel";
-            parentForm.Controls.Add(panel);
-            panel.BringToFront();
+            Panel creationSeriePanel = styleCreationPanel();
+            creationSeriePanel.Name = "creationSeriePanel";
+            parentForm.Controls.Add(creationSeriePanel);
+            creationSeriePanel.BringToFront();
+            //fim do panel
 
             Button finishSerieCreation = new Button();
 
@@ -446,7 +465,7 @@ namespace ElearningDesktop
             GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 25, true, true, true, true);
             finishSerieCreation.Region = new Region(roundedButton);
 
-            finishSerieCreation.Location = new Point(panel.Width - finishSerieCreation.Width - 20, panel.Height - finishSerieCreation.Height - 20);
+            finishSerieCreation.Location = new Point(creationSeriePanel.Width - finishSerieCreation.Width - 20, creationSeriePanel.Height - finishSerieCreation.Height - 20);
             finishSerieCreation.FlatStyle = FlatStyle.Flat;
 
             finishSerieCreation.ForeColor = Color.Black;
@@ -454,9 +473,59 @@ namespace ElearningDesktop
 ;
             finishSerieCreation.Click += new EventHandler(this.finishSerieCreation_Click);
 
-            panel.Controls.Add(finishSerieCreation);
+            creationSeriePanel.Controls.Add(finishSerieCreation);
+            //fim do botão
+
+            Label labelTitle = new Label();
+            labelTitle.Text = "Adicionar nova série:";
+            labelTitle.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.065));
+            labelTitle.Font = Styles.defaultFont;
+            labelTitle.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.217), Convert.ToInt32(Styles.formSize.Height * 0.039)) ;
+            creationSeriePanel.Controls.Add(labelTitle);
+            //fim do titulo
+
+            Label labelAno = new Label();
+            labelAno.Text = "Ano: ";
+            labelAno.Font = Styles.customFont;
+            labelAno.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.034), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
+            labelAno.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 50);
+            creationSeriePanel.Controls.Add(labelAno);
+
+            ComboBox comboBoxAno = new ComboBox();
+            //fim do ano
+            
+            Label labelCurso = new Label();
+            labelCurso.Text = "Curso: ";
+            labelCurso.Font = Styles.customFont;
+            labelCurso.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.048), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
+            labelCurso.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 80);
+            creationSeriePanel.Controls.Add(labelCurso);
+
+            ComboBox comboBoxCurso = new ComboBox();
+            //fim do curso
+
+            Label labelPeriodo = new Label();
+            labelPeriodo.Text = "Periodo: ";
+            labelPeriodo.Font = Styles.customFont;
+            labelPeriodo.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.063), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
+            labelPeriodo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 110);
+            creationSeriePanel.Controls.Add(labelPeriodo);
+
+            ComboBox comboBoxPeriodo = new ComboBox();
+            //fim do tipo
+
+            Label labelTipo = new Label();
+            labelTipo.Text = "Tipo: ";
+            labelTipo.Font = Styles.customFont;
+            labelTipo.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.037), Convert.ToInt32(Styles.formSize.Height * 0.029));
+            labelTipo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), 140);
+            creationSeriePanel.Controls.Add(labelTipo);
+
+            ComboBox comboBoxTipo = new ComboBox();
 
         }
+
+        #endregion
 
         private void filterButton_Click(object sender, EventArgs e)
         {
