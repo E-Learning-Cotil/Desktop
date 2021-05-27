@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElearningDesktop.exe" size="98224">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElearningDesktop.exe" size="99760">
       <assemblyIdentity name="ElearningDesktop" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lFSkoL/gss9xjcc2W20ikDcO8PMGajEsRK0lCzZi0Dk=</dsig:DigestValue>
+        <dsig:DigestValue>AFoO1v9vWrF6WV+0GvBpzJXdvudCrfmBCVZIR5h9kXk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
