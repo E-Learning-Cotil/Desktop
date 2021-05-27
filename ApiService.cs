@@ -15,7 +15,6 @@ namespace ElearningDesktop
         public string periodo { get; set; }
     }
 
-
     interface ApiService
     {
         [Get("/series/list/")]
