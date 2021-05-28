@@ -82,7 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiResponse.cs" />
+    <Compile Include="SeriesApiResponse.cs" />
     <Compile Include="ApiService.cs" />
     <Compile Include="Count.cs" />
     <Compile Include="Routes.cs" />
@@ -125,6 +125,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Teachers.cs" />
     <Compile Include="Transform.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
