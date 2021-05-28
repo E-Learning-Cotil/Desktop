@@ -22,5 +22,8 @@ namespace ElearningDesktop
 
         [Get("/series/list/")]
         Task<dynamic> GetSeriesFilteredAsync(QueryParameters parametros);
+
+        [Post("/series/create/")]
+        Task<dynamic> InsertSeriesAsync([Body] QueryParameters parametros);
     }
 }
