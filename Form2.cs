@@ -416,12 +416,17 @@ namespace ElearningDesktop
         }
         #endregion
 
+        private void roundButtonBorder() { 
+        
+        }
+
         #region Botão Criar Série
 
         private Panel styleCreationPanel()
         {
             Panel panel = new Panel();
 
+            panel.Name = "creationSeriePanel";
             panel.Size = Styles.creationPanelSize;
             panel.Location = new Point(Convert.ToInt32(parentForm.Width / 2 - panel.Width / 2), Convert.ToInt32(parentForm.Height / 2 - panel.Height / 2));
             panel.BackColor = Styles.secondaryColor;
@@ -429,6 +434,9 @@ namespace ElearningDesktop
             Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 25, true, true, true, true);
             panel.Region = new Region(roundedPanel);
+
+            parentForm.Controls.Add(panel);
+            panel.BringToFront();
 
             return panel;
         }
@@ -445,17 +453,36 @@ namespace ElearningDesktop
             }
         }
 
-
-
-        private void plusButtonPictureBox_Click(object sender, EventArgs e)
+        private void cancelSerieCreation_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < parentForm.Controls.Count; i++)
+            {
+                if (parentForm.Controls[i].Name == "creationSeriePanel")
+                {
+                    parentForm.Controls.Remove(parentForm.Controls[i]);
+                    break;
+                }
+            }
+        }
 
-            Panel creationSeriePanel = styleCreationPanel();
-            creationSeriePanel.Name = "creationSeriePanel";
-            parentForm.Controls.Add(creationSeriePanel);
-            creationSeriePanel.BringToFront();
-            //fim do panel
+        private Button cancelSerieCreationButton()
+        {
+            Button cancelSerieCreation = new Button();
+            cancelSerieCreation.FlatStyle = FlatStyle.Flat;
+            cancelSerieCreation.FlatAppearance.BorderSize = 0;
+            cancelSerieCreation.ForeColor = Styles.white;
+            cancelSerieCreation.Text = "X";
+            cancelSerieCreation.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.Size * 0.75));
+            cancelSerieCreation.BackColor = Color.Transparent;
+            cancelSerieCreation.Size = new Size(Convert.ToInt32(Styles.defaultFont.Size * 1.5), Convert.ToInt32(Styles.defaultFont.Size * 1.5));
+            cancelSerieCreation.Location = new Point(Styles.creationPanelSize.Width - cancelSerieCreation.Width, 0);
+            cancelSerieCreation.Click += new EventHandler(cancelSerieCreation_Click);
+            
+            return cancelSerieCreation;
+        }
 
+        private Button finishSerieCreationButton()
+        {
             Button finishSerieCreation = new Button();
 
             finishSerieCreation.Font = Styles.customFont;
@@ -466,142 +493,184 @@ namespace ElearningDesktop
             GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 25, true, true, true, true);
             finishSerieCreation.Region = new Region(roundedButton);
 
-            finishSerieCreation.Location = new Point(creationSeriePanel.Width - finishSerieCreation.Width - 20, creationSeriePanel.Height - finishSerieCreation.Height - 20);
+            finishSerieCreation.Location = new Point(Styles.creationPanelSize.Width - finishSerieCreation.Width - 20, Styles.creationPanelSize.Height - finishSerieCreation.Height - 20);
             finishSerieCreation.FlatStyle = FlatStyle.Flat;
 
             finishSerieCreation.ForeColor = Color.Black;
             finishSerieCreation.BackColor = Styles.white;
-;
             finishSerieCreation.Click += new EventHandler(this.finishSerieCreation_Click);
 
-            creationSeriePanel.Controls.Add(finishSerieCreation);
-            //fim do botão
-
-            Label labelTitle = new Label();
-            labelTitle.Text = "Adicionar nova série:";
-            labelTitle.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.065));
-            labelTitle.Font = Styles.defaultFont;
-            labelTitle.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.217), Convert.ToInt32(Styles.formSize.Height * 0.039)) ;
-            creationSeriePanel.Controls.Add(labelTitle);
-            //fim do titulo
-
-            Label labelAno = new Label();
-            labelAno.Name = "labelAno";
-            labelAno.Text = "Ano: ";
-            labelAno.Font = Styles.customFont;
-            labelAno.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.034), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
-            labelAno.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.129));
-            creationSeriePanel.Controls.Add(labelAno);
-
-            ComboBox comboBoxAno = new ComboBox();
-
-            comboBoxAno.Name = "comboBoxAno";
-
-            comboBoxAno.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 3));
-            comboBoxAno.FlatStyle = FlatStyle.Flat;
-            comboBoxAno.BackColor = Styles.backgroundColor;
-            comboBoxAno.ForeColor = Styles.white;
-
-            comboBoxAno.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55),Convert.ToInt32(Styles.formSize.Height * 0.039));
-            comboBoxAno.Location = new Point(labelAno.Location.X, labelAno.Location.Y + labelAno.Height + 10);
-
-            comboBoxAno.Items.AddRange(serieName);
-
-            rectangle = new Rectangle(2, 2, comboBoxAno.Width - 20, comboBoxAno.Height - 3);
-            GraphicsPath roundedCheckBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
-            comboBoxAno.Region = new Region(roundedCheckBox);
-
-            creationSeriePanel.Controls.Add(comboBoxAno);
-
-            Button checkBoxAnoButton = new Button();
-            checkBoxAnoButton.FlatStyle = FlatStyle.Flat;
-            checkBoxAnoButton.FlatAppearance.BorderSize = 0;
-            checkBoxAnoButton.BackgroundImage = Properties.Resources.seta;
-            checkBoxAnoButton.ImageAlign = ContentAlignment.MiddleCenter;
-            checkBoxAnoButton.BackgroundImageLayout = ImageLayout.Center;
-            checkBoxAnoButton.BackColor = Styles.backgroundColor;
-            checkBoxAnoButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), comboBoxAno.Height - 1);
-
-            rectangle = new Rectangle(0, 2, checkBoxAnoButton.Width - 1, checkBoxAnoButton.Height - 1);
-            roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
-            checkBoxAnoButton.Region = new Region(roundedButton);
-
-            checkBoxAnoButton.Location = new Point(comboBoxAno.Location.X + comboBoxAno.Width - 21, comboBoxAno.Location.Y);
-
-            checkBoxAnoButton.Click += new EventHandler(showAnoComboBox_Click);
-
-            creationSeriePanel.Controls.Add(checkBoxAnoButton);
-            //fim do ano
-
-            Label labelCurso = new Label();
-            labelCurso.Text = "Curso: ";
-            labelCurso.Font = Styles.customFont;
-            labelCurso.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.048), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
-            labelCurso.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.209));
-            creationSeriePanel.Controls.Add(labelCurso);
-
-            ComboBox comboBoxCurso = new ComboBox();
-
-            comboBoxCurso.Name = "comboBoxCurso";
-
-            comboBoxCurso.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 3));
-            comboBoxCurso.FlatStyle = FlatStyle.Flat;
-            comboBoxCurso.BackColor = Styles.backgroundColor;
-            comboBoxCurso.ForeColor = Styles.white;
-
-            comboBoxCurso.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
-            comboBoxCurso.Location = new Point(labelCurso.Location.X, labelCurso.Location.Y + labelCurso.Height + 10);
-
-            comboBoxCurso.Items.AddRange(coursesName);
-
-            rectangle = new Rectangle(2, 2, comboBoxCurso.Width - 20, comboBoxCurso.Height - 3);
-            roundedCheckBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
-            comboBoxCurso.Region = new Region(roundedCheckBox);
-
-            creationSeriePanel.Controls.Add(comboBoxCurso);
-
-            Button checkBoxCursoButton = new Button();
-            checkBoxCursoButton.FlatStyle = FlatStyle.Flat;
-            checkBoxCursoButton.FlatAppearance.BorderSize = 0;
-            checkBoxCursoButton.BackgroundImage = Properties.Resources.seta;
-            checkBoxCursoButton.ImageAlign = ContentAlignment.MiddleCenter;
-            checkBoxCursoButton.BackgroundImageLayout = ImageLayout.Center;
-            checkBoxCursoButton.BackColor = Styles.backgroundColor;
-            checkBoxCursoButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), comboBoxCurso.Height - 1);
-
-            rectangle = new Rectangle(0, 2, checkBoxCursoButton.Width - 1, checkBoxCursoButton.Height - 1);
-            roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
-            checkBoxCursoButton.Region = new Region(roundedButton);
-
-            checkBoxCursoButton.Location = new Point(comboBoxCurso.Location.X + comboBoxCurso.Width - 21, comboBoxCurso.Location.Y);
-
-            checkBoxCursoButton.Click += new EventHandler(showCursoComboBox_Click);
-
-            creationSeriePanel.Controls.Add(checkBoxCursoButton);
-            //fim do curso
-
-            Label labelPeriodo = new Label();
-            labelPeriodo.Text = "Periodo: ";
-            labelPeriodo.Font = Styles.customFont;
-            labelPeriodo.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.063), Convert.ToInt32(Styles.formSize.Height * 0.029)) ;
-            labelPeriodo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.285));
-            creationSeriePanel.Controls.Add(labelPeriodo);
-
-            ComboBox comboBoxPeriodo = new ComboBox();
-            //fim do tipo
-
-            Label labelTipo = new Label();
-            labelTipo.Text = "Tipo: ";
-            labelTipo.Font = Styles.customFont;
-            labelTipo.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.037), Convert.ToInt32(Styles.formSize.Height * 0.029));
-            labelTipo.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.359));
-            creationSeriePanel.Controls.Add(labelTipo);
-
-            ComboBox comboBoxTipo = new ComboBox();
-
+            return finishSerieCreation;
         }
 
+        private Label createSeriePanelLabel(string name, string text, Point location,Font font, Size size)
+        {
+            Label label = new Label();
+            label.Name = name;
+            label.Text = text;
+            label.Location = location;
+            label.Font = font;
+            label.Size = size;
+
+            return label;
+        }
+
+        private ComboBox createSeriePanelComboBox(string name, Point location, Panel parentPanel, string[] comboBoxData)
+        {
+            ComboBox comboBox = new ComboBox();
+
+            comboBox.Name = name;
+            comboBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 3));
+            comboBox.FlatStyle = FlatStyle.Flat;
+            comboBox.BackColor = Styles.backgroundColor;
+            comboBox.ForeColor = Styles.white;
+            comboBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
+            comboBox.Location = location;
+            comboBox.Items.AddRange(comboBoxData);
+
+            Rectangle rectangle = new Rectangle(2, 2, comboBox.Width - 20, comboBox.Height - 3);
+            GraphicsPath roundedComboBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
+            comboBox.Region = new Region(roundedComboBox);
+
+            parentPanel.Controls.Add(comboBox);
+
+            Button comboBoxButton = new Button();
+            comboBoxButton.FlatStyle = FlatStyle.Flat;
+            comboBoxButton.FlatAppearance.BorderSize = 0;
+            comboBoxButton.BackgroundImage = Properties.Resources.seta;
+            comboBoxButton.ImageAlign = ContentAlignment.MiddleCenter;
+            comboBoxButton.BackgroundImageLayout = ImageLayout.Center;
+            comboBoxButton.BackColor = Styles.backgroundColor;
+            comboBoxButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), comboBox.Height - 1);
+
+            rectangle = new Rectangle(0, 2, comboBoxButton.Width - 1, comboBoxButton.Height - 1);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
+            comboBoxButton.Region = new Region(roundedButton);
+
+            comboBoxButton.Location = new Point(comboBox.Location.X + comboBox.Width - 21, comboBox.Location.Y);
+
+            switch (name){
+                case "comboBoxAno":
+                    comboBoxButton.Click += new EventHandler(showAnoComboBox_Click);
+                break;
+
+                case "comboBoxCurso":
+                    comboBoxButton.Click += new EventHandler(showCursoComboBox_Click);
+                break;
+
+                case "comboBoxPeriodo":
+                    comboBoxButton.Click += new EventHandler(showPeriodoComboBox_Click);
+                break;
+
+                case "comboBoxTipo":
+                    comboBoxButton.Click += new EventHandler(showTipoComboBox_Click);
+                break;
+            }
+           
+            parentPanel.Controls.Add(comboBoxButton);
+
+            return comboBox;
+        }
+
+        private void plusButtonPictureBox_Click(object sender, EventArgs e)
+        {
+            Panel creationSeriePanel = styleCreationPanel();
+
+            creationSeriePanel.Controls.Add(cancelSerieCreationButton());
+            creationSeriePanel.Controls.Add(finishSerieCreationButton());
+            creationSeriePanel.Controls.Add(createSeriePanelLabel(
+                    "labelTitle", 
+                    "Adicionar nova série:", 
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.065)),
+                    Styles.defaultFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.217), Convert.ToInt32(Styles.formSize.Height * 0.039))
+            ));
+
+            creationSeriePanel.Controls.Add(createSeriePanelLabel(
+                    "labelAno",
+                    "Ano: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.129)),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.034), Convert.ToInt32(Styles.formSize.Height * 0.029))
+            ));
+
+           creationSeriePanel.Controls.Add(createSeriePanelComboBox(
+                "comboBoxAno",
+                new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.129) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                creationSeriePanel,
+                serieName
+            ));
+
+            creationSeriePanel.Controls.Add(createSeriePanelLabel(
+                    "labelCurso",
+                    "Curso: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.209)),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.048), Convert.ToInt32(Styles.formSize.Height * 0.029))
+            ));
+
+            creationSeriePanel.Controls.Add(createSeriePanelComboBox(
+                 "comboBoxCurso",
+                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.209) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                 creationSeriePanel,
+                 coursesName
+             ));
+
+            creationSeriePanel.Controls.Add(createSeriePanelLabel(
+                    "labelPeriodo",
+                    "Periodo: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.285)),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.063), Convert.ToInt32(Styles.formSize.Height * 0.029))
+            ));
+
+            creationSeriePanel.Controls.Add(createSeriePanelComboBox(
+                 "comboBoxPeriodo",
+                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.285) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                 creationSeriePanel,
+                 periodName
+             ));
+
+            creationSeriePanel.Controls.Add(createSeriePanelLabel(
+                    "labelTipo",
+                    "Tipo: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.359)),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.037), Convert.ToInt32(Styles.formSize.Height * 0.029))
+            ));
+
+            creationSeriePanel.Controls.Add(createSeriePanelComboBox(
+                 "comboBoxTipo",
+                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.359) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                 creationSeriePanel,
+                 typeName
+             ));
+        }
         #endregion
+
+        private void showAnoComboBox_Click(object sender, EventArgs e)
+        {
+
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+            for (int i = itemsCount - 1; i >= 0; i--)
+            {
+                if (parentForm.Controls[i].Name == "creationSeriePanel")
+                {
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            {
+                if (creationPanel.Controls[i].Name == "comboBoxAno")
+                {
+                    ((ComboBox)creationPanel.Controls[i]).Focus();
+                    ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
+                    break;
+                }
+            }
+        }
 
         private void showCursoComboBox_Click(object sender, EventArgs e)
         {
@@ -625,9 +694,9 @@ namespace ElearningDesktop
                 }
             }
         }
-        private void showAnoComboBox_Click(object sender, EventArgs e)
-        {
 
+        private void showPeriodoComboBox_Click(object sender, EventArgs e)
+        {
             int itemsCount = parentForm.Controls.Count;
             Panel creationPanel = new Panel();
             for (int i = itemsCount - 1; i >= 0; i--)
@@ -640,7 +709,30 @@ namespace ElearningDesktop
             }
             for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
             {
-                if (creationPanel.Controls[i].Name == "comboBoxAno")
+                if (creationPanel.Controls[i].Name == "comboBoxPeriodo")
+                {
+                    ((ComboBox)creationPanel.Controls[i]).Focus();
+                    ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
+                    break;
+                }
+            }
+        }
+
+        private void showTipoComboBox_Click(object sender, EventArgs e)
+        {
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+            for (int i = itemsCount - 1; i >= 0; i--)
+            {
+                if (parentForm.Controls[i].Name == "creationSeriePanel")
+                {
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            {
+                if (creationPanel.Controls[i].Name == "comboBoxTipo")
                 {
                     ((ComboBox)creationPanel.Controls[i]).Focus();
                     ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
