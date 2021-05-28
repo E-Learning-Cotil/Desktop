@@ -36,7 +36,7 @@ namespace ElearningDesktop
         string[] period = { "DIURNO", "NOTURNO" };
         string[] periodName = { "Diurno", "Noturno" };
 
-        ApiResponse[] series;
+        SeriesApiResponse[] series;
 
         Form1 parentForm = null;
         #endregion
@@ -93,7 +93,7 @@ namespace ElearningDesktop
         private void Form2_Load(object sender, EventArgs e)
         {
             serieTitle.Font = turnoTitle.Font = cursoTitle.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
-            serieTitle.ForeColor = turnoTitle.ForeColor = cursoTitle.ForeColor = tipoTitle.ForeColor = Styles.filterTitle;
+            serieTitle.ForeColor = turnoTitle.ForeColor = cursoTitle.ForeColor = tipoTitle.ForeColor = Styles.filterTitleColor;
 
             filterPosition();
             checkboxStyle();
@@ -201,7 +201,7 @@ namespace ElearningDesktop
             } //FIM DO FOR
         }
 
-        private async void listSeries(QueryParameters filters)
+        private async void listSeries(SerieQueryParameters filters)
         {
             try
             {
@@ -209,12 +209,12 @@ namespace ElearningDesktop
                 if(filters == null)
                 {
                     var dataResponse = await apiPath.GetSeriesAsync();
-                    series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
+                    series = JsonConvert.DeserializeObject<SeriesApiResponse[]>(dataResponse.ToString());
                 }
                 else
                 {
                     var dataResponse = await apiPath.GetSeriesFilteredAsync(filters);
-                    series = JsonConvert.DeserializeObject<ApiResponse[]>(dataResponse.ToString());
+                    series = JsonConvert.DeserializeObject<SeriesApiResponse[]>(dataResponse.ToString());
                 }
 
                 loadingText.Visible = false;
@@ -235,7 +235,7 @@ namespace ElearningDesktop
                 {
                     for (int i = 0; i < series.Length; i++)
                     {
-                        ApiResponse serieData = series[i];
+                        SeriesApiResponse serieData = series[i];
 
                         Series serie = new Series(serieData.Id, serieData.Curso, serieData.Tipo, serieData.Ano, serieData.Periodo, serieData.Sigla, serieData._count.Turmas,i);
                         seriesPanel.Controls.Add(serie.getSeriePanel());
@@ -441,7 +441,7 @@ namespace ElearningDesktop
 
         private async void finishSerieCreation_Click(object sender, EventArgs e)
         {
-            QueryParameters data = new QueryParameters();
+            SerieQueryParameters data = new SerieQueryParameters();
 
             int itemsCount = parentForm.Controls.Count;
             Panel creationPanel = new Panel();
@@ -835,7 +835,7 @@ namespace ElearningDesktop
             loadingText.Visible = true;
             loadingCircle1.Visible = true;
 
-            QueryParameters filters = new QueryParameters();
+            SerieQueryParameters filters = new SerieQueryParameters();
             filters.curso = filterCurso;
             filters.ano = filterAno;
             filters.periodo = filterPeriodo;
