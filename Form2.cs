@@ -16,6 +16,7 @@ namespace ElearningDesktop
 {
     public partial class Form2 : Form
     {
+        #region Declaração de Variáveis
         Button selectedSeries = null;
         Button selectedShift = null;
         Button selectedCourse = null;
@@ -38,6 +39,7 @@ namespace ElearningDesktop
         ApiResponse[] series;
 
         Form1 parentForm = null;
+        #endregion
 
         public Form2(Form1 parentForm)
         {
@@ -454,7 +456,7 @@ namespace ElearningDesktop
             }
 
             int selectedSerie = -1, selectedCurso = -1, selectedTipo = -1, selectedPeriodo = -1;
-            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            for (int i = 0; i < creationPanel.Controls.Count - 1; i++)
             {
 
                 if (creationPanel.Controls[i].Name.Contains("comboBox"))
@@ -503,7 +505,7 @@ namespace ElearningDesktop
             }
                 var apiPath = RestService.For<ApiService>(Routes.baseUrl);
 
-                await apiPath.InsertSeriesAsync(data);
+                var dataResponse = await apiPath.InsertSeriesAsync(data);
 
                 for (int i = 0; i < parentForm.Controls.Count; i++)
                 {
@@ -514,6 +516,10 @@ namespace ElearningDesktop
                         break;
                     }
                 }
+
+                var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
+
+                MessageBox.Show(response.Message);
         }
 
         private void cancelSerieCreation_Click(object sender, EventArgs e)
@@ -659,10 +665,10 @@ namespace ElearningDesktop
             ));
 
            creationSeriePanel.Controls.Add(createSeriePanelComboBox(
-                "comboBoxAno",
-                new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.129) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
-                creationSeriePanel,
-                serieName
+                    "comboBoxAno",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.129) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                    creationSeriePanel,
+                    serieName
             ));
 
             creationSeriePanel.Controls.Add(createSeriePanelLabel(
@@ -674,10 +680,10 @@ namespace ElearningDesktop
             ));
 
             creationSeriePanel.Controls.Add(createSeriePanelComboBox(
-                 "comboBoxCurso",
-                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.209) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
-                 creationSeriePanel,
-                 coursesName
+                     "comboBoxCurso",
+                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.209) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                     creationSeriePanel,
+                     coursesName
              ));
 
             creationSeriePanel.Controls.Add(createSeriePanelLabel(
@@ -689,10 +695,10 @@ namespace ElearningDesktop
             ));
 
             creationSeriePanel.Controls.Add(createSeriePanelComboBox(
-                 "comboBoxPeriodo",
-                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.285) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
-                 creationSeriePanel,
-                 periodName
+                     "comboBoxPeriodo",
+                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.285) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                     creationSeriePanel,
+                     periodName
              ));
 
             creationSeriePanel.Controls.Add(createSeriePanelLabel(
@@ -704,10 +710,10 @@ namespace ElearningDesktop
             ));
 
             creationSeriePanel.Controls.Add(createSeriePanelComboBox(
-                 "comboBoxTipo",
-                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.359) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
-                 creationSeriePanel,
-                 typeName
+                     "comboBoxTipo",
+                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), Convert.ToInt32(Styles.formSize.Height * 0.359) + Convert.ToInt32(Styles.formSize.Height * 0.029) + 10),
+                     creationSeriePanel,
+                     typeName
              ));
         }
 
@@ -837,6 +843,5 @@ namespace ElearningDesktop
             
             listSeries(filters);
         }
-
     }
 }
