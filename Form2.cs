@@ -21,7 +21,7 @@ namespace ElearningDesktop
         Button selectedCourse = null;
         Button selectedType = null;
 
-        string curso = null, tipo = null, ano = null, periodo = null;
+        string filterCurso = null, filterTipo = null, filterAno = null, filterPeriodo = null;
 
         string[] courses = { "EDIFICACOES", "ENFERMAGEM", "GEODESIA", "INFORMATICA", "MECANICA", "QUALIDADE" };
         string[] coursesName = { "Edificações", "Enfermagem", "Geodésia", "Informática", "Mecânica", "Qualidade" };
@@ -108,7 +108,7 @@ namespace ElearningDesktop
         {
             plusButtonPictureBox.Size = new Size(Convert.ToInt32(this.Height * 0.083), Convert.ToInt32(this.Height * 0.083));
 
-            plusButtonPictureBox.Location = new Point(Convert.ToInt32(seriesPanel.Width - plusButtonPictureBox.Width), Convert.ToInt32(seriesPanel.Height - (plusButtonPictureBox.Height + 20)));
+            plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, seriesPanel.Height - plusButtonPictureBox.Height - 7);
 
             Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
             GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 60, true, true, true, true);
@@ -255,7 +255,7 @@ namespace ElearningDesktop
             {
                 if (sourceButton == selectedSeries)
                 {
-                    ano = null;
+                    filterAno = null;
                     selectedSeries.BackgroundImage = Properties.Resources.Rectangle_247;
                     selectedSeries = null;
                     return;
@@ -270,19 +270,19 @@ namespace ElearningDesktop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ano = serie[0];
+            filterAno = serie[0];
             activeSerieFilter(button02);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ano = serie[1];
+            filterAno = serie[1];
             activeSerieFilter(button03);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ano = serie[2];
+            filterAno = serie[2];
             activeSerieFilter(button04);
         }
         #endregion
@@ -295,7 +295,7 @@ namespace ElearningDesktop
                 selectedShift.BackgroundImage = Properties.Resources.Rectangle_247;
                 if (sourceButton == selectedShift)
                 {
-                    periodo = null;
+                    filterPeriodo = null;
                     selectedShift.BackgroundImage = Properties.Resources.Rectangle_247;
                     selectedShift = null;
                     return;
@@ -310,13 +310,13 @@ namespace ElearningDesktop
 
         private void button5_Click(object sender, EventArgs e)
         {
-            periodo = period[0];
+            filterPeriodo = period[0];
             activeShiftFilter(button05);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            periodo = period[1];
+            filterPeriodo = period[1];
             activeShiftFilter(button06);
         }
 
@@ -330,7 +330,7 @@ namespace ElearningDesktop
                 selectedCourse.BackgroundImage = Properties.Resources.Rectangle_247;
                 if (sourceButton == selectedCourse)
                 {
-                    curso = null;
+                    filterCurso = null;
                     selectedCourse.BackgroundImage = Properties.Resources.Rectangle_247;
                     selectedCourse = null;
                     return;
@@ -345,37 +345,37 @@ namespace ElearningDesktop
 
         private void button7_Click(object sender, EventArgs e)
         {
-            curso = courses[0];
+            filterCurso = courses[0];
             activeCourseFilter(button07);
         }
 
         private void button08_Click(object sender, EventArgs e)
         {
-            curso = courses[1];
+            filterCurso = courses[1];
             activeCourseFilter(button08);
         }
 
         private void button09_Click(object sender, EventArgs e)
         {
-            curso = courses[2];
+            filterCurso = courses[2];
             activeCourseFilter(button09);
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            curso = courses[3];
+            filterCurso = courses[3];
             activeCourseFilter(button10);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            curso = courses[4];
+            filterCurso = courses[4];
             activeCourseFilter(button11);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            curso = courses[5];
+            filterCurso = courses[5];
             activeCourseFilter(button12);
         }
         #endregion
@@ -389,7 +389,7 @@ namespace ElearningDesktop
                 selectedType.BackgroundImage = Properties.Resources.Rectangle_247;
                 if (sourceButton == selectedType)
                 {
-                    tipo = null;
+                    filterTipo = null;
                     selectedType.BackgroundImage = Properties.Resources.Rectangle_247;
                     selectedType = null;
                     return;
@@ -405,20 +405,16 @@ namespace ElearningDesktop
 
         private void button13_Click(object sender, EventArgs e)
         {
-            tipo = type[0];
+            filterTipo = type[0];
             activeTypeFilter(button13);
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            tipo = type[1];
+            filterTipo = type[1];
             activeTypeFilter(button14);
         }
         #endregion
-
-        private void roundButtonBorder() { 
-        
-        }
 
         #region Botão Criar Série
 
@@ -441,16 +437,83 @@ namespace ElearningDesktop
             return panel;
         }
 
-        private void finishSerieCreation_Click(object sender, EventArgs e)
+        private async void finishSerieCreation_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < parentForm.Controls.Count;i++)
+            QueryParameters data = new QueryParameters();
+
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+
+            for (int i = itemsCount - 1; i >= 0; i--)
             {
                 if (parentForm.Controls[i].Name == "creationSeriePanel")
                 {
-                    parentForm.Controls.Remove(parentForm.Controls[i]);
+                    creationPanel = (Panel)parentForm.Controls[i];
                     break;
                 }
             }
+
+            int selectedSerie = -1, selectedCurso = -1, selectedTipo = -1, selectedPeriodo = -1;
+            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            {
+
+                if (creationPanel.Controls[i].Name.Contains("comboBox"))
+                {
+                    if (creationPanel.Controls[i].Name.Contains("Ano"))
+                    {
+                        selectedSerie = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
+                        if (selectedSerie == -1)
+                        {
+                            MessageBox.Show("O ano é obrigatório!");
+                            return;
+                        }
+                        else data.ano = serie[selectedSerie];
+                    }
+                    else if (creationPanel.Controls[i].Name.Contains("Curso"))
+                    {
+                        selectedCurso = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
+                        if (selectedCurso == -1)
+                        {
+                            MessageBox.Show("O curso é obrigatório!");
+                            return;
+                        }
+                        else data.curso = courses[selectedCurso];
+                    }
+                    else if (creationPanel.Controls[i].Name.Contains("Tipo"))
+                    {
+                        selectedTipo = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
+                        if (selectedTipo == -1)
+                        {
+                            MessageBox.Show("O tipo é obrigatório!");
+                            return;
+                        }
+                        else data.tipo = type[selectedTipo];
+                    }
+                    else if (creationPanel.Controls[i].Name.Contains("Periodo"))
+                    {
+                        selectedPeriodo = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
+                        if (selectedPeriodo == -1)
+                        {
+                            MessageBox.Show("O período é obrigatório!");
+                            return;
+                        }
+                        else data.periodo = period[selectedPeriodo];
+                    }
+                }
+            }
+                var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+
+                await apiPath.InsertSeriesAsync(data);
+
+                for (int i = 0; i < parentForm.Controls.Count; i++)
+                {
+                    if (parentForm.Controls[i].Name == "creationSeriePanel")
+                    {
+                        parentForm.Controls.Remove(parentForm.Controls[i]);
+                        filterButton.PerformClick();
+                        break;
+                    }
+                }
         }
 
         private void cancelSerieCreation_Click(object sender, EventArgs e)
@@ -524,12 +587,13 @@ namespace ElearningDesktop
             comboBox.FlatStyle = FlatStyle.Flat;
             comboBox.BackColor = Styles.backgroundColor;
             comboBox.ForeColor = Styles.white;
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
             comboBox.Location = location;
             comboBox.Items.AddRange(comboBoxData);
 
             Rectangle rectangle = new Rectangle(2, 2, comboBox.Width - 20, comboBox.Height - 3);
-            GraphicsPath roundedComboBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
+            GraphicsPath roundedComboBox = Transform.BorderRadius(rectangle, 10, true, false, false, true);
             comboBox.Region = new Region(roundedComboBox);
 
             parentPanel.Controls.Add(comboBox);
@@ -541,13 +605,13 @@ namespace ElearningDesktop
             comboBoxButton.ImageAlign = ContentAlignment.MiddleCenter;
             comboBoxButton.BackgroundImageLayout = ImageLayout.Center;
             comboBoxButton.BackColor = Styles.backgroundColor;
-            comboBoxButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), comboBox.Height - 1);
+            comboBoxButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), Convert.ToInt32(comboBox.Height - 1.5));
 
-            rectangle = new Rectangle(0, 2, comboBoxButton.Width - 1, comboBoxButton.Height - 1);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
+            rectangle = new Rectangle(0, 0, comboBoxButton.Width, comboBoxButton.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 10, false, true, true, false);
             comboBoxButton.Region = new Region(roundedButton);
 
-            comboBoxButton.Location = new Point(comboBox.Location.X + comboBox.Width - 21, comboBox.Location.Y);
+            comboBoxButton.Location = new Point(comboBox.Location.X + comboBox.Width - 21, comboBox.Location.Y + 1);
 
             switch (name){
                 case "comboBoxAno":
@@ -646,7 +710,6 @@ namespace ElearningDesktop
                  typeName
              ));
         }
-        #endregion
 
         private void showAnoComboBox_Click(object sender, EventArgs e)
         {
@@ -741,6 +804,8 @@ namespace ElearningDesktop
             }
         }
 
+        #endregion
+
         private void filterButton_Click(object sender, EventArgs e)
         {
             int itemsCount = seriesPanel.Controls.Count;
@@ -765,10 +830,10 @@ namespace ElearningDesktop
             loadingCircle1.Visible = true;
 
             QueryParameters filters = new QueryParameters();
-            filters.curso = curso;
-            filters.ano = ano;
-            filters.periodo = periodo;
-            filters.tipo = tipo;
+            filters.curso = filterCurso;
+            filters.ano = filterAno;
+            filters.periodo = filterPeriodo;
+            filters.tipo = filterTipo;
             
             listSeries(filters);
         }
