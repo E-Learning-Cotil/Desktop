@@ -30,4 +30,10 @@ namespace ElearningDesktop
         [JsonProperty("_count")]
         public Count _count { get; set; }
     }
+
+    class ApiMessageResponse
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
 }
