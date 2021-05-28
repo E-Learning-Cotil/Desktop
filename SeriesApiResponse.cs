@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElearningDesktop
 {
-    class ApiResponse
+    class SeriesApiResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -35,5 +35,23 @@ namespace ElearningDesktop
     {
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    class TeachersApiResponse
+    {
+        [JsonProperty("RG")]
+        public string RG { get; set; }
+
+        [JsonProperty("telefone")]
+        public string Telefone { get; set; }
+
+        [JsonProperty("nome")]
+        public string Nome { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("foto")]
+        public string Foto { get; set; }
     }
 }
