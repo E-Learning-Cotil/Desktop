@@ -8,6 +8,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
@@ -26,9 +27,9 @@ namespace ElearningDesktop
 
         public Form1()
         {
-            this.ForeColor = Styles.white; 
 
             InitializeComponent();
+            this.ForeColor = Styles.white;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace ElearningDesktop
             changeActiveButtonColor( (Button)sender);
             closeOpenedForms();
 
-            form3 = new Form3();
+            form3 = new Form3(this);
             form3.TopLevel = false;
 
             panel2.Controls.Add(form3);
