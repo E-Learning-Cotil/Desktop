@@ -18,7 +18,7 @@ namespace ElearningDesktop
         public static Color secondaryColor = Color.FromArgb(40, 40, 40);
         public static Color backgroundColor = Color.FromArgb(20, 20, 20);
         public static Color white = Color.FromArgb(255, 255, 255);
-        public static Color filterTitle = Color.FromArgb(187, 187, 187);
+        public static Color filterTitleColor = Color.FromArgb(187, 187, 187);
 
         public static Size formSize;
         public static Size buttonSize;
