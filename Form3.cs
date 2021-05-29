@@ -243,8 +243,16 @@ namespace ElearningDesktop
                 }
             }
             data.Foto = "vazio";
-            var apiPath = RestService.For<ApiService>(Routes.baseUrl);
 
+            var apiPath = RestService.For<ApiService>(Routes.baseUrl,
+                 new RefitSettings
+                 {
+                     ContentSerializer = new NewtonsoftJsonContentSerializer(
+                 new JsonSerializerSettings
+                 {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+        }
+            )});
             //try
             // {
             var dataResponse = await apiPath.InsertTeachersAsync(data);
