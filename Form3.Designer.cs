@@ -34,15 +34,15 @@ namespace ElearningDesktop
             this.loadingText = new System.Windows.Forms.Label();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.telephoneTextBox = new System.Windows.Forms.TextBox();
+            this.telephoneLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.linePanel = new System.Windows.Forms.Panel();
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.telephoneTextBox = new System.Windows.Forms.TextBox();
-            this.telephoneLabel = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.emailLabel = new System.Windows.Forms.Label();
             this.teachersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
             this.filterPanel.SuspendLayout();
@@ -119,6 +119,54 @@ namespace ElearningDesktop
             this.filterPanel.Size = new System.Drawing.Size(225, 430);
             this.filterPanel.TabIndex = 6;
             // 
+            // emailTextBox
+            // 
+            this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.emailTextBox.Location = new System.Drawing.Point(6, 126);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(173, 20);
+            this.emailTextBox.TabIndex = 47;
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.emailLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.emailLabel.Location = new System.Drawing.Point(3, 110);
+            this.emailLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(38, 13);
+            this.emailLabel.TabIndex = 46;
+            this.emailLabel.Text = "E-mail:";
+            // 
+            // telephoneTextBox
+            // 
+            this.telephoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.telephoneTextBox.Location = new System.Drawing.Point(6, 75);
+            this.telephoneTextBox.Name = "telephoneTextBox";
+            this.telephoneTextBox.Size = new System.Drawing.Size(173, 20);
+            this.telephoneTextBox.TabIndex = 45;
+            // 
+            // telephoneLabel
+            // 
+            this.telephoneLabel.AutoSize = true;
+            this.telephoneLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.telephoneLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.telephoneLabel.Location = new System.Drawing.Point(3, 59);
+            this.telephoneLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.telephoneLabel.Name = "telephoneLabel";
+            this.telephoneLabel.Size = new System.Drawing.Size(52, 13);
+            this.telephoneLabel.TabIndex = 44;
+            this.telephoneLabel.Text = "Telefone:";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nameTextBox.Location = new System.Drawing.Point(6, 26);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(173, 20);
+            this.nameTextBox.TabIndex = 43;
+            // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
@@ -161,51 +209,6 @@ namespace ElearningDesktop
             this.filterButton.Text = "Filtrar";
             this.filterButton.UseVisualStyleBackColor = false;
             this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.Location = new System.Drawing.Point(6, 26);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(173, 20);
-            this.nameTextBox.TabIndex = 43;
-            // 
-            // telephoneTextBox
-            // 
-            this.telephoneTextBox.Location = new System.Drawing.Point(6, 75);
-            this.telephoneTextBox.Name = "telephoneTextBox";
-            this.telephoneTextBox.Size = new System.Drawing.Size(173, 20);
-            this.telephoneTextBox.TabIndex = 45;
-            // 
-            // telephoneLabel
-            // 
-            this.telephoneLabel.AutoSize = true;
-            this.telephoneLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.telephoneLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.telephoneLabel.Location = new System.Drawing.Point(3, 59);
-            this.telephoneLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.telephoneLabel.Name = "telephoneLabel";
-            this.telephoneLabel.Size = new System.Drawing.Size(52, 13);
-            this.telephoneLabel.TabIndex = 44;
-            this.telephoneLabel.Text = "Telefone:";
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.Location = new System.Drawing.Point(6, 126);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(173, 20);
-            this.emailTextBox.TabIndex = 47;
-            // 
-            // emailLabel
-            // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.emailLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.emailLabel.Location = new System.Drawing.Point(3, 110);
-            this.emailLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(38, 13);
-            this.emailLabel.TabIndex = 46;
-            this.emailLabel.Text = "E-mail:";
             // 
             // Form3
             // 

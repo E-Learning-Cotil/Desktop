@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ namespace ElearningDesktop
     {
         #region Declaração de Variáveis
         TeachersApiResponse[] teachers;
+
+        string[] serie = { "1", "2", "3" };
+        string[] serieName = { "1º ano", "2º ano", "3º ano" };
 
         Form1 parentForm = null;
         #endregion
@@ -156,10 +160,354 @@ namespace ElearningDesktop
             listTeachers(null);
         }
 
+        #region Botão Criar Professor
+
+        private Panel styleCreationPanel()
+        {
+            Panel panel = new Panel();
+
+            panel.Name = "creationTeacherPanel";
+            panel.Size = Styles.creationPanelSize;
+            panel.Location = new Point(Convert.ToInt32(parentForm.Width / 2 - panel.Width / 2), Convert.ToInt32(parentForm.Height / 2 - panel.Height / 2));
+            panel.BackColor = Styles.secondaryColor;
+
+            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 25, true, true, true, true);
+            panel.Region = new Region(roundedPanel);
+
+            parentForm.Controls.Add(panel);
+            panel.BringToFront();
+
+            return panel;
+        }
+
+        private async void finishTeacherCreation_Click(object sender, EventArgs e)
+        {
+            TeacherQueryParameters data = new TeacherQueryParameters();
+
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+
+            for (int i = itemsCount - 1; i >= 0; i--)
+            {
+                if (parentForm.Controls[i].Name == "creationTeacherPanel")
+                {
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < creationPanel.Controls.Count; i++)
+            {
+                if (creationPanel.Controls[i].Name.Contains("textBox"))
+                {
+                    if (creationPanel.Controls[i].Name.Contains("Nome"))
+                    {
+                        if (creationPanel.Controls[i].Text.Trim() == "")
+                        {
+                            MessageBox.Show("O nome é obrigatório!");
+                            return;
+                        }
+                        else data.Nome = creationPanel.Controls[i].Text.Trim();
+                    }
+
+                    else if (creationPanel.Controls[i].Name.Contains("Telefone"))
+                    {
+                        if (creationPanel.Controls[i].Text.Trim() == "")
+                        {
+                            MessageBox.Show("O telefone é obrigatório!");
+                            return;
+                        }
+                        else data.Telefone = creationPanel.Controls[i].Text.Trim();
+                    }
+
+                    else if (creationPanel.Controls[i].Name.Contains("RG"))
+                    {
+                        if (creationPanel.Controls[i].Text.Trim() == "")
+                        {
+                            MessageBox.Show("O RG é obrigatório!");
+                            return;
+                        }
+                        else data.RG = creationPanel.Controls[i].Text.Trim();
+                    }
+
+                    else if (creationPanel.Controls[i].Name.Contains("Email"))
+                    {
+                        if (creationPanel.Controls[i].Text.Trim() == "")
+                        {
+                            MessageBox.Show("O email é obrigatório!");
+                            return;
+                        }
+                        else data.Email = creationPanel.Controls[i].Text.Trim();
+                    }
+                }
+            }
+            data.Foto = "vazio";
+            var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+
+            //try
+            // {
+            var dataResponse = await apiPath.InsertTeachersAsync(data);
+                for (int i = 0; i < parentForm.Controls.Count; i++)
+                {
+                    if (parentForm.Controls[i].Name == "creationSeriePanel")
+                    {
+                        parentForm.Controls.Remove(parentForm.Controls[i]);
+                        filterButton.PerformClick();
+                        break;
+                    }
+                }
+                var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
+                MessageBox.Show(response.Message);
+           // }
+           // catch (Exception ex)
+            //{
+             //   MessageBox.Show(ex.ToString());
+            //}
+        }
+
+        private void cancelSerieCreation_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < parentForm.Controls.Count; i++)
+            {
+                if (parentForm.Controls[i].Name == "creationTeacherPanel")
+                {
+                    parentForm.Controls.Remove(parentForm.Controls[i]);
+                    break;
+                }
+            }
+        }
+
+        private Button cancelTeacherCreationButton()
+        {
+            Button cancelTeacherCreation = new Button();
+            cancelTeacherCreation.FlatStyle = FlatStyle.Flat;
+            cancelTeacherCreation.FlatAppearance.BorderSize = 0;
+            cancelTeacherCreation.ForeColor = Styles.white;
+            cancelTeacherCreation.Text = "X";
+            cancelTeacherCreation.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.Size * 0.75));
+            cancelTeacherCreation.BackColor = Color.Transparent;
+            cancelTeacherCreation.Size = new Size(Convert.ToInt32(Styles.defaultFont.Size * 1.5), Convert.ToInt32(Styles.defaultFont.Size * 1.5));
+            cancelTeacherCreation.Location = new Point(Styles.creationPanelSize.Width - cancelTeacherCreation.Width, 0);
+            cancelTeacherCreation.Click += new EventHandler(cancelSerieCreation_Click);
+
+            return cancelTeacherCreation;
+        }
+
+        private Button finishTeacherCreationButton()
+        {
+            Button finishTeacherCreation = new Button();
+
+            finishTeacherCreation.Font = Styles.customFont;
+            finishTeacherCreation.Text = "Finalizar";
+            finishTeacherCreation.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Height * 0.042));
+
+            Rectangle rectangle = new Rectangle(0, 0, finishTeacherCreation.Width, finishTeacherCreation.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 25, true, true, true, true);
+            finishTeacherCreation.Region = new Region(roundedButton);
+
+            finishTeacherCreation.FlatStyle = FlatStyle.Flat;
+            finishTeacherCreation.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.624) - finishTeacherCreation.Width, Styles.creationPanelSize.Height - finishTeacherCreation.Height - 20);
+
+            finishTeacherCreation.ForeColor = Color.Black;
+            finishTeacherCreation.BackColor = Styles.white;
+            finishTeacherCreation.Click += new EventHandler(this.finishTeacherCreation_Click);
+
+            return finishTeacherCreation;
+        }
+
+        private Label createTeacherPanelLabel(string name, string text, Point location, Font font, Size size)
+        {
+            Label label = new Label();
+            label.Name = name;
+            label.Text = text;
+            label.Location = location;
+            label.Font = font;
+            label.Size = size;
+
+            return label;
+        }
+
+        private ComboBox createTeacherPanelComboBox(string name, Point location, Panel parentPanel, string[] comboBoxData)
+        {
+            ComboBox comboBox = new ComboBox();
+
+            comboBox.Name = name;
+            comboBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 3));
+            comboBox.FlatStyle = FlatStyle.Flat;
+            comboBox.BackColor = Styles.backgroundColor;
+            comboBox.ForeColor = Styles.white;
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
+            comboBox.Location = location;
+            comboBox.Items.AddRange(comboBoxData);
+
+            Rectangle rectangle = new Rectangle(2, 2, comboBox.Width - 20, comboBox.Height - 3);
+            GraphicsPath roundedComboBox = Transform.BorderRadius(rectangle, 5, true, false, false, true);
+            comboBox.Region = new Region(roundedComboBox);
+
+            parentPanel.Controls.Add(comboBox);
+
+            Button comboBoxButton = new Button();
+            comboBoxButton.FlatStyle = FlatStyle.Flat;
+            comboBoxButton.FlatAppearance.BorderSize = 0;
+            comboBoxButton.BackgroundImage = Properties.Resources.seta;
+            comboBoxButton.ImageAlign = ContentAlignment.MiddleCenter;
+            comboBoxButton.BackgroundImageLayout = ImageLayout.Center;
+            comboBoxButton.BackColor = Styles.backgroundColor;
+            comboBoxButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), Convert.ToInt32(comboBox.Height - 1.5));
+
+            rectangle = new Rectangle(0, 0, comboBoxButton.Width, comboBoxButton.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
+            comboBoxButton.Region = new Region(roundedButton);
+
+            comboBoxButton.Location = new Point(comboBox.Location.X + comboBox.Width - 21, comboBox.Location.Y + 1);
+
+            switch (name)
+            {
+                case "comboBoxSerie":
+                    comboBoxButton.Click += new EventHandler(showSerieComboBox_Click);
+                    break;
+            }
+
+            parentPanel.Controls.Add(comboBoxButton);
+
+            return comboBox;
+        }
+
+        private void showSerieComboBox_Click(object sender, EventArgs e)
+        {
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+            for (int i = itemsCount - 1; i >= 0; i--)
+            {
+                if (parentForm.Controls[i].Name == "creationTeacherPanel")
+                {
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            {
+                if (creationPanel.Controls[i].Name == "comboBoxSerie")
+                {
+                    ((ComboBox)creationPanel.Controls[i]).Focus();
+                    ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
+                    break;
+                }
+            }
+        }
+
+        private TextBox createTeacherPanelTextBox(string name, Point location, Panel parentPanel)
+        {
+            TextBox textBox = new TextBox();
+
+            textBox.Name = name;
+            textBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2));
+            textBox.BackColor = Styles.backgroundColor;
+            textBox.ForeColor = Styles.white;
+            textBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
+            textBox.Location = location;
+            textBox.BorderStyle = BorderStyle.None;
+
+            Rectangle rectangle = new Rectangle(0, 0, textBox.Width, textBox.Height);
+            GraphicsPath roundedTextBox = Transform.BorderRadius(rectangle, 5, true, true, true, true);
+            textBox.Region = new Region(roundedTextBox);
+
+            return textBox;
+        }
+
         private void plusButtonPictureBox_Click(object sender, EventArgs e)
         {
+            int labelSize = Convert.ToInt32(Styles.formSize.Height * 0.029) + 10;
+            int objectHeight = Convert.ToInt32(Styles.formSize.Height * 0.06);
 
+            Panel creationSeriePanel = styleCreationPanel();
+
+            creationSeriePanel.Controls.Add(cancelTeacherCreationButton());
+            creationSeriePanel.Controls.Add(finishTeacherCreationButton());
+            creationSeriePanel.Controls.Add(createTeacherPanelLabel(
+                    "labelTitle",
+                    "Adicionar novo Professor:",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                    Styles.defaultFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.268), Convert.ToInt32(Styles.formSize.Height * 0.039))
+            ));
+
+            objectHeight += labelSize;
+
+            creationSeriePanel.Controls.Add(createTeacherPanelLabel(
+                    "labelNome",
+                    "Nome: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.05), labelSize)
+            ));
+
+            objectHeight += labelSize;
+
+            creationSeriePanel.Controls.Add(createTeacherPanelTextBox(
+                     "textBoxNome",
+                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                     creationSeriePanel
+             ));
+
+            objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
+            
+            creationSeriePanel.Controls.Add(createTeacherPanelLabel(
+                    "labelEmail",
+                    "Email: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.046), labelSize)
+            ));
+
+            objectHeight += labelSize;
+
+            creationSeriePanel.Controls.Add(createTeacherPanelTextBox(
+                     "textBoxEmail",
+                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                     creationSeriePanel
+             ));
+
+            objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
+
+            creationSeriePanel.Controls.Add(createTeacherPanelLabel(
+                    "labelRG",
+                    "RG: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.03), labelSize)
+            ));
+
+            objectHeight += labelSize;
+
+            creationSeriePanel.Controls.Add(createTeacherPanelTextBox(
+                     "textBoxRG",
+                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                     creationSeriePanel
+             ));
+
+            objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
+
+            creationSeriePanel.Controls.Add(createTeacherPanelLabel(
+                    "labelTelefone",
+                    "Telefone: ",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                    Styles.customFont,
+                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.068), labelSize)
+            ));
+
+            objectHeight += labelSize;
+
+            creationSeriePanel.Controls.Add(createTeacherPanelTextBox(
+                     "textBoxTelefone",
+                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                     creationSeriePanel
+             ));
         }
+
+        #endregion
 
         private void filterButton_Click(object sender, EventArgs e)
         {
@@ -185,9 +533,9 @@ namespace ElearningDesktop
             loadingCircle1.Visible = true;
 
             TeacherQueryParameters filters = new TeacherQueryParameters();
-            if (nameTextBox.Text.Trim() != "") filters.nome = nameTextBox.Text;
-            if (telephoneTextBox.Text.Trim() != "") filters.telefone = telephoneTextBox.Text;
-            if (emailTextBox.Text.Trim() != "") filters.email = emailTextBox.Text;
+            if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text;
+            if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text;
+            if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text;
 
             listTeachers(filters);
         }
