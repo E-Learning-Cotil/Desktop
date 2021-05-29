@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using Newtonsoft.Json;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,20 @@ namespace ElearningDesktop
 
     public class TeacherQueryParameters
     {
-        public string telefone { get; set; }
-        public string email { get; set; }
-        public string nome { get; set; }
+        [AliasAs("nome")]
+        public string Nome { get; set; }
+
+        [AliasAs("email")]
+        public string Email { get; set; }
+
+        [JsonProperty(PropertyName ="RG")]
+        public string RG { get; set; }
+
+        [AliasAs("telefone")]
+        public string Telefone { get; set; }
+
+        [AliasAs("foto")]
+        public string Foto { get; set; }
     }
 
     interface ApiService
@@ -38,5 +50,8 @@ namespace ElearningDesktop
 
         [Get("/professores/list/")]
         Task<dynamic> GetTeachersFilteredAsync(TeacherQueryParameters parametros);
+
+        [Post("/professores/create/")]
+        Task<dynamic> InsertTeachersAsync([Body] TeacherQueryParameters parametros);
     }
 }
