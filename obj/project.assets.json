@@ -47,6 +47,22 @@
           "buildTransitive/netstandard2.0/refit.targets": {}
         }
       },
+      "Refit.Newtonsoft.Json/6.0.38": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "Refit": "6.0.38"
+        },
+        "frameworkAssemblies": [
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "frameworkAssemblies": [
@@ -388,6 +404,22 @@
           "buildTransitive/netstandard2.0/refit.targets": {}
         }
       },
+      "Refit.Newtonsoft.Json/6.0.38": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "Refit": "6.0.38"
+        },
+        "frameworkAssemblies": [
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "frameworkAssemblies": [
@@ -685,6 +717,22 @@
           "buildTransitive/netstandard2.0/refit.targets": {}
         }
       },
+      "Refit.Newtonsoft.Json/6.0.38": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "Refit": "6.0.38"
+        },
+        "frameworkAssemblies": [
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "frameworkAssemblies": [
@@ -980,6 +1028,22 @@
         "build": {
           "buildTransitive/netstandard2.0/refit.props": {},
           "buildTransitive/netstandard2.0/refit.targets": {}
+        }
+      },
+      "Refit.Newtonsoft.Json/6.0.38": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "Refit": "6.0.38"
+        },
+        "frameworkAssemblies": [
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net461/Refit.Newtonsoft.Json.dll": {}
         }
       },
       "System.Buffers/4.5.1": {
@@ -1305,6 +1369,26 @@
         "lib/netstandard2.1/Refit.xml",
         "refit.6.0.38.nupkg.sha512",
         "refit.nuspec",
+        "refit_logo.png"
+      ]
+    },
+    "Refit.Newtonsoft.Json/6.0.38": {
+      "sha512": "hhZS5IC3PrJoP+EqO8IS5zBpdrsQs4ezOweb1Z5fRPKdEgCWr+CynkgLpJL+Q/cjQcxnUaHRfjrtQxRaNvOQSA==",
+      "type": "package",
+      "path": "refit.newtonsoft.json/6.0.38",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Refit.Newtonsoft.Json.dll",
+        "lib/net461/Refit.Newtonsoft.Json.xml",
+        "lib/net5.0/Refit.Newtonsoft.Json.dll",
+        "lib/net5.0/Refit.Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Refit.Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Refit.Newtonsoft.Json.xml",
+        "lib/netstandard2.1/Refit.Newtonsoft.Json.dll",
+        "lib/netstandard2.1/Refit.Newtonsoft.Json.xml",
+        "refit.newtonsoft.json.6.0.38.nupkg.sha512",
+        "refit.newtonsoft.json.nuspec",
         "refit_logo.png"
       ]
     },
@@ -1959,6 +2043,7 @@
     ".NETFramework,Version=v4.7.2": [
       "Newtonsoft.Json >= 13.0.1",
       "Refit >= 6.0.38",
+      "Refit.Newtonsoft.Json >= 6.0.38",
       "System.Runtime >= 4.3.1",
       "System.Security.Cryptography.Algorithms >= 4.3.1",
       "System.Security.Cryptography.X509Certificates >= 4.3.2",
@@ -2003,6 +2088,10 @@
             "version": "[13.0.1, )"
           },
           "Refit": {
+            "target": "Package",
+            "version": "[6.0.38, )"
+          },
+          "Refit.Newtonsoft.Json": {
             "target": "Package",
             "version": "[6.0.38, )"
           },

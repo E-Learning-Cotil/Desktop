@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[6.0.38, )"
             },
+            "Refit.Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[6.0.38, )"
+            },
             "System.Runtime": {
               "target": "Package",
               "version": "[4.3.1, )"

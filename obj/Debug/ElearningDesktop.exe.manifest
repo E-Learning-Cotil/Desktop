@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElearningDesktop.exe" size="126896">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElearningDesktop.exe" size="126384">
       <assemblyIdentity name="ElearningDesktop" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TnndNTL8ax3nyZ1fC3Vm3PfaLKX9nCJP0tuc4OBPpBA=</dsig:DigestValue>
+        <dsig:DigestValue>Q/oIAktVbtRZKUswGPyfomw/lmEenoBStOzTV9H8C6Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -98,6 +98,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>qSTcRZGY1GgtY/rWuvDoRzMMasubb5AlmoPsHn53cUs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Refit.Newtonsoft.Json.dll" size="24112">
+      <assemblyIdentity name="Refit.Newtonsoft.Json" version="6.0.0.0" publicKeyToken="2F9B1262776509F5" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xA00EsA5TRVAqH1AC2hCYZehffJbhRWZFA/7s00mghQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -209,13 +221,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ElearningDesktop.exe.config" size="881">
+  <file name="ElearningDesktop.exe.config" size="1210">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>jcBWNqZ6MvEA+nHc3GUhAyNwuGqL7pJUzxiRjOBbhM4=</dsig:DigestValue>
+      <dsig:DigestValue>PjbUL3uOR3POfwIeM5q8cINiWoMmivNoBg82htv6KQA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Quicksand-Regular.ttf" size="77420">
