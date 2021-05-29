@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Refit;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ElearningDesktop
@@ -18,19 +21,19 @@ namespace ElearningDesktop
 
     public class TeacherQueryParameters
     {
-        [AliasAs("nome")]
-        public string Nome { get; set; }
-
-        [AliasAs("email")]
-        public string Email { get; set; }
-
-        [JsonProperty(PropertyName ="RG")]
+        [AliasAs("RG")]
         public string RG { get; set; }
 
-        [AliasAs("telefone")]
+        [JsonProperty("nome")]
+        public string Nome { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("telefone")]
         public string Telefone { get; set; }
 
-        [AliasAs("foto")]
+        [JsonProperty("foto")]
         public string Foto { get; set; }
     }
 
