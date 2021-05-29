@@ -69,6 +69,8 @@ C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\System.Text.Encodings.W
 C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\System.Text.Json.dll
 C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\System.ValueTuple.dll
+C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\MRG.Controls.UI.dll
+C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\MRG.Controls.UI.pdb
 C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.exe.config
 C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.Form1.resources
 C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.Form2.resources
@@ -84,6 +86,4 @@ C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.applic
 C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.csproj.CopyComplete
 C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.exe
 C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.pdb
-C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\MRG.Controls.UI.dll
-C:\Users\Bruno\source\repos\E-Learning\Desktop\bin\Debug\MRG.Controls.UI.pdb
 C:\Users\Bruno\source\repos\E-Learning\Desktop\obj\Debug\ElearningDesktop.csprojAssemblyReference.cache
