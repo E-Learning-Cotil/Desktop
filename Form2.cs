@@ -255,6 +255,7 @@ namespace ElearningDesktop
         {
             if (selectedSeries != null)
             {
+                selectedSeries.BackgroundImage = Properties.Resources.Rectangle_247;
                 if (sourceButton == selectedSeries)
                 {
                     filterAno = null;
