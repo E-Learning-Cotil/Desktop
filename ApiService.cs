@@ -21,24 +21,25 @@ namespace ElearningDesktop
 
     public class TeacherQueryParameters
     {
-        [AliasAs("RG")]
+        [AliasAs("rg")]
         public string RG { get; set; }
 
-        [JsonProperty("nome")]
+        [AliasAs("nome")]
         public string Nome { get; set; }
 
-        [JsonProperty("email")]
+        [AliasAs("email")]
         public string Email { get; set; }
 
-        [JsonProperty("telefone")]
+        [AliasAs("telefone")]
         public string Telefone { get; set; }
 
-        [JsonProperty("foto")]
+        [AliasAs("foto")]
         public string Foto { get; set; }
     }
 
     interface ApiService
     {
+    // Rotas de Séries
         [Get("/series/list/")]
         Task<dynamic> GetSeriesAsync();
 
@@ -48,6 +49,7 @@ namespace ElearningDesktop
         [Post("/series/create/")]
         Task<dynamic> InsertSeriesAsync([Body] SerieQueryParameters parametros);
 
+    // Rotas de Professores
         [Get("/professores/list/")]
         Task<dynamic> GetTeachersAsync();
 
