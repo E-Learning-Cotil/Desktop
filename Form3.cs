@@ -135,17 +135,18 @@ namespace ElearningDesktop
                     {
                         TeachersApiResponse teachersData = teachers[i];
 
-                        Teachers serie = new Teachers(teachersData.Nome, teachersData.Telefone, teachersData.Email,teachersData.RG, teachersData.Foto,i);
+                        Teachers serie = new Teachers(teachersData.Nome, teachersData.Telefone, teachersData.Email, teachersData.RG, teachersData.Foto, i);
                         teachersPanel.Controls.Add(serie.getSeriePanel());
                         teachersPanel.Size = new Size(teachersPanel.Width, teachersPanel.Height - 1);
                     }
                 }
-
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro durante a conexão com a base de dados. " + ex.Message);
+                MessageBox.Show("Um erro occoreu: " + ex.Message);
             }
+
+          
     }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -244,34 +245,26 @@ namespace ElearningDesktop
             }
             data.Foto = "vazio";
 
-            var apiPath = RestService.For<ApiService>(Routes.baseUrl,
-                 new RefitSettings
-                 {
-                     ContentSerializer = new NewtonsoftJsonContentSerializer(
-                 new JsonSerializerSettings
-                 {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-        }
-            )});
-            //try
-            // {
-            var dataResponse = await apiPath.InsertTeachersAsync(data);
+            var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+            try
+             {
+                var dataResponse = await apiPath.InsertTeachersAsync(data);
+
+                var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
+                MessageBox.Show(response.Message);
                 for (int i = 0; i < parentForm.Controls.Count; i++)
                 {
-                    if (parentForm.Controls[i].Name == "creationSeriePanel")
+                    if (parentForm.Controls[i].Name == "creationTeacherPanel")
                     {
                         parentForm.Controls.Remove(parentForm.Controls[i]);
-                        filterButton.PerformClick();
                         break;
                     }
                 }
-                var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
-                MessageBox.Show(response.Message);
-           // }
-           // catch (Exception ex)
-            //{
-             //   MessageBox.Show(ex.ToString());
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void cancelSerieCreation_Click(object sender, EventArgs e)
