@@ -39,7 +39,7 @@ namespace ElearningDesktop
 
     class TeachersApiResponse
     {
-        [JsonProperty("RG")]
+        [JsonProperty("rg")]
         public string RG { get; set; }
 
         [JsonProperty("telefone")]
