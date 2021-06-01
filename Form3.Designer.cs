@@ -43,6 +43,8 @@ namespace ElearningDesktop
             this.linePanel = new System.Windows.Forms.Panel();
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
+            this.rgTextBox = new System.Windows.Forms.TextBox();
+            this.rgLabel = new System.Windows.Forms.Label();
             this.teachersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
             this.filterPanel.SuspendLayout();
@@ -107,6 +109,8 @@ namespace ElearningDesktop
             // 
             this.filterPanel.AutoScroll = true;
             this.filterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.filterPanel.Controls.Add(this.rgTextBox);
+            this.filterPanel.Controls.Add(this.rgLabel);
             this.filterPanel.Controls.Add(this.emailTextBox);
             this.filterPanel.Controls.Add(this.emailLabel);
             this.filterPanel.Controls.Add(this.telephoneTextBox);
@@ -210,6 +214,26 @@ namespace ElearningDesktop
             this.filterButton.UseVisualStyleBackColor = false;
             this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
+            // rgTextBox
+            // 
+            this.rgTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rgTextBox.Location = new System.Drawing.Point(6, 179);
+            this.rgTextBox.Name = "rgTextBox";
+            this.rgTextBox.Size = new System.Drawing.Size(173, 20);
+            this.rgTextBox.TabIndex = 49;
+            // 
+            // rgLabel
+            // 
+            this.rgLabel.AutoSize = true;
+            this.rgLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.rgLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rgLabel.Location = new System.Drawing.Point(3, 163);
+            this.rgLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.rgLabel.Name = "rgLabel";
+            this.rgLabel.Size = new System.Drawing.Size(26, 13);
+            this.rgLabel.TabIndex = 48;
+            this.rgLabel.Text = "RG:";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,5 +276,7 @@ namespace ElearningDesktop
         private System.Windows.Forms.Panel linePanel;
         private System.Windows.Forms.Panel filterButtonPanel;
         private System.Windows.Forms.Button filterButton;
+        private System.Windows.Forms.TextBox rgTextBox;
+        private System.Windows.Forms.Label rgLabel;
     }
 }

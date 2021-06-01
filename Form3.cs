@@ -64,11 +64,11 @@ namespace ElearningDesktop
             teachersPanel.Location = new Point(0, 7);
             teachersPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height);
 
-            nameLabel.Font = telephoneLabel.Font = emailLabel.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
-            nameLabel.ForeColor = telephoneLabel.ForeColor = emailLabel.ForeColor = Styles.filterTitleColor;
+            nameLabel.Font = telephoneLabel.Font = emailLabel.Font = rgLabel.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
+            nameLabel.ForeColor = telephoneLabel.ForeColor = emailLabel.ForeColor = rgLabel.ForeColor = Styles.filterTitleColor;
 
-            nameTextBox.Font = telephoneTextBox.Font = emailTextBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
-            nameTextBox.Size = telephoneTextBox.Size = emailTextBox.Size = new Size(filterPanel.Width - 20, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
+            nameTextBox.Font = telephoneTextBox.Font = emailTextBox.Font = rgTextBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
+            nameTextBox.Size = telephoneTextBox.Size = emailTextBox.Size = rgTextBox.Size = new Size(filterPanel.Width - 20, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
 
             nameLabel.Location = new Point(10, 20);
             nameTextBox.Location = new Point(10, nameLabel.Location.Y + nameLabel.Height + 10);
@@ -78,6 +78,9 @@ namespace ElearningDesktop
 
             emailLabel.Location = new Point(10, telephoneTextBox.Location.Y + telephoneTextBox.Height + 10);
             emailTextBox.Location = new Point(10, emailLabel.Location.Y + emailLabel.Height + 10);
+
+            rgLabel.Location = new Point(10, emailTextBox.Location.Y + emailTextBox.Height + 10);
+            rgTextBox.Location = new Point(10, rgLabel.Location.Y + rgLabel.Height + 10);
         }
 
         private void loadingMessageStyle()
@@ -143,7 +146,7 @@ namespace ElearningDesktop
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Um erro occoreu: " + ex.Message);
+                MessageBox.Show("Um erro occoreu: " + ex.ToString());
             }
 
           
@@ -534,9 +537,10 @@ namespace ElearningDesktop
             loadingCircle1.Visible = true;
 
             TeacherQueryParameters filters = new TeacherQueryParameters();
-            if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text;
-            if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text;
-            if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text;
+            if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text.Trim();
+            if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text.Trim();
+            if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text.Trim();
+            if (rgTextBox.Text.Trim() != "") filters.RG = rgTextBox.Text.Trim();
 
             listTeachers(filters);
         }
