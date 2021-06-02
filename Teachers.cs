@@ -57,7 +57,7 @@ namespace ElearningDesktop
             telephoneNumber.AutoSize = true;
             telephoneNumber.TextAlign = ContentAlignment.MiddleLeft;
 
-            telephoneNumber.Location = new Point(teacherPanel.Width - Convert.ToInt32(telephoneNumber.Text.Length * telephoneNumber.Font.SizeInPoints) - 10, Convert.ToInt32((teacherPanel.Size.Height / 2) - 15 - (telephoneNumber.Font.Height / 2)));
+            telephoneNumber.Location = new Point(teacherPanel.Width - Convert.ToInt32(telephoneNumber.Text.Length * 20) - 10, Convert.ToInt32((teacherPanel.Size.Height / 2) - 15 - (telephoneNumber.Font.Height / 2)));
             teacherPanel.Controls.Add(telephoneNumber);
 
             Label emailAddress = new Label();
@@ -67,7 +67,7 @@ namespace ElearningDesktop
             emailAddress.AutoSize = true;
             emailAddress.TextAlign = ContentAlignment.MiddleLeft;
 
-            emailAddress.Location = new Point(teacherPanel.Width + emailAddress.Width - Convert.ToInt32(emailAddress.Text.Length * emailAddress.Font.SizeInPoints) - 10, Convert.ToInt32(teacherPanel.Size.Height / 2) - 5);
+            emailAddress.Location = new Point(teacherPanel.Width + emailAddress.Width - Convert.ToInt32(emailAddress.Text.Length * 20) - 10, Convert.ToInt32(teacherPanel.Size.Height / 2) - 5);
             teacherPanel.Controls.Add(emailAddress);
 
             changePanelFormat(teacherPanel);//arredonda cada div
