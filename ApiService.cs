@@ -37,6 +37,7 @@ namespace ElearningDesktop
         public string Foto { get; set; }
     }
 
+
     interface ApiService
     {
     // Rotas de Séries
@@ -46,6 +47,7 @@ namespace ElearningDesktop
         [Get("/series/list/")]
         Task<dynamic> GetSeriesFilteredAsync(SerieQueryParameters parametros);
 
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/series/create/")]
         Task<dynamic> InsertSeriesAsync([Body] SerieQueryParameters parametros);
 
@@ -56,6 +58,7 @@ namespace ElearningDesktop
         [Get("/professores/list/")]
         Task<dynamic> GetTeachersFilteredAsync(TeacherQueryParameters parametros);
 
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/professores/create/")]
         Task<dynamic> InsertTeachersAsync([Body] TeacherQueryParameters parametros);
     }
