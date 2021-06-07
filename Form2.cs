@@ -457,7 +457,7 @@ namespace ElearningDesktop
             }
 
             int selectedSerie = -1, selectedCurso = -1, selectedTipo = -1, selectedPeriodo = -1;
-            for (int i = 0; i < creationPanel.Controls.Count - 1; i++)
+            for (int i = 0; i < creationPanel.Controls.Count; i++)
             {
 
                 if (creationPanel.Controls[i].Name.Contains("comboBox"))
