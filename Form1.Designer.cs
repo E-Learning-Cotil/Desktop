@@ -148,7 +148,6 @@ namespace ElearningDesktop
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ElearningDesktop.Properties.Resources.logo1;
             this.pictureBox1.Location = new System.Drawing.Point(40, 20);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(68, 52);
             this.pictureBox1.Name = "pictureBox1";
