@@ -250,23 +250,50 @@ namespace ElearningDesktop
 
             var apiPath = RestService.For<ApiService>(Routes.baseUrl);
             try
-             {
-                var dataResponse = await apiPath.InsertTeachersAsync(data);
+            {
+                bool isOk = true;
 
-                var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
-                MessageBox.Show(response.Message);
-                for (int i = 0; i < parentForm.Controls.Count; i++)
-                {
-                    if (parentForm.Controls[i].Name == "creationTeacherPanel")
+                for (int i = 0; i < teachers.Length; i++)
+                { 
+                    if(teachers[i].RG == data.RG)
                     {
-                        parentForm.Controls.Remove(parentForm.Controls[i]);
+                        isOk = false;
+                        MessageBox.Show("O RG já existe no banco de dados!");
                         break;
+                    }
+                    if(teachers[i].Email == data.Email)
+                    {
+                        isOk = false;
+                        MessageBox.Show("O Email já existe no banco de dados!");
+                        break;
+                    }
+                    if (teachers[i].Telefone == data.Telefone)
+                    {
+                        isOk = false;
+                        MessageBox.Show("O Telefone já existe no banco de dados!");
+                        break;
+                    }
+                }
+
+                if (isOk)
+                {
+                    var dataResponse = await apiPath.InsertTeachersAsync(data);
+                    var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
+                    MessageBox.Show(response.Message);
+                    for (int i = 0; i < parentForm.Controls.Count; i++)
+                    {
+                        if (parentForm.Controls[i].Name == "creationTeacherPanel")
+                        {
+                            parentForm.Controls.Remove(parentForm.Controls[i]);
+                            filterButton.PerformClick();
+                            break;
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
 
