@@ -82,6 +82,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SeriesApiResponse.cs" />
     <Compile Include="ApiService.cs" />
     <Compile Include="Count.cs" />
@@ -120,11 +125,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Teachers.cs" />
     <Compile Include="Transform.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -163,6 +163,8 @@
     <None Include="obj\Debug\Rectangle 247.png" />
     <None Include="obj\Debug\Vector.png" />
     <None Include="obj\Debug\seta.png" />
+    <None Include="obj\Debug\525px-X_mark.svg.png" />
+    <None Include="obj\Debug\x.png" />
     <Content Include="Quicksand-Regular.ttf" />
     <Content Include="Righteous-Regular.ttf" />
   </ItemGroup>
