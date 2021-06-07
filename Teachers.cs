@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +19,7 @@ namespace ElearningDesktop
         private string teacherRG;
         private string teacherFoto;
         private Panel teacherPanel;
+        private PictureBox teacherPicture = new PictureBox();
 
         public Teachers(string nome, string telefone, string email, string RG, string foto, int position)
         {
@@ -30,16 +33,6 @@ namespace ElearningDesktop
             teacherPanel.Size = Styles.seriesSize; //define o tamanho da div
             teacherPanel.Location = new Point(20, 20 + (20 + Styles.seriesSize.Height) * (position)); // define a posição da div
             teacherPanel.BackColor = Styles.backgroundColor; //define a cor preta para fundo da div
-
-            PictureBox teacherPicture = new PictureBox();
-
-            teacherPicture.Image = Properties.Resources.logo;
-
-            teacherPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
-            teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            teacherPicture.Location = new Point(Convert.ToInt32(teacherPanel.Location.X + 2), Convert.ToInt32((teacherPanel.Size.Height / 2) - (teacherPicture.Size.Height / 2)));
-
-            teacherPanel.Controls.Add(teacherPicture);//adiciona o pictureBox na div
 
             Label teacherNameLabel = new Label(); //cria a serie
             teacherNameLabel.Text = teacherName; //define o nome da serie
@@ -69,6 +62,36 @@ namespace ElearningDesktop
 
             emailAddress.Location = new Point(teacherPanel.Width + emailAddress.Width - Convert.ToInt32(emailAddress.Text.Length * 20) - 10, Convert.ToInt32(teacherPanel.Size.Height / 2) - 5);
             teacherPanel.Controls.Add(emailAddress);
+
+            #region Imagem
+
+            try
+            {
+                WebResponse imageResponse = null;
+                Stream responseStream;
+                HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(foto);
+                imageResponse = imageRequest.GetResponse();
+                responseStream = imageResponse.GetResponseStream();
+                teacherPicture.Image = Image.FromStream(responseStream);
+                responseStream.Close();
+                imageResponse.Close();
+            }
+            catch
+            {
+                teacherPicture.Image = Properties.Resources.x;
+            }
+
+            teacherPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
+            teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            teacherPicture.Location = new Point(Convert.ToInt32(teacherPanel.Location.X + 2), Convert.ToInt32((teacherPanel.Size.Height / 2) - (teacherPicture.Size.Height / 2)));
+
+            Rectangle rectangle = new Rectangle(0, 0, teacherPicture.Width, teacherPicture.Height);
+            GraphicsPath roundedImage = Transform.BorderRadius(rectangle, 20, true, true, true, true);
+            teacherPicture.Region = new Region(roundedImage);
+
+            teacherPanel.Controls.Add(teacherPicture);//adiciona o pictureBox na div
+
+            #endregion
 
             changePanelFormat(teacherPanel);//arredonda cada div
         }
