@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MRG.Controls.UI;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Refit;
 using System;
@@ -25,6 +26,7 @@ namespace ElearningDesktop
         string[] serieName = { "1º ano", "2º ano", "3º ano" };
 
         protected bool validData;
+        protected string imageUrl = "";
         protected Image image;
         protected Thread getImageThread;
         protected PictureBox teacherPicture;
@@ -254,7 +256,17 @@ namespace ElearningDesktop
                     }
                 }
             }
-            data.Foto = "vazio";
+            if (!imageUrl.Trim().Equals("")) data.Foto = imageUrl;
+            else if (teacherPicture.SizeMode == PictureBoxSizeMode.CenterImage)
+            {
+                MessageBox.Show("A imagem não pode ser vazia!");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Imagem em processamento. Por favor, aguarde.");
+                return;
+            }
 
             var apiPath = RestService.For<ApiService>(Routes.baseUrl);
             try
@@ -418,6 +430,7 @@ namespace ElearningDesktop
                     Application.DoEvents();
                     Thread.Sleep(0);
                 }
+                teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
                 teacherPicture.Image = image;
                 sendTeacherImage();
                 
@@ -440,8 +453,8 @@ namespace ElearningDesktop
             {
                 var imageData = ImageToByteArray(image);
                 var dataResponse = await apiPath.SendImageToApi(new ByteArrayPart(imageData, "file.png"));
-                MessageBox.Show(dataResponse);
-                Console.WriteLine(dataResponse);
+                imageUrl = dataResponse;
+                MessageBox.Show("Imagem armazenada com sucesso!");
             }
             catch(Exception ex)
             {
