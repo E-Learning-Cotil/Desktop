@@ -7,8 +7,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +23,12 @@ namespace ElearningDesktop
 
         string[] serie = { "1", "2", "3" };
         string[] serieName = { "1º ano", "2º ano", "3º ano" };
+
+        protected bool validData;
+        protected Image image;
+        protected Thread getImageThread;
+        protected PictureBox teacherPicture;
+        string path;
 
         Form1 parentForm = null;
         #endregion
@@ -338,7 +346,7 @@ namespace ElearningDesktop
             finishTeacherCreation.Region = new Region(roundedButton);
 
             finishTeacherCreation.FlatStyle = FlatStyle.Flat;
-            finishTeacherCreation.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.624) - finishTeacherCreation.Width, Styles.creationPanelSize.Height - finishTeacherCreation.Height - 20);
+            finishTeacherCreation.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.624) - finishTeacherCreation.Width, Styles.creationPanelSize.Height - finishTeacherCreation.Height - Convert.ToInt32(Styles.formSize.Width * 0.025));
 
             finishTeacherCreation.ForeColor = Color.Black;
             finishTeacherCreation.BackColor = Styles.white;
@@ -357,53 +365,6 @@ namespace ElearningDesktop
             label.Size = size;
 
             return label;
-        }
-
-        private ComboBox createTeacherPanelComboBox(string name, Point location, Panel parentPanel, string[] comboBoxData)
-        {
-            ComboBox comboBox = new ComboBox();
-
-            comboBox.Name = name;
-            comboBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 3));
-            comboBox.FlatStyle = FlatStyle.Flat;
-            comboBox.BackColor = Styles.backgroundColor;
-            comboBox.ForeColor = Styles.white;
-            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
-            comboBox.Location = location;
-            comboBox.Items.AddRange(comboBoxData);
-
-            Rectangle rectangle = new Rectangle(2, 2, comboBox.Width - 20, comboBox.Height - 3);
-            GraphicsPath roundedComboBox = Transform.BorderRadius(rectangle, 5, true, false, false, true);
-            comboBox.Region = new Region(roundedComboBox);
-
-            parentPanel.Controls.Add(comboBox);
-
-            Button comboBoxButton = new Button();
-            comboBoxButton.FlatStyle = FlatStyle.Flat;
-            comboBoxButton.FlatAppearance.BorderSize = 0;
-            comboBoxButton.BackgroundImage = Properties.Resources.seta;
-            comboBoxButton.ImageAlign = ContentAlignment.MiddleCenter;
-            comboBoxButton.BackgroundImageLayout = ImageLayout.Center;
-            comboBoxButton.BackColor = Styles.backgroundColor;
-            comboBoxButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), Convert.ToInt32(comboBox.Height - 1.5));
-
-            rectangle = new Rectangle(0, 0, comboBoxButton.Width, comboBoxButton.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 5, false, true, true, false);
-            comboBoxButton.Region = new Region(roundedButton);
-
-            comboBoxButton.Location = new Point(comboBox.Location.X + comboBox.Width - 21, comboBox.Location.Y + 1);
-
-            switch (name)
-            {
-                case "comboBoxSerie":
-                    comboBoxButton.Click += new EventHandler(showSerieComboBox_Click);
-                    break;
-            }
-
-            parentPanel.Controls.Add(comboBoxButton);
-
-            return comboBox;
         }
 
         private void showSerieComboBox_Click(object sender, EventArgs e)
@@ -437,7 +398,7 @@ namespace ElearningDesktop
             textBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2));
             textBox.BackColor = Styles.backgroundColor;
             textBox.ForeColor = Styles.white;
-            textBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.55), Convert.ToInt32(Styles.formSize.Height * 0.039));
+            textBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.405), textBox.Height);
             textBox.Location = location;
             textBox.BorderStyle = BorderStyle.None;
 
@@ -446,6 +407,88 @@ namespace ElearningDesktop
             textBox.Region = new Region(roundedTextBox);
 
             return textBox;
+        }
+
+        private void teacherPicture_DragDrop(object sender, DragEventArgs e)
+        {
+            if (validData)
+            {
+                while (getImageThread.IsAlive)
+                {
+                    Application.DoEvents();
+                    Thread.Sleep(0);
+                }
+                teacherPicture.Image = image;
+                sendTeacherImage();
+                
+            }
+        }
+
+        private byte[] ImageToByteArray(Image imageIn)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, image.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
+        private async void sendTeacherImage()
+        {
+            var apiPath = RestService.For<ApiService>(Routes.sendImageBaseUrl);
+            try
+            {
+                var imageData = ImageToByteArray(image);
+                var dataResponse = await apiPath.SendImageToApi(new ByteArrayPart(imageData, "file.png"));
+                MessageBox.Show(dataResponse);
+                Console.WriteLine(dataResponse);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        protected void LoadImage()
+        {
+            image = new Bitmap(path);
+        }
+
+        private void teacherPicture_DragEnter(object sender, DragEventArgs e)
+        {
+            string filename;
+            validData = GetFilename(out filename, e);
+            if (validData)
+            {
+                path = filename;
+                getImageThread = new Thread(new ThreadStart(LoadImage));
+                getImageThread.Start();
+                e.Effect = DragDropEffects.Copy;
+            }
+            else e.Effect = DragDropEffects.None;
+        }
+
+        private bool GetFilename(out string filename, DragEventArgs e)
+        {
+            bool ret = false;
+            filename = String.Empty;
+            if ((e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy)
+            {
+                Array data = ((IDataObject)e.Data).GetData("FileDrop") as Array;
+                if (data != null)
+                {
+                    if ((data.Length == 1) && (data.GetValue(0) is String))
+                    {
+                        filename = ((string[])data)[0];
+                        string ext = Path.GetExtension(filename).ToLower();
+                        if ((ext == ".jpg") || (ext == ".png") || (ext == ".bmp"))
+                        {
+                            ret = true;
+                        }
+                    }
+                }
+            }
+            return ret;
         }
 
         private void plusButtonPictureBox_Click(object sender, EventArgs e)
@@ -482,6 +525,34 @@ namespace ElearningDesktop
                      new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
                      creationSeriePanel
              ));
+
+            #region Adicionar imagem
+
+            Panel panel = new Panel();
+
+            panel.BackColor = Styles.backgroundColor;
+            panel.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.474) + 20, objectHeight);
+            panel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.137), Convert.ToInt32(Styles.formSize.Height*0.266));
+
+            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
+            panel.Region = new Region(roundedPanel);
+
+            teacherPicture = new PictureBox();
+
+            teacherPicture.Image = Properties.Resources.upload;
+            teacherPicture.Size = new Size(panel.Width, panel.Height);
+            teacherPicture.SizeMode = PictureBoxSizeMode.CenterImage;
+            teacherPicture.Location = new Point(Convert.ToInt32(panel.Width / 2 - teacherPicture.Width / 2), Convert.ToInt32(panel.Height / 2 - teacherPicture.Height / 2));
+
+            teacherPicture.AllowDrop = true;
+            teacherPicture.DragEnter += new DragEventHandler(this.teacherPicture_DragEnter);
+            teacherPicture.DragDrop += new DragEventHandler(this.teacherPicture_DragDrop);
+
+            panel.Controls.Add(teacherPicture);
+            creationSeriePanel.Controls.Add(panel);
+
+            #endregion
 
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
             
