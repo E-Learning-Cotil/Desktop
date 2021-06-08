@@ -504,6 +504,32 @@ namespace ElearningDesktop
             return ret;
         }
 
+        private void teacherPicture_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selectedPicture = new OpenFileDialog();
+            selectedPicture.Title = "Selecione uma foto: ";
+            selectedPicture.Filter = "Images (*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
+            selectedPicture.CheckFileExists = true;
+            selectedPicture.CheckPathExists = true;
+
+            DialogResult result = selectedPicture.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    string pictureName = selectedPicture.FileName;
+                    image = Image.FromFile(pictureName);
+                    sendTeacherImage();
+                    teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+                    teacherPicture.Image = image;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
         private void plusButtonPictureBox_Click(object sender, EventArgs e)
         {
             int labelSize = Convert.ToInt32(Styles.formSize.Height * 0.029) + 10;
@@ -559,6 +585,7 @@ namespace ElearningDesktop
             teacherPicture.Location = new Point(Convert.ToInt32(panel.Width / 2 - teacherPicture.Width / 2), Convert.ToInt32(panel.Height / 2 - teacherPicture.Height / 2));
 
             teacherPicture.AllowDrop = true;
+            teacherPicture.Click += new EventHandler(this.teacherPicture_Click);
             teacherPicture.DragEnter += new DragEventHandler(this.teacherPicture_DragEnter);
             teacherPicture.DragDrop += new DragEventHandler(this.teacherPicture_DragDrop);
 
