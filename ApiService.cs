@@ -61,5 +61,9 @@ namespace ElearningDesktop
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/professores/create/")]
         Task<dynamic> InsertTeachersAsync([Body] TeacherQueryParameters parametros);
+
+        [Multipart]
+        [Post("/upload/e-learning-storage")]
+        Task<dynamic> SendImageToApi( ByteArrayPart file);
     }
 }
