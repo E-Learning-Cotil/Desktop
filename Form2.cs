@@ -563,7 +563,7 @@ namespace ElearningDesktop
             GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 25, true, true, true, true);
             finishSerieCreation.Region = new Region(roundedButton);
 
-            finishSerieCreation.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.624) - finishSerieCreation.Width, Styles.creationPanelSize.Height - finishSerieCreation.Height - 20);
+            finishSerieCreation.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.624) - finishSerieCreation.Width, Styles.creationPanelSize.Height - finishSerieCreation.Height - Convert.ToInt32(Styles.formSize.Width * 0.025));
             finishSerieCreation.FlatStyle = FlatStyle.Flat;
 
             finishSerieCreation.ForeColor = Color.Black;
