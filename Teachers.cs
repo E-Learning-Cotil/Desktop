@@ -25,6 +25,8 @@ namespace ElearningDesktop
         {
             #region Atributos
 
+            string[] words = nome.Trim().Split(' ');
+            if(words.Length > 1) nome = words[0] + " " + words[words.Length - 1];
             teacherName = nome;
             teacherTelephone = telefone;
             teacherEmail = email;
@@ -51,9 +53,10 @@ namespace ElearningDesktop
             teacherNameLabel.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
             teacherNameLabel.Location = new Point(Convert.ToInt32(teacherPicture.Location.X + teacherPicture.Size.Width + 10), Convert.ToInt32((teacherPanel.Size.Height / 2) - (teacherNameLabel.Font.Height / 2)));
 
+
             teacherPanel.Controls.Add(teacherNameLabel);//adiciona o label na div
 
-        #endregion
+            #endregion
 
             #region Telefone
 
@@ -61,10 +64,11 @@ namespace ElearningDesktop
             telephoneNumber.Text = teacherTelephone;
             telephoneNumber.Font = Styles.customFont;//define a estilização do texto
 
-            telephoneNumber.AutoSize = true;
-            telephoneNumber.TextAlign = ContentAlignment.MiddleLeft;
+            telephoneNumber.Size = new Size(255, telephoneNumber.Font.Height);
 
-            telephoneNumber.Location = new Point(teacherPanel.Width - Convert.ToInt32(telephoneNumber.Text.Length * 20) - 10, Convert.ToInt32((teacherPanel.Size.Height / 2) - 15 - (telephoneNumber.Font.Height / 2)));
+            telephoneNumber.TextAlign = ContentAlignment.TopRight;
+
+            telephoneNumber.Location = new Point(teacherPanel.Width - telephoneNumber.Width, Convert.ToInt32((teacherPanel.Size.Height / 2) - 15 - (telephoneNumber.Font.Height / 2)));
             
             teacherPanel.Controls.Add(telephoneNumber);
 
@@ -76,10 +80,11 @@ namespace ElearningDesktop
             emailAddress.Text = teacherEmail;
             emailAddress.Font = Styles.customFont;//define a estilização do texto
 
-            emailAddress.AutoSize = true;
-            emailAddress.TextAlign = ContentAlignment.MiddleLeft;
+            emailAddress.TextAlign = ContentAlignment.BottomRight;
 
-            emailAddress.Location = new Point(teacherPanel.Width + emailAddress.Width - Convert.ToInt32(emailAddress.Text.Length * 20) - 10, Convert.ToInt32(teacherPanel.Size.Height / 2) - 5);
+            emailAddress.Size = new Size(510, emailAddress.Font.Height + 5);
+
+            emailAddress.Location = new Point(teacherPanel.Width - emailAddress.Width, Convert.ToInt32(teacherPanel.Size.Height / 2) - 5);
             teacherPanel.Controls.Add(emailAddress);
 
             #endregion
@@ -99,7 +104,7 @@ namespace ElearningDesktop
             }
             catch
             {
-                teacherPicture.Image = Properties.Resources.x;
+                teacherPicture.Image = Properties.Resources.user;
             }
 
             teacherPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
