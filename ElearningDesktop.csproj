@@ -166,6 +166,7 @@
     <None Include="obj\Debug\525px-X_mark.svg.png" />
     <None Include="obj\Debug\x.png" />
     <None Include="obj\Debug\upload.png" />
+    <None Include="obj\Debug\user.png" />
     <Content Include="Quicksand-Regular.ttf" />
     <Content Include="Righteous-Regular.ttf" />
   </ItemGroup>
