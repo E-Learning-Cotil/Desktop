@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -91,21 +92,7 @@ namespace ElearningDesktop
 
             #region Imagem
 
-            try
-            {
-                WebResponse imageResponse = null;
-                Stream responseStream;
-                HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(foto);
-                imageResponse = imageRequest.GetResponse();
-                responseStream = imageResponse.GetResponseStream();
-                teacherPicture.Image = Image.FromStream(responseStream);
-                responseStream.Close();
-                imageResponse.Close();
-            }
-            catch
-            {
-                teacherPicture.Image = Properties.Resources.user;
-            }
+            teacherPicture.Image = getImage();
 
             teacherPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
             teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -118,8 +105,26 @@ namespace ElearningDesktop
             teacherPanel.Controls.Add(teacherPicture);//adiciona o pictureBox na div
 
             #endregion
-
             changePanelFormat(teacherPanel);//arredonda a div
+        }
+        
+        private Image getImage()
+        {
+            try
+            {
+                WebResponse imageResponse = null;
+                Stream responseStream;
+                HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(teacherFoto);
+                imageResponse = imageRequest.GetResponse();
+                responseStream = imageResponse.GetResponseStream();
+                responseStream.Close();
+                imageResponse.Close();
+                return Image.FromStream(responseStream);
+            }
+            catch
+            {
+                return Properties.Resources.user;
+            }
         }
 
         public Panel getSeriePanel()
