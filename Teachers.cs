@@ -23,16 +23,26 @@ namespace ElearningDesktop
 
         public Teachers(string nome, string telefone, string email, string RG, string foto, int position)
         {
+            #region Atributos
+
             teacherName = nome;
             teacherTelephone = telefone;
             teacherEmail = email;
             teacherRG = RG;
             teacherFoto = foto;
 
+            #endregion
+
+            #region Div Principal
+
             teacherPanel = new Panel(); //cria uma div
             teacherPanel.Size = Styles.seriesSize; //define o tamanho da div
             teacherPanel.Location = new Point(20, 20 + (20 + Styles.seriesSize.Height) * (position)); // define a posição da div
             teacherPanel.BackColor = Styles.backgroundColor; //define a cor preta para fundo da div
+
+            #endregion
+
+            #region Nome
 
             Label teacherNameLabel = new Label(); //cria a serie
             teacherNameLabel.Text = teacherName; //define o nome da serie
@@ -43,6 +53,10 @@ namespace ElearningDesktop
 
             teacherPanel.Controls.Add(teacherNameLabel);//adiciona o label na div
 
+        #endregion
+
+            #region Telefone
+
             Label telephoneNumber = new Label();
             telephoneNumber.Text = teacherTelephone;
             telephoneNumber.Font = Styles.customFont;//define a estilização do texto
@@ -51,7 +65,12 @@ namespace ElearningDesktop
             telephoneNumber.TextAlign = ContentAlignment.MiddleLeft;
 
             telephoneNumber.Location = new Point(teacherPanel.Width - Convert.ToInt32(telephoneNumber.Text.Length * 20) - 10, Convert.ToInt32((teacherPanel.Size.Height / 2) - 15 - (telephoneNumber.Font.Height / 2)));
+            
             teacherPanel.Controls.Add(telephoneNumber);
+
+            #endregion
+
+            #region Email
 
             Label emailAddress = new Label();
             emailAddress.Text = teacherEmail;
@@ -62,6 +81,8 @@ namespace ElearningDesktop
 
             emailAddress.Location = new Point(teacherPanel.Width + emailAddress.Width - Convert.ToInt32(emailAddress.Text.Length * 20) - 10, Convert.ToInt32(teacherPanel.Size.Height / 2) - 5);
             teacherPanel.Controls.Add(emailAddress);
+
+            #endregion
 
             #region Imagem
 
@@ -93,7 +114,7 @@ namespace ElearningDesktop
 
             #endregion
 
-            changePanelFormat(teacherPanel);//arredonda cada div
+            changePanelFormat(teacherPanel);//arredonda a div
         }
 
         public Panel getSeriePanel()
