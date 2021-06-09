@@ -87,7 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SeriesApiResponse.cs" />
+    <Compile Include="ApiResponse.cs" />
     <Compile Include="ApiService.cs" />
     <Compile Include="Count.cs" />
     <Compile Include="Routes.cs" />
