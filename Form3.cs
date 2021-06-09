@@ -317,7 +317,7 @@ namespace ElearningDesktop
             }
         }
 
-        private void cancelSerieCreation_Click(object sender, EventArgs e)
+        private void cancelTeacherCreation_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < parentForm.Controls.Count; i++)
             {
@@ -340,7 +340,7 @@ namespace ElearningDesktop
             cancelTeacherCreation.BackColor = Color.Transparent;
             cancelTeacherCreation.Size = new Size(Convert.ToInt32(Styles.defaultFont.Size * 1.5), Convert.ToInt32(Styles.defaultFont.Size * 1.5));
             cancelTeacherCreation.Location = new Point(Styles.creationPanelSize.Width - cancelTeacherCreation.Width, 0);
-            cancelTeacherCreation.Click += new EventHandler(cancelSerieCreation_Click);
+            cancelTeacherCreation.Click += new EventHandler(cancelTeacherCreation_Click);
 
             return cancelTeacherCreation;
         }
@@ -377,29 +377,6 @@ namespace ElearningDesktop
             label.Size = size;
 
             return label;
-        }
-
-        private void showSerieComboBox_Click(object sender, EventArgs e)
-        {
-            int itemsCount = parentForm.Controls.Count;
-            Panel creationPanel = new Panel();
-            for (int i = itemsCount - 1; i >= 0; i--)
-            {
-                if (parentForm.Controls[i].Name == "creationTeacherPanel")
-                {
-                    creationPanel = (Panel)parentForm.Controls[i];
-                    break;
-                }
-            }
-            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
-            {
-                if (creationPanel.Controls[i].Name == "comboBoxSerie")
-                {
-                    ((ComboBox)creationPanel.Controls[i]).Focus();
-                    ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
-                    break;
-                }
-            }
         }
 
         private TextBox createTeacherPanelTextBox(string name, Point location, Panel parentPanel)
