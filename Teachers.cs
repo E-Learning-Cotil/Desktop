@@ -20,6 +20,7 @@ namespace ElearningDesktop
         private string teacherRG;
         private string teacherFoto;
         private Panel teacherPanel;
+        private Thread getImageThread;
         private PictureBox teacherPicture = new PictureBox();
 
         public Teachers(string nome, string telefone, string email, string RG, string foto, int position)
@@ -92,7 +93,8 @@ namespace ElearningDesktop
 
             #region Imagem
 
-            teacherPicture.Image = getImage();
+            getImageThread = new Thread(new ThreadStart(getImage));
+            getImageThread.Start();
 
             teacherPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
             teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -105,10 +107,11 @@ namespace ElearningDesktop
             teacherPanel.Controls.Add(teacherPicture);//adiciona o pictureBox na div
 
             #endregion
+
             changePanelFormat(teacherPanel);//arredonda a div
         }
         
-        private Image getImage()
+        private void getImage()
         {
             try
             {
@@ -117,13 +120,13 @@ namespace ElearningDesktop
                 HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(teacherFoto);
                 imageResponse = imageRequest.GetResponse();
                 responseStream = imageResponse.GetResponseStream();
+                teacherPicture.Image =  Image.FromStream(responseStream);
                 responseStream.Close();
                 imageResponse.Close();
-                return Image.FromStream(responseStream);
             }
             catch
             {
-                return Properties.Resources.user;
+                teacherPicture.Image = Properties.Resources.user;
             }
         }
 
