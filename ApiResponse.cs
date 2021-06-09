@@ -54,4 +54,25 @@ namespace ElearningDesktop
         [JsonProperty("foto")]
         public string Foto { get; set; }
     }
+    
+    class StudentsApiResponse
+    {
+        [JsonProperty("ra")]
+        public string RA { get; set; }
+
+        [JsonProperty("telefone")]
+        public string Telefone { get; set; }
+
+        [JsonProperty("nome")]
+        public string Nome { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("foto")]
+        public string Foto { get; set; }
+
+        [JsonProperty("idSerie")]
+        public string IdSerie { get; set; }
+    }
 }
