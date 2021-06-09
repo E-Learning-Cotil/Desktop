@@ -37,10 +37,30 @@ namespace ElearningDesktop
         public string Foto { get; set; }
     }
 
+    public class StudentQueryParameters
+    {
+        [AliasAs("ra")]
+        public string RA { get; set; }
+
+        [AliasAs("telefone")]
+        public string Telefone { get; set; }
+
+        [AliasAs("nome")]
+        public string Nome { get; set; }
+
+        [AliasAs("email")]
+        public string Email { get; set; }
+
+        [AliasAs("foto")]
+        public string Foto { get; set; }
+
+        [AliasAs("idSerie")]
+        public string IdSerie { get; set; }
+    }
 
     interface ApiService
     {
-    // Rotas de Séries
+        #region Rotas de Séries
         [Get("/series/list/")]
         Task<dynamic> GetSeriesAsync();
 
@@ -50,8 +70,9 @@ namespace ElearningDesktop
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/series/create/")]
         Task<dynamic> InsertSeriesAsync([Body] SerieQueryParameters parametros);
+        #endregion
 
-    // Rotas de Professores
+        #region Rotas de Professores
         [Get("/professores/list/")]
         Task<dynamic> GetTeachersAsync();
 
@@ -61,9 +82,24 @@ namespace ElearningDesktop
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/professores/create/")]
         Task<dynamic> InsertTeachersAsync([Body] TeacherQueryParameters parametros);
+        #endregion
 
+        #region Rotas de Alunos
+        [Get("/alunos/list/")]
+        Task<dynamic> GetStudentsAsync();
+
+        [Get("/alunos/list/")]
+        Task<dynamic> GetStudentsFilteredAsync(StudentQueryParameters parametros);
+
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
+        [Post("/alunos/create/")]
+        Task<dynamic> InsertStudentsAsync([Body] StudentQueryParameters parametros);
+        #endregion
+
+        #region Enviar Imagem para Servidor
         [Multipart]
         [Post("/upload/e-learning-storage")]
         Task<dynamic> SendImageToApi( ByteArrayPart file);
+        #endregion
     }
 }
