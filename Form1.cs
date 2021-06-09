@@ -97,7 +97,7 @@ namespace ElearningDesktop
         {
             changeActiveButtonColor( (Button)sender);
             closeOpenedForms();
-            form4 = new Form4();
+            form4 = new Form4(this);
             form4.TopLevel = false;
 
             panel2.Controls.Add(form4);
