@@ -142,4 +142,4 @@ namespace ElearningDesktop
             panel.Region = new Region(roundedPanel);
         }
     }
-}
+} 
