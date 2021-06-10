@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,22 +58,22 @@ namespace ElearningDesktop
     
     class StudentsApiResponse
     {
-        [JsonProperty("ra")]
-        public string RA { get; set; }
+        [AliasAs("ra")]
+        public int RA { get; set; }
 
-        [JsonProperty("telefone")]
+        [AliasAs("telefone")]
         public string Telefone { get; set; }
 
-        [JsonProperty("nome")]
+        [AliasAs("nome")]
         public string Nome { get; set; }
 
-        [JsonProperty("email")]
+        [AliasAs("email")]
         public string Email { get; set; }
 
-        [JsonProperty("foto")]
+        [AliasAs("foto")]
         public string Foto { get; set; }
 
-        [JsonProperty("idSerie")]
-        public string IdSerie { get; set; }
+        [AliasAs("idSerie")]
+        public int IdSerie { get; set; }
     }
 }
