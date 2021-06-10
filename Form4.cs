@@ -117,7 +117,7 @@ namespace ElearningDesktop
             try
             {
                 var apiPath = RestService.For<ApiService>(Routes.baseUrl);
-                if (filters == null)
+                if ((filters == null) || ((filters.RA == 0) && (filters.Email.Trim().Equals("")) && (filters.Telefone.Trim().Equals("")) && (filters.Nome.Trim().Equals(""))))
                 {
                     MessageBox.Show("samerda é null!");
                     var dataResponse = await apiPath.GetStudentsAsync();
@@ -125,6 +125,10 @@ namespace ElearningDesktop
                 }
                 else
                 {
+                    MessageBox.Show(filters.RA.ToString());
+                    MessageBox.Show(filters.Email);
+                    MessageBox.Show(filters.Telefone);
+                    MessageBox.Show(filters.Nome);
                     var dataResponse = await apiPath.GetStudentsFilteredAsync(filters);
                     students = JsonConvert.DeserializeObject<StudentsApiResponse[]>(dataResponse.ToString());
                 }
@@ -734,17 +738,17 @@ namespace ElearningDesktop
             if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text.Trim();
             if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text.Trim();
             if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text.Trim();
-            if (raTextBox.Text.Trim() != "")
+            try
             {
-                try
+                if ((raTextBox.Text.Trim() != ""))
                 {
                     filters.RA = Convert.ToInt32(raTextBox.Text.Trim());
                 }
-                catch (FormatException)
-                {
-                    MessageBox.Show("o RA digitado não é inteiro!");
-                    return;
-                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("o RA digitado não é inteiro!");
+                return;
             }
 
             int itemsCount = studentsPanel.Controls.Count;
