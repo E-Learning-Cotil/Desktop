@@ -39,8 +39,26 @@ namespace ElearningDesktop
 
     public class StudentQueryParameters
     {
+        [AliasAs("telefone")]
+        public string Telefone { get; set; }
+
+        [AliasAs("nome")]
+        public string Nome { get; set; }
+
+        [AliasAs("email")]
+        public string Email { get; set; }
+
+        [AliasAs("foto")]
+        public string Foto { get; set; }
+
+        [AliasAs("idSerie")]
+        public int IdSerie { get; set; }
+    }
+
+    public class StudentQueryGet
+    {
         [AliasAs("ra")]
-        public string RA { get; set; }
+        public int RA { get; set; }
 
         [AliasAs("telefone")]
         public string Telefone { get; set; }
@@ -55,7 +73,7 @@ namespace ElearningDesktop
         public string Foto { get; set; }
 
         [AliasAs("idSerie")]
-        public string IdSerie { get; set; }
+        public int IdSerie { get; set; }
     }
 
     interface ApiService
@@ -89,7 +107,7 @@ namespace ElearningDesktop
         Task<dynamic> GetStudentsAsync();
 
         [Get("/alunos/list/")]
-        Task<dynamic> GetStudentsFilteredAsync(StudentQueryParameters parametros);
+        Task<dynamic> GetStudentsFilteredAsync(StudentQueryGet parametros);
 
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/alunos/create/")]
@@ -98,7 +116,7 @@ namespace ElearningDesktop
 
         #region Enviar Imagem para Servidor
         [Multipart]
-        [Post("/upload/e-learning-storage")]
+        [Post("/image/upload/")]
         Task<dynamic> SendImageToApi( ByteArrayPart file);
         #endregion
     }
