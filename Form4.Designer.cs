@@ -80,6 +80,7 @@ namespace ElearningDesktop
             this.filterButton.TabIndex = 2;
             this.filterButton.Text = "Filtrar";
             this.filterButton.UseVisualStyleBackColor = false;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // filterPanel
             // 
@@ -192,6 +193,7 @@ namespace ElearningDesktop
             this.plusButtonPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.plusButtonPictureBox.TabIndex = 46;
             this.plusButtonPictureBox.TabStop = false;
+            this.plusButtonPictureBox.Click += new System.EventHandler(this.plusButtonPictureBox_Click);
             // 
             // studentsPanel
             // 
@@ -248,6 +250,7 @@ namespace ElearningDesktop
             this.Name = "Form4";
             this.Text = "Form4";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form4_Load);
             this.filterButtonPanel.ResumeLayout(false);
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();

@@ -27,6 +27,9 @@ namespace ElearningDesktop
         protected PictureBox studentPicture;
         string path;
 
+        string[] serieId;
+        string[] serieName;
+
         Form1 parentForm = null;
         #endregion
 
@@ -109,13 +112,14 @@ namespace ElearningDesktop
         }
 
 
-        private async void listStudents(StudentQueryParameters filters)
+        private async void listStudents(StudentQueryGet filters)
         {
             try
             {
                 var apiPath = RestService.For<ApiService>(Routes.baseUrl);
                 if (filters == null)
                 {
+                    MessageBox.Show("samerda é null!");
                     var dataResponse = await apiPath.GetStudentsAsync();
                     students = JsonConvert.DeserializeObject<StudentsApiResponse[]>(dataResponse.ToString());
                 }
@@ -144,7 +148,7 @@ namespace ElearningDesktop
                     {
                         StudentsApiResponse studentsData = students[i];
 
-                        Teachers student = new Teachers(studentsData.Nome, studentsData.Telefone, studentsData.Email, studentsData.RA, studentsData.Foto, i);
+                        Teachers student = new Teachers(studentsData.Nome, studentsData.Telefone, studentsData.Email, studentsData.RA.ToString(), studentsData.Foto, i);
                         studentsPanel.Controls.Add(student.getSeriePanel());
                         studentsPanel.Size = new Size(studentsPanel.Width, studentsPanel.Height - 1);
                     }
@@ -152,7 +156,7 @@ namespace ElearningDesktop
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Um erro occoreu: " + ex.ToString());
+               MessageBox.Show("Um erro occoreu: " + ex.ToString());
             }
 
 
@@ -170,7 +174,7 @@ namespace ElearningDesktop
             listStudents(null);
         }
 
-        #region Botão Criar Professor
+        #region Botão Criar Aluno
 
         private Panel styleCreationPanel()
         {
@@ -231,16 +235,6 @@ namespace ElearningDesktop
                         else data.Telefone = creationPanel.Controls[i].Text.Trim();
                     }
 
-                    else if (creationPanel.Controls[i].Name.Contains("RA"))
-                    {
-                        if (creationPanel.Controls[i].Text.Trim() == "")
-                        {
-                            MessageBox.Show("O RA é obrigatório!");
-                            return;
-                        }
-                        else data.RA = creationPanel.Controls[i].Text.Trim();
-                    }
-
                     else if (creationPanel.Controls[i].Name.Contains("Email"))
                     {
                         if (creationPanel.Controls[i].Text.Trim() == "")
@@ -264,6 +258,26 @@ namespace ElearningDesktop
                 return;
             }
 
+            int selectedSerie = -1;
+            for (int i = 0; i < creationPanel.Controls.Count; i++)
+            {
+
+                if (creationPanel.Controls[i].Name.Contains("comboBox"))
+                {
+                    if (creationPanel.Controls[i].Name.Contains("Serie"))
+                    {
+                        selectedSerie = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
+                        if (selectedSerie == -1)
+                        {
+                            MessageBox.Show("A série é obrigatório!");
+                            return;
+                        }
+                        else data.IdSerie = selectedSerie + 1;
+                        break;
+                    }
+                }
+            }
+
             var apiPath = RestService.For<ApiService>(Routes.baseUrl);
             try
             {
@@ -271,12 +285,6 @@ namespace ElearningDesktop
 
                 for (int i = 0; i < students.Length; i++)
                 {
-                    if (students[i].RA == data.RA)
-                    {
-                        isOk = false;
-                        MessageBox.Show("O RA já existe no banco de dados!");
-                        break;
-                    }
                     if (students[i].Email == data.Email)
                     {
                         isOk = false;
@@ -389,7 +397,7 @@ namespace ElearningDesktop
             }
             for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
             {
-                if (creationPanel.Controls[i].Name == "comboBoxStudent")
+                if (creationPanel.Controls[i].Name == "comboBoxSerie")
                 {
                     ((ComboBox)creationPanel.Controls[i]).Focus();
                     ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
@@ -410,11 +418,58 @@ namespace ElearningDesktop
             textBox.Location = location;
             textBox.BorderStyle = BorderStyle.None;
 
-            Rectangle rectangle = new Rectangle(0, 0, textBox.Width, textBox.Height);
+            Rectangle rectangle = new Rectangle(0, 0, textBox.Width, textBox.Height+1);
             GraphicsPath roundedTextBox = Transform.BorderRadius(rectangle, 5, true, true, true, true);
             textBox.Region = new Region(roundedTextBox);
 
             return textBox;
+        }
+        
+        private ComboBox createStudentPanelComboBox(string name, Point location, Panel parentPanel, string[] comboBoxData)
+        {
+            ComboBox comboBox = new ComboBox();
+
+            comboBox.Name = name;
+            comboBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2.7));
+            comboBox.FlatStyle = FlatStyle.Flat;
+            comboBox.BackColor = Styles.backgroundColor;
+            comboBox.ForeColor = Styles.white;
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.405), comboBox.Height);
+            comboBox.Location = location;
+            comboBox.Items.AddRange(comboBoxData);
+
+            Rectangle rectangle = new Rectangle(2, 2, comboBox.Width - 20, comboBox.Height - 3);
+            GraphicsPath roundedComboBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
+            comboBox.Region = new Region(roundedComboBox);
+
+            parentPanel.Controls.Add(comboBox);
+
+            Button comboBoxButton = new Button();
+            comboBoxButton.FlatStyle = FlatStyle.Flat;
+            comboBoxButton.FlatAppearance.BorderSize = 0;
+            comboBoxButton.BackgroundImage = Properties.Resources.seta;
+            comboBoxButton.ImageAlign = ContentAlignment.MiddleCenter;
+            comboBoxButton.BackgroundImageLayout = ImageLayout.Center;
+            comboBoxButton.BackColor = Styles.backgroundColor;
+            comboBoxButton.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.018), Convert.ToInt32(comboBox.Height - 1.5));
+
+            rectangle = new Rectangle(0, 0, comboBoxButton.Width, comboBoxButton.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 10, false, true, true, false);
+            comboBoxButton.Region = new Region(roundedButton);
+
+            comboBoxButton.Location = new Point(comboBox.Location.X + comboBox.Width - comboBoxButton.Width, comboBox.Location.Y + 1);
+
+            switch (name)
+            {
+                case "comboBoxSerie":
+                    comboBoxButton.Click += new EventHandler(showStudentComboBox_Click);
+                    break;
+            }
+
+            parentPanel.Controls.Add(comboBoxButton);
+
+            return comboBox;
         }
 
         private void studentPicture_DragDrop(object sender, DragEventArgs e)
@@ -526,8 +581,29 @@ namespace ElearningDesktop
             }
         }
 
-        private void plusButtonPictureBox_Click(object sender, EventArgs e)
+        private async void plusButtonPictureBox_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+                var dataResponse = await apiPath.GetSeriesAsync();
+                var series = JsonConvert.DeserializeObject<SeriesApiResponse[]>(dataResponse.ToString());
+                List<string> siglaList = new List<string>();
+                List<string> idList = new List<string>();
+                foreach (SeriesApiResponse serie in series)
+                {
+                    siglaList.Add(serie.Sigla);
+                    idList.Add(serie.Id.ToString());
+                }
+                serieName = siglaList.ToArray();
+                serieId = idList.ToArray();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+
             int labelSize = Convert.ToInt32(Styles.formSize.Height * 0.029) + 10;
             int objectHeight = Convert.ToInt32(Styles.formSize.Height * 0.06);
 
@@ -610,21 +686,26 @@ namespace ElearningDesktop
 
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
+            #region ComboBox Série
+
             creationSeriePanel.Controls.Add(createStudentPanelLabel(
-                    "labelRA",
-                    "RA: ",
-                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                    Styles.customFont,
-                    new Size(Convert.ToInt32(Styles.formSize.Width * 0.03), labelSize)
+                "labelSerie",
+                "Série: ",
+                new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                Styles.customFont,
+                new Size(Convert.ToInt32(Styles.formSize.Width * 0.041), labelSize)
             ));
 
             objectHeight += labelSize;
 
-            creationSeriePanel.Controls.Add(createStudentPanelTextBox(
-                     "textBoxRA",
+            creationSeriePanel.Controls.Add(createStudentPanelComboBox(
+                     "comboBoxSerie",
                      new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                     creationSeriePanel
+                     creationSeriePanel,
+                     serieName
              ));
+
+            #endregion
 
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
@@ -649,6 +730,23 @@ namespace ElearningDesktop
 
         private void filterButton_Click(object sender, EventArgs e)
         {
+            StudentQueryGet filters = new StudentQueryGet();
+            if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text.Trim();
+            if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text.Trim();
+            if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text.Trim();
+            if (raTextBox.Text.Trim() != "")
+            {
+                try
+                {
+                    filters.RA = Convert.ToInt32(raTextBox.Text.Trim());
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("o RA digitado não é inteiro!");
+                    return;
+                }
+            }
+
             int itemsCount = studentsPanel.Controls.Count;
             for (int i = itemsCount - 1; i > 0; i--)
             {
@@ -669,13 +767,7 @@ namespace ElearningDesktop
 
             loadingText.Visible = true;
             loadingCircle1.Visible = true;
-
-            StudentQueryParameters filters = new StudentQueryParameters();
-            if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text.Trim();
-            if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text.Trim();
-            if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text.Trim();
-            if (raTextBox.Text.Trim() != "") filters.RA = raTextBox.Text.Trim();
-
+            
             listStudents(filters);
         }
     }
