@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Students.cs" />
     <Compile Include="Teachers.cs" />
     <Compile Include="Transform.cs" />
     <EmbeddedResource Include="Form1.resx">
