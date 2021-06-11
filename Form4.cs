@@ -69,8 +69,8 @@ namespace ElearningDesktop
             linePanel.Location = new Point(filterButtonPanel.Location.X, filterButtonPanel.Location.Y);
             linePanel.Size = new Size(filterButtonPanel.Width, 2);
 
-            studentsPanel.Location = new Point(0, 7);
-            studentsPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height);
+            studentsPanel.Location = new Point(0, 2);
+            studentsPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height - 4);
 
             nameLabel.Font = telephoneLabel.Font = emailLabel.Font = raLabel.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             nameLabel.ForeColor = telephoneLabel.ForeColor = emailLabel.ForeColor = raLabel.ForeColor = Styles.filterTitleColor;
@@ -117,18 +117,13 @@ namespace ElearningDesktop
             try
             {
                 var apiPath = RestService.For<ApiService>(Routes.baseUrl);
-                if ((filters == null) || ((filters.RA == 0) && (filters.Email.Trim().Equals("")) && (filters.Telefone.Trim().Equals("")) && (filters.Nome.Trim().Equals(""))))
+                if ((filters == null) ||((filters.RA.Equals(null)) && (filters.Email == null) && (filters.Nome == null) && (filters.Telefone == null)))
                 {
-                    MessageBox.Show("samerda é null!");
                     var dataResponse = await apiPath.GetStudentsAsync();
                     students = JsonConvert.DeserializeObject<StudentsApiResponse[]>(dataResponse.ToString());
                 }
                 else
                 {
-                    MessageBox.Show(filters.RA.ToString());
-                    MessageBox.Show(filters.Email);
-                    MessageBox.Show(filters.Telefone);
-                    MessageBox.Show(filters.Nome);
                     var dataResponse = await apiPath.GetStudentsFilteredAsync(filters);
                     students = JsonConvert.DeserializeObject<StudentsApiResponse[]>(dataResponse.ToString());
                 }
@@ -148,14 +143,18 @@ namespace ElearningDesktop
                 }
                 else
                 {
-                    for (int i = 0; i < students.Length; i++)
+                    int i;
+                    for (i = 0; i< students.Length; i++)
                     {
                         StudentsApiResponse studentsData = students[i];
 
-                        Teachers student = new Teachers(studentsData.Nome, studentsData.Telefone, studentsData.Email, studentsData.RA.ToString(), studentsData.Foto, i);
+                        Students student = new Students(studentsData.Nome, studentsData.Telefone, studentsData.Email, studentsData.RA, studentsData.Foto,studentsData.IdSerie, i);
                         studentsPanel.Controls.Add(student.getSeriePanel());
-                        studentsPanel.Size = new Size(studentsPanel.Width, studentsPanel.Height - 1);
                     }
+                    Panel panel = new Panel();
+                    panel.Size = new Size(1, 20);
+                    panel.Location = new Point(20,(20 + Styles.seriesSize.Height) * (i));
+                    studentsPanel.Controls.Add(panel);
                 }
             }
             catch (Exception ex)
@@ -434,7 +433,7 @@ namespace ElearningDesktop
             ComboBox comboBox = new ComboBox();
 
             comboBox.Name = name;
-            comboBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2.7));
+            comboBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2.8));
             comboBox.FlatStyle = FlatStyle.Flat;
             comboBox.BackColor = Styles.backgroundColor;
             comboBox.ForeColor = Styles.white;
@@ -608,6 +607,7 @@ namespace ElearningDesktop
                 return;
             }
 
+
             int labelSize = Convert.ToInt32(Styles.formSize.Height * 0.029) + 10;
             int objectHeight = Convert.ToInt32(Styles.formSize.Height * 0.06);
 
@@ -617,7 +617,7 @@ namespace ElearningDesktop
             creationSeriePanel.Controls.Add(finishStudentCreationButton());
             creationSeriePanel.Controls.Add(createStudentPanelLabel(
                     "labelTitle",
-                    "Adicionar novo Professor:",
+                    "Adicionar novo Aluno:",
                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
                     Styles.defaultFont,
                     new Size(Convert.ToInt32(Styles.formSize.Width * 0.268), Convert.ToInt32(Styles.formSize.Height * 0.039))
@@ -735,12 +735,12 @@ namespace ElearningDesktop
         private void filterButton_Click(object sender, EventArgs e)
         {
             StudentQueryGet filters = new StudentQueryGet();
-            if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text.Trim();
-            if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text.Trim();
-            if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text.Trim();
+            if (!nameTextBox.Text.Trim().Equals("")) filters.Nome = nameTextBox.Text.Trim();
+            if (!telephoneTextBox.Text.Trim().Equals("")) filters.Telefone = telephoneTextBox.Text.Trim();
+            if (!emailTextBox.Text.Trim().Equals("")) filters.Email = emailTextBox.Text.Trim();
             try
             {
-                if ((raTextBox.Text.Trim() != ""))
+                if (!raTextBox.Text.Trim().Equals(""))
                 {
                     filters.RA = Convert.ToInt32(raTextBox.Text.Trim());
                 }
