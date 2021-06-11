@@ -58,7 +58,7 @@ namespace ElearningDesktop
     public class StudentQueryGet
     {
         [AliasAs("ra")]
-        public int RA { get; set; }
+        public int? RA { get; set; }
 
         [AliasAs("telefone")]
         public string Telefone { get; set; }
@@ -73,7 +73,7 @@ namespace ElearningDesktop
         public string Foto { get; set; }
 
         [AliasAs("idSerie")]
-        public int IdSerie { get; set; }
+        public int? IdSerie { get; set; }
     }
 
     interface ApiService
