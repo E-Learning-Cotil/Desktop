@@ -250,14 +250,9 @@ namespace ElearningDesktop
                 }
             }
             if (!imageUrl.Trim().Equals("")) data.Foto = imageUrl;
-            else if (studentPicture.SizeMode == PictureBoxSizeMode.CenterImage)
-            {
-                MessageBox.Show("A imagem não pode ser vazia!");
-                return;
-            }
             else
             {
-                MessageBox.Show("Imagem em processamento. Por favor, aguarde.");
+                MessageBox.Show("A imagem não pode ser vazia!");
                 return;
             }
 
@@ -304,6 +299,28 @@ namespace ElearningDesktop
 
                 if (isOk)
                 {
+                    Panel p = new Panel();
+                    Button b = new Button();
+                    for (int i = 0; i < parentForm.Controls.Count; i++)
+                    {
+                        if (parentForm.Controls[i].Name == "creationStudentPanel")
+                        {
+                            p = (Panel)parentForm.Controls[i];
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < p.Controls.Count; i++)
+                    {
+                        if (p.Controls[i].Name == "finishStudentCreation")
+                        {
+                            b = (Button)p.Controls[i];
+                            break;
+                        }
+                    }
+
+                    b.Text = "Aguarde...";
+                    b.Enabled = false;
+
                     var dataResponse = await apiPath.InsertStudentsAsync(data);
                     var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
                     MessageBox.Show(response.Message);
@@ -357,6 +374,7 @@ namespace ElearningDesktop
             Button finishStudentCreation = new Button();
 
             finishStudentCreation.Font = Styles.customFont;
+            finishStudentCreation.Name = "finishStudentCreation";
             finishStudentCreation.Text = "Finalizar";
             finishStudentCreation.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Height * 0.042));
 
@@ -502,17 +520,42 @@ namespace ElearningDesktop
 
         private async void sendStudentImage()
         {
+            Panel p = new Panel();
+            Button b = new Button();
+            for (int i = 0; i < parentForm.Controls.Count; i++)
+            {
+                if (parentForm.Controls[i].Name == "creationStudentPanel")
+                {
+                    p = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for(int i = 0; i < p.Controls.Count; i++)
+            {
+                if(p.Controls[i].Name == "finishStudentCreation")
+                {
+                    b = (Button)p.Controls[i];
+                    break;
+                }
+            }
+
+            b.Text = "Aguarde...";
+            b.Enabled = false;
+
             var apiPath = RestService.For<ApiService>(Routes.sendImageBaseUrl);
             try
             {
                 var imageData = ImageToByteArray(image);
                 var dataResponse = await apiPath.SendImageToApi(new ByteArrayPart(imageData, "file.png"));
                 imageUrl = dataResponse;
-                MessageBox.Show("Imagem armazenada com sucesso!");
+                b.Text = "Finalizar";
+                b.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                b.Text = "Erro...";
+                b.Enabled = false;
             }
         }
 
@@ -611,11 +654,12 @@ namespace ElearningDesktop
             int labelSize = Convert.ToInt32(Styles.formSize.Height * 0.029) + 10;
             int objectHeight = Convert.ToInt32(Styles.formSize.Height * 0.06);
 
-            Panel creationSeriePanel = styleCreationPanel();
+            Panel creationStudentPanel = styleCreationPanel();
+            creationStudentPanel.Name = "creationStudentPanel";
 
-            creationSeriePanel.Controls.Add(cancelStudentCreationButton());
-            creationSeriePanel.Controls.Add(finishStudentCreationButton());
-            creationSeriePanel.Controls.Add(createStudentPanelLabel(
+            creationStudentPanel.Controls.Add(cancelStudentCreationButton());
+            creationStudentPanel.Controls.Add(finishStudentCreationButton());
+            creationStudentPanel.Controls.Add(createStudentPanelLabel(
                     "labelTitle",
                     "Adicionar novo Aluno:",
                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
@@ -625,7 +669,7 @@ namespace ElearningDesktop
 
             objectHeight += labelSize;
 
-            creationSeriePanel.Controls.Add(createStudentPanelLabel(
+            creationStudentPanel.Controls.Add(createStudentPanelLabel(
                     "labelNome",
                     "Nome: ",
                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
@@ -635,10 +679,10 @@ namespace ElearningDesktop
 
             objectHeight += labelSize;
 
-            creationSeriePanel.Controls.Add(createStudentPanelTextBox(
+            creationStudentPanel.Controls.Add(createStudentPanelTextBox(
                      "textBoxNome",
                      new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                     creationSeriePanel
+                     creationStudentPanel
              ));
 
             #region Adicionar imagem
@@ -666,13 +710,13 @@ namespace ElearningDesktop
             studentPicture.DragDrop += new DragEventHandler(this.studentPicture_DragDrop);
 
             panel.Controls.Add(studentPicture);
-            creationSeriePanel.Controls.Add(panel);
+            creationStudentPanel.Controls.Add(panel);
 
             #endregion
 
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
-            creationSeriePanel.Controls.Add(createStudentPanelLabel(
+            creationStudentPanel.Controls.Add(createStudentPanelLabel(
                     "labelEmail",
                     "Email: ",
                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
@@ -682,17 +726,17 @@ namespace ElearningDesktop
 
             objectHeight += labelSize;
 
-            creationSeriePanel.Controls.Add(createStudentPanelTextBox(
+            creationStudentPanel.Controls.Add(createStudentPanelTextBox(
                      "textBoxEmail",
                      new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                     creationSeriePanel
+                     creationStudentPanel
              ));
 
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
             #region ComboBox Série
 
-            creationSeriePanel.Controls.Add(createStudentPanelLabel(
+            creationStudentPanel.Controls.Add(createStudentPanelLabel(
                 "labelSerie",
                 "Série: ",
                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
@@ -702,10 +746,10 @@ namespace ElearningDesktop
 
             objectHeight += labelSize;
 
-            creationSeriePanel.Controls.Add(createStudentPanelComboBox(
+            creationStudentPanel.Controls.Add(createStudentPanelComboBox(
                      "comboBoxSerie",
                      new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                     creationSeriePanel,
+                     creationStudentPanel,
                      serieName
              ));
 
@@ -713,7 +757,7 @@ namespace ElearningDesktop
 
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
-            creationSeriePanel.Controls.Add(createStudentPanelLabel(
+            creationStudentPanel.Controls.Add(createStudentPanelLabel(
                     "labelTelefone",
                     "Telefone: ",
                     new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
@@ -723,10 +767,10 @@ namespace ElearningDesktop
 
             objectHeight += labelSize;
 
-            creationSeriePanel.Controls.Add(createStudentPanelTextBox(
+            creationStudentPanel.Controls.Add(createStudentPanelTextBox(
                      "textBoxTelefone",
                      new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                     creationSeriePanel
+                     creationStudentPanel
              ));
         }
 

@@ -261,14 +261,9 @@ namespace ElearningDesktop
                 }
             }
             if (!imageUrl.Trim().Equals("")) data.Foto = imageUrl;
-            else if (teacherPicture.SizeMode == PictureBoxSizeMode.CenterImage)
-            {
-                MessageBox.Show("A imagem não pode ser vazia!");
-                return;
-            }
             else
             {
-                MessageBox.Show("Imagem em processamento. Por favor, aguarde.");
+                MessageBox.Show("A imagem não pode ser vazia!");
                 return;
             }
 
@@ -301,6 +296,28 @@ namespace ElearningDesktop
 
                 if (isOk)
                 {
+                    Panel p = new Panel();
+                    Button b = new Button();
+                    for (int i = 0; i < parentForm.Controls.Count; i++)
+                    {
+                        if (parentForm.Controls[i].Name == "creationTeacherPanel")
+                        {
+                            p = (Panel)parentForm.Controls[i];
+                            break;
+                        }
+                    }
+                    for (int i = 0; i < p.Controls.Count; i++)
+                    {
+                        if (p.Controls[i].Name == "finishTeacherCreation")
+                        {
+                            b = (Button)p.Controls[i];
+                            break;
+                        }
+                    }
+
+                    b.Text = "Aguarde...";
+                    b.Enabled = false;
+
                     var dataResponse = await apiPath.InsertTeachersAsync(data);
                     var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
                     MessageBox.Show(response.Message);
@@ -355,6 +372,7 @@ namespace ElearningDesktop
 
             finishTeacherCreation.Font = Styles.customFont;
             finishTeacherCreation.Text = "Finalizar";
+            finishTeacherCreation.Name = "finishTeacherCreation";
             finishTeacherCreation.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Height * 0.042));
 
             Rectangle rectangle = new Rectangle(0, 0, finishTeacherCreation.Width, finishTeacherCreation.Height);
@@ -429,17 +447,42 @@ namespace ElearningDesktop
 
         private async void sendTeacherImage()
         {
+            Panel p = new Panel();
+            Button b = new Button();
+            for (int i = 0; i < parentForm.Controls.Count; i++)
+            {
+                if (parentForm.Controls[i].Name == "creationTeacherPanel")
+                {
+                    p = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for (int i = 0; i < p.Controls.Count; i++)
+            {
+                if (p.Controls[i].Name == "finishTeacherCreation")
+                {
+                    b = (Button)p.Controls[i];
+                    break;
+                }
+            }
+
+            b.Text = "Aguarde...";
+            b.Enabled = false;
+
             var apiPath = RestService.For<ApiService>(Routes.sendImageBaseUrl);
             try
             {
                 var imageData = ImageToByteArray(image);
                 var dataResponse = await apiPath.SendImageToApi(new ByteArrayPart(imageData, "file.png"));
                 imageUrl = dataResponse;
-                MessageBox.Show("Imagem armazenada com sucesso!");
+                b.Text = "Finalizar";
+                b.Enabled = true;
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                b.Text = "Erro...";
+                b.Enabled = false;
             }
         }
 
