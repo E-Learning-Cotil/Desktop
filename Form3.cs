@@ -71,8 +71,8 @@ namespace ElearningDesktop
             linePanel.Location = new Point(filterButtonPanel.Location.X, filterButtonPanel.Location.Y);
             linePanel.Size = new Size(filterButtonPanel.Width, 2);
 
-            teachersPanel.Location = new Point(0, 7);
-            teachersPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height);
+            teachersPanel.Location = new Point(0, 2);
+            teachersPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height - 4);
 
             nameLabel.Font = telephoneLabel.Font = emailLabel.Font = rgLabel.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             nameLabel.ForeColor = telephoneLabel.ForeColor = emailLabel.ForeColor = rgLabel.ForeColor = Styles.filterTitleColor;
@@ -144,14 +144,18 @@ namespace ElearningDesktop
                 }
                 else
                 {
-                    for (int i = 0; i < teachers.Length; i++)
+                    int i;
+                    for (i = 0; i < teachers.Length; i++)
                     {
                         TeachersApiResponse teachersData = teachers[i];
 
                         Teachers serie = new Teachers(teachersData.Nome, teachersData.Telefone, teachersData.Email, teachersData.RG, teachersData.Foto, i);
                         teachersPanel.Controls.Add(serie.getSeriePanel());
-                        teachersPanel.Size = new Size(teachersPanel.Width, teachersPanel.Height - 1);
                     }
+                    Panel panel = new Panel();
+                    panel.Size = new Size(1, 20);
+                    panel.Location = new Point(20, (20 + Styles.seriesSize.Height) * (i));
+                    teachersPanel.Controls.Add(panel);
                 }
             }
             catch(Exception ex)

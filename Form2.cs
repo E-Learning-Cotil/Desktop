@@ -77,8 +77,8 @@ namespace ElearningDesktop
             linePanel.Location = new Point(filterButtonPanel.Location.X,filterButtonPanel.Location.Y);
             linePanel.Size = new Size(filterButtonPanel.Width, 2);
 
-            seriesPanel.Location = new Point(0, 7);
-            seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673),this.Height);
+            seriesPanel.Location = new Point(0, 2);
+            seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673),this.Height - 4);
         }
 
         private void loadingMessageStyle()
@@ -233,14 +233,18 @@ namespace ElearningDesktop
                 }
                 else
                 {
-                    for (int i = 0; i < series.Length; i++)
+                    int i;
+                    for (i = 0; i < series.Length; i++)
                     {
                         SeriesApiResponse serieData = series[i];
 
                         Series serie = new Series(serieData.Id, serieData.Curso, serieData.Tipo, serieData.Ano, serieData.Periodo, serieData.Sigla, serieData._count.Turmas,i);
                         seriesPanel.Controls.Add(serie.getSeriePanel());
-                        seriesPanel.Size = new Size(seriesPanel.Width, seriesPanel.Height - 1);
                     }
+                    Panel panel = new Panel();
+                    panel.Size = new Size(1, 20);
+                    panel.Location = new Point(20, (20 + Styles.seriesSize.Height) * (i));
+                    seriesPanel.Controls.Add(panel);
                 }
 
             }
