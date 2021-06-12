@@ -29,6 +29,7 @@ namespace ElearningDesktop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -148,7 +149,7 @@ namespace ElearningDesktop
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ElearningDesktop.Properties.Resources.logo1;
+            this.pictureBox1.Image = global::ElearningDesktop.Properties.Resources.ttc_logo_black;
             this.pictureBox1.Location = new System.Drawing.Point(40, 20);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(68, 52);
             this.pictureBox1.Name = "pictureBox1";
@@ -166,6 +167,7 @@ namespace ElearningDesktop
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.White;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
