@@ -168,6 +168,8 @@
     <None Include="obj\Debug\x.png" />
     <None Include="obj\Debug\upload.png" />
     <None Include="obj\Debug\user.png" />
+    <None Include="obj\tcc-logo-white.png" />
+    <None Include="obj\ttc-logo-black.png" />
     <Content Include="Quicksand-Regular.ttf" />
     <Content Include="Righteous-Regular.ttf" />
   </ItemGroup>
