@@ -94,8 +94,16 @@ namespace ElearningDesktop
         public static void setProjectFonts()
         {
             usedFonts = new PrivateFontCollection();
-            usedFonts.AddFontFile(Path.Combine(System.Windows.Forms.Application.StartupPath, "Quicksand-Regular.ttf"));
-            usedFonts.AddFontFile(Path.Combine(System.Windows.Forms.Application.StartupPath, "Righteous-Regular.ttf"));
+
+            try
+            {
+                usedFonts.AddFontFile(Path.Combine(System.Windows.Forms.Application.StartupPath, "Quicksand-Regular.ttf"));
+                usedFonts.AddFontFile(Path.Combine(System.Windows.Forms.Application.StartupPath, "Righteous-Regular.ttf"));
+            }
+            catch
+            {
+                MessageBox.Show("Fontes necessárias não instaladas: \"Righteous\" e \"Quicksand\"!!");
+            }
         }
     }
 } //END NAMESPACE
