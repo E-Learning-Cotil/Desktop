@@ -2051,20 +2051,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bruno\\.nuget\\packages\\": {}
+    "C:\\Users\\mathe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bruno\\source\\repos\\E-Learning\\Desktop\\ElearningDesktop.csproj",
+      "projectUniqueName": "C:\\Users\\mathe\\source\\repos\\Desktop\\ElearningDesktop.csproj",
       "projectName": "ElearningDesktop",
-      "projectPath": "C:\\Users\\Bruno\\source\\repos\\E-Learning\\Desktop\\ElearningDesktop.csproj",
-      "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bruno\\source\\repos\\E-Learning\\Desktop\\obj\\",
+      "projectPath": "C:\\Users\\mathe\\source\\repos\\Desktop\\ElearningDesktop.csproj",
+      "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mathe\\source\\repos\\Desktop\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
