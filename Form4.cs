@@ -107,7 +107,7 @@ namespace ElearningDesktop
             plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, studentsPanel.Height - plusButtonPictureBox.Height - 7);
 
             Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 60, true, true, true, true);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, (50 + (Styles.seriesSize.Width/380)), true, true, true, true);
             plusButtonPictureBox.Region = new Region(roundedButton);
         }
 
