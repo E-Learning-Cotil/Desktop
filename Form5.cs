@@ -43,6 +43,7 @@ namespace ElearningDesktop
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            Filter.arrangeFilterPosition(this);
             filterPanelsPositions();
             filterButtonStyle();
             Filter.orderFilterElements(filterPanel);
@@ -64,6 +65,7 @@ namespace ElearningDesktop
 
         private void filterPanelsPositions()
         {
+            /*
             //Arruma posição e formato do panel com os filtros
             filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
             filterPanel.Location = new Point(Convert.ToInt32(this.Width * 0.712), Convert.ToInt32(this.Height * 0.043));
@@ -81,8 +83,9 @@ namespace ElearningDesktop
             //arruma posição da linha que separa os dois panels
             linePanel.Location = new Point(filterButtonPanel.Location.X, filterButtonPanel.Location.Y);
             linePanel.Size = new Size(filterButtonPanel.Width, 2);
+            */
 
-            //POSIÇÃO DOS BOTOES DO FILTRO
+            //POSIÇÃO DO PANEL ONDE AS TURMAS VÃO APARECER
             studentsPanel.Location = new Point(0, 2);
             studentsPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height - 4);
         }
@@ -90,9 +93,7 @@ namespace ElearningDesktop
         private void loadingMessageStyle()
         {
             loadingText.Font = Styles.defaultFont;
-
             loadingCircle1.Location = new Point(Convert.ToInt32((studentsPanel.Width / 2) - (loadingCircle1.Width / 2)), Convert.ToInt32(this.Height / 2 - loadingCircle1.Height / 2));
-
             loadingText.Location = new Point(Convert.ToInt32((studentsPanel.Width / 2) - (loadingText.Width / 2)) + 10, loadingCircle1.Location.Y - loadingText.Height - 10);
         }
 
