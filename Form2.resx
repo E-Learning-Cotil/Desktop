@@ -1017,6 +1017,24 @@
   <data name="&gt;&gt;filterPanel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="filterButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="filterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="filterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 19</value>
+  </data>
+  <data name="filterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="filterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="filterButton.Text" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
   <data name="&gt;&gt;filterButton.Name" xml:space="preserve">
     <value>filterButton</value>
   </data>
@@ -1050,36 +1068,6 @@
   <data name="&gt;&gt;filterButtonPanel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="filterButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="filterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="filterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 19</value>
-  </data>
-  <data name="filterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="filterButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="filterButton.Text" xml:space="preserve">
-    <value>Filtrar</value>
-  </data>
-  <data name="&gt;&gt;filterButton.Name" xml:space="preserve">
-    <value>filterButton</value>
-  </data>
-  <data name="&gt;&gt;filterButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterButton.Parent" xml:space="preserve">
-    <value>filterButtonPanel</value>
-  </data>
-  <data name="&gt;&gt;filterButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="linePanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>503, 435</value>
   </data>
@@ -1101,56 +1089,8 @@
   <data name="&gt;&gt;linePanel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="seriesPanel.AutoScroll" type="System.Boolean, mscorlib">
+  <data name="centralPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
-    <value>loadingCircle1</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.7814.27065, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.Parent" xml:space="preserve">
-    <value>seriesPanel</value>
-  </data>
-  <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;loadingText.Name" xml:space="preserve">
-    <value>loadingText</value>
-  </data>
-  <data name="&gt;&gt;loadingText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loadingText.Parent" xml:space="preserve">
-    <value>seriesPanel</value>
-  </data>
-  <data name="&gt;&gt;loadingText.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="seriesPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="seriesPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 20</value>
-  </data>
-  <data name="seriesPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>485, 420</value>
-  </data>
-  <data name="seriesPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;seriesPanel.Name" xml:space="preserve">
-    <value>seriesPanel</value>
-  </data>
-  <data name="&gt;&gt;seriesPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;seriesPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;seriesPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="loadingCircle1.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 10</value>
@@ -1171,7 +1111,7 @@
     <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.7814.27065, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircle1.Parent" xml:space="preserve">
-    <value>seriesPanel</value>
+    <value>centralPanel</value>
   </data>
   <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1204,9 +1144,33 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;loadingText.Parent" xml:space="preserve">
-    <value>seriesPanel</value>
+    <value>centralPanel</value>
   </data>
   <data name="&gt;&gt;loadingText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="centralPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="centralPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 20</value>
+  </data>
+  <data name="centralPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>485, 420</value>
+  </data>
+  <data name="centralPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;centralPanel.Name" xml:space="preserve">
+    <value>centralPanel</value>
+  </data>
+  <data name="&gt;&gt;centralPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;centralPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;centralPanel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="plusButtonPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">

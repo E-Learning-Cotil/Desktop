@@ -44,79 +44,19 @@ namespace ElearningDesktop
             this.parentForm = parentForm;
         }
 
-        private void filterButtonStyle()
+        private void Form3_Load(object sender, EventArgs e)
         {
-            filterButton.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.7));
-            filterButton.Size = new Size(Convert.ToInt32(filterButtonPanel.Width * 0.830), Convert.ToInt32(filterButtonPanel.Height * 0.574));
-            filterButton.Location = new Point(Convert.ToInt32(filterButtonPanel.Width / 2 - filterButton.Width / 2), Convert.ToInt32(filterButtonPanel.Height / 2 - filterButton.Height / 2));
-            Rectangle rectangle = new Rectangle(0, 0, filterButton.Width, filterButton.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 20, true, true, true, true);
-            filterButton.Region = new Region(roundedButton);
-        }
+            //FILTRO
+            Filter.arrangeFilterPosition(this);
+            Filter.filterButtonStyle(filterButtonPanel);
+            Filter.orderFilterElements(filterPanel);
 
-        private void filterPanelsPositions()
-        {
-            filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
-            filterPanel.Location = new Point(Convert.ToInt32(this.Width * 0.712), Convert.ToInt32(this.Height * 0.043));
-            Rectangle rectangle = new Rectangle(0, 0, filterPanel.Width, filterPanel.Height);
-            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, false, false);
-            filterPanel.Region = new Region(roundedPanel);
+            //Localização e estilos
+            ScreenElements.arrangeCentralPanelLocation(this);
+            ScreenElements.stylizePlusButton(this);
+            ScreenElements.stylizeLoadingMessage(this);
 
-            filterButtonPanel.Location = new Point(filterPanel.Location.X, Convert.ToInt32(filterPanel.Height + filterPanel.Location.Y));
-            filterButtonPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.103));
-            rectangle = new Rectangle(0, 0, filterButtonPanel.Width, filterButtonPanel.Height);
-            roundedPanel = Transform.BorderRadius(rectangle, 20, false, false, true, true);
-            filterButtonPanel.Region = new Region(roundedPanel);
-
-            linePanel.Location = new Point(filterButtonPanel.Location.X, filterButtonPanel.Location.Y);
-            linePanel.Size = new Size(filterButtonPanel.Width, 2);
-
-            teachersPanel.Location = new Point(0, 2);
-            teachersPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height - 4);
-
-            /* CÓDIGO ANTIGO DE ORDENAÇÃO DOS FILTROS
-             * label01Title_Nome.Font = label02Title_Telefone.Font = label03Title_Email.Font = label04Title_RG.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
-            label01Title_Nome.ForeColor = label02Title_Telefone.ForeColor = label03Title_Email.ForeColor = label04Title_RG.ForeColor = Styles.filterTitleColor;
-
-            textBox1_Nome.Font = textBox2_Telefone.Font = textBox3_Email.Font = textBox4_RG.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
-            textBox1_Nome.Size = textBox2_Telefone.Size = textBox3_Email.Size = textBox4_RG.Size = new Size(filterPanel.Width - 20, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
-
-            label01Title_Nome.Location = new Point(10, 20);
-            textBox1_Nome.Location = new Point(10, label01Title_Nome.Location.Y + label01Title_Nome.Height + 10);
-
-            label02Title_Telefone.Location = new Point(10, textBox1_Nome.Location.Y + textBox1_Nome.Height + 10);
-            textBox2_Telefone.Location = new Point(10, label02Title_Telefone.Location.Y + label02Title_Telefone.Height + 10);
-
-            label03Title_Email.Location = new Point(10, textBox2_Telefone.Location.Y + textBox2_Telefone.Height + 10);
-            textBox3_Email.Location = new Point(10, label03Title_Email.Location.Y + label03Title_Email.Height + 10);
-
-            label04Title_RG.Location = new Point(10, textBox3_Email.Location.Y + textBox3_Email.Height + 10);
-            textBox4_RG.Location = new Point(10, label04Title_RG.Location.Y + label04Title_RG.Height + 10);
-            */
-        }
-
-        private void loadingMessageStyle()
-        {
-            loadingText.Font = Styles.defaultFont;
-
-            loadingCircle1.Location = new Point(Convert.ToInt32((teachersPanel.Width / 2) - (loadingCircle1.Width / 2)), Convert.ToInt32(this.Height / 2 - loadingCircle1.Height / 2));
-
-            loadingText.Location = new Point(Convert.ToInt32((teachersPanel.Width / 2) - (loadingText.Width / 2)) + 10, loadingCircle1.Location.Y - loadingText.Height - 10);
-        }
-
-        private void stylePlusButton()
-        {
-            plusButtonPictureBox.Size = new Size(Convert.ToInt32(this.Height * 0.083), Convert.ToInt32(this.Height * 0.083));
-
-            plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, teachersPanel.Height - plusButtonPictureBox.Height - 7);
-
-            Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
-
-            GraphicsPath roundedButton = new GraphicsPath();
-            roundedButton.StartFigure();
-            roundedButton.AddArc(rectangle, 0, 360);
-            roundedButton.CloseFigure();
-            plusButtonPictureBox.Region = new Region(roundedButton);
+            listTeachers(null);
         }
 
         private async void listTeachers(TeacherQueryParameters filters)
@@ -146,7 +86,7 @@ namespace ElearningDesktop
                     noTeachers.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints));
                     noTeachers.AutoSize = true;
                     noTeachers.Location = new Point(20, 20);
-                    teachersPanel.Controls.Add(noTeachers);
+                    centralPanel.Controls.Add(noTeachers);
                 }
                 else
                 {
@@ -156,12 +96,12 @@ namespace ElearningDesktop
                         TeachersApiResponse teachersData = teachers[i];
 
                         Teachers serie = new Teachers(teachersData.Nome, teachersData.Telefone, teachersData.Email, teachersData.RG, teachersData.Foto, i);
-                        teachersPanel.Controls.Add(serie.getSeriePanel());
+                        centralPanel.Controls.Add(serie.getSeriePanel());
                     }
                     Panel panel = new Panel();
                     panel.Size = new Size(1, 20);
                     panel.Location = new Point(20, (20 + Styles.seriesSize.Height) * (i));
-                    teachersPanel.Controls.Add(panel);
+                    centralPanel.Controls.Add(panel);
                 }
             }
             catch(Exception ex)
@@ -172,19 +112,6 @@ namespace ElearningDesktop
           
     }
 
-        private void Form3_Load(object sender, EventArgs e)
-        {
-            filterPanelsPositions();
-            filterButtonStyle();
-            Filter.orderFilterElements(filterPanel);
-
-
-            stylePlusButton();
-
-            loadingMessageStyle();
-
-            listTeachers(null);
-        }
 
         #region Botão Criar Professor
 
@@ -685,20 +612,20 @@ namespace ElearningDesktop
 
         private void filterButton_Click(object sender, EventArgs e)
         {
-            int itemsCount = teachersPanel.Controls.Count;
+            int itemsCount = centralPanel.Controls.Count;
             for (int i = itemsCount - 1; i > 0; i--)
             {
-                if (teachersPanel.Controls[i].Name == "noTeachers")
+                if (centralPanel.Controls[i].Name == "noTeachers")
                 {
-                    teachersPanel.Controls.Remove(teachersPanel.Controls[i]);
+                    centralPanel.Controls.Remove(centralPanel.Controls[i]);
                     continue;
                 }
 
-                Type objectType = teachersPanel.Controls[i].GetType();
+                Type objectType = centralPanel.Controls[i].GetType();
 
                 if (objectType == typeof(Panel))
                 {
-                    teachersPanel.Controls.Remove(teachersPanel.Controls[i]);
+                    centralPanel.Controls.Remove(centralPanel.Controls[i]);
                     itemsCount--;
                 }
             }

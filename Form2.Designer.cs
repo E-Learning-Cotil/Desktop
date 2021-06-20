@@ -64,13 +64,13 @@ namespace ElearningDesktop
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
             this.linePanel = new System.Windows.Forms.Panel();
-            this.seriesPanel = new System.Windows.Forms.Panel();
+            this.centralPanel = new System.Windows.Forms.Panel();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.loadingText = new System.Windows.Forms.Label();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
             this.filterPanel.SuspendLayout();
             this.filterButtonPanel.SuspendLayout();
-            this.seriesPanel.SuspendLayout();
+            this.centralPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -337,12 +337,12 @@ namespace ElearningDesktop
             resources.ApplyResources(this.linePanel, "linePanel");
             this.linePanel.Name = "linePanel";
             // 
-            // seriesPanel
+            // centralPanel
             // 
-            resources.ApplyResources(this.seriesPanel, "seriesPanel");
-            this.seriesPanel.Controls.Add(this.loadingCircle1);
-            this.seriesPanel.Controls.Add(this.loadingText);
-            this.seriesPanel.Name = "seriesPanel";
+            resources.ApplyResources(this.centralPanel, "centralPanel");
+            this.centralPanel.Controls.Add(this.loadingCircle1);
+            this.centralPanel.Controls.Add(this.loadingText);
+            this.centralPanel.Name = "centralPanel";
             // 
             // loadingCircle1
             // 
@@ -378,7 +378,7 @@ namespace ElearningDesktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.Controls.Add(this.plusButtonPictureBox);
-            this.Controls.Add(this.seriesPanel);
+            this.Controls.Add(this.centralPanel);
             this.Controls.Add(this.linePanel);
             this.Controls.Add(this.filterButtonPanel);
             this.Controls.Add(this.filterPanel);
@@ -391,8 +391,8 @@ namespace ElearningDesktop
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
             this.filterButtonPanel.ResumeLayout(false);
-            this.seriesPanel.ResumeLayout(false);
-            this.seriesPanel.PerformLayout();
+            this.centralPanel.ResumeLayout(false);
+            this.centralPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -407,7 +407,7 @@ namespace ElearningDesktop
         private System.Windows.Forms.Panel filterButtonPanel;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Panel linePanel;
-        private System.Windows.Forms.Panel seriesPanel;
+        private System.Windows.Forms.Panel centralPanel;
         private System.Windows.Forms.PictureBox plusButtonPictureBox;
         private System.Windows.Forms.Button button02;
         private System.Windows.Forms.Button button04;

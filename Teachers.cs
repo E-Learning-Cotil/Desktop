@@ -46,6 +46,23 @@ namespace ElearningDesktop
 
             #endregion
 
+            #region Imagem
+
+            getImageThread = new Thread(new ThreadStart(getImage));
+            getImageThread.Start();
+
+            teacherPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
+            teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            teacherPicture.Location = new Point(Convert.ToInt32(teacherPanel.Location.X + 2), Convert.ToInt32((teacherPanel.Size.Height / 2) - (teacherPicture.Size.Height / 2)));
+
+            Rectangle rectangle = new Rectangle(0, 0, teacherPicture.Width, teacherPicture.Height);
+            GraphicsPath roundedImage = Transform.BorderRadius(rectangle, 20, true, true, true, true);
+            teacherPicture.Region = new Region(roundedImage);
+
+            teacherPanel.Controls.Add(teacherPicture);//adiciona o pictureBox na div
+
+            #endregion
+
             #region Nome
 
             Label teacherNameLabel = new Label(); //cria a serie
@@ -88,23 +105,6 @@ namespace ElearningDesktop
 
             emailAddress.Location = new Point(teacherPanel.Width - emailAddress.Width, Convert.ToInt32(teacherPanel.Size.Height / 2) - 5);
             teacherPanel.Controls.Add(emailAddress);
-
-            #endregion
-
-            #region Imagem
-
-            getImageThread = new Thread(new ThreadStart(getImage));
-            getImageThread.Start();
-
-            teacherPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
-            teacherPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            teacherPicture.Location = new Point(Convert.ToInt32(teacherPanel.Location.X + 2), Convert.ToInt32((teacherPanel.Size.Height / 2) - (teacherPicture.Size.Height / 2)));
-
-            Rectangle rectangle = new Rectangle(0, 0, teacherPicture.Width, teacherPicture.Height);
-            GraphicsPath roundedImage = Transform.BorderRadius(rectangle, 20, true, true, true, true);
-            teacherPicture.Region = new Region(roundedImage);
-
-            teacherPanel.Controls.Add(teacherPicture);//adiciona o pictureBox na div
 
             #endregion
 

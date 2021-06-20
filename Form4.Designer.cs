@@ -42,13 +42,13 @@ namespace ElearningDesktop
             this.textBox1_Name = new System.Windows.Forms.TextBox();
             this.label01Title_Nome = new System.Windows.Forms.Label();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
-            this.studentsPanel = new System.Windows.Forms.Panel();
+            this.centralPanel = new System.Windows.Forms.Panel();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.loadingText = new System.Windows.Forms.Label();
             this.filterButtonPanel.SuspendLayout();
             this.filterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
-            this.studentsPanel.SuspendLayout();
+            this.centralPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // linePanel
@@ -195,16 +195,16 @@ namespace ElearningDesktop
             this.plusButtonPictureBox.TabStop = false;
             this.plusButtonPictureBox.Click += new System.EventHandler(this.plusButtonPictureBox_Click);
             // 
-            // studentsPanel
+            // centralPanel
             // 
-            this.studentsPanel.AutoScroll = true;
-            this.studentsPanel.Controls.Add(this.loadingCircle1);
-            this.studentsPanel.Controls.Add(this.loadingText);
-            this.studentsPanel.Location = new System.Drawing.Point(12, 9);
-            this.studentsPanel.Name = "studentsPanel";
-            this.studentsPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.studentsPanel.Size = new System.Drawing.Size(485, 420);
-            this.studentsPanel.TabIndex = 45;
+            this.centralPanel.AutoScroll = true;
+            this.centralPanel.Controls.Add(this.loadingCircle1);
+            this.centralPanel.Controls.Add(this.loadingText);
+            this.centralPanel.Location = new System.Drawing.Point(12, 9);
+            this.centralPanel.Name = "centralPanel";
+            this.centralPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.centralPanel.Size = new System.Drawing.Size(485, 420);
+            this.centralPanel.TabIndex = 45;
             // 
             // loadingCircle1
             // 
@@ -244,7 +244,7 @@ namespace ElearningDesktop
             this.Controls.Add(this.filterButtonPanel);
             this.Controls.Add(this.filterPanel);
             this.Controls.Add(this.plusButtonPictureBox);
-            this.Controls.Add(this.studentsPanel);
+            this.Controls.Add(this.centralPanel);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form4";
@@ -255,8 +255,8 @@ namespace ElearningDesktop
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).EndInit();
-            this.studentsPanel.ResumeLayout(false);
-            this.studentsPanel.PerformLayout();
+            this.centralPanel.ResumeLayout(false);
+            this.centralPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,7 +276,7 @@ namespace ElearningDesktop
         private System.Windows.Forms.TextBox textBox1_Name;
         private System.Windows.Forms.Label label01Title_Nome;
         private System.Windows.Forms.PictureBox plusButtonPictureBox;
-        private System.Windows.Forms.Panel studentsPanel;
+        private System.Windows.Forms.Panel centralPanel;
         private MRG.Controls.UI.LoadingCircle loadingCircle1;
         private System.Windows.Forms.Label loadingText;
     }

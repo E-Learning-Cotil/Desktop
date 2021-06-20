@@ -121,18 +121,22 @@ namespace ElearningDesktop
             Button[] buttonArray = filterPanel.Controls.OfType<Button>().ToArray();
             Label[] labelArray = filterPanel.Controls.OfType<Label>().ToArray();
             TextBox[] textBoxArray = filterPanel.Controls.OfType<TextBox>().ToArray();
+            ComboBox[] comboBoxArray = filterPanel.Controls.OfType<ComboBox>().ToArray();
 
             Array.Sort(buttonArray, (x, y) => String.Compare(x.Name, y.Name));
             Array.Sort(labelArray, (x, y) => String.Compare(x.Name, y.Name));
             Array.Sort(textBoxArray, (x, y) => String.Compare(x.Name, y.Name));
+            Array.Sort(comboBoxArray, (x, y) => String.Compare(x.Name, y.Name));
 
             int numberOfButtons = buttonArray.Count();
             int numberOfLabels = labelArray.Count();
             int numberOfTextBoxes = textBoxArray.Count();
+            int numberOfComboBoxes = comboBoxArray.Count();
 
             int buttonCounter = 0;
             int labelCounter = 0;
             int textBoxCounter = 0;
+            int comboBoxCounter = 0;
 
             while (labelCounter != numberOfLabels)
             {
@@ -152,10 +156,21 @@ namespace ElearningDesktop
                         heightNeeded += textBoxArray[textBoxCounter].Height + 10;
                         textBoxCounter++;
                     }
+                    else if (numberOfComboBoxes != comboBoxCounter)
+                    {
+                        comboBoxArray[comboBoxCounter].Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2.8));
+                        comboBoxArray[comboBoxCounter].FlatStyle = FlatStyle.Flat;
+                        comboBoxArray[comboBoxCounter].ForeColor = Styles.white;
+                        comboBoxArray[comboBoxCounter].DropDownStyle = ComboBoxStyle.DropDownList;
+                        comboBoxArray[comboBoxCounter].Size = new Size(filterPanel.Width - 40, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
+                        comboBoxArray[comboBoxCounter].Location = new Point(10, heightNeeded);
+                        heightNeeded += comboBoxArray[comboBoxCounter].Height + 10;
+                        comboBoxCounter++;
+                    }
                 }
                 else
                 {
-                    if (numberOfButtons != 0)
+                    if (numberOfButtons != buttonCounter)
                     {
                         buttonArray[buttonCounter].BackColor = Styles.white;
                         buttonArray[buttonCounter].Text = "";
@@ -222,19 +237,44 @@ namespace ElearningDesktop
 
     }
 
-    static class LoadingMessage
+    static class ScreenElements
     {
         public static void stylizeLoadingMessage(Form formPai)
         {
             LoadingCircle loadingCircle1 = formPai.Controls.Find("loadingCircle1", true).FirstOrDefault() as LoadingCircle;
             Label loadingText = formPai.Controls.Find("loadingText", true).FirstOrDefault() as Label;
-            Panel seriesPanel = formPai.Controls.Find("seriesPanel", true).FirstOrDefault() as Panel;
+            Panel centralPanel = formPai.Controls.Find("centralPanel", true).FirstOrDefault() as Panel;
+
 
             loadingText.Font = Styles.defaultFont;
+            loadingCircle1.Location = new Point(Convert.ToInt32((centralPanel.Width / 2) - (loadingCircle1.Width / 2)), Convert.ToInt32(formPai.Height / 2 - loadingCircle1.Height / 2));
+            loadingText.Location = new Point(Convert.ToInt32((centralPanel.Width / 2) - (loadingText.Width / 2)) + 10, loadingCircle1.Location.Y - loadingText.Height - 10);
+        }
 
-            loadingCircle1.Location = new Point(Convert.ToInt32((seriesPanel.Width / 2) - (loadingCircle1.Width / 2)), Convert.ToInt32(formPai.Height / 2 - loadingCircle1.Height / 2));
+        public static void stylizePlusButton(Form formPai)
+        {
+            PictureBox plusButtonPictureBox = formPai.Controls.Find("plusButtonPictureBox", true).FirstOrDefault() as PictureBox;
+            Panel centralPanel = formPai.Controls.Find("centralPanel", true).FirstOrDefault() as Panel;
 
-            loadingText.Location = new Point(Convert.ToInt32((seriesPanel.Width / 2) - (loadingText.Width / 2)) + 10, loadingCircle1.Location.Y - loadingText.Height - 10);
+            plusButtonPictureBox.Size = new Size(Convert.ToInt32(formPai.Height * 0.083), Convert.ToInt32(formPai.Height * 0.083));
+
+            plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, centralPanel.Height - plusButtonPictureBox.Height - 7);
+
+            Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
+
+            GraphicsPath roundedButton = new GraphicsPath();
+            roundedButton.StartFigure();
+            roundedButton.AddArc(rectangle, 0, 360);
+            roundedButton.CloseFigure();
+            plusButtonPictureBox.Region = new Region(roundedButton);
+        }
+
+        public static void arrangeCentralPanelLocation(Form formPai)
+        {
+            Panel centralPanel = formPai.Controls.Find("centralPanel", true).FirstOrDefault() as Panel;
+
+            centralPanel.Location = new Point(0, 2);
+            centralPanel.Size = new Size(Convert.ToInt32(formPai.Width * 0.673), formPai.Height - 4);
         }
     }
 

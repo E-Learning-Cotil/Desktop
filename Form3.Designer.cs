@@ -29,7 +29,7 @@ namespace ElearningDesktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.teachersPanel = new System.Windows.Forms.Panel();
+            this.centralPanel = new System.Windows.Forms.Panel();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.loadingText = new System.Windows.Forms.Label();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
@@ -45,22 +45,22 @@ namespace ElearningDesktop
             this.linePanel = new System.Windows.Forms.Panel();
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
-            this.teachersPanel.SuspendLayout();
+            this.centralPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
             this.filterPanel.SuspendLayout();
             this.filterButtonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // teachersPanel
+            // centralPanel
             // 
-            this.teachersPanel.AutoScroll = true;
-            this.teachersPanel.Controls.Add(this.loadingCircle1);
-            this.teachersPanel.Controls.Add(this.loadingText);
-            this.teachersPanel.Location = new System.Drawing.Point(12, 12);
-            this.teachersPanel.Name = "teachersPanel";
-            this.teachersPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.teachersPanel.Size = new System.Drawing.Size(485, 420);
-            this.teachersPanel.TabIndex = 4;
+            this.centralPanel.AutoScroll = true;
+            this.centralPanel.Controls.Add(this.loadingCircle1);
+            this.centralPanel.Controls.Add(this.loadingText);
+            this.centralPanel.Location = new System.Drawing.Point(12, 12);
+            this.centralPanel.Name = "centralPanel";
+            this.centralPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.centralPanel.Size = new System.Drawing.Size(485, 420);
+            this.centralPanel.TabIndex = 4;
             // 
             // loadingCircle1
             // 
@@ -244,14 +244,14 @@ namespace ElearningDesktop
             this.Controls.Add(this.filterButtonPanel);
             this.Controls.Add(this.filterPanel);
             this.Controls.Add(this.plusButtonPictureBox);
-            this.Controls.Add(this.teachersPanel);
+            this.Controls.Add(this.centralPanel);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form3";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form3_Load);
-            this.teachersPanel.ResumeLayout(false);
-            this.teachersPanel.PerformLayout();
+            this.centralPanel.ResumeLayout(false);
+            this.centralPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).EndInit();
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
@@ -262,7 +262,7 @@ namespace ElearningDesktop
 
         #endregion
 
-        private System.Windows.Forms.Panel teachersPanel;
+        private System.Windows.Forms.Panel centralPanel;
         private MRG.Controls.UI.LoadingCircle loadingCircle1;
         private System.Windows.Forms.Label loadingText;
         private System.Windows.Forms.PictureBox plusButtonPictureBox;

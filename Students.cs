@@ -48,17 +48,34 @@ namespace ElearningDesktop
 
             #endregion
 
+            #region Imagem
+
+            getImageThread = new Thread(new ThreadStart(getImage));
+            getImageThread.Start();
+
+            studentPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
+            studentPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            studentPicture.Location = new Point(Convert.ToInt32(studentPanel.Location.X + 2), Convert.ToInt32((studentPanel.Size.Height / 2) - (studentPicture.Size.Height / 2)));
+
+            Rectangle rectangle = new Rectangle(0, 0, studentPicture.Width, studentPicture.Height);
+            GraphicsPath roundedImage = Transform.BorderRadius(rectangle, 20, true, true, true, true);
+            studentPicture.Region = new Region(roundedImage);
+
+            studentPanel.Controls.Add(studentPicture);//adiciona o pictureBox na div
+
+            #endregion
+
             #region Nome
 
-            Label teacherNameLabel = new Label(); //cria a serie
-            teacherNameLabel.Text = studentName; //define o nome da serie
-            teacherNameLabel.Font = Styles.defaultFont;//define a estilização do texto
-            teacherNameLabel.AutoSize = true;
-            teacherNameLabel.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
-            teacherNameLabel.Location = new Point(Convert.ToInt32(studentPicture.Location.X + studentPicture.Size.Width + 10), Convert.ToInt32((studentPanel.Size.Height / 2) - (teacherNameLabel.Font.Height / 2)));
+            Label studentNameLabel = new Label(); //cria a serie
+            studentNameLabel.Text = studentName; //define o nome da serie
+            studentNameLabel.Font = Styles.defaultFont;//define a estilização do texto
+            studentNameLabel.AutoSize = true;
+            studentNameLabel.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
+            studentNameLabel.Location = new Point(Convert.ToInt32(studentPicture.Location.X + studentPicture.Size.Width + 10), Convert.ToInt32((studentPanel.Size.Height / 2) - (studentNameLabel.Font.Height / 2)));
 
 
-            studentPanel.Controls.Add(teacherNameLabel);//adiciona o label na div
+            studentPanel.Controls.Add(studentNameLabel);//adiciona o label na div
 
             #endregion
 
@@ -93,22 +110,7 @@ namespace ElearningDesktop
 
             #endregion
 
-            #region Imagem
 
-            getImageThread = new Thread(new ThreadStart(getImage));
-            getImageThread.Start();
-
-            studentPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
-            studentPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            studentPicture.Location = new Point(Convert.ToInt32(studentPanel.Location.X + 2), Convert.ToInt32((studentPanel.Size.Height / 2) - (studentPicture.Size.Height / 2)));
-
-            Rectangle rectangle = new Rectangle(0, 0, studentPicture.Width, studentPicture.Height);
-            GraphicsPath roundedImage = Transform.BorderRadius(rectangle, 20, true, true, true, true);
-            studentPicture.Region = new Region(roundedImage);
-
-            studentPanel.Controls.Add(studentPicture);//adiciona o pictureBox na div
-
-            #endregion
 
             changePanelFormat(studentPanel);//arredonda a div
         }

@@ -38,7 +38,7 @@ namespace ElearningDesktop
 
         SeriesApiResponse[] series;
 
-        Form1 parentForm = null;
+        Form1 parentForm;
         #endregion
 
         public Form2(Form1 parentForm)
@@ -50,25 +50,6 @@ namespace ElearningDesktop
             this.parentForm = parentForm;
         }
 
-        private void filterButtonStyle()
-        {
-            filterButton.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.7));
-            filterButton.Size = new Size(Convert.ToInt32(filterButtonPanel.Width * 0.830), Convert.ToInt32(filterButtonPanel.Height * 0.574));
-            filterButton.Location = new Point(Convert.ToInt32(filterButtonPanel.Width/2 - filterButton.Width/2), Convert.ToInt32(filterButtonPanel.Height / 2 - filterButton.Height / 2));
-            Rectangle rectangle = new Rectangle(0, 0, filterButton.Width, filterButton.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 20, true, true, true, true);
-            filterButton.Region = new Region(roundedButton);
-        }
-
-        private void stylizeLoadingMessage()
-        {
-            loadingText.Font = Styles.defaultFont;
-            
-            loadingCircle1.Location = new Point(Convert.ToInt32((seriesPanel.Width/2) - (loadingCircle1.Width/2)), Convert.ToInt32(this.Height / 2 - loadingCircle1.Height / 2));
-            
-            loadingText.Location = new Point(Convert.ToInt32((seriesPanel.Width / 2) - (loadingText.Width / 2)) + 10, loadingCircle1.Location.Y - loadingText.Height - 10);
-        }
-
         private void Form2_Load(object sender, EventArgs e)
         {
             //FILTRO
@@ -76,29 +57,12 @@ namespace ElearningDesktop
             Filter.filterButtonStyle(filterButtonPanel);
             Filter.orderFilterElements(filterPanel);
 
-            //Localização Panel principal
-            seriesPanel.Location = new Point(0, 2);
-            seriesPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height - 4);
-
-            stylizePlusButton();
-            LoadingMessage.stylizeLoadingMessage(this);
+            //Localização e estilos
+            ScreenElements.arrangeCentralPanelLocation(this);
+            ScreenElements.stylizePlusButton(this);
+            ScreenElements.stylizeLoadingMessage(this);
 
             listSeries(null);
-        }
-
-        private void stylizePlusButton()
-        {
-            plusButtonPictureBox.Size = new Size(Convert.ToInt32(this.Height * 0.083), Convert.ToInt32(this.Height * 0.083));
-
-            plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, seriesPanel.Height - plusButtonPictureBox.Height - 7);
-
-            Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
-
-            GraphicsPath roundedButton = new GraphicsPath();
-            roundedButton.StartFigure();
-            roundedButton.AddArc(rectangle, 0, 360);
-            roundedButton.CloseFigure();
-            plusButtonPictureBox.Region = new Region(roundedButton);
         }
 
         private async void listSeries(SerieQueryParameters filters)
@@ -129,7 +93,7 @@ namespace ElearningDesktop
                     noSeries.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints));
                     noSeries.AutoSize = true;
                     noSeries.Location = new Point(20,20);
-                    seriesPanel.Controls.Add(noSeries);
+                    centralPanel.Controls.Add(noSeries);
                 }
                 else
                 {
@@ -139,12 +103,12 @@ namespace ElearningDesktop
                         SeriesApiResponse serieData = series[i];
 
                         Series serie = new Series(serieData.Id, serieData.Curso, serieData.Tipo, serieData.Ano, serieData.Periodo, serieData.Sigla, serieData._count.Turmas,i);
-                        seriesPanel.Controls.Add(serie.getSeriePanel());
+                        centralPanel.Controls.Add(serie.getSeriePanel());
                     }
                     Panel panel = new Panel();
                     panel.Size = new Size(1, 20);
                     panel.Location = new Point(20, (20 + Styles.seriesSize.Height) * (i));
-                    seriesPanel.Controls.Add(panel);
+                    centralPanel.Controls.Add(panel);
                 }
 
             }
@@ -719,20 +683,20 @@ namespace ElearningDesktop
 
         private void filterButton_Click(object sender, EventArgs e)
         {
-            int itemsCount = seriesPanel.Controls.Count;
+            int itemsCount = centralPanel.Controls.Count;
             for (int i = itemsCount - 1; i > 0; i--)
             {
-                if (seriesPanel.Controls[i].Name == "noSeries")
+                if (centralPanel.Controls[i].Name == "noSeries")
                 {
-                    seriesPanel.Controls.Remove(seriesPanel.Controls[i]);
+                    centralPanel.Controls.Remove(centralPanel.Controls[i]);
                     continue;
                 }
 
-                Type objectType = seriesPanel.Controls[i].GetType();
+                Type objectType = centralPanel.Controls[i].GetType();
 
                 if (objectType == typeof(Panel))
                 {
-                    seriesPanel.Controls.Remove(seriesPanel.Controls[i]);
+                    centralPanel.Controls.Remove(centralPanel.Controls[i]);
                     itemsCount--;
                 }
             }

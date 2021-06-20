@@ -55,6 +55,27 @@ namespace ElearningDesktop
         public int IdSerie { get; set; }
     }
 
+    public class ClassQueryParameters
+    {
+        [AliasAs("nome")]
+        public string Nome { get; set; }
+
+        [AliasAs("icone")]
+        public string Icone { get; set; }
+
+        [AliasAs("corPrim")]
+        public string CorPrim { get; set; }
+
+        [AliasAs("corSec")]
+        public string CorSec { get; set; }
+
+        [AliasAs("idSerie")]
+        public int? IdSerie { get; set; }
+
+        [AliasAs("rgProfessor")]
+        public int? RgProfessor { get; set; }
+    }
+
     public class StudentQueryGet
     {
         [AliasAs("ra")]
@@ -74,6 +95,21 @@ namespace ElearningDesktop
 
         [AliasAs("idSerie")]
         public int? IdSerie { get; set; }
+    }
+
+    public class ClassQueryGet
+    {
+        [AliasAs("id")]
+        public int? ID { get; set; }
+
+        [AliasAs("nome")]
+        public string Nome { get; set; }
+
+        [AliasAs("idSerie")]
+        public int? IdSerie { get; set; }
+
+        [AliasAs("rgProfessor")]
+        public int? RgProfessor { get; set; }
     }
 
     interface ApiService
@@ -112,6 +148,18 @@ namespace ElearningDesktop
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/alunos/create/")]
         Task<dynamic> InsertStudentsAsync([Body] StudentQueryParameters parametros);
+        #endregion
+
+        #region Rotas de Turmas
+        [Get("/turmas/list/")]
+        Task<dynamic> GetTurmasAsync();
+
+        [Get("/turmas/list/")]
+        Task<dynamic> GetTurmasFilteredAsync(ClassQueryGet parametros);
+
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
+        [Post("/turmas/create/")]
+        Task<dynamic> InsertTurmasAsync([Body] ClassQueryParameters parametros);
         #endregion
 
         #region Enviar Imagem para Servidor

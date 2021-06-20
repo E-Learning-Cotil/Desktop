@@ -76,4 +76,29 @@ namespace ElearningDesktop
         [AliasAs("idSerie")]
         public int IdSerie { get; set; }
     }
+
+    class TurmasApiResponse
+    {
+        [AliasAs("id")]
+        public int ID { get; set; }
+
+        [AliasAs("nome")]
+        public string Nome { get; set; }
+
+        [AliasAs("icone")]
+        public string Icone { get; set; }
+
+        [AliasAs("corPrim")]
+        public string CorPrim { get; set; }
+
+        [AliasAs("corSec")]
+        public string CorSec { get; set; }
+
+        [AliasAs("idSerie")]
+        public int IdSerie { get; set; }
+
+        [AliasAs("rgProfessor")]
+        public string RgProfessor { get; set; }
+        
+    }
 }
