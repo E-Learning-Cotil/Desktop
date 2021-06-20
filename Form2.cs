@@ -60,7 +60,7 @@ namespace ElearningDesktop
             filterButton.Region = new Region(roundedButton);
         }
 
-        private void filterPosition()
+        private void filterPanelsPositions()
         {
             filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
             filterPanel.Location = new Point(Convert.ToInt32(this.Width * 0.712), Convert.ToInt32(this.Height * 0.043));
@@ -92,12 +92,12 @@ namespace ElearningDesktop
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            serieTitle.Font = turnoTitle.Font = cursoTitle.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
-            serieTitle.ForeColor = turnoTitle.ForeColor = cursoTitle.ForeColor = tipoTitle.ForeColor = Styles.filterTitleColor;
+            label01Title.Font = label05Title.Font = label08Title.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
+            label01Title.ForeColor = label05Title.ForeColor = label08Title.ForeColor = label15Title.ForeColor = Styles.filterTitleColor;
 
-            filterPosition();
-            checkboxStyle();
+            filterPanelsPositions();
             filterButtonStyle();
+            Filter.orderFilterElements(filterPanel);
 
             stylePlusButton();
 
@@ -113,93 +113,99 @@ namespace ElearningDesktop
             plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, seriesPanel.Height - plusButtonPictureBox.Height - 7);
 
             Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, (50 + (Styles.seriesSize.Width / 380))/*se der problema coloca 60 dnv*/, true, true, true, true);
+
+            GraphicsPath roundedButton = new GraphicsPath();
+            roundedButton.StartFigure();
+            roundedButton.AddArc(rectangle, 0, 360);
+            roundedButton.CloseFigure();
             plusButtonPictureBox.Region = new Region(roundedButton);
         }
 
-        private void checkboxStyle()
-        {
-            int heightNeeded = filterPanel.Location.Y - 20;
+        /*  CÓDIGO ANTIGO DE ORDENAÇÃO DOS FILTROS
+         * 
+         * private void checkboxStyle()
+         {
+             int heightNeeded = filterPanel.Location.Y - 20;
 
-            Button[] buttonArray = filterPanel.Controls.OfType<Button>().Reverse().ToArray();
-            Label[] labelArray = filterPanel.Controls.OfType<Label>().Reverse().ToArray();
+             Button[] buttonArray = filterPanel.Controls.OfType<Button>().Reverse().ToArray();
+             Label[] labelArray = filterPanel.Controls.OfType<Label>().Reverse().ToArray();
 
-            int buttonCount = buttonArray.Count();
-            int labelCount = labelArray.Count();
+             int buttonCount = buttonArray.Count();
+             int labelCount = labelArray.Count();
 
-            #region Carregando Button Array
-            string[] buttonNameArray = new string[buttonCount];
+             #region Carregando Button Array
+             string[] buttonNameArray = new string[buttonCount];
 
-            for (int i = 0; i < buttonCount; i++)
-            {
-                 buttonNameArray[i] = buttonArray[i].Name;
-            }
-            
-            Array.Sort(buttonNameArray);
+             for (int i = 0; i < buttonCount; i++)
+             {
+                  buttonNameArray[i] = buttonArray[i].Name;
+             }
 
-            for (int i = 0; i < buttonCount; i++)
-            {
-                if (buttonArray[i].Name != buttonNameArray[i])
-                    for(int j = 0;j < buttonCount; j++)
-                    {
-                        if(buttonArray[j].Name == buttonNameArray[i])
-                        {
-                            Button x = buttonArray[i];
-                            buttonArray[i] = buttonArray[j];
-                            buttonArray[j] = x;
-                        }
-                    }
-            }
-            #endregion
+             Array.Sort(buttonNameArray);
 
-            for (int i = 0; i < labelCount; i++)
-            {
-                labelArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.5));
-                if (labelArray[i].Name.ToUpper().Contains("TITLE"))
-                {
-                    labelArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
-                }
-            }
+             for (int i = 0; i < buttonCount; i++)
+             {
+                 if (buttonArray[i].Name != buttonNameArray[i])
+                     for(int j = 0;j < buttonCount; j++)
+                     {
+                         if(buttonArray[j].Name == buttonNameArray[i])
+                         {
+                             Button x = buttonArray[i];
+                             buttonArray[i] = buttonArray[j];
+                             buttonArray[j] = x;
+                         }
+                     }
+             }
+             #endregion
 
-            for (int i = 0; i < buttonCount; i++)
-            {
+             for (int i = 0; i < labelCount; i++)
+             {
+                 labelArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.5));
+                 if (labelArray[i].Name.ToUpper().Contains("TITLE"))
+                 {
+                     labelArray[i].Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.650));
+                 }
+             }
 
-                switch (i)
-                {
-                    case 0:
-                        labelArray[0].Location = new Point(10, heightNeeded);
-                        heightNeeded += labelArray[0].Height + 10;
-                        break;
-                    case 3:
-                        labelArray[1].Location = new Point(10, heightNeeded);
-                        heightNeeded += labelArray[1].Height + 10;
-                        break;
-                    case 5:
-                        labelArray[2].Location = new Point(10, heightNeeded);
-                        heightNeeded += labelArray[2].Height + 10;
-                        break;
-                    case 11:
-                        labelArray[16].Location = new Point(10, heightNeeded);
-                        heightNeeded += labelArray[3].Height + 10;
-                        break;
-                }
+             for (int i = 0; i < buttonCount; i++)
+             {
 
-                buttonArray[i].BackColor = Styles.white;
-                buttonArray[i].Text = "";
+                 switch (i)
+                 {
+                     case 0:
+                         labelArray[0].Location = new Point(10, heightNeeded);
+                         heightNeeded += labelArray[0].Height + 10;
+                         break;
+                     case 3:
+                         labelArray[1].Location = new Point(10, heightNeeded);
+                         heightNeeded += labelArray[1].Height + 10;
+                         break;
+                     case 5:
+                         labelArray[2].Location = new Point(10, heightNeeded);
+                         heightNeeded += labelArray[2].Height + 10;
+                         break;
+                     case 11:
+                         labelArray[16].Location = new Point(10, heightNeeded);
+                         heightNeeded += labelArray[3].Height + 10;
+                         break;
+                 }
 
-                buttonArray[i].Size = new Size(25, 27);
+                 buttonArray[i].BackColor = Styles.white;
+                 buttonArray[i].Text = "";
 
-                Rectangle rectangle = new Rectangle(0, 0, buttonArray[i].Width, buttonArray[i].Height);
-                GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 12, true, true, true, true);
-                buttonArray[i].Region = new Region(roundedButton);
+                 buttonArray[i].Size = new Size(25, 27);
 
-                buttonArray[i].Location = new Point(10, heightNeeded);
-                
-                if ((i+3 <= labelCount)) labelArray[i + 3].Location = new Point(10 + buttonArray[i].Width + 5, heightNeeded);
+                 Rectangle rectangle = new Rectangle(0, 0, buttonArray[i].Width, buttonArray[i].Height);
+                 GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 12, true, true, true, true);
+                 buttonArray[i].Region = new Region(roundedButton);
 
-                heightNeeded += buttonArray[i].Height + 5;
-            } //FIM DO FOR
-        }
+                 buttonArray[i].Location = new Point(10, heightNeeded);
+
+                 if ((i+3 <= labelCount)) labelArray[i + 3].Location = new Point(10 + buttonArray[i].Width + 5, heightNeeded);
+
+                 heightNeeded += buttonArray[i].Height + 5;
+             } //FIM DO FOR
+         }*/
 
         private async void listSeries(SerieQueryParameters filters)
         {

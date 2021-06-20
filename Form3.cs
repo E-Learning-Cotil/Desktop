@@ -54,7 +54,7 @@ namespace ElearningDesktop
             filterButton.Region = new Region(roundedButton);
         }
 
-        private void filterPosition()
+        private void filterPanelsPositions()
         {
             filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
             filterPanel.Location = new Point(Convert.ToInt32(this.Width * 0.712), Convert.ToInt32(this.Height * 0.043));
@@ -74,23 +74,25 @@ namespace ElearningDesktop
             teachersPanel.Location = new Point(0, 2);
             teachersPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height - 4);
 
-            nameLabel.Font = telephoneLabel.Font = emailLabel.Font = rgLabel.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
-            nameLabel.ForeColor = telephoneLabel.ForeColor = emailLabel.ForeColor = rgLabel.ForeColor = Styles.filterTitleColor;
+            /* CÓDIGO ANTIGO DE ORDENAÇÃO DOS FILTROS
+             * label01Title_Nome.Font = label02Title_Telefone.Font = label03Title_Email.Font = label04Title_RG.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
+            label01Title_Nome.ForeColor = label02Title_Telefone.ForeColor = label03Title_Email.ForeColor = label04Title_RG.ForeColor = Styles.filterTitleColor;
 
-            nameTextBox.Font = telephoneTextBox.Font = emailTextBox.Font = rgTextBox.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
-            nameTextBox.Size = telephoneTextBox.Size = emailTextBox.Size = rgTextBox.Size = new Size(filterPanel.Width - 20, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
+            textBox1_Nome.Font = textBox2_Telefone.Font = textBox3_Email.Font = textBox4_RG.Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
+            textBox1_Nome.Size = textBox2_Telefone.Size = textBox3_Email.Size = textBox4_RG.Size = new Size(filterPanel.Width - 20, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
 
-            nameLabel.Location = new Point(10, 20);
-            nameTextBox.Location = new Point(10, nameLabel.Location.Y + nameLabel.Height + 10);
+            label01Title_Nome.Location = new Point(10, 20);
+            textBox1_Nome.Location = new Point(10, label01Title_Nome.Location.Y + label01Title_Nome.Height + 10);
 
-            telephoneLabel.Location = new Point(10, nameTextBox.Location.Y + nameTextBox.Height + 10);
-            telephoneTextBox.Location = new Point(10, telephoneLabel.Location.Y + telephoneLabel.Height + 10);
+            label02Title_Telefone.Location = new Point(10, textBox1_Nome.Location.Y + textBox1_Nome.Height + 10);
+            textBox2_Telefone.Location = new Point(10, label02Title_Telefone.Location.Y + label02Title_Telefone.Height + 10);
 
-            emailLabel.Location = new Point(10, telephoneTextBox.Location.Y + telephoneTextBox.Height + 10);
-            emailTextBox.Location = new Point(10, emailLabel.Location.Y + emailLabel.Height + 10);
+            label03Title_Email.Location = new Point(10, textBox2_Telefone.Location.Y + textBox2_Telefone.Height + 10);
+            textBox3_Email.Location = new Point(10, label03Title_Email.Location.Y + label03Title_Email.Height + 10);
 
-            rgLabel.Location = new Point(10, emailTextBox.Location.Y + emailTextBox.Height + 10);
-            rgTextBox.Location = new Point(10, rgLabel.Location.Y + rgLabel.Height + 10);
+            label04Title_RG.Location = new Point(10, textBox3_Email.Location.Y + textBox3_Email.Height + 10);
+            textBox4_RG.Location = new Point(10, label04Title_RG.Location.Y + label04Title_RG.Height + 10);
+            */
         }
 
         private void loadingMessageStyle()
@@ -109,7 +111,11 @@ namespace ElearningDesktop
             plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, teachersPanel.Height - plusButtonPictureBox.Height - 7);
 
             Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, (50 + (Styles.seriesSize.Width / 380)), true, true, true, true);
+
+            GraphicsPath roundedButton = new GraphicsPath();
+            roundedButton.StartFigure();
+            roundedButton.AddArc(rectangle, 0, 360);
+            roundedButton.CloseFigure();
             plusButtonPictureBox.Region = new Region(roundedButton);
         }
 
@@ -168,8 +174,10 @@ namespace ElearningDesktop
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            filterPosition();
+            filterPanelsPositions();
             filterButtonStyle();
+            Filter.orderFilterElements(filterPanel);
+
 
             stylePlusButton();
 
@@ -699,10 +707,10 @@ namespace ElearningDesktop
             loadingCircle1.Visible = true;
 
             TeacherQueryParameters filters = new TeacherQueryParameters();
-            if (nameTextBox.Text.Trim() != "") filters.Nome = nameTextBox.Text.Trim();
-            if (telephoneTextBox.Text.Trim() != "") filters.Telefone = telephoneTextBox.Text.Trim();
-            if (emailTextBox.Text.Trim() != "") filters.Email = emailTextBox.Text.Trim();
-            if (rgTextBox.Text.Trim() != "") filters.RG = rgTextBox.Text.Trim();
+            if (textBox1_Nome.Text.Trim() != "") filters.Nome = textBox1_Nome.Text.Trim();
+            if (textBox2_Telefone.Text.Trim() != "") filters.Telefone = textBox2_Telefone.Text.Trim();
+            if (textBox3_Email.Text.Trim() != "") filters.Email = textBox3_Email.Text.Trim();
+            if (textBox4_RG.Text.Trim() != "") filters.RG = textBox4_RG.Text.Trim();
 
             listTeachers(filters);
         }

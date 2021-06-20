@@ -52,26 +52,33 @@ namespace ElearningDesktop
             filterButton.Region = new Region(roundedButton);
         }
 
-        private void filterPosition()
+        private void filterPanelsPositions()
         {
+            //Arruma posição e formato do panel com os filtros
             filterPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.825));
             filterPanel.Location = new Point(Convert.ToInt32(this.Width * 0.712), Convert.ToInt32(this.Height * 0.043));
             Rectangle rectangle = new Rectangle(0, 0, filterPanel.Width, filterPanel.Height);
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, false, false);
             filterPanel.Region = new Region(roundedPanel);
 
+            //Arruma posição e formato do panel com o botão de filtrar
             filterButtonPanel.Location = new Point(filterPanel.Location.X, Convert.ToInt32(filterPanel.Height + filterPanel.Location.Y));
             filterButtonPanel.Size = new Size(Convert.ToInt32(this.Width * 0.263), Convert.ToInt32(this.Height * 0.103));
             rectangle = new Rectangle(0, 0, filterButtonPanel.Width, filterButtonPanel.Height);
             roundedPanel = Transform.BorderRadius(rectangle, 20, false, false, true, true);
             filterButtonPanel.Region = new Region(roundedPanel);
 
+            //arruma posição da linha que separa os dois panels
             linePanel.Location = new Point(filterButtonPanel.Location.X, filterButtonPanel.Location.Y);
             linePanel.Size = new Size(filterButtonPanel.Width, 2);
 
+            //POSIÇÃO DOS BOTOES DO FILTRO
             studentsPanel.Location = new Point(0, 2);
             studentsPanel.Size = new Size(Convert.ToInt32(this.Width * 0.673), this.Height - 4);
 
+
+            /* CÓDIGO ANTIGO DE ORDENAÇÃO DOS FILTROS
+             
             nameLabel.Font = telephoneLabel.Font = emailLabel.Font = raLabel.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.SizeInPoints * 0.875));
             nameLabel.ForeColor = telephoneLabel.ForeColor = emailLabel.ForeColor = raLabel.ForeColor = Styles.filterTitleColor;
 
@@ -89,6 +96,7 @@ namespace ElearningDesktop
 
             raLabel.Location = new Point(10, emailTextBox.Location.Y + emailTextBox.Height + 10);
             raTextBox.Location = new Point(10, raLabel.Location.Y + raLabel.Height + 10);
+            */
         }
 
         private void loadingMessageStyle()
@@ -107,7 +115,11 @@ namespace ElearningDesktop
             plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, studentsPanel.Height - plusButtonPictureBox.Height - 7);
 
             Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, (50 + (Styles.seriesSize.Width/380)), true, true, true, true);
+
+            GraphicsPath roundedButton = new GraphicsPath();
+            roundedButton.StartFigure();
+            roundedButton.AddArc(rectangle, 0, 360);
+            roundedButton.CloseFigure();
             plusButtonPictureBox.Region = new Region(roundedButton);
         }
 
@@ -167,8 +179,9 @@ namespace ElearningDesktop
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            filterPosition();
+            filterPanelsPositions();
             filterButtonStyle();
+            Filter.orderFilterElements(filterPanel);
 
             stylePlusButton();
 
@@ -779,14 +792,14 @@ namespace ElearningDesktop
         private void filterButton_Click(object sender, EventArgs e)
         {
             StudentQueryGet filters = new StudentQueryGet();
-            if (!nameTextBox.Text.Trim().Equals("")) filters.Nome = nameTextBox.Text.Trim();
-            if (!telephoneTextBox.Text.Trim().Equals("")) filters.Telefone = telephoneTextBox.Text.Trim();
-            if (!emailTextBox.Text.Trim().Equals("")) filters.Email = emailTextBox.Text.Trim();
+            if (!textBox1_Name.Text.Trim().Equals("")) filters.Nome = textBox1_Name.Text.Trim();
+            if (!textBox2_Telefone.Text.Trim().Equals("")) filters.Telefone = textBox2_Telefone.Text.Trim();
+            if (!textBox3_Email.Text.Trim().Equals("")) filters.Email = textBox3_Email.Text.Trim();
             try
             {
-                if (!raTextBox.Text.Trim().Equals(""))
+                if (!textBox4_RA.Text.Trim().Equals(""))
                 {
-                    filters.RA = Convert.ToInt32(raTextBox.Text.Trim());
+                    filters.RA = Convert.ToInt32(textBox4_RA.Text.Trim());
                 }
             }
             catch (FormatException)

@@ -112,7 +112,7 @@ namespace ElearningDesktop
             changeActiveButtonColor( (Button)sender);
             closeOpenedForms();
 
-            form5 = new Form5();
+            form5 = new Form5(this);
             form5.TopLevel = false;
 
             panel2.Controls.Add(form5);

@@ -31,25 +31,25 @@ namespace ElearningDesktop
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.filterPanel = new System.Windows.Forms.Panel();
-            this.tipoTitle = new System.Windows.Forms.Label();
+            this.label15Title = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button07 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label09 = new System.Windows.Forms.Label();
+            this.label07 = new System.Windows.Forms.Label();
+            this.label06 = new System.Windows.Forms.Label();
+            this.label04 = new System.Windows.Forms.Label();
+            this.label03 = new System.Windows.Forms.Label();
+            this.label02 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.button08 = new System.Windows.Forms.Button();
             this.button09 = new System.Windows.Forms.Button();
@@ -58,9 +58,9 @@ namespace ElearningDesktop
             this.button04 = new System.Windows.Forms.Button();
             this.button03 = new System.Windows.Forms.Button();
             this.button02 = new System.Windows.Forms.Button();
-            this.cursoTitle = new System.Windows.Forms.Label();
-            this.turnoTitle = new System.Windows.Forms.Label();
-            this.serieTitle = new System.Windows.Forms.Label();
+            this.label08Title = new System.Windows.Forms.Label();
+            this.label05Title = new System.Windows.Forms.Label();
+            this.label01Title = new System.Windows.Forms.Label();
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
             this.linePanel = new System.Windows.Forms.Panel();
@@ -78,25 +78,25 @@ namespace ElearningDesktop
             // 
             resources.ApplyResources(this.filterPanel, "filterPanel");
             this.filterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.filterPanel.Controls.Add(this.tipoTitle);
+            this.filterPanel.Controls.Add(this.label15Title);
             this.filterPanel.Controls.Add(this.button14);
             this.filterPanel.Controls.Add(this.label17);
             this.filterPanel.Controls.Add(this.label16);
             this.filterPanel.Controls.Add(this.button13);
-            this.filterPanel.Controls.Add(this.label15);
             this.filterPanel.Controls.Add(this.label14);
             this.filterPanel.Controls.Add(this.label13);
             this.filterPanel.Controls.Add(this.label12);
             this.filterPanel.Controls.Add(this.label11);
+            this.filterPanel.Controls.Add(this.label10);
             this.filterPanel.Controls.Add(this.button11);
             this.filterPanel.Controls.Add(this.button10);
             this.filterPanel.Controls.Add(this.button07);
-            this.filterPanel.Controls.Add(this.label10);
-            this.filterPanel.Controls.Add(this.label8);
-            this.filterPanel.Controls.Add(this.label7);
-            this.filterPanel.Controls.Add(this.label6);
-            this.filterPanel.Controls.Add(this.label5);
-            this.filterPanel.Controls.Add(this.label4);
+            this.filterPanel.Controls.Add(this.label09);
+            this.filterPanel.Controls.Add(this.label07);
+            this.filterPanel.Controls.Add(this.label06);
+            this.filterPanel.Controls.Add(this.label04);
+            this.filterPanel.Controls.Add(this.label03);
+            this.filterPanel.Controls.Add(this.label02);
             this.filterPanel.Controls.Add(this.button12);
             this.filterPanel.Controls.Add(this.button08);
             this.filterPanel.Controls.Add(this.button09);
@@ -105,15 +105,15 @@ namespace ElearningDesktop
             this.filterPanel.Controls.Add(this.button04);
             this.filterPanel.Controls.Add(this.button03);
             this.filterPanel.Controls.Add(this.button02);
-            this.filterPanel.Controls.Add(this.cursoTitle);
-            this.filterPanel.Controls.Add(this.turnoTitle);
-            this.filterPanel.Controls.Add(this.serieTitle);
+            this.filterPanel.Controls.Add(this.label08Title);
+            this.filterPanel.Controls.Add(this.label05Title);
+            this.filterPanel.Controls.Add(this.label01Title);
             this.filterPanel.Name = "filterPanel";
             // 
-            // tipoTitle
+            // label15Title
             // 
-            resources.ApplyResources(this.tipoTitle, "tipoTitle");
-            this.tipoTitle.Name = "tipoTitle";
+            resources.ApplyResources(this.label15Title, "label15Title");
+            this.label15Title.Name = "label15Title";
             // 
             // button14
             // 
@@ -143,11 +143,6 @@ namespace ElearningDesktop
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
@@ -167,6 +162,11 @@ namespace ElearningDesktop
             // 
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
             // 
             // button11
             // 
@@ -195,35 +195,35 @@ namespace ElearningDesktop
             this.button07.UseVisualStyleBackColor = false;
             this.button07.Click += new System.EventHandler(this.button7_Click);
             // 
-            // label10
+            // label09
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            resources.ApplyResources(this.label09, "label09");
+            this.label09.Name = "label09";
             // 
-            // label8
+            // label07
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            resources.ApplyResources(this.label07, "label07");
+            this.label07.Name = "label07";
             // 
-            // label7
+            // label06
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(this.label06, "label06");
+            this.label06.Name = "label06";
             // 
-            // label6
+            // label04
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.label04, "label04");
+            this.label04.Name = "label04";
             // 
-            // label5
+            // label03
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.label03, "label03");
+            this.label03.Name = "label03";
             // 
-            // label4
+            // label02
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.label02, "label02");
+            this.label02.Name = "label02";
             // 
             // button12
             // 
@@ -297,23 +297,23 @@ namespace ElearningDesktop
             this.button02.UseVisualStyleBackColor = false;
             this.button02.Click += new System.EventHandler(this.button2_Click);
             // 
-            // cursoTitle
+            // label08Title
             // 
-            resources.ApplyResources(this.cursoTitle, "cursoTitle");
-            this.cursoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.cursoTitle.Name = "cursoTitle";
+            resources.ApplyResources(this.label08Title, "label08Title");
+            this.label08Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.label08Title.Name = "label08Title";
             // 
-            // turnoTitle
+            // label05Title
             // 
-            resources.ApplyResources(this.turnoTitle, "turnoTitle");
-            this.turnoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.turnoTitle.Name = "turnoTitle";
+            resources.ApplyResources(this.label05Title, "label05Title");
+            this.label05Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.label05Title.Name = "label05Title";
             // 
-            // serieTitle
+            // label01Title
             // 
-            resources.ApplyResources(this.serieTitle, "serieTitle");
-            this.serieTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.serieTitle.Name = "serieTitle";
+            resources.ApplyResources(this.label01Title, "label01Title");
+            this.label01Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.label01Title.Name = "label01Title";
             // 
             // filterButtonPanel
             // 
@@ -401,9 +401,9 @@ namespace ElearningDesktop
         #endregion
 
         private System.Windows.Forms.Panel filterPanel;
-        private System.Windows.Forms.Label cursoTitle;
-        private System.Windows.Forms.Label turnoTitle;
-        private System.Windows.Forms.Label serieTitle;
+        private System.Windows.Forms.Label label08Title;
+        private System.Windows.Forms.Label label05Title;
+        private System.Windows.Forms.Label label01Title;
         private System.Windows.Forms.Panel filterButtonPanel;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Panel linePanel;
@@ -421,22 +421,22 @@ namespace ElearningDesktop
         private System.Windows.Forms.Button button05;
         private System.Windows.Forms.Button button06;
         private System.Windows.Forms.Button button07;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label04;
+        private System.Windows.Forms.Label label03;
+        private System.Windows.Forms.Label label02;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label09;
+        private System.Windows.Forms.Label label07;
+        private System.Windows.Forms.Label label06;
         private System.Windows.Forms.Label loadingText;
         private MRG.Controls.UI.LoadingCircle loadingCircle1;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label tipoTitle;
+        private System.Windows.Forms.Label label15Title;
     }
 }

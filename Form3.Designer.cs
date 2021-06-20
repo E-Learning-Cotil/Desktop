@@ -34,14 +34,14 @@ namespace ElearningDesktop
             this.loadingText = new System.Windows.Forms.Label();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
-            this.rgTextBox = new System.Windows.Forms.TextBox();
-            this.rgLabel = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.telephoneTextBox = new System.Windows.Forms.TextBox();
-            this.telephoneLabel = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
+            this.textBox4_RG = new System.Windows.Forms.TextBox();
+            this.label04Title_RG = new System.Windows.Forms.Label();
+            this.textBox3_Email = new System.Windows.Forms.TextBox();
+            this.label03Title_Email = new System.Windows.Forms.Label();
+            this.textBox2_Telefone = new System.Windows.Forms.TextBox();
+            this.label02Title_Telefone = new System.Windows.Forms.Label();
+            this.textBox1_Nome = new System.Windows.Forms.TextBox();
+            this.label01Title_Nome = new System.Windows.Forms.Label();
             this.linePanel = new System.Windows.Forms.Panel();
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
@@ -109,99 +109,99 @@ namespace ElearningDesktop
             // 
             this.filterPanel.AutoScroll = true;
             this.filterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.filterPanel.Controls.Add(this.rgTextBox);
-            this.filterPanel.Controls.Add(this.rgLabel);
-            this.filterPanel.Controls.Add(this.emailTextBox);
-            this.filterPanel.Controls.Add(this.emailLabel);
-            this.filterPanel.Controls.Add(this.telephoneTextBox);
-            this.filterPanel.Controls.Add(this.telephoneLabel);
-            this.filterPanel.Controls.Add(this.nameTextBox);
-            this.filterPanel.Controls.Add(this.nameLabel);
+            this.filterPanel.Controls.Add(this.textBox4_RG);
+            this.filterPanel.Controls.Add(this.label04Title_RG);
+            this.filterPanel.Controls.Add(this.textBox3_Email);
+            this.filterPanel.Controls.Add(this.label03Title_Email);
+            this.filterPanel.Controls.Add(this.textBox2_Telefone);
+            this.filterPanel.Controls.Add(this.label02Title_Telefone);
+            this.filterPanel.Controls.Add(this.textBox1_Nome);
+            this.filterPanel.Controls.Add(this.label01Title_Nome);
             this.filterPanel.Location = new System.Drawing.Point(503, 12);
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.filterPanel.Size = new System.Drawing.Size(225, 430);
             this.filterPanel.TabIndex = 6;
             // 
-            // rgTextBox
+            // textBox4_RG
             // 
-            this.rgTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rgTextBox.Location = new System.Drawing.Point(6, 179);
-            this.rgTextBox.Name = "rgTextBox";
-            this.rgTextBox.Size = new System.Drawing.Size(173, 20);
-            this.rgTextBox.TabIndex = 49;
+            this.textBox4_RG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox4_RG.Location = new System.Drawing.Point(6, 179);
+            this.textBox4_RG.Name = "textBox4_RG";
+            this.textBox4_RG.Size = new System.Drawing.Size(173, 20);
+            this.textBox4_RG.TabIndex = 49;
             // 
-            // rgLabel
+            // label04Title_RG
             // 
-            this.rgLabel.AutoSize = true;
-            this.rgLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.rgLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rgLabel.Location = new System.Drawing.Point(3, 163);
-            this.rgLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.rgLabel.Name = "rgLabel";
-            this.rgLabel.Size = new System.Drawing.Size(26, 13);
-            this.rgLabel.TabIndex = 48;
-            this.rgLabel.Text = "RG:";
+            this.label04Title_RG.AutoSize = true;
+            this.label04Title_RG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.label04Title_RG.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label04Title_RG.Location = new System.Drawing.Point(3, 163);
+            this.label04Title_RG.Margin = new System.Windows.Forms.Padding(0);
+            this.label04Title_RG.Name = "label04Title_RG";
+            this.label04Title_RG.Size = new System.Drawing.Size(26, 13);
+            this.label04Title_RG.TabIndex = 48;
+            this.label04Title_RG.Text = "RG:";
             // 
-            // emailTextBox
+            // textBox3_Email
             // 
-            this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.emailTextBox.Location = new System.Drawing.Point(6, 126);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(173, 20);
-            this.emailTextBox.TabIndex = 47;
+            this.textBox3_Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3_Email.Location = new System.Drawing.Point(6, 126);
+            this.textBox3_Email.Name = "textBox3_Email";
+            this.textBox3_Email.Size = new System.Drawing.Size(173, 20);
+            this.textBox3_Email.TabIndex = 47;
             // 
-            // emailLabel
+            // label03Title_Email
             // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.emailLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.emailLabel.Location = new System.Drawing.Point(3, 110);
-            this.emailLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(38, 13);
-            this.emailLabel.TabIndex = 46;
-            this.emailLabel.Text = "E-mail:";
+            this.label03Title_Email.AutoSize = true;
+            this.label03Title_Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.label03Title_Email.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label03Title_Email.Location = new System.Drawing.Point(3, 110);
+            this.label03Title_Email.Margin = new System.Windows.Forms.Padding(0);
+            this.label03Title_Email.Name = "label03Title_Email";
+            this.label03Title_Email.Size = new System.Drawing.Size(38, 13);
+            this.label03Title_Email.TabIndex = 46;
+            this.label03Title_Email.Text = "E-mail:";
             // 
-            // telephoneTextBox
+            // textBox2_Telefone
             // 
-            this.telephoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.telephoneTextBox.Location = new System.Drawing.Point(6, 75);
-            this.telephoneTextBox.Name = "telephoneTextBox";
-            this.telephoneTextBox.Size = new System.Drawing.Size(173, 20);
-            this.telephoneTextBox.TabIndex = 45;
+            this.textBox2_Telefone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2_Telefone.Location = new System.Drawing.Point(6, 75);
+            this.textBox2_Telefone.Name = "textBox2_Telefone";
+            this.textBox2_Telefone.Size = new System.Drawing.Size(173, 20);
+            this.textBox2_Telefone.TabIndex = 45;
             // 
-            // telephoneLabel
+            // label02Title_Telefone
             // 
-            this.telephoneLabel.AutoSize = true;
-            this.telephoneLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.telephoneLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.telephoneLabel.Location = new System.Drawing.Point(3, 59);
-            this.telephoneLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.telephoneLabel.Name = "telephoneLabel";
-            this.telephoneLabel.Size = new System.Drawing.Size(52, 13);
-            this.telephoneLabel.TabIndex = 44;
-            this.telephoneLabel.Text = "Telefone:";
+            this.label02Title_Telefone.AutoSize = true;
+            this.label02Title_Telefone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.label02Title_Telefone.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label02Title_Telefone.Location = new System.Drawing.Point(3, 59);
+            this.label02Title_Telefone.Margin = new System.Windows.Forms.Padding(0);
+            this.label02Title_Telefone.Name = "label02Title_Telefone";
+            this.label02Title_Telefone.Size = new System.Drawing.Size(52, 13);
+            this.label02Title_Telefone.TabIndex = 44;
+            this.label02Title_Telefone.Text = "Telefone:";
             // 
-            // nameTextBox
+            // textBox1_Nome
             // 
-            this.nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameTextBox.Location = new System.Drawing.Point(6, 26);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(173, 20);
-            this.nameTextBox.TabIndex = 43;
+            this.textBox1_Nome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1_Nome.Location = new System.Drawing.Point(6, 26);
+            this.textBox1_Nome.Name = "textBox1_Nome";
+            this.textBox1_Nome.Size = new System.Drawing.Size(173, 20);
+            this.textBox1_Nome.TabIndex = 43;
             // 
-            // nameLabel
+            // label01Title_Nome
             // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.nameLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.nameLabel.Location = new System.Drawing.Point(3, 10);
-            this.nameLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(38, 13);
-            this.nameLabel.TabIndex = 0;
-            this.nameLabel.Text = "Nome:";
+            this.label01Title_Nome.AutoSize = true;
+            this.label01Title_Nome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.label01Title_Nome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label01Title_Nome.Location = new System.Drawing.Point(3, 10);
+            this.label01Title_Nome.Margin = new System.Windows.Forms.Padding(0);
+            this.label01Title_Nome.Name = "label01Title_Nome";
+            this.label01Title_Nome.Size = new System.Drawing.Size(38, 13);
+            this.label01Title_Nome.TabIndex = 0;
+            this.label01Title_Nome.Text = "Nome:";
             // 
             // linePanel
             // 
@@ -267,16 +267,16 @@ namespace ElearningDesktop
         private System.Windows.Forms.Label loadingText;
         private System.Windows.Forms.PictureBox plusButtonPictureBox;
         private System.Windows.Forms.Panel filterPanel;
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.TextBox telephoneTextBox;
-        private System.Windows.Forms.Label telephoneLabel;
-        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label label01Title_Nome;
+        private System.Windows.Forms.TextBox textBox3_Email;
+        private System.Windows.Forms.Label label03Title_Email;
+        private System.Windows.Forms.TextBox textBox2_Telefone;
+        private System.Windows.Forms.Label label02Title_Telefone;
+        private System.Windows.Forms.TextBox textBox1_Nome;
         private System.Windows.Forms.Panel linePanel;
         private System.Windows.Forms.Panel filterButtonPanel;
         private System.Windows.Forms.Button filterButton;
-        private System.Windows.Forms.TextBox rgTextBox;
-        private System.Windows.Forms.Label rgLabel;
+        private System.Windows.Forms.TextBox textBox4_RG;
+        private System.Windows.Forms.Label label04Title_RG;
     }
 }
