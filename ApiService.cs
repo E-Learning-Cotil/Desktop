@@ -164,7 +164,7 @@ namespace ElearningDesktop
 
         #region Enviar Imagem para Servidor
         [Multipart]
-        [Post("/image/upload/")]
+        [Post("/imagens/")]
         Task<dynamic> SendImageToApi( ByteArrayPart file);
         #endregion
     }
