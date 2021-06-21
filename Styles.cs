@@ -160,7 +160,6 @@ namespace ElearningDesktop
                     {
                         comboBoxArray[comboBoxCounter].Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2.8));
                         comboBoxArray[comboBoxCounter].FlatStyle = FlatStyle.Flat;
-                        comboBoxArray[comboBoxCounter].ForeColor = Styles.white;
                         comboBoxArray[comboBoxCounter].DropDownStyle = ComboBoxStyle.DropDownList;
                         comboBoxArray[comboBoxCounter].Size = new Size(filterPanel.Width - 40, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
                         comboBoxArray[comboBoxCounter].Location = new Point(10, heightNeeded);
@@ -195,7 +194,7 @@ namespace ElearningDesktop
             }
         }
 
-        public static void arrangeFilterPosition(Form formPai)
+        public static void arrangeFilterPanelsPosition(Form formPai)
         {
             //pega os objetos que vão ser alterados
             Panel filterPanel = formPai.Controls.Find("filterPanel", true).FirstOrDefault() as Panel;

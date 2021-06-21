@@ -17,7 +17,8 @@ namespace ElearningDesktop
         private int turmaID;
         private string turmaName;
         private string turmaIcon;
-        private int turmaIdSerie;
+        private string nomeSerie;
+        private string nomeProfessor;
 
         private string turmaPrimaryColor;
         private string turmaSecondaryColor;
@@ -28,7 +29,7 @@ namespace ElearningDesktop
         private Thread getImageThread;
         private PictureBox turmaPicture = new PictureBox();
 
-        public Turmas(int id, string nome, string icone, string corPrim, string corSec, int idSerie, string rgProfessor, int position)
+        public Turmas(int id, string nome, string icone, string corPrim, string corSec, string nomeSerie, string nomeProfessor, int position)
         {
             #region Atributos
 
@@ -39,7 +40,8 @@ namespace ElearningDesktop
             turmaIcon = icone;
             turmaPrimaryColor = corPrim;
             turmaSecondaryColor = corSec;
-            turmaIdSerie = idSerie;
+            this.nomeSerie = nomeSerie;
+            this.nomeProfessor = nomeProfessor;
 
             #endregion
 
@@ -72,7 +74,7 @@ namespace ElearningDesktop
             #region Nome
 
             Label classNameLabel = new Label(); //cria a serie
-            classNameLabel.Text = turmaName; //define o nome da serie
+            classNameLabel.Text = turmaName + " - " + this.nomeSerie; //define o nome da serie
             classNameLabel.Font = Styles.defaultFont;//define a estilização do texto
             classNameLabel.AutoSize = true;
             classNameLabel.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
@@ -85,17 +87,17 @@ namespace ElearningDesktop
 
             #region ID Série
 
-            Label idSerieLabel = new Label();
-            idSerieLabel.Text = turmaIdSerie.ToString();
-            idSerieLabel.Font = Styles.customFont;//define a estilização do texto
+            Label nameTeacherLabel = new Label();
+            nameTeacherLabel.Text = nomeProfessor;
+            nameTeacherLabel.Font = Styles.customFont;//define a estilização do texto
 
-            idSerieLabel.Size = new Size(255, idSerieLabel.Font.Height);
+            nameTeacherLabel.Size = new Size(255, nameTeacherLabel.Font.Height);
 
-            idSerieLabel.TextAlign = ContentAlignment.TopRight;
+            nameTeacherLabel.TextAlign = ContentAlignment.TopRight;
 
-            idSerieLabel.Location = new Point(turmaPanel.Width - idSerieLabel.Width, Convert.ToInt32(turmaPanel.Size.Height / 2) - 5);
+            nameTeacherLabel.Location = new Point(turmaPanel.Width - nameTeacherLabel.Width, Convert.ToInt32(turmaPanel.Size.Height / 2) - 5);
 
-            turmaPanel.Controls.Add(idSerieLabel);
+            turmaPanel.Controls.Add(nameTeacherLabel);
 
             #endregion
 

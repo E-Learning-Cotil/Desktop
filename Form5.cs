@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ElearningDesktop
@@ -17,6 +18,17 @@ namespace ElearningDesktop
         #region Declaração de Variáveis
         TurmasApiResponse[] turmas;
 
+        SeriesApiResponse[] series;
+        SeriesApiResponse filterSelectedSerie;
+        List<string> siglaSerieList;
+        List<int> idSerieList;
+
+        TeachersApiResponse[] teachers;
+        TeachersApiResponse filterSelectedTeacher;
+        List<string> siglaTeacherList;
+        List<string> rgTeacherList;
+
+
         protected bool validData;
         protected string imageUrl = "";
         protected Image image;
@@ -26,6 +38,8 @@ namespace ElearningDesktop
 
         string[] serieId;
 
+        
+
         Form1 parentForm = null;
         #endregion
 
@@ -34,18 +48,6 @@ namespace ElearningDesktop
             Button selectedShift = null;
             Button selectedCourse = null;
             Button selectedType = null;
-
-        string filterCurso = null, filterAno = null, filterPeriodo = null;
-
-            string[] courses = { "EDIFICACOES", "ENFERMAGEM", "GEODESIA", "INFORMATICA", "MECANICA", "QUALIDADE" };
-            string[] coursesName = { "Edificações", "Enfermagem", "Geodésia", "Informática", "Mecânica", "Qualidade" };
-
-            string[] period = { "DIURNO", "NOTURNO" };
-            string[] periodName = { "Diurno", "Noturno" };
-
-
-            string[] serie = { "1", "2", "3" };
-            string[] serieName = { "1º ano", "2º ano", "3º ano" };
 
         #endregion
 
@@ -57,12 +59,21 @@ namespace ElearningDesktop
             this.BackColor = Styles.darkGray;
             this.ForeColor = Styles.white;
             this.parentForm = parentForm;
+
+            filterSelectedSerie = null;
+            filterSelectedTeacher = null;
+
+            siglaSerieList = new List<string>();
+            idSerieList = new List<int>();
+
+            siglaTeacherList = new List<string>();
+            rgTeacherList = new List<string>();
         }
 
-        private void Form5_Load(object sender, EventArgs e)
+        private async void Form5_Load(object sender, EventArgs e)
         {
             //FILTRO
-            Filter.arrangeFilterPosition(this);
+            Filter.arrangeFilterPanelsPosition(this);
             Filter.filterButtonStyle(filterButtonPanel);
             Filter.orderFilterElements(filterPanel);
 
@@ -71,7 +82,58 @@ namespace ElearningDesktop
             ScreenElements.stylizePlusButton(this);
             ScreenElements.stylizeLoadingMessage(this);
 
+            await loadSeriesAsync();
+            await loadTeachersAsync();
+
             listTurmas(null);
+        }
+
+        private async Task loadSeriesAsync()
+        {
+            try
+            {
+                var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+                var dataResponse = await apiPath.GetSeriesAsync();
+
+                series = JsonConvert.DeserializeObject<SeriesApiResponse[]>(dataResponse.ToString());
+                foreach (SeriesApiResponse serie in series)
+                {
+                    siglaSerieList.Add(serie.Sigla);
+                    idSerieList.Add(serie.Id);
+                }
+                comboBox01_Serie.Items.Clear();
+                comboBox01_Serie.Items.Add("");
+                comboBox01_Serie.Items.AddRange(siglaSerieList.ToArray());
+
+            }
+            catch (Exception ex)
+            { 
+                MessageBox.Show(ex.ToString());
+            }   
+        }
+
+        private async Task loadTeachersAsync()
+        {
+            try
+            {
+                var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+                var dataResponse = await apiPath.GetTeachersAsync();
+
+                teachers = JsonConvert.DeserializeObject<TeachersApiResponse[]>(dataResponse.ToString());
+                foreach (TeachersApiResponse teacher in teachers)
+                {
+                    rgTeacherList.Add(teacher.RG);
+                    siglaTeacherList.Add(teacher.Nome);
+                }
+                comboBox02_Professor.Items.Clear();
+                comboBox02_Professor.Items.Add("");
+                comboBox02_Professor.Items.AddRange(siglaTeacherList.ToArray());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         
        private async void listTurmas(ClassQueryGet filters)
@@ -79,7 +141,7 @@ namespace ElearningDesktop
             try
             {
                 var apiPath = RestService.For<ApiService>(Routes.baseUrl);
-                if ((filters == null) || ((filters.Nome.Equals(null)) && (filters.IdSerie == null) && (filters.Nome == null)))
+                if ((filters == null) || ((filters.Nome == null) && (filters.IdSerie == null) && (filters.RgProfessor == null== null)))
                 {
                     var dataResponse = await apiPath.GetTurmasAsync();
                     turmas = JsonConvert.DeserializeObject<TurmasApiResponse[]>(dataResponse.ToString());
@@ -106,11 +168,23 @@ namespace ElearningDesktop
                 else
                 {
                     int i;
+                    int indexSerie = 0; 
+                    int indexTeacher = 0; 
                     for (i = 0; i < turmas.Length; i++)
                     {
                         TurmasApiResponse turmasData = turmas[i];
 
-                        Turmas turma = new Turmas(turmasData.ID, turmasData.Nome, turmasData.Icone, turmasData.CorPrim, turmasData.CorSec, turmasData.IdSerie, turmasData.RgProfessor, i);
+                        for (indexSerie = 0; indexSerie < idSerieList.Count; indexSerie++)
+                        {
+                            if (idSerieList[indexSerie] == turmasData.IdSerie) break;
+                        }
+
+                        for (indexTeacher = 0; indexTeacher < siglaTeacherList.Count; indexTeacher++)
+                        {
+                            if (rgTeacherList[indexTeacher] == turmasData.RgProfessor) break;
+                        }
+
+                        Turmas turma = new Turmas(turmasData.ID, turmasData.Nome, turmasData.Icone, turmasData.CorPrim, turmasData.CorSec, siglaSerieList[indexSerie], siglaTeacherList[indexTeacher], i);
                         centralPanel.Controls.Add(turma.getTurmaPanel());
                     }
                     Panel panel = new Panel();
@@ -175,26 +249,6 @@ namespace ElearningDesktop
                     }
                     else data.Nome = creationPanel.Controls[i].Text.Trim();
                 }
-
-                /*else if (creationPanel.Controls[i].Name.Contains("Telefone"))
-                {
-                    if (creationPanel.Controls[i].Text.Trim() == "")
-                    {
-                        MessageBox.Show("O telefone é obrigatório!");
-                        return;
-                    }
-                    else data.Telefone = creationPanel.Controls[i].Text.Trim();
-                }
-
-                else if (creationPanel.Controls[i].Name.Contains("Email"))
-                {
-                    if (creationPanel.Controls[i].Text.Trim() == "")
-                    {
-                        MessageBox.Show("O email é obrigatório!");
-                        return;
-                    }
-                    else data.Email = creationPanel.Controls[i].Text.Trim();
-                }*/
             }
         }
         if (!imageUrl.Trim().Equals("")) data.Icone = imageUrl;
@@ -394,7 +448,7 @@ namespace ElearningDesktop
         return textBox;
     }
 
-    private ComboBox createTurmaPanelComboBox(string name, Point location, Panel parentPanel, string[] comboBoxData)
+    private ComboBox createTurmaPanelComboBox(string name, Point location, Panel parentPanel, List<string> comboBoxData)
     {
         ComboBox comboBox = new ComboBox();
 
@@ -406,7 +460,7 @@ namespace ElearningDesktop
         comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.405), comboBox.Height);
         comboBox.Location = location;
-        comboBox.Items.AddRange(comboBoxData);
+        comboBox.Items.AddRange(comboBoxData.ToArray());
 
         Rectangle rectangle = new Rectangle(2, 2, comboBox.Width - 20, comboBox.Height - 3);
         GraphicsPath roundedComboBox = Transform.BorderRadius(rectangle, 2, true, false, false, true);
@@ -557,7 +611,7 @@ namespace ElearningDesktop
             int itemsCount = centralPanel.Controls.Count;
             for (int i = itemsCount - 1; i > 0; i--)
             {
-                if (centralPanel.Controls[i].Name == "noStudents")
+                if (centralPanel.Controls[i].Name == "noTurmas")
                 {
                     centralPanel.Controls.Remove(centralPanel.Controls[i]);
                     continue;
@@ -575,12 +629,12 @@ namespace ElearningDesktop
             loadingText.Visible = true;
             loadingCircle1.Visible = true;
 
-            /*filters.curso = filterCurso;
-            filters.ano = filterAno;
-            filters.periodo = filterPeriodo;*/
+            if(filterSelectedSerie != null) filters.IdSerie = filterSelectedSerie.Id;
+            if(filterSelectedTeacher != null) filters.RgProfessor = filterSelectedTeacher.RG;
 
             listTurmas(filters);
         }
+
 
         private void turmaPicture_Click(object sender, EventArgs e)
     {
@@ -610,28 +664,6 @@ namespace ElearningDesktop
 
     private async void plusButtonPictureBox_Click(object sender, EventArgs e)
     {
-        try
-        {
-            var apiPath = RestService.For<ApiService>(Routes.baseUrl);
-            var dataResponse = await apiPath.GetSeriesAsync();
-            var series = JsonConvert.DeserializeObject<SeriesApiResponse[]>(dataResponse.ToString());
-            List<string> siglaList = new List<string>();
-            List<string> idList = new List<string>();
-            foreach (SeriesApiResponse serie in series)
-            {
-                siglaList.Add(serie.Sigla);
-                idList.Add(serie.Id.ToString());
-            }
-            serieName = siglaList.ToArray();
-            serieId = idList.ToArray();
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.ToString());
-            return;
-        }
-
-
         int labelSize = Convert.ToInt32(Styles.formSize.Height * 0.029) + 10;
         int objectHeight = Convert.ToInt32(Styles.formSize.Height * 0.06);
 
@@ -731,7 +763,7 @@ namespace ElearningDesktop
                  "comboBoxSerie",
                  new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
                  creationTurmaPanel,
-                 serieName
+                 siglaSerieList
          ));
 
         #endregion
@@ -756,5 +788,37 @@ namespace ElearningDesktop
     }
 
         #endregion
+        private void comboBox01_Serie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox01_Serie.SelectedItem.Equals(""))
+            {
+                filterSelectedSerie = null;
+                return;
+            }
+            foreach (SeriesApiResponse serie in series)
+            {
+                if (serie.Sigla == comboBox01_Serie.SelectedItem.ToString())
+                {
+                    filterSelectedSerie = serie;
+                }
+            }
+        }
+
+        private void comboBox02_Professor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox02_Professor.SelectedItem.Equals(""))
+            {
+                filterSelectedTeacher = null;
+                return;
+            }
+            foreach (TeachersApiResponse teacher in teachers)
+            {
+                if (teacher.Nome == comboBox02_Professor.SelectedItem.ToString())
+                {
+                    filterSelectedTeacher = teacher;
+                }
+            }
+
+        }
     }
 }

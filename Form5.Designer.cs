@@ -34,6 +34,8 @@ namespace ElearningDesktop
             this.loadingText = new System.Windows.Forms.Label();
             this.plusButtonPictureBox = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
+            this.comboBox02_Professor = new System.Windows.Forms.ComboBox();
+            this.comboBox01_Serie = new System.Windows.Forms.ComboBox();
             this.textBox01_NomeTurma = new System.Windows.Forms.TextBox();
             this.label01Title = new System.Windows.Forms.Label();
             this.label02Title = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@ namespace ElearningDesktop
             this.filterButtonPanel = new System.Windows.Forms.Panel();
             this.filterButton = new System.Windows.Forms.Button();
             this.linePanel = new System.Windows.Forms.Panel();
-            this.comboBox01_Serie = new System.Windows.Forms.ComboBox();
-            this.comboBox02_Professor = new System.Windows.Forms.ComboBox();
             this.centralPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plusButtonPictureBox)).BeginInit();
             this.filterPanel.SuspendLayout();
@@ -119,6 +119,24 @@ namespace ElearningDesktop
             this.filterPanel.Size = new System.Drawing.Size(225, 430);
             this.filterPanel.TabIndex = 48;
             // 
+            // comboBox02_Professor
+            // 
+            this.comboBox02_Professor.FormattingEnabled = true;
+            this.comboBox02_Professor.Location = new System.Drawing.Point(15, 148);
+            this.comboBox02_Professor.Name = "comboBox02_Professor";
+            this.comboBox02_Professor.Size = new System.Drawing.Size(172, 21);
+            this.comboBox02_Professor.TabIndex = 70;
+            this.comboBox02_Professor.SelectedIndexChanged += new System.EventHandler(this.comboBox02_Professor_SelectedIndexChanged);
+            // 
+            // comboBox01_Serie
+            // 
+            this.comboBox01_Serie.FormattingEnabled = true;
+            this.comboBox01_Serie.Location = new System.Drawing.Point(16, 92);
+            this.comboBox01_Serie.Name = "comboBox01_Serie";
+            this.comboBox01_Serie.Size = new System.Drawing.Size(172, 21);
+            this.comboBox01_Serie.TabIndex = 69;
+            this.comboBox01_Serie.SelectedIndexChanged += new System.EventHandler(this.comboBox01_Serie_SelectedIndexChanged);
+            // 
             // textBox01_NomeTurma
             // 
             this.textBox01_NomeTurma.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -192,22 +210,6 @@ namespace ElearningDesktop
             this.linePanel.Name = "linePanel";
             this.linePanel.Size = new System.Drawing.Size(225, 10);
             this.linePanel.TabIndex = 50;
-            // 
-            // comboBox01_Serie
-            // 
-            this.comboBox01_Serie.FormattingEnabled = true;
-            this.comboBox01_Serie.Location = new System.Drawing.Point(16, 92);
-            this.comboBox01_Serie.Name = "comboBox01_Serie";
-            this.comboBox01_Serie.Size = new System.Drawing.Size(172, 21);
-            this.comboBox01_Serie.TabIndex = 69;
-            // 
-            // comboBox02_Professor
-            // 
-            this.comboBox02_Professor.FormattingEnabled = true;
-            this.comboBox02_Professor.Location = new System.Drawing.Point(15, 148);
-            this.comboBox02_Professor.Name = "comboBox02_Professor";
-            this.comboBox02_Professor.Size = new System.Drawing.Size(172, 21);
-            this.comboBox02_Professor.TabIndex = 70;
             // 
             // Form5
             // 

@@ -99,6 +99,5 @@ namespace ElearningDesktop
 
         [AliasAs("rgProfessor")]
         public string RgProfessor { get; set; }
-        
     }
 }

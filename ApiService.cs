@@ -109,56 +109,56 @@ namespace ElearningDesktop
         public int? IdSerie { get; set; }
 
         [AliasAs("rgProfessor")]
-        public int? RgProfessor { get; set; }
+        public string RgProfessor { get; set; }
     }
 
     interface ApiService
     {
         #region Rotas de Séries
-        [Get("/series/list/")]
+        [Get("/series/")]
         Task<dynamic> GetSeriesAsync();
 
-        [Get("/series/list/")]
+        [Get("/series/")]
         Task<dynamic> GetSeriesFilteredAsync(SerieQueryParameters parametros);
 
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
-        [Post("/series/create/")]
+        [Post("/series/")]
         Task<dynamic> InsertSeriesAsync([Body] SerieQueryParameters parametros);
         #endregion
 
         #region Rotas de Professores
-        [Get("/professores/list/")]
+        [Get("/professores/")]
         Task<dynamic> GetTeachersAsync();
 
-        [Get("/professores/list/")]
+        [Get("/professores/")]
         Task<dynamic> GetTeachersFilteredAsync(TeacherQueryParameters parametros);
 
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
-        [Post("/professores/create/")]
+        [Post("/professores/")]
         Task<dynamic> InsertTeachersAsync([Body] TeacherQueryParameters parametros);
         #endregion
 
         #region Rotas de Alunos
-        [Get("/alunos/list/")]
+        [Get("/alunos/")]
         Task<dynamic> GetStudentsAsync();
 
-        [Get("/alunos/list/")]
+        [Get("/alunos/")]
         Task<dynamic> GetStudentsFilteredAsync(StudentQueryGet parametros);
 
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
-        [Post("/alunos/create/")]
+        [Post("/alunos/")]
         Task<dynamic> InsertStudentsAsync([Body] StudentQueryParameters parametros);
         #endregion
 
         #region Rotas de Turmas
-        [Get("/turmas/list/")]
+        [Get("/turmas/")]
         Task<dynamic> GetTurmasAsync();
 
-        [Get("/turmas/list/")]
+        [Get("/turmas/")]
         Task<dynamic> GetTurmasFilteredAsync(ClassQueryGet parametros);
 
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
-        [Post("/turmas/create/")]
+        [Post("/turmas/")]
         Task<dynamic> InsertTurmasAsync([Body] ClassQueryParameters parametros);
         #endregion
 

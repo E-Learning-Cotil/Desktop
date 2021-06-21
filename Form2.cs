@@ -53,7 +53,7 @@ namespace ElearningDesktop
         private void Form2_Load(object sender, EventArgs e)
         {
             //FILTRO
-            Filter.arrangeFilterPosition(this);
+            Filter.arrangeFilterPanelsPosition(this);
             Filter.filterButtonStyle(filterButtonPanel);
             Filter.orderFilterElements(filterPanel);
 
