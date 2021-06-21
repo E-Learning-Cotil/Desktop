@@ -95,7 +95,7 @@ namespace ElearningDesktop
 
             nameTeacherLabel.TextAlign = ContentAlignment.TopRight;
 
-            nameTeacherLabel.Location = new Point(turmaPanel.Width - nameTeacherLabel.Width, Convert.ToInt32(turmaPanel.Size.Height / 2) - 5);
+            nameTeacherLabel.Location = new Point(turmaPanel.Width - nameTeacherLabel.Width, Convert.ToInt32(turmaPanel.Size.Height / 2 - nameTeacherLabel.Font.SizeInPoints));
 
             turmaPanel.Controls.Add(nameTeacherLabel);
 
