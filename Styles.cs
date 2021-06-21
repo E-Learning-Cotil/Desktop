@@ -151,17 +151,17 @@ namespace ElearningDesktop
                     if (numberOfTextBoxes != textBoxCounter)
                     {
                         textBoxArray[textBoxCounter].Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
-                        textBoxArray[textBoxCounter].Size = new Size(filterPanel.Width - 40, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
+                        textBoxArray[textBoxCounter].Size = new Size(filterPanel.Width - 20, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
                         textBoxArray[textBoxCounter].Location = new Point(10, heightNeeded);
                         heightNeeded += textBoxArray[textBoxCounter].Height + 10;
                         textBoxCounter++;
                     }
                     else if (numberOfComboBoxes != comboBoxCounter)
                     {
-                        comboBoxArray[comboBoxCounter].Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32((Styles.formSize.Height * 0.039) / 2.8));
+                        comboBoxArray[comboBoxCounter].Font = new Font(Styles.customFont.FontFamily, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.66));
                         comboBoxArray[comboBoxCounter].FlatStyle = FlatStyle.Flat;
                         comboBoxArray[comboBoxCounter].DropDownStyle = ComboBoxStyle.DropDownList;
-                        comboBoxArray[comboBoxCounter].Size = new Size(filterPanel.Width - 40, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
+                        comboBoxArray[comboBoxCounter].Size = new Size(filterPanel.Width - 20, Convert.ToInt32(Styles.customFont.SizeInPoints * 0.75));
                         comboBoxArray[comboBoxCounter].Location = new Point(10, heightNeeded);
                         heightNeeded += comboBoxArray[comboBoxCounter].Height + 10;
                         comboBoxCounter++;
@@ -192,6 +192,10 @@ namespace ElearningDesktop
                     }
                 }
             }
+            Panel panel = new Panel();
+            panel.Size = new Size(1, 20);
+            panel.Location = new Point(20,heightNeeded);
+            filterPanel.Controls.Add(panel);
         }
 
         public static void arrangeFilterPanelsPosition(Form formPai)
@@ -258,6 +262,9 @@ namespace ElearningDesktop
             plusButtonPictureBox.Size = new Size(Convert.ToInt32(formPai.Height * 0.083), Convert.ToInt32(formPai.Height * 0.083));
 
             plusButtonPictureBox.Location = new Point(Styles.seriesSize.Width + 20 - plusButtonPictureBox.Width, centralPanel.Height - plusButtonPictureBox.Height - 7);
+
+            plusButtonPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            plusButtonPictureBox.Padding = new Padding(Convert.ToInt32(formPai.Height * 0.012));
 
             Rectangle rectangle = new Rectangle(0, 0, plusButtonPictureBox.Width, plusButtonPictureBox.Height);
 
