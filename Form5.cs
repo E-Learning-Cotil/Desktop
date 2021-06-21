@@ -221,88 +221,68 @@ namespace ElearningDesktop
         }
 
         private async void finishTurmasCreation_Click(object sender, EventArgs e)
-    {
-        ClassQueryParameters data = new ClassQueryParameters();
-
-        int itemsCount = parentForm.Controls.Count;
-        Panel creationPanel = new Panel();
-
-        for (int i = itemsCount - 1; i >= 0; i--)
         {
-            if (parentForm.Controls[i].Name == "creationTurmasPanel")
-            {
-                creationPanel = (Panel)parentForm.Controls[i];
-                break;
-            }
-        }
+            ClassQueryParameters data = new ClassQueryParameters();
 
-        for (int i = 0; i < creationPanel.Controls.Count; i++)
-        {
-            if (creationPanel.Controls[i].Name.Contains("textBox"))
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+
+            for (int i = itemsCount - 1; i >= 0; i--)
             {
-                if (creationPanel.Controls[i].Name.Contains("Nome"))
+                if (parentForm.Controls[i].Name == "creationTurmasPanel")
                 {
-                    if (creationPanel.Controls[i].Text.Trim() == "")
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < creationPanel.Controls.Count; i++)
+            {
+                if (creationPanel.Controls[i].Name.Contains("textBox"))
+                {
+                    if (creationPanel.Controls[i].Name.Contains("Nome"))
                     {
-                        MessageBox.Show("O nome é obrigatório!");
-                        return;
+                        if (creationPanel.Controls[i].Text.Trim() == "")
+                        {
+                            MessageBox.Show("O nome é obrigatório!");
+                            return;
+                        }
+                        else data.Nome = creationPanel.Controls[i].Text.Trim();
                     }
-                    else data.Nome = creationPanel.Controls[i].Text.Trim();
                 }
             }
-        }
-        if (!imageUrl.Trim().Equals("")) data.Icone = imageUrl;
-        else
-        {
-            MessageBox.Show("Escolha um icone!");
-            return;
-        }
-
-        int selectedSerie = -1;
-        for (int i = 0; i < creationPanel.Controls.Count; i++)
-        {
-
-            if (creationPanel.Controls[i].Name.Contains("comboBox"))
+            if (!imageUrl.Trim().Equals("")) data.Icone = imageUrl;
+            else
             {
-                if (creationPanel.Controls[i].Name.Contains("Serie"))
+                MessageBox.Show("Escolha um icone!");
+                return;
+            }
+
+            int selectedSerie = -1;
+            for (int i = 0; i < creationPanel.Controls.Count; i++)
+            {
+
+                if (creationPanel.Controls[i].Name.Contains("comboBox"))
                 {
-                    selectedSerie = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
-                    if (selectedSerie == -1)
+                    if (creationPanel.Controls[i].Name.Contains("Serie"))
                     {
-                        MessageBox.Show("A série é obrigatório!");
-                        return;
+                        selectedSerie = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
+                        if (selectedSerie == -1)
+                        {
+                            MessageBox.Show("A série é obrigatório!");
+                            return;
+                        }
+                        else data.IdSerie = selectedSerie + 1;
+                        break;
                     }
-                    else data.IdSerie = selectedSerie + 1;
-                    break;
                 }
             }
-        }
 
-        var apiPath = RestService.For<ApiService>(Routes.baseUrl);
-        try
-        {
-            bool isOk = true;
-                /*
-            for (int i = 0; i < classes.Length; i++)
+            var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+            Panel p = new Panel();
+            Button b = new Button();
+            try
             {
-                if (classes[i].Email == data.Email)
-                {
-                    isOk = false;
-                    MessageBox.Show("O Email já existe no banco de dados!");
-                    break;
-                }
-                if (classes[i].Telefone == data.Telefone)
-                {
-                    isOk = false;
-                    MessageBox.Show("O Telefone já existe no banco de dados!");
-                    break;
-                }
-            }
-                */
-            if (isOk)
-            {
-                Panel p = new Panel();
-                Button b = new Button();
                 for (int i = 0; i < parentForm.Controls.Count; i++)
                 {
                     if (parentForm.Controls[i].Name == "creationTurmaPanel")
@@ -325,6 +305,8 @@ namespace ElearningDesktop
 
                 var dataResponse = await apiPath.InsertTurmasAsync(data);
                 var response = JsonConvert.DeserializeObject<ApiMessageResponse>(dataResponse.ToString());
+                b.Text = "Sucesso!";
+                b.Enabled = true;
                 MessageBox.Show(response.Message);
                 for (int i = 0; i < parentForm.Controls.Count; i++)
                 {
@@ -336,12 +318,13 @@ namespace ElearningDesktop
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                b.Text = "Erro!";
+                b.Enabled = false;
+            }
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-        }
-    }
 
     private void cancelTurmaCreation_Click(object sender, EventArgs e)
     {
@@ -488,9 +471,12 @@ namespace ElearningDesktop
             case "comboBoxSerie":
                 comboBoxButton.Click += new EventHandler(showStudentComboBox_Click);
                 break;
-        }
+                case "comboBoxProfessor":
+                    comboBoxButton.Click += new EventHandler(showProfessorComboBox_Click);
+                break;
+            }
 
-        parentPanel.Controls.Add(comboBoxButton);
+            parentPanel.Controls.Add(comboBoxButton);
 
         return comboBox;
     }
@@ -662,7 +648,30 @@ namespace ElearningDesktop
         }
     }
 
-    private async void plusButtonPictureBox_Click(object sender, EventArgs e)
+        private void showProfessorComboBox_Click (object sender, EventArgs e)
+        {
+            int itemsCount = parentForm.Controls.Count;
+            Panel creationPanel = new Panel();
+            for (int i = itemsCount - 1; i >= 0; i--)
+            {
+                if (parentForm.Controls[i].Name == "creationTurmaPanel")
+                {
+                    creationPanel = (Panel)parentForm.Controls[i];
+                    break;
+                }
+            }
+            for (int i = creationPanel.Controls.Count - 1; i > 0; i--)
+            {
+                if (creationPanel.Controls[i].Name == "comboBoxProfessor")
+                {
+                    ((ComboBox)creationPanel.Controls[i]).Focus();
+                    ((ComboBox)creationPanel.Controls[i]).DroppedDown = true;
+                    break;
+                }
+            }
+        }
+
+        private void plusButtonPictureBox_Click(object sender, EventArgs e)
     {
         int labelSize = Convert.ToInt32(Styles.formSize.Height * 0.029) + 10;
         int objectHeight = Convert.ToInt32(Styles.formSize.Height * 0.06);
@@ -698,54 +707,37 @@ namespace ElearningDesktop
                  creationTurmaPanel
          ));
 
-        #region Adicionar imagem
 
-        Panel panel = new Panel();
-
-        panel.BackColor = Styles.backgroundColor;
-        panel.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.474) + 20, objectHeight);
-        panel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.137), Convert.ToInt32(Styles.formSize.Height * 0.266));
-
-        Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
-        GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
-        panel.Region = new Region(roundedPanel);
-
-        turmaPicture = new PictureBox();
-
-        turmaPicture.Image = Properties.Resources.upload;
-        turmaPicture.Size = new Size(panel.Width, panel.Height);
-        turmaPicture.SizeMode = PictureBoxSizeMode.CenterImage;
-        turmaPicture.Location = new Point(Convert.ToInt32(panel.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(panel.Height / 2 - turmaPicture.Height / 2));
-
-        turmaPicture.AllowDrop = true;
-        turmaPicture.Click += new EventHandler(this.turmaPicture_Click);
-        turmaPicture.DragEnter += new DragEventHandler(this.turmaPicture_DragEnter);
-        turmaPicture.DragDrop += new DragEventHandler(this.turmaPicture_DragDrop);
-
-        panel.Controls.Add(turmaPicture);
-        creationTurmaPanel.Controls.Add(panel);
-
+        #region Seleciona Cor
         #endregion
 
-        objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
+        #region Seleciona Icone
+            Panel panel = new Panel();
 
-        creationTurmaPanel.Controls.Add(createTurmaPanelLabel(
-                "labelEmail",
-                "Email: ",
-                new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                Styles.customFont,
-                new Size(Convert.ToInt32(Styles.formSize.Width * 0.046), labelSize)
-        ));
+            panel.BackColor = Styles.backgroundColor;
+            panel.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.474) + 20, objectHeight);
+            panel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Width * 0.117));
 
-        objectHeight += labelSize;
+            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
+            panel.Region = new Region(roundedPanel);
 
-        creationTurmaPanel.Controls.Add(createTurmaPanelTextBox(
-                 "textBoxEmail",
-                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                 creationTurmaPanel
-         ));
+            turmaPicture = new PictureBox();
 
-        objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
+            turmaPicture.Image = Properties.Resources.upload;
+            turmaPicture.Size = new Size(panel.Width, panel.Height);
+            turmaPicture.SizeMode = PictureBoxSizeMode.CenterImage;
+            turmaPicture.Location = new Point(Convert.ToInt32(panel.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(panel.Height / 2 - turmaPicture.Height / 2));
+
+            turmaPicture.AllowDrop = true;
+            turmaPicture.Click += new EventHandler(this.turmaPicture_Click);
+            turmaPicture.DragEnter += new DragEventHandler(this.turmaPicture_DragEnter);
+            turmaPicture.DragDrop += new DragEventHandler(this.turmaPicture_DragDrop);
+
+            panel.Controls.Add(turmaPicture);
+            creationTurmaPanel.Controls.Add(panel);
+        #endregion
+                objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
         #region ComboBox Série
 
@@ -770,24 +762,27 @@ namespace ElearningDesktop
 
         objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
+        #region ComboBox Professor
         creationTurmaPanel.Controls.Add(createTurmaPanelLabel(
-                "labelTelefone",
-                "Telefone: ",
-                new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                Styles.customFont,
-                new Size(Convert.ToInt32(Styles.formSize.Width * 0.068), labelSize)
+            "labelProfessor",
+            "Professor: ",
+            new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+            Styles.customFont,
+            new Size(Convert.ToInt32(Styles.formSize.Width * 0.068), labelSize)
         ));
 
         objectHeight += labelSize;
 
-        creationTurmaPanel.Controls.Add(createTurmaPanelTextBox(
-                 "textBoxTelefone",
-                 new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
-                 creationTurmaPanel
-         ));
-    }
-
+        creationTurmaPanel.Controls.Add(createTurmaPanelComboBox(
+                    "comboBoxProfessor",
+                    new Point(Convert.ToInt32(Styles.formSize.Width * 0.069), objectHeight),
+                    creationTurmaPanel,
+                    siglaTeacherList
+            ));
+        }
         #endregion
+        #endregion
+
         private void comboBox01_Serie_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox01_Serie.SelectedItem.Equals(""))
