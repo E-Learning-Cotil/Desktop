@@ -85,19 +85,43 @@ namespace ElearningDesktop
         [AliasAs("nome")]
         public string Nome { get; set; }
 
-        [AliasAs("icone")]
-        public string Icone { get; set; }
+        [AliasAs("idCores")]
+        public int IdCores { get; set; }
 
-        [AliasAs("corPrim")]
-        public string CorPrim { get; set; }
-
-        [AliasAs("corSec")]
-        public string CorSec { get; set; }
+        [AliasAs("idIcone")]
+        public int IdIcone { get; set; }
 
         [AliasAs("idSerie")]
         public int IdSerie { get; set; }
 
         [AliasAs("rgProfessor")]
         public string RgProfessor { get; set; }
+
+        [AliasAs("icone")]
+        public IconsApiResponse Icone { get; set; }
+
+        [AliasAs("cores")]
+        public ColorsApiResponse Colors { get; set; }
+    }
+
+    public class ColorsApiResponse
+    {
+        [AliasAs("id")]
+        public int ID { get; set; }
+
+        [AliasAs("corPrim")]
+        public string CorPrim { get; set; }
+
+        [AliasAs("corSec")]
+        public string CorSec { get; set; }
+    }
+
+    public class IconsApiResponse
+    {
+        [AliasAs("id")]
+        public int ID { get; set; }
+
+        [AliasAs("link")]
+        public string Link { get; set; }
     }
 }
