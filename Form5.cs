@@ -30,7 +30,8 @@ namespace ElearningDesktop
 
 
         protected bool validData;
-        protected string imageUrl = "";
+        protected int? selectedIcon;
+        protected int? selectedColor;
         protected Image image;
         protected Thread getImageThread;
         protected PictureBox turmaPicture;
@@ -40,17 +41,10 @@ namespace ElearningDesktop
 
         string[] serieId;
 
-        
+        ColorsApiResponse[] colors;
+        IconsApiResponse[] icons;
 
         Form1 parentForm = null;
-        #endregion
-
-        #region Declaração Variáveis dos Filtros
-            Button selectedSeries = null;
-            Button selectedShift = null;
-            Button selectedCourse = null;
-            Button selectedType = null;
-
         #endregion
 
         public Form5(Form1 parentForm)
@@ -86,6 +80,8 @@ namespace ElearningDesktop
 
             await loadSeriesAsync();
             await loadTeachersAsync();
+            await loadIcons();
+            await loadColors();
 
             listTurmas(null);
         }
@@ -112,6 +108,20 @@ namespace ElearningDesktop
             { 
                 MessageBox.Show(ex.ToString());
             }   
+        }
+
+        private async Task loadIcons()
+        {
+            var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+            var dataResponse = await apiPath.GetIconsAsync();
+            icons = JsonConvert.DeserializeObject<IconsApiResponse[]>(dataResponse.ToString());
+        }
+
+        private async Task loadColors()
+        {
+            var apiPath = RestService.For<ApiService>(Routes.baseUrl);
+            var dataResponse = await apiPath.GetColorsAsync();
+            colors = JsonConvert.DeserializeObject<ColorsApiResponse[]>(dataResponse.ToString());
         }
 
         private async Task loadTeachersAsync()
@@ -143,7 +153,8 @@ namespace ElearningDesktop
             try
             {
                 var apiPath = RestService.For<ApiService>(Routes.baseUrl);
-                if ((filters == null) || ((filters.Nome == null) && (filters.IdSerie == null) && (filters.RgProfessor == null== null)))
+                //if ((filters == null) || ((filters.Nome == null) && (filters.IdSerie == null) && (filters.RgProfessor == null== null)))
+                if ((filters == null) || ((filters.Nome == null) && (filters.IdSerie == null) && (filters.RgProfessor == null)))
                 {
                     var dataResponse = await apiPath.GetTurmasAsync();
                     turmas = JsonConvert.DeserializeObject<TurmasApiResponse[]>(dataResponse.ToString());
@@ -186,7 +197,7 @@ namespace ElearningDesktop
                             if (rgTeacherList[indexTeacher] == turmasData.RgProfessor) break;
                         }
 
-                        Turmas turma = new Turmas(turmasData.ID, turmasData.Nome, turmasData.Icone, turmasData.CorPrim, turmasData.CorSec, siglaSerieList[indexSerie], siglaTeacherList[indexTeacher], i);
+                        Turmas turma = new Turmas(turmasData.ID, turmasData.Nome, turmasData.IdCores, turmasData.IdIcone, turmasData.IdSerie, turmasData.RgProfessor, turmasData.Icone, turmasData.Colors, siglaSerieList[indexSerie], siglaTeacherList[indexTeacher], i);
                         centralPanel.Controls.Add(turma.getTurmaPanel());
                     }
                     Panel panel = new Panel();
@@ -253,10 +264,36 @@ namespace ElearningDesktop
                     }
                 }
             }
-            if (!imageUrl.Trim().Equals("")) data.Icone = imageUrl;
+            if (selectedIcon != null)
+            {
+                foreach(IconsApiResponse icon in icons){
+                    if (icon.ID == selectedIcon)
+                    {
+                        data.Icone = icon;
+                        break;
+                    }
+                }
+            }
             else
             {
-                MessageBox.Show("Escolha um icone!");
+                MessageBox.Show("Escolha um ícone!");
+                return;
+            }
+
+            if (selectedColor != null)
+            {
+                foreach (ColorsApiResponse color in colors)
+                {
+                    if (color.ID == selectedColor)
+                    {
+                        data.Colors = color;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Escolha uma cor!");
                 return;
             }
 
@@ -483,69 +520,12 @@ namespace ElearningDesktop
         return comboBox;
     }
 
-    private void turmaPicture_DragDrop(object sender, DragEventArgs e)
-    {
-        if (validData)
-        {
-            while (getImageThread.IsAlive)
-            {
-                Application.DoEvents();
-                Thread.Sleep(0);
-            }
-            turmaPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            turmaPicture.Image = image;
-            sendTurmaImage();
-
-        }
-    }
-
     private byte[] ImageToByteArray(Image imageIn)
     {
         using (MemoryStream ms = new MemoryStream())
         {
             image.Save(ms, image.RawFormat);
             return ms.ToArray();
-        }
-    }
-
-    private async void sendTurmaImage()
-    {
-        Panel p = new Panel();
-        Button b = new Button();
-        for (int i = 0; i < parentForm.Controls.Count; i++)
-        {
-            if (parentForm.Controls[i].Name == "creationTurmaPanel")
-            {
-                p = (Panel)parentForm.Controls[i];
-                break;
-            }
-        }
-        for (int i = 0; i < p.Controls.Count; i++)
-        {
-            if (p.Controls[i].Name == "finishTurmaCreation")
-            {
-                b = (Button)p.Controls[i];
-                break;
-            }
-        }
-
-        b.Text = "Aguarde...";
-        b.Enabled = false;
-
-        var apiPath = RestService.For<ApiService>(Routes.sendImageBaseUrl);
-        try
-        {
-            var imageData = ImageToByteArray(image);
-            var dataResponse = await apiPath.SendImageToApi(new ByteArrayPart(imageData, "file.png"));
-            imageUrl = dataResponse;
-            b.Text = "Finalizar";
-            b.Enabled = true;
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.ToString());
-            b.Text = "Erro...";
-            b.Enabled = false;
         }
     }
 
@@ -622,33 +602,6 @@ namespace ElearningDesktop
 
             listTurmas(filters);
         }
-
-
-        private void turmaPicture_Click(object sender, EventArgs e)
-    {
-        OpenFileDialog selectedPicture = new OpenFileDialog();
-        selectedPicture.Title = "Selecione uma foto: ";
-        selectedPicture.Filter = "Images (*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
-        selectedPicture.CheckFileExists = true;
-        selectedPicture.CheckPathExists = true;
-
-        DialogResult result = selectedPicture.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            try
-            {
-                string pictureName = selectedPicture.FileName;
-                image = Image.FromFile(pictureName);
-                sendTurmaImage();
-                turmaPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-                turmaPicture.Image = image;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-    }
 
         private void showProfessorComboBox_Click (object sender, EventArgs e)
         {
