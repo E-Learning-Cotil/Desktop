@@ -16,20 +16,18 @@ namespace ElearningDesktop
     {
         private int turmaID;
         private string turmaName;
-        private string turmaIcon;
+        private IconsApiResponse turmaIcon;
         private string nomeSerie;
         private string nomeProfessor;
 
-        private string turmaPrimaryColor;
-        private string turmaSecondaryColor;
+        private ColorsApiResponse turmaColors;
         private string turmaRGTeacher;
 
 
         private Panel turmaPanel;
         private Thread getImageThread;
         private PictureBox turmaPicture = new PictureBox();
-
-        public Turmas(int id, string nome, string icone, string corPrim, string corSec, string nomeSerie, string nomeProfessor, int position)
+        public Turmas(int id, string nome, int idCores, int idicone, int idSerie, string rgProfessor, IconsApiResponse icone, ColorsApiResponse Cores, string nomeSerie, string nomeProfessor, int position)
         {
             #region Atributos
 
@@ -38,10 +36,10 @@ namespace ElearningDesktop
             turmaID = id;
             turmaName = nome;
             turmaIcon = icone;
-            turmaPrimaryColor = corPrim;
-            turmaSecondaryColor = corSec;
+            turmaColors = Cores;
             this.nomeSerie = nomeSerie;
             this.nomeProfessor = nomeProfessor;
+            this.turmaRGTeacher = rgProfessor;
 
             #endregion
 
@@ -59,7 +57,9 @@ namespace ElearningDesktop
             getImageThread = new Thread(new ThreadStart(getImage));
             getImageThread.Start();
 
+            turmaPicture.BackColor = Color.White;
             turmaPicture.Size = new Size(Convert.ToInt32(Styles.seriesSize.Width * 0.05), Convert.ToInt32(Styles.seriesSize.Height * 0.6));
+            turmaPicture.Padding = new Padding(Convert.ToInt32(Styles.seriesSize.Width * 0.005));
             turmaPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             turmaPicture.Location = new Point(Convert.ToInt32(turmaPanel.Location.X + 2), Convert.ToInt32((turmaPanel.Size.Height / 2) - (turmaPicture.Size.Height / 2)));
 
@@ -74,7 +74,7 @@ namespace ElearningDesktop
             #region Nome
 
             Label classNameLabel = new Label(); //cria a serie
-            classNameLabel.Text = turmaName + " - " + this.nomeSerie; //define o nome da serie
+            classNameLabel.Text = turmaName + " " + this.nomeSerie; //define o nome da serie
             classNameLabel.Font = Styles.defaultFont;//define a estilização do texto
             classNameLabel.AutoSize = true;
             classNameLabel.TextAlign = ContentAlignment.MiddleLeft; //alinha o texto ao centro(x) centro(y)
@@ -111,7 +111,7 @@ namespace ElearningDesktop
             {
                 WebResponse imageResponse = null;
                 Stream responseStream;
-                HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(turmaIcon);
+                HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(turmaIcon.Link);
                 imageResponse = imageRequest.GetResponse();
                 responseStream = imageResponse.GetResponseStream();
                 turmaPicture.Image = Image.FromStream(responseStream);
