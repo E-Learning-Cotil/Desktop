@@ -34,6 +34,8 @@ namespace ElearningDesktop
         protected Image image;
         protected Thread getImageThread;
         protected PictureBox turmaPicture;
+        protected Panel primaryColor;
+        protected Panel secondaryColor;
         string path;
 
         string[] serieId;
@@ -707,37 +709,87 @@ namespace ElearningDesktop
                  creationTurmaPanel
          ));
 
+            #region Exibe cor e ícone
+            Panel selectedColorIcon = new Panel();
+            primaryColor = new Panel(); 
+            secondaryColor = new Panel();
 
-        #region Seleciona Cor
-        #endregion
+                selectedColorIcon.BackColor = Styles.backgroundColor;
+                selectedColorIcon.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.474) + 20, objectHeight);
+                selectedColorIcon.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Width * 0.117));
 
-        #region Seleciona Icone
-            Panel panel = new Panel();
+                Rectangle rectangle = new Rectangle(0, 0, selectedColorIcon.Width, selectedColorIcon.Height);
+                GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
+                selectedColorIcon.Region = new Region(roundedPanel);
 
-            panel.BackColor = Styles.backgroundColor;
-            panel.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.474) + 20, objectHeight);
-            panel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Width * 0.117));
+            #region Cor Primária
+                
+            primaryColor.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2), selectedColorIcon.Height);
+            primaryColor.Location = new Point(0,0);
+            primaryColor.BackColor = Color.Red;
+            primaryColor.BringToFront();
 
-            Rectangle rectangle = new Rectangle(0, 0, panel.Width, panel.Height);
-            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
-            panel.Region = new Region(roundedPanel);
+            rectangle = new Rectangle(0, 0, primaryColor.Width, primaryColor.Height);
+            roundedPanel = Transform.BorderRadius(rectangle, 15, true, false, false, true);
+            primaryColor.Region = new Region(roundedPanel);
+
+            selectedColorIcon.Controls.Add(primaryColor);
+
+            #endregion
+
+            #region Cor Secundária
+
+            secondaryColor.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2), selectedColorIcon.Height);
+            secondaryColor.Location = new Point(primaryColor.Width, 0);
+            secondaryColor.BackColor = Color.Blue;
+            secondaryColor.BringToFront();
+
+            rectangle = new Rectangle(0, 0, secondaryColor.Width, secondaryColor.Height);
+            roundedPanel = Transform.BorderRadius(rectangle, 15, false, true, true, false);
+            secondaryColor.Region = new Region(roundedPanel);
+
+            selectedColorIcon.Controls.Add(secondaryColor);
+
+            #endregion
 
             turmaPicture = new PictureBox();
 
-            turmaPicture.Image = Properties.Resources.upload;
-            turmaPicture.Size = new Size(panel.Width, panel.Height);
+            turmaPicture.Image = null;
+            turmaPicture.Size = new Size(selectedColorIcon.Width, selectedColorIcon.Height);
             turmaPicture.SizeMode = PictureBoxSizeMode.CenterImage;
-            turmaPicture.Location = new Point(Convert.ToInt32(panel.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(panel.Height / 2 - turmaPicture.Height / 2));
+            turmaPicture.Location = new Point(Convert.ToInt32(selectedColorIcon.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(selectedColorIcon.Height / 2 - turmaPicture.Height / 2));
 
-            turmaPicture.AllowDrop = true;
-            turmaPicture.Click += new EventHandler(this.turmaPicture_Click);
-            turmaPicture.DragEnter += new DragEventHandler(this.turmaPicture_DragEnter);
-            turmaPicture.DragDrop += new DragEventHandler(this.turmaPicture_DragDrop);
+            selectedColorIcon.Controls.Add(turmaPicture);
 
-            panel.Controls.Add(turmaPicture);
-            creationTurmaPanel.Controls.Add(panel);
-        #endregion
-                objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
+            creationTurmaPanel.Controls.Add(selectedColorIcon);
+            #endregion
+
+            #region Seleciona Cor
+                Panel colorPanel = new Panel();
+                colorPanel.BackColor = Styles.backgroundColor;
+                colorPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width/2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+                colorPanel.Location = new Point(selectedColorIcon.Location.X, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
+
+                rectangle = new Rectangle(0, 0, colorPanel.Width, colorPanel.Height);
+                roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
+                colorPanel.Region = new Region(roundedPanel);
+
+                creationTurmaPanel.Controls.Add(colorPanel);
+            #endregion
+
+            #region Seleciona Icone
+            Panel iconPanel = new Panel();
+                iconPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+                iconPanel.Location = new Point(selectedColorIcon.Location.X + colorPanel.Width + 20, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
+                iconPanel.BackColor = Styles.backgroundColor;
+
+                rectangle = new Rectangle(0, 0, iconPanel.Width, iconPanel.Height);
+                roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
+                iconPanel.Region = new Region(roundedPanel);
+
+                creationTurmaPanel.Controls.Add(iconPanel);
+            #endregion
+            objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
         #region ComboBox Série
 
