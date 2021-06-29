@@ -60,20 +60,23 @@ namespace ElearningDesktop
         [AliasAs("nome")]
         public string Nome { get; set; }
 
-        [AliasAs("icone")]
-        public string Icone { get; set; }
+        [AliasAs("idCores")]
+        public int? IdCores { get; set; }
 
-        [AliasAs("corPrim")]
-        public string CorPrim { get; set; }
-
-        [AliasAs("corSec")]
-        public string CorSec { get; set; }
+        [AliasAs("idIcone")]
+        public int? IdIcone { get; set; }
 
         [AliasAs("idSerie")]
         public int? IdSerie { get; set; }
 
         [AliasAs("rgProfessor")]
-        public int? RgProfessor { get; set; }
+        public string RgProfessor { get; set; }
+
+        [AliasAs("icone")]
+        public IconsApiResponse Icone { get; set; }
+
+        [AliasAs("cores")]
+        public ColorsApiResponse Colors { get; set; }
     }
 
     public class StudentQueryGet
@@ -115,9 +118,11 @@ namespace ElearningDesktop
     interface ApiService
     {
         #region Rotas de Séries
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/series/")]
         Task<dynamic> GetSeriesAsync();
 
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/series/")]
         Task<dynamic> GetSeriesFilteredAsync(SerieQueryParameters parametros);
 
@@ -127,9 +132,11 @@ namespace ElearningDesktop
         #endregion
 
         #region Rotas de Professores
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/professores/")]
         Task<dynamic> GetTeachersAsync();
 
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/professores/")]
         Task<dynamic> GetTeachersFilteredAsync(TeacherQueryParameters parametros);
 
@@ -139,9 +146,11 @@ namespace ElearningDesktop
         #endregion
 
         #region Rotas de Alunos
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/alunos/")]
         Task<dynamic> GetStudentsAsync();
 
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/alunos/")]
         Task<dynamic> GetStudentsFilteredAsync(StudentQueryGet parametros);
 
@@ -151,20 +160,30 @@ namespace ElearningDesktop
         #endregion
 
         #region Rotas de Turmas
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/turmas/")]
         Task<dynamic> GetTurmasAsync();
 
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Get("/turmas/")]
         Task<dynamic> GetTurmasFilteredAsync(ClassQueryGet parametros);
 
         [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Post("/turmas/")]
         Task<dynamic> InsertTurmasAsync([Body] ClassQueryParameters parametros);
+
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
+        [Get("/icones/")]
+        Task<dynamic> GetIconsAsync();
+
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
+        [Get("/cores/")]
+        Task<dynamic> GetColorsAsync();
         #endregion
 
         #region Enviar Imagem para Servidor
         [Multipart]
-        [Post("/imagens/")]
+        [Post("/arquivos/")]
         Task<dynamic> SendImageToApi( ByteArrayPart file);
         #endregion
     }
