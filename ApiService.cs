@@ -60,23 +60,18 @@ namespace ElearningDesktop
         [AliasAs("nome")]
         public string Nome { get; set; }
 
+        [AliasAs("idIcone")]
+        public int? IdIcone { get; set; }
+        
         [AliasAs("idCores")]
         public int? IdCores { get; set; }
 
-        [AliasAs("idIcone")]
-        public int? IdIcone { get; set; }
 
         [AliasAs("idSerie")]
         public int? IdSerie { get; set; }
 
         [AliasAs("rgProfessor")]
         public string RgProfessor { get; set; }
-
-        [AliasAs("icone")]
-        public IconsApiResponse Icone { get; set; }
-
-        [AliasAs("cores")]
-        public ColorsApiResponse Colors { get; set; }
     }
 
     public class StudentQueryGet
