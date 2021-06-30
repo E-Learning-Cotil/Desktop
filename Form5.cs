@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,7 +28,9 @@ namespace ElearningDesktop
         TeachersApiResponse filterSelectedTeacher;
         List<string> siglaTeacherList;
         List<string> rgTeacherList;
-
+        Panel selectedColorIcon;
+        Panel iconSelectionPanel;
+        Panel colorSelectionPanel;
 
         protected bool validData;
         protected int? selectedIcon;
@@ -35,8 +38,11 @@ namespace ElearningDesktop
         protected Image image;
         protected Thread getImageThread;
         protected PictureBox turmaPicture;
+        protected PictureBox iconPanelPictureBox = new PictureBox();
         protected Panel primaryColor;
         protected Panel secondaryColor;
+        protected PictureBox userSelectIcon = new PictureBox();
+        
         string path;
 
         string[] serieId;
@@ -269,7 +275,7 @@ namespace ElearningDesktop
                 foreach(IconsApiResponse icon in icons){
                     if (icon.ID == selectedIcon)
                     {
-                        data.Icone = icon;
+                        data.IdIcone = icon.ID;
                         break;
                     }
                 }
@@ -286,7 +292,7 @@ namespace ElearningDesktop
                 {
                     if (color.ID == selectedColor)
                     {
-                        data.Colors = color;
+                        data.IdCores = color.ID;
                         break;
                     }
                 }
@@ -625,6 +631,89 @@ namespace ElearningDesktop
                 }
             }
         }
+        
+        private void iconPanel_Click(object sender, EventArgs e)
+        {
+            iconSelectionPanel = new Panel();
+            iconSelectionPanel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.375), Convert.ToInt32(Styles.formSize.Height * 0.391));
+            iconSelectionPanel.Location = new Point(Convert.ToInt32(Styles.formSize.Width/2 - iconSelectionPanel.Width/2), Convert.ToInt32(Styles.formSize.Height / 2 - iconSelectionPanel.Height / 2));
+            iconSelectionPanel.BackColor = Styles.backgroundColor;
+
+            Label selectIconLabel = new Label();
+            selectIconLabel.Text = "Selecionar Ícone: ";
+            selectIconLabel.Location = new Point(20, 20);
+            selectIconLabel.Font = Styles.defaultFont;
+            selectIconLabel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.3), Convert.ToInt32(Styles.formSize.Height * 0.039));
+
+            iconSelectionPanel.Controls.Add(selectIconLabel);
+
+            Rectangle rectangle = new Rectangle(0, 0, iconSelectionPanel.Width, iconSelectionPanel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, true, true);
+            iconSelectionPanel.Region = new Region(roundedPanel);
+
+            Button finishSelectIcon = new Button();
+            finishSelectIcon.Font = Styles.customFont;
+            finishSelectIcon.Name = "finishSelectIcon";
+            finishSelectIcon.Text = "Finalizar";
+            finishSelectIcon.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Height * 0.042));
+
+            rectangle = new Rectangle(0, 0, finishSelectIcon.Width, finishSelectIcon.Height);
+            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 25, true, true, true, true);
+            finishSelectIcon.Region = new Region(roundedButton);
+
+            finishSelectIcon.FlatStyle = FlatStyle.Flat;
+            finishSelectIcon.Location = new Point(iconSelectionPanel.Width - finishSelectIcon.Width - Convert.ToInt32(Styles.formSize.Width * 0.003), iconSelectionPanel.Height - finishSelectIcon.Height - Convert.ToInt32(Styles.formSize.Height * 0.003));
+
+            finishSelectIcon.ForeColor = Color.Black;
+            finishSelectIcon.BackColor = Styles.white;
+            finishSelectIcon.Click += new EventHandler(finishSelectIcon_Click);
+
+            iconSelectionPanel.Controls.Add(finishSelectIcon);
+
+            parentForm.Controls.Add(iconSelectionPanel);
+            iconSelectionPanel.BringToFront();
+        }
+
+        private void finishSelectIcon_Click(object sender, EventArgs e)
+        {
+            ((Button)sender).Text = "Aguarde...";
+            ((Button)sender).Enabled = false;
+            selectedIcon = 2;
+            getImageThread = new Thread(new ThreadStart(getImage));
+            getImageThread.Start();
+            parentForm.Controls.Remove(iconSelectionPanel);
+            turmaPicture.BringToFront();
+            ((Button)sender).Text = "Finalizar";
+            ((Button)sender).Enabled = true;
+        }
+
+        private void getImage()
+        {
+            try
+            {
+                foreach (IconsApiResponse icon in icons)
+                {
+                    if (icon.ID == selectedIcon)
+                    {
+                        WebResponse imageResponse = null;
+                        Stream responseStream;
+                        HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(icon.Link);
+                        imageResponse = imageRequest.GetResponse();
+                        responseStream = imageResponse.GetResponseStream();
+                        turmaPicture.Image = iconPanelPictureBox.Image = userSelectIcon.Image = Image.FromStream(responseStream);
+                        turmaPicture.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.005));
+                        responseStream.Close();
+                        imageResponse.Close();
+                        break;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                userSelectIcon.Image = null;
+                MessageBox.Show("Ocorreu um erro ao escolher o ícone! " + ex.ToString());
+            }
+        }
 
         private void plusButtonPictureBox_Click(object sender, EventArgs e)
     {
@@ -663,7 +752,7 @@ namespace ElearningDesktop
          ));
 
             #region Exibe cor e ícone
-            Panel selectedColorIcon = new Panel();
+            selectedColorIcon = new Panel();
             primaryColor = new Panel(); 
             secondaryColor = new Panel();
 
@@ -680,7 +769,6 @@ namespace ElearningDesktop
             primaryColor.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2), selectedColorIcon.Height);
             primaryColor.Location = new Point(0,0);
             primaryColor.BackColor = Color.Red;
-            primaryColor.BringToFront();
 
             rectangle = new Rectangle(0, 0, primaryColor.Width, primaryColor.Height);
             roundedPanel = Transform.BorderRadius(rectangle, 15, true, false, false, true);
@@ -695,7 +783,6 @@ namespace ElearningDesktop
             secondaryColor.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2), selectedColorIcon.Height);
             secondaryColor.Location = new Point(primaryColor.Width, 0);
             secondaryColor.BackColor = Color.Blue;
-            secondaryColor.BringToFront();
 
             rectangle = new Rectangle(0, 0, secondaryColor.Width, secondaryColor.Height);
             roundedPanel = Transform.BorderRadius(rectangle, 15, false, true, true, false);
@@ -709,8 +796,9 @@ namespace ElearningDesktop
 
             turmaPicture.Image = null;
             turmaPicture.Size = new Size(selectedColorIcon.Width, selectedColorIcon.Height);
-            turmaPicture.SizeMode = PictureBoxSizeMode.CenterImage;
+            turmaPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             turmaPicture.Location = new Point(Convert.ToInt32(selectedColorIcon.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(selectedColorIcon.Height / 2 - turmaPicture.Height / 2));
+            turmaPicture.BringToFront();
 
             selectedColorIcon.Controls.Add(turmaPicture);
 
@@ -732,15 +820,23 @@ namespace ElearningDesktop
 
             #region Seleciona Icone
             Panel iconPanel = new Panel();
-                iconPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
-                iconPanel.Location = new Point(selectedColorIcon.Location.X + colorPanel.Width + 20, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
-                iconPanel.BackColor = Styles.backgroundColor;
+            iconPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            iconPanel.Location = new Point(selectedColorIcon.Location.X + colorPanel.Width + 20, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
+            iconPanel.BackColor = Styles.backgroundColor;
+            iconPanel.Click += new EventHandler(this.iconPanel_Click);
 
-                rectangle = new Rectangle(0, 0, iconPanel.Width, iconPanel.Height);
-                roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
-                iconPanel.Region = new Region(roundedPanel);
+            rectangle = new Rectangle(0, 0, iconPanel.Width, iconPanel.Height);
+            roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
+            iconPanel.Region = new Region(roundedPanel);
 
-                creationTurmaPanel.Controls.Add(iconPanel);
+            iconPanelPictureBox.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            iconPanelPictureBox.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.005));
+            iconPanelPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            iconPanelPictureBox.BringToFront();
+            iconPanelPictureBox.Click += new EventHandler(this.iconPanel_Click);
+            iconPanel.Controls.Add(iconPanelPictureBox);
+
+            creationTurmaPanel.Controls.Add(iconPanel);
             #endregion
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
