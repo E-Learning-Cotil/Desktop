@@ -37,7 +37,7 @@ namespace ElearningDesktop
         protected int? selectedColor;
         protected Image image;
         protected Thread getImageThread;
-        protected PictureBox turmaPicture;
+        protected PictureBox turmaPicture = new PictureBox();
         protected PictureBox iconPanelPictureBox = new PictureBox();
         protected Panel primaryColor;
         protected Panel secondaryColor;
@@ -792,14 +792,12 @@ namespace ElearningDesktop
 
             #endregion
 
-            turmaPicture = new PictureBox();
-
             turmaPicture.Image = null;
+            turmaPicture.BackColor = Color.Transparent;
             turmaPicture.Size = new Size(selectedColorIcon.Width, selectedColorIcon.Height);
             turmaPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             turmaPicture.Location = new Point(Convert.ToInt32(selectedColorIcon.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(selectedColorIcon.Height / 2 - turmaPicture.Height / 2));
-            turmaPicture.BringToFront();
-
+            
             selectedColorIcon.Controls.Add(turmaPicture);
 
             creationTurmaPanel.Controls.Add(selectedColorIcon);
