@@ -23,6 +23,7 @@ namespace ElearningDesktop
         SeriesApiResponse filterSelectedSerie;
         List<string> siglaSerieList;
         List<int> idSerieList;
+        List<Image> iconsList = new List<Image>();
 
         TeachersApiResponse[] teachers;
         TeachersApiResponse filterSelectedTeacher;
@@ -33,8 +34,11 @@ namespace ElearningDesktop
         Panel colorSelectionPanel;
 
         protected bool validData;
-        protected int? selectedIcon;
-        protected int? selectedColor;
+        protected int selectedIcon;
+        protected int currentIcon = 0;
+        protected int currentColor = 0;
+        protected int selectedColor;
+        protected Image iconResponse;
         protected Image image;
         protected Thread getImageThread;
         protected PictureBox turmaPicture = new PictureBox();
@@ -270,7 +274,7 @@ namespace ElearningDesktop
                     }
                 }
             }
-            if (selectedIcon != null)
+            if (selectedIcon != 0)
             {
                 foreach(IconsApiResponse icon in icons){
                     if (icon.ID == selectedIcon)
@@ -286,7 +290,7 @@ namespace ElearningDesktop
                 return;
             }
 
-            if (selectedColor != null)
+            if (selectedColor != 0)
             {
                 foreach (ColorsApiResponse color in colors)
                 {
@@ -318,6 +322,30 @@ namespace ElearningDesktop
                             return;
                         }
                         else data.IdSerie = selectedSerie + 1;
+                        break;
+                    }
+                }
+            }
+
+            int selectedTeacher = -1;
+            for (int i = 0; i < creationPanel.Controls.Count; i++)
+            {
+
+                if (creationPanel.Controls[i].Name.Contains("comboBox"))
+                {
+                    if (creationPanel.Controls[i].Name.Contains("comboBoxProfessor"))
+                    {
+                        selectedTeacher = ((ComboBox)creationPanel.Controls[i]).SelectedIndex;
+                        if (selectedTeacher == -1)
+                        {
+                            MessageBox.Show("Um professor é obrigatório!");
+                            return;
+                        }
+                        else
+                        {
+                            data.RgProfessor = teachers[selectedTeacher].RG;
+                            MessageBox.Show(data.RgProfessor) ;
+                        }
                         break;
                     }
                 }
@@ -634,10 +662,19 @@ namespace ElearningDesktop
         
         private void iconPanel_Click(object sender, EventArgs e)
         {
+            currentIcon = 0;
             iconSelectionPanel = new Panel();
+            iconSelectionPanel.Name = "iconSelectionPanel";
             iconSelectionPanel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.375), Convert.ToInt32(Styles.formSize.Height * 0.391));
             iconSelectionPanel.Location = new Point(Convert.ToInt32(Styles.formSize.Width/2 - iconSelectionPanel.Width/2), Convert.ToInt32(Styles.formSize.Height / 2 - iconSelectionPanel.Height / 2));
             iconSelectionPanel.BackColor = Styles.backgroundColor;
+
+            iconSelectionPanel.Controls.Add(cancelIconSelectionButton());
+
+            /*iconSelectionPanel.HorizontalScroll.Maximum = 0;
+            iconSelectionPanel.AutoScroll = false;
+            iconSelectionPanel.VerticalScroll.Visible = false;*/
+            iconSelectionPanel.AutoScroll = true;
 
             Label selectIconLabel = new Label();
             selectIconLabel.Text = "Selecionar Ícone: ";
@@ -651,24 +688,45 @@ namespace ElearningDesktop
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, true, true);
             iconSelectionPanel.Region = new Region(roundedPanel);
 
-            Button finishSelectIcon = new Button();
-            finishSelectIcon.Font = Styles.customFont;
-            finishSelectIcon.Name = "finishSelectIcon";
-            finishSelectIcon.Text = "Finalizar";
-            finishSelectIcon.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Height * 0.042));
+            int heightNeeded = selectIconLabel.Location.Y + selectIconLabel.Height;
 
-            rectangle = new Rectangle(0, 0, finishSelectIcon.Width, finishSelectIcon.Height);
-            GraphicsPath roundedButton = Transform.BorderRadius(rectangle, 25, true, true, true, true);
-            finishSelectIcon.Region = new Region(roundedButton);
+            Size iconButtonSize = new Size(Convert.ToInt32(iconSelectionPanel.Height / 5) - 5, Convert.ToInt32(iconSelectionPanel.Height / 5) - 5);
 
-            finishSelectIcon.FlatStyle = FlatStyle.Flat;
-            finishSelectIcon.Location = new Point(iconSelectionPanel.Width - finishSelectIcon.Width - Convert.ToInt32(Styles.formSize.Width * 0.003), iconSelectionPanel.Height - finishSelectIcon.Height - Convert.ToInt32(Styles.formSize.Height * 0.003));
+            int maxIcons = 0,iconPos = 1, posX = 0;
 
-            finishSelectIcon.ForeColor = Color.Black;
-            finishSelectIcon.BackColor = Styles.white;
-            finishSelectIcon.Click += new EventHandler(finishSelectIcon_Click);
+            while (Convert.ToInt32(maxIcons * (iconButtonSize.Width) + 10) < iconSelectionPanel.Width) maxIcons++;
 
-            iconSelectionPanel.Controls.Add(finishSelectIcon);
+            foreach (IconsApiResponse icon in icons)
+            {
+                getImageThread = new Thread(new ThreadStart(getImage));
+                getImageThread.Start();
+                Button iconButton = new Button();
+                iconButton.Name = $"iconButton{icon.ID}";
+                iconButton.FlatStyle = FlatStyle.Flat;
+                
+                iconButton.BackgroundImageLayout = ImageLayout.Stretch;
+                iconButton.BackColor = Color.White;
+                iconButton.Click += new EventHandler(finishSelectIcon_Click);
+
+                iconPanelPictureBox.Image = userSelectIcon.Image;
+
+                iconButton.Size = iconButtonSize;
+
+                iconButton.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.003));
+                
+                iconButton.Location = new Point(Convert.ToInt32( posX * (iconButton.Width + 20) + 5), heightNeeded * iconPos + 10);
+
+                posX++;
+
+                if((currentIcon % maxIcons == 0) && (currentIcon != 0))
+                {
+                    iconPos++;
+                    posX = 0;
+                }
+
+                iconSelectionPanel.Controls.Add(iconButton);
+                currentIcon++;
+            }
 
             parentForm.Controls.Add(iconSelectionPanel);
             iconSelectionPanel.BringToFront();
@@ -676,15 +734,155 @@ namespace ElearningDesktop
 
         private void finishSelectIcon_Click(object sender, EventArgs e)
         {
-            ((Button)sender).Text = "Aguarde...";
-            ((Button)sender).Enabled = false;
-            selectedIcon = 2;
-            getImageThread = new Thread(new ThreadStart(getImage));
-            getImageThread.Start();
+            string iconName = ((Button)sender).Name;
+            string iconID = iconName.Remove(0,10);
+            selectedIcon = Convert.ToInt32(iconID);
+
+            MessageBox.Show(selectedIcon.ToString());
+            iconPanelPictureBox.Image = userSelectIcon.Image = iconsList[selectedIcon-1];
             parentForm.Controls.Remove(iconSelectionPanel);
-            turmaPicture.BringToFront();
-            ((Button)sender).Text = "Finalizar";
-            ((Button)sender).Enabled = true;
+        }
+
+        private Button cancelIconSelectionButton()
+        {
+            Button cancelIconSelection = new Button();
+            cancelIconSelection.FlatStyle = FlatStyle.Flat;
+            cancelIconSelection.FlatAppearance.BorderSize = 0;
+            cancelIconSelection.ForeColor = Styles.white;
+            cancelIconSelection.Text = "X";
+            cancelIconSelection.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.Size * 0.75));
+            cancelIconSelection.BackColor = Color.Transparent;
+            cancelIconSelection.Size = new Size(Convert.ToInt32(Styles.defaultFont.Size * 1.5), Convert.ToInt32(Styles.defaultFont.Size * 1.5));
+            cancelIconSelection.Location = new Point(iconSelectionPanel.Width - cancelIconSelection.Width, 0);
+            cancelIconSelection.Click += new EventHandler(cancelIconSelection_Click);
+
+            return cancelIconSelection;
+        }
+
+        private void cancelIconSelection_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < parentForm.Controls.Count; i++)
+            {
+                if (parentForm.Controls[i].Name == "iconSelectionPanel")
+                {
+                    parentForm.Controls.Remove(parentForm.Controls[i]);
+                    break;
+                }
+            }
+        }
+
+        private Color hexaToColor(string hx)
+        {
+            hx = hx.Remove(0, 1);
+            int x = int.Parse(hx, System.Globalization.NumberStyles.HexNumber);
+            Color cor = ColorTranslator.FromOle(x);
+            return cor;
+        }
+
+        private void cancelColorSelection_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < parentForm.Controls.Count; i++)
+            {
+                if (parentForm.Controls[i].Name == "colorSelectionPanel")
+                {
+                    parentForm.Controls.Remove(parentForm.Controls[i]);
+                    break;
+                }
+            }
+        }
+
+        private Button cancelColorSelectionButton()
+        {
+            Button cancelColorSelection = new Button();
+            cancelColorSelection.FlatStyle = FlatStyle.Flat;
+            cancelColorSelection.FlatAppearance.BorderSize = 0;
+            cancelColorSelection.ForeColor = Styles.white;
+            cancelColorSelection.Text = "X";
+            cancelColorSelection.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.Size * 0.75));
+            cancelColorSelection.BackColor = Color.Transparent;
+            cancelColorSelection.Size = new Size(Convert.ToInt32(Styles.defaultFont.Size * 1.5), Convert.ToInt32(Styles.defaultFont.Size * 1.5));
+            cancelColorSelection.Location = new Point(colorSelectionPanel.Width - cancelColorSelection.Width, 0);
+            cancelColorSelection.Click += new EventHandler(cancelColorSelection_Click);
+
+            return cancelColorSelection;
+        }
+
+        private void colorPanel_Click(object sender, EventArgs e)
+        {
+            currentColor = 0;
+            colorSelectionPanel = new Panel();
+            colorSelectionPanel.Name = "colorSelectionPanel";
+            colorSelectionPanel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.375), Convert.ToInt32(Styles.formSize.Height * 0.391));
+            colorSelectionPanel.Location = new Point(Convert.ToInt32(Styles.formSize.Width / 2 - colorSelectionPanel.Width / 2), Convert.ToInt32(Styles.formSize.Height / 2 - colorSelectionPanel.Height / 2));
+            colorSelectionPanel.BackColor = Styles.backgroundColor;
+
+            colorSelectionPanel.Controls.Add(cancelColorSelectionButton());
+
+            /*colorSelectionPanel.HorizontalScroll.Maximum = 0;
+            colorSelectionPanel.AutoScroll = false;
+            colorSelectionPanel.VerticalScroll.Visible = false;*/
+            colorSelectionPanel.AutoScroll = true;
+
+            Label selectColorLabel = new Label();
+            selectColorLabel.Text = "Selecionar Cor: ";
+            selectColorLabel.Location = new Point(20, 20);
+            selectColorLabel.Font = Styles.defaultFont;
+            selectColorLabel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.3), Convert.ToInt32(Styles.formSize.Height * 0.039));
+
+            colorSelectionPanel.Controls.Add(selectColorLabel);
+
+            Rectangle rectangle = new Rectangle(0, 0, colorSelectionPanel.Width, colorSelectionPanel.Height);
+            GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, true, true);
+            colorSelectionPanel.Region = new Region(roundedPanel);
+
+            int heightNeeded = selectColorLabel.Location.Y + selectColorLabel.Height;
+
+            Size colorButtonSize = new Size(Convert.ToInt32(colorSelectionPanel.Height / 5) - 5, Convert.ToInt32(colorSelectionPanel.Height / 5) - 5);
+
+            int maxColors = 0, colorPos = 1, posX = 0;
+
+            while (Convert.ToInt32(maxColors * (colorButtonSize.Width) + 10) < colorSelectionPanel.Width) maxColors++;
+
+            foreach (ColorsApiResponse color in colors)
+            {
+
+                Button colorButton = new Button();
+                colorButton.Name = $"colorButton{color.ID}";
+                colorButton.FlatStyle = FlatStyle.Flat;
+                colorButton.BackColor = hexaToColor(color.CorPrim);
+                colorButton.Click += new EventHandler(finishSelectColor_Click);
+
+                colorButton.Size = colorButtonSize;
+
+                colorButton.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.003));
+
+                colorButton.Location = new Point(Convert.ToInt32(posX * (colorButton.Width + 20) + 5), heightNeeded * colorPos + 10);
+
+                posX++;
+
+                if ((currentColor % maxColors == 0) && (currentColor != 0))
+                {
+                    colorPos++;
+                    posX = 0;
+                }
+
+                colorSelectionPanel.Controls.Add(colorButton);
+                currentColor++;
+            }
+
+            parentForm.Controls.Add(colorSelectionPanel);
+            colorSelectionPanel.BringToFront();
+        }
+
+        private void finishSelectColor_Click(object sender, EventArgs e)
+        {
+            string colorName = ((Button)sender).Name;
+            string colorID = colorName.Remove(0, 11);
+            selectedColor = Convert.ToInt32(colorID);
+            colorSelectionPanel.BackColor = primaryColor.BackColor = hexaToColor(colors[selectedColor-1].CorPrim);
+            secondaryColor.BackColor = hexaToColor(colors[selectedColor-1].CorSec);
+
+            parentForm.Controls.Remove(colorSelectionPanel);
         }
 
         private void getImage()
@@ -693,15 +891,24 @@ namespace ElearningDesktop
             {
                 foreach (IconsApiResponse icon in icons)
                 {
-                    if (icon.ID == selectedIcon)
+                    if (currentIcon == icon.ID)
                     {
                         WebResponse imageResponse = null;
                         Stream responseStream;
                         HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(icon.Link);
                         imageResponse = imageRequest.GetResponse();
                         responseStream = imageResponse.GetResponseStream();
-                        turmaPicture.Image = iconPanelPictureBox.Image = userSelectIcon.Image = Image.FromStream(responseStream);
-                        turmaPicture.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.005));
+
+                        Control[] controlsArray = iconSelectionPanel.Controls.Find($"iconButton{icon.ID}",true);
+                        Button iconButton = (Button)controlsArray[0];
+
+                        Image result = Image.FromStream(responseStream);
+
+                        iconsList.Add(result);
+                        iconButton.BackgroundImage = result;
+
+                        //turmaPicture.Image = iconPanelPictureBox.Image = userSelectIcon.Image = Image.FromStream(responseStream);
+                        //turmaPicture.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.005));
                         responseStream.Close();
                         imageResponse.Close();
                         break;
@@ -792,35 +999,36 @@ namespace ElearningDesktop
 
             #endregion
 
-            turmaPicture.Image = null;
+            /*turmaPicture.Image = null;
             turmaPicture.BackColor = Color.Transparent;
             turmaPicture.Size = new Size(selectedColorIcon.Width, selectedColorIcon.Height);
             turmaPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             turmaPicture.Location = new Point(Convert.ToInt32(selectedColorIcon.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(selectedColorIcon.Height / 2 - turmaPicture.Height / 2));
             
-            selectedColorIcon.Controls.Add(turmaPicture);
+            selectedColorIcon.Controls.Add(turmaPicture);*/
 
             creationTurmaPanel.Controls.Add(selectedColorIcon);
             #endregion
 
             #region Seleciona Cor
-                Panel colorPanel = new Panel();
-                colorPanel.BackColor = Styles.backgroundColor;
-                colorPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width/2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
-                colorPanel.Location = new Point(selectedColorIcon.Location.X, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
+            Panel colorPanel = new Panel();
+            colorPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width/2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            colorPanel.Location = new Point(selectedColorIcon.Location.X, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
+            colorPanel.BackColor = Styles.darkGray;
+            colorPanel.Click += new EventHandler(this.colorPanel_Click);
 
-                rectangle = new Rectangle(0, 0, colorPanel.Width, colorPanel.Height);
-                roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
-                colorPanel.Region = new Region(roundedPanel);
+            rectangle = new Rectangle(0, 0, colorPanel.Width, colorPanel.Height);
+            roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
+            colorPanel.Region = new Region(roundedPanel);
 
-                creationTurmaPanel.Controls.Add(colorPanel);
+            creationTurmaPanel.Controls.Add(colorPanel);
             #endregion
 
             #region Seleciona Icone
             Panel iconPanel = new Panel();
             iconPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
             iconPanel.Location = new Point(selectedColorIcon.Location.X + colorPanel.Width + 20, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
-            iconPanel.BackColor = Styles.backgroundColor;
+            iconPanel.BackColor = Styles.darkGray;
             iconPanel.Click += new EventHandler(this.iconPanel_Click);
 
             rectangle = new Rectangle(0, 0, iconPanel.Width, iconPanel.Height);
