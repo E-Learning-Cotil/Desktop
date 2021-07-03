@@ -42,8 +42,10 @@ namespace ElearningDesktop
         protected Image iconResponse;
         protected Image image;
         protected Thread getImageThread;
-        protected PictureBox turmaPicture = new PictureBox();
+        protected PictureBox turmaPicture1 = new PictureBox();
+        protected PictureBox turmaPicture2 = new PictureBox();
         protected PictureBox iconPanelPictureBox = new PictureBox();
+        protected PictureBox colorPanelPictureBox = new PictureBox();
         protected Panel primaryColor;
         protected Panel secondaryColor;
         protected PictureBox userSelectIcon = new PictureBox();
@@ -707,8 +709,6 @@ namespace ElearningDesktop
                 iconButton.BackColor = Color.White;
                 iconButton.Click += new EventHandler(finishSelectIcon_Click);
 
-                iconPanelPictureBox.Image = userSelectIcon.Image;
-
                 iconButton.Size = iconButtonSize;
 
                 iconButton.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.003));
@@ -741,7 +741,8 @@ namespace ElearningDesktop
 
             foreach(IconsFormat icon in iconsList)
             {
-                if(icon.ID == (int)selectedIcon) iconPanelPictureBox.Image = userSelectIcon.Image = icon.Icon;
+                if(icon.ID == (int)selectedIcon) turmaPicture1.Image = turmaPicture2.Image = iconPanelPictureBox.Image = userSelectIcon.Image = icon.Icon;
+                turmaPicture2.Padding = turmaPicture1.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.005));
             }
             parentForm.Controls.Remove(iconSelectionPanel);
         }
@@ -916,8 +917,6 @@ namespace ElearningDesktop
                             iconsList.Add(iconFormated);
                             iconButton.BackgroundImage = result;
                         }
-                        //turmaPicture.Image = iconPanelPictureBox.Image = userSelectIcon.Image = Image.FromStream(responseStream);
-                        //turmaPicture.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.005));
                         responseStream.Close();
                         imageResponse.Close();
                         break;
@@ -1006,13 +1005,23 @@ namespace ElearningDesktop
 
             #endregion
 
-            /*turmaPicture.Image = null;
-            turmaPicture.BackColor = Color.Transparent;
-            turmaPicture.Size = new Size(selectedColorIcon.Width, selectedColorIcon.Height);
-            turmaPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-            turmaPicture.Location = new Point(Convert.ToInt32(selectedColorIcon.Width / 2 - turmaPicture.Width / 2), Convert.ToInt32(selectedColorIcon.Height / 2 - turmaPicture.Height / 2));
-            
-            selectedColorIcon.Controls.Add(turmaPicture);*/
+            turmaPicture1.Image = null;
+            turmaPicture1.BackColor = Color.Transparent;
+            turmaPicture1.Size = new Size(selectedColorIcon.Width, selectedColorIcon.Height);
+            turmaPicture1.SizeMode = PictureBoxSizeMode.StretchImage;
+            turmaPicture1.Location = new Point(Convert.ToInt32(selectedColorIcon.Width / 2 - turmaPicture1.Width / 2), Convert.ToInt32(selectedColorIcon.Height / 2 - turmaPicture1.Height / 2));
+            turmaPicture1.BringToFront();
+
+            primaryColor.Controls.Add(turmaPicture1);
+
+            turmaPicture2.Image = null;
+            turmaPicture2.BackColor = Color.Transparent;
+            turmaPicture2.Size = new Size(selectedColorIcon.Width, selectedColorIcon.Height);
+            turmaPicture2.SizeMode = PictureBoxSizeMode.StretchImage;
+            turmaPicture2.Location = new Point(Convert.ToInt32(-turmaPicture2.Width / 2), Convert.ToInt32(selectedColorIcon.Height / 2 - turmaPicture2.Height / 2));
+            turmaPicture2.BringToFront();
+
+            secondaryColor.Controls.Add(turmaPicture2);
 
             creationTurmaPanel.Controls.Add(selectedColorIcon);
             #endregion
@@ -1022,7 +1031,15 @@ namespace ElearningDesktop
             colorPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
             colorPanel.Location = new Point(selectedColorIcon.Location.X, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
             colorPanel.BackColor = Styles.darkGray;
-            colorPanel.Click += new EventHandler(this.colorPanel_Click);
+            //colorPanel.Click += new EventHandler(this.colorPanel_Click);
+
+            colorPanelPictureBox.Image = Properties.Resources.select_color;
+            colorPanelPictureBox.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            colorPanelPictureBox.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.001));
+            colorPanelPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            colorPanelPictureBox.BringToFront();
+            colorPanelPictureBox.Click += new EventHandler(this.colorPanel_Click);
+            colorPanel.Controls.Add(colorPanelPictureBox);
 
             rectangle = new Rectangle(0, 0, colorPanel.Width, colorPanel.Height);
             roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
@@ -1036,14 +1053,15 @@ namespace ElearningDesktop
             iconPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
             iconPanel.Location = new Point(selectedColorIcon.Location.X + colorPanel.Width + 20, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
             iconPanel.BackColor = Styles.darkGray;
-            iconPanel.Click += new EventHandler(this.iconPanel_Click);
+            //iconPanel.Click += new EventHandler(this.iconPanel_Click);
 
             rectangle = new Rectangle(0, 0, iconPanel.Width, iconPanel.Height);
             roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
             iconPanel.Region = new Region(roundedPanel);
 
+            iconPanelPictureBox.Image = Properties.Resources.select_icon;
             iconPanelPictureBox.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
-            iconPanelPictureBox.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.005));
+            iconPanelPictureBox.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.001));
             iconPanelPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             iconPanelPictureBox.BringToFront();
             iconPanelPictureBox.Click += new EventHandler(this.iconPanel_Click);
@@ -1051,6 +1069,7 @@ namespace ElearningDesktop
 
             creationTurmaPanel.Controls.Add(iconPanel);
             #endregion
+
             objectHeight += Convert.ToInt32(Styles.formSize.Height * 0.039);
 
             #region ComboBox Série
