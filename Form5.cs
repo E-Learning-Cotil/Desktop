@@ -434,7 +434,7 @@ namespace ElearningDesktop
             finishTurmaCreation.Region = new Region(roundedButton);
 
             finishTurmaCreation.FlatStyle = FlatStyle.Flat;
-            finishTurmaCreation.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.624) - finishTurmaCreation.Width, Styles.creationPanelSize.Height - finishTurmaCreation.Height - Convert.ToInt32(Styles.formSize.Width * 0.025));
+            finishTurmaCreation.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.624) - finishTurmaCreation.Width, Styles.creationPanelSize.Height - finishTurmaCreation.Height - Convert.ToInt32(Styles.formSize.Width * 0.02));
 
             finishTurmaCreation.ForeColor = Color.Black;
             finishTurmaCreation.BackColor = Styles.white;
@@ -973,7 +973,7 @@ namespace ElearningDesktop
 
             selectedColorIcon.BackColor = Styles.backgroundColor;
             selectedColorIcon.Location = new Point(Convert.ToInt32(Styles.formSize.Width * 0.474) + 20, objectHeight);
-            selectedColorIcon.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.117), Convert.ToInt32(Styles.formSize.Width * 0.117));
+            selectedColorIcon.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.116), Convert.ToInt32(Styles.formSize.Width * 0.116));
 
             Rectangle rectangle = new Rectangle(0, 0, selectedColorIcon.Width, selectedColorIcon.Height);
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 15, true, true, true, true);
@@ -1028,13 +1028,13 @@ namespace ElearningDesktop
 
             #region Seleciona Cor
             colorPanel = new Panel();
-            colorPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            colorPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.07));
             colorPanel.Location = new Point(selectedColorIcon.Location.X, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
             colorPanel.BackColor = Styles.darkGray;
             //colorPanel.Click += new EventHandler(this.colorPanel_Click);
 
             colorPanelPictureBox.Image = Properties.Resources.select_color;
-            colorPanelPictureBox.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            colorPanelPictureBox.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.07));
             colorPanelPictureBox.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.001));
             colorPanelPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             colorPanelPictureBox.BringToFront();
@@ -1050,7 +1050,7 @@ namespace ElearningDesktop
 
             #region Seleciona Icone
             Panel iconPanel = new Panel();
-            iconPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            iconPanel.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.07));
             iconPanel.Location = new Point(selectedColorIcon.Location.X + colorPanel.Width + 20, selectedColorIcon.Location.Y + selectedColorIcon.Height + 20);
             iconPanel.BackColor = Styles.darkGray;
             //iconPanel.Click += new EventHandler(this.iconPanel_Click);
@@ -1060,7 +1060,7 @@ namespace ElearningDesktop
             iconPanel.Region = new Region(roundedPanel);
 
             iconPanelPictureBox.Image = Properties.Resources.select_icon;
-            iconPanelPictureBox.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.073));
+            iconPanelPictureBox.Size = new Size(Convert.ToInt32(selectedColorIcon.Width / 2 - 10), Convert.ToInt32(Styles.formSize.Height * 0.07));
             iconPanelPictureBox.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.001));
             iconPanelPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             iconPanelPictureBox.BringToFront();
