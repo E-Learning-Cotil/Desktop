@@ -24,18 +24,14 @@ namespace ElearningDesktop
         public static Color filterTitleColor = Color.FromArgb(187, 187, 187);
 
         public static Size formSize;
-        public static Size buttonSize;
         public static Size mainPanelSize;
-        public static Size logoPanelSize;
         public static Size seriesSize;
         public static Size creationPanelSize;
 
-        public static Point mainPanelLocation;
-
         public static Font defaultFont;
-        public static float defaultFontLetterSize;
-
         public static Font customFont;
+
+        public static float defaultFontLetterSize;
         public static float customFontLetterSize;
 
         public static PrivateFontCollection usedFonts;
@@ -55,14 +51,6 @@ namespace ElearningDesktop
             seriesSize = new Size(Convert.ToInt32(formSize.Width * 0.419),Convert.ToInt32(formSize.Height * 0.0625));
         }
 
-        public static void setButtonSize()
-        {
-            int buttonWidth = Convert.ToInt32(formSize.Width * 0.1834);
-            int buttonHeight = Convert.ToInt32(formSize.Height * 0.102);
-
-            buttonSize = new Size(buttonWidth, buttonHeight);
-        }
-
         public static void setDefaultFont()
         {
             defaultFontLetterSize = Convert.ToInt32(formSize.Width / 72) ;
@@ -71,23 +59,9 @@ namespace ElearningDesktop
 
         public static void setMainPanelSize()
         {
-            int panelWidth = Convert.ToInt32(formSize.Width * 0.668);
-            int panelHeight = Convert.ToInt32(formSize.Height * 0.663);
-
-            mainPanelSize = new Size(panelWidth, panelHeight);
+            mainPanelSize = new Size(Convert.ToInt32(formSize.Width * 0.668), Convert.ToInt32(formSize.Height * 0.663));
         }
         
-        public static void changeLogoPanelSize()
-        {
-            int panelHeight = Convert.ToInt32(formSize.Height * 0.082);
-            logoPanelSize = new Size(formSize.Width, panelHeight);
-        }
-
-        public static void setMainPanelLocation(int x, int y)
-        {
-            mainPanelLocation = new Point(x, y);
-        }
-
         public static void setCustomFont()
         {
             customFontLetterSize = Convert.ToInt32(formSize.Width / 120);
@@ -109,8 +83,6 @@ namespace ElearningDesktop
             }
         }
     }
-
-
 
     static class Filter
     {

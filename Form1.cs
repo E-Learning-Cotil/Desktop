@@ -46,7 +46,8 @@ namespace ElearningDesktop
 
         private void configureButtonLayout()
         {
-            button1.Size = button2.Size = button3.Size = button4.Size = Styles.buttonSize;
+            button1.Size = button2.Size = button3.Size = button4.Size = button1.Size = button2.Size = button3.Size = button4.Size = new Size(Convert.ToInt32(this.Width * 0.1834), Convert.ToInt32(this.Height * 0.102)); ;
+            ;
             label1.Font = button1.Font = button2.Font = button3.Font = button4.Font = Styles.defaultFont;
             
             changeButtonFormat(button1); // chama a função que muda o formato do botão 1
@@ -183,27 +184,29 @@ namespace ElearningDesktop
         {
             button1.Location = new Point(Convert.ToInt32(this.Width * 0.078),Convert.ToInt32(this.Height*0.213));
             Styles.setFormSize(this.Width, this.Height);
-            Styles.setButtonSize();
-            Styles.setDefaultFont();
-            Styles.setCustomFont();
             Styles.setMainPanelSize();
             Styles.setSeriesSize();
-            Styles.changeLogoPanelSize();
             Styles.setCreationPanelSize();
-            Styles.setMainPanelLocation(panel2.Location.X,panel2.Location.Y);
+
+            Styles.setDefaultFont();
+            Styles.setCustomFont();
 
             configureButtonLayout();
 
-            panel1.Size = new Size(this.Width, this.Height - Styles.logoPanelSize.Height);
-            panel1.Location = new Point(0, Styles.logoPanelSize.Height);
+            Size logoPanelSize = new Size(this.Width, Convert.ToInt32(this.Height * 0.082));
 
-            panel3.Size = Styles.logoPanelSize;
-            pictureBox1.Size = new Size(Convert.ToInt32(this.Width * 0.0465), Convert.ToInt32(panel3.Size.Height*0.612));
-            pictureBox1.Location = new Point(Convert.ToInt32(Styles.logoPanelSize.Width*0.078),Convert.ToInt32( (Styles.logoPanelSize.Height/2) - (pictureBox1.Size.Height/2) ));
-            label1.Location = new Point(Convert.ToInt32(this.Width * 0.0465 + pictureBox1.Location.X + this.Width*0.01),Convert.ToInt32((Styles.logoPanelSize.Height / 2) - (label1.Size.Height / 2)));
-            
+            panel1.Size = new Size(this.Width, this.Height - logoPanelSize.Height);
+            panel1.Location = new Point(0, logoPanelSize.Height);
+
             panel2.Location = new Point(button1.Location.X + button1.Width, button1.Location.Y);
             panel2.Size = Styles.mainPanelSize;
+
+            panel3.Size = logoPanelSize;
+
+            pictureBox1.Size = new Size(Convert.ToInt32(this.Width * 0.0465), Convert.ToInt32(panel3.Size.Height*0.612));
+            pictureBox1.Location = new Point(Convert.ToInt32(logoPanelSize.Width*0.078),Convert.ToInt32( (logoPanelSize.Height/2) - (pictureBox1.Size.Height/2) ));
+
+            label1.Location = new Point(Convert.ToInt32(this.Width * 0.0465 + pictureBox1.Location.X + this.Width * 0.01), Convert.ToInt32((logoPanelSize.Height / 2) - (label1.Size.Height / 2)));
            
             resizeOpenedForms();
             changePanelFormat(panel2);

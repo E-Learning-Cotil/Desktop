@@ -93,7 +93,7 @@
     <Compile Include="Count.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="Series.cs" />
-    <Compile Include="Styles.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
