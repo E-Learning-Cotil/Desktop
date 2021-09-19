@@ -14,16 +14,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          Opções de Manifesto do UAC
-          Para alterar o nível de Controle de Conta de Usuário do Windows, substitua o nó
-          requestedExecutionLevel por um dos seguintes.
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         Para utilizar a Virtualização de Arquivos e Registro para manter a compatibilidade com versões anteriores,
-         exclua o nó requestedExecutionLevel.
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElearningDesktop.exe" size="292784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElearningDesktop.exe" size="290736">
       <assemblyIdentity name="ElearningDesktop" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MEMOq6bdELmewjyRw84iVAlFum7Fei3oorIaMXbH6Bs=</dsig:DigestValue>
+        <dsig:DigestValue>kI7N+C2wkFsPVniDJsej8xFXr1hknG2VsaB6gC/BX5U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -102,14 +102,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Refit.Newtonsoft.Json.dll" size="24112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Refit.Newtonsoft.Json.dll" size="24680">
       <assemblyIdentity name="Refit.Newtonsoft.Json" version="6.0.0.0" publicKeyToken="2F9B1262776509F5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xA00EsA5TRVAqH1AC2hCYZehffJbhRWZFA/7s00mghQ=</dsig:DigestValue>
+        <dsig:DigestValue>Ess2GElLfBsu8qdp1cvz+SelqrEg7Djw8h/lddeRP6A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -221,13 +221,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ElearningDesktop.exe.config" size="1210">
+  <file name="ElearningDesktop.exe.config" size="881">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PjbUL3uOR3POfwIeM5q8cINiWoMmivNoBg82htv6KQA=</dsig:DigestValue>
+      <dsig:DigestValue>jcBWNqZ6MvEA+nHc3GUhAyNwuGqL7pJUzxiRjOBbhM4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Quicksand-Regular.ttf" size="77420">
