@@ -26,12 +26,12 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Refit/6.0.38": {
+      "Refit/6.0.94": {
         "type": "package",
         "dependencies": {
           "System.Net.Http": "4.3.4",
           "System.Net.Http.Json": "5.0.0",
-          "System.Text.Json": "5.0.1"
+          "System.Text.Json": "5.0.2"
         },
         "frameworkAssemblies": [
           "System.Web"
@@ -383,12 +383,12 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Refit/6.0.38": {
+      "Refit/6.0.94": {
         "type": "package",
         "dependencies": {
           "System.Net.Http": "4.3.4",
           "System.Net.Http.Json": "5.0.0",
-          "System.Text.Json": "5.0.1"
+          "System.Text.Json": "5.0.2"
         },
         "frameworkAssemblies": [
           "System.Web"
@@ -696,12 +696,12 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Refit/6.0.38": {
+      "Refit/6.0.94": {
         "type": "package",
         "dependencies": {
           "System.Net.Http": "4.3.4",
           "System.Net.Http.Json": "5.0.0",
-          "System.Text.Json": "5.0.1"
+          "System.Text.Json": "5.0.2"
         },
         "frameworkAssemblies": [
           "System.Web"
@@ -1009,12 +1009,12 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Refit/6.0.38": {
+      "Refit/6.0.94": {
         "type": "package",
         "dependencies": {
           "System.Net.Http": "4.3.4",
           "System.Net.Http.Json": "5.0.0",
-          "System.Text.Json": "5.0.1"
+          "System.Text.Json": "5.0.2"
         },
         "frameworkAssemblies": [
           "System.Web"
@@ -1348,10 +1348,10 @@
         "packageIcon.png"
       ]
     },
-    "Refit/6.0.38": {
-      "sha512": "1wKjkHYDUp6TrQ0fK6w6CXguJ+kkGYj2IpPMfzyLQM+uinDYzYqWQ0kcsGxmTWGuWM4rYbUZN7IYFtSDD4x0Yw==",
+    "Refit/6.0.94": {
+      "sha512": "LvaRSV6MZER/W4QPX9sOcFql6E7lhPEBsJ20zwyxI4wapN7Yyk9fJJfxAZapQE6AOVvw8+j7do1x2zE//zUeWQ==",
       "type": "package",
-      "path": "refit/6.0.38",
+      "path": "refit/6.0.94",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1367,7 +1367,7 @@
         "lib/netstandard2.0/Refit.xml",
         "lib/netstandard2.1/Refit.dll",
         "lib/netstandard2.1/Refit.xml",
-        "refit.6.0.38.nupkg.sha512",
+        "refit.6.0.94.nupkg.sha512",
         "refit.nuspec",
         "refit_logo.png"
       ]
@@ -2042,7 +2042,7 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "Newtonsoft.Json >= 13.0.1",
-      "Refit >= 6.0.38",
+      "Refit >= 6.0.94",
       "Refit.Newtonsoft.Json >= 6.0.94",
       "System.Runtime >= 4.3.1",
       "System.Security.Cryptography.Algorithms >= 4.3.1",
@@ -2051,25 +2051,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\corre\\.nuget\\packages\\": {},
-    "D:\\Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\mathe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bruno\\Documents\\GitHub\\Elearning\\Desktop\\ElearningDesktop.csproj",
+      "projectUniqueName": "C:\\Users\\mathe\\source\\repos\\Desktop\\ElearningDesktop.csproj",
       "projectName": "ElearningDesktop",
-      "projectPath": "D:\\Bruno\\Documents\\GitHub\\Elearning\\Desktop\\ElearningDesktop.csproj",
-      "packagesPath": "C:\\Users\\corre\\.nuget\\packages\\",
-      "outputPath": "D:\\Bruno\\Documents\\GitHub\\Elearning\\Desktop\\obj\\",
+      "projectPath": "C:\\Users\\mathe\\source\\repos\\Desktop\\ElearningDesktop.csproj",
+      "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mathe\\source\\repos\\Desktop\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "D:\\Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\corre\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2094,7 +2089,7 @@
           },
           "Refit": {
             "target": "Package",
-            "version": "[6.0.38, )"
+            "version": "[6.0.94, )"
           },
           "Refit.Newtonsoft.Json": {
             "target": "Package",
@@ -2130,20 +2125,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Detected package downgrade: Refit from 6.0.94 to 6.0.38. Reference the package directly from the project to select a different version. \r\n ElearningDesktop -> Refit.Newtonsoft.Json 6.0.94 -> Refit (>= 6.0.94) \r\n ElearningDesktop -> Refit (>= 6.0.38)",
-      "libraryId": "Refit",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.7.2",
-        ".NETFramework,Version=v4.7.2/win",
-        ".NETFramework,Version=v4.7.2/win-x64",
-        ".NETFramework,Version=v4.7.2/win-x86"
-      ]
-    }
-  ]
+  }
 }

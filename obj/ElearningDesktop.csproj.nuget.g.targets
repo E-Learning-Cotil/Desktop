@@ -4,6 +4,6 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)refit\6.0.38\buildTransitive\netstandard2.0\refit.targets" Condition="Exists('$(NuGetPackageRoot)refit\6.0.38\buildTransitive\netstandard2.0\refit.targets')" />
+    <Import Project="$(NuGetPackageRoot)refit\6.0.94\buildTransitive\netstandard2.0\refit.targets" Condition="Exists('$(NuGetPackageRoot)refit\6.0.94\buildTransitive\netstandard2.0\refit.targets')" />
   </ImportGroup>
 </Project>

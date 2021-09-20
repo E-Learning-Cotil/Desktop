@@ -683,7 +683,7 @@ namespace ElearningDesktop
             GraphicsPath roundedPanel = Transform.BorderRadius(rectangle, 20, true, true, true, true);
             iconSelectionPanel.Region = new Region(roundedPanel);
 
-            int heightNeeded = selectIconLabel.Location.Y + selectIconLabel.Height;
+            int heightNeeded = selectIconLabel.Location.Y + selectIconLabel.Height + 15;
 
             Size iconButtonSize = new Size(Convert.ToInt32(iconSelectionPanel.Height / 5) - 5, Convert.ToInt32(iconSelectionPanel.Height / 5) - 5);
 
@@ -713,7 +713,7 @@ namespace ElearningDesktop
 
                 iconButton.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.003));
 
-                iconButton.Location = new Point(Convert.ToInt32(posX * (iconButton.Width + 20) + 5), heightNeeded * iconPos + 10);
+                iconButton.Location = new Point(Convert.ToInt32((posX * (iconButton.Width + 20)) + 5), (heightNeeded * iconPos) + 10);
 
                 posX++;
 

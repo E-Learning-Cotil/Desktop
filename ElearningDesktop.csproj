@@ -212,7 +212,7 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="Refit">
-      <Version>6.0.38</Version>
+      <Version>6.0.94</Version>
     </PackageReference>
     <PackageReference Include="Refit.Newtonsoft.Json">
       <Version>6.0.94</Version>
