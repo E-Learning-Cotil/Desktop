@@ -177,6 +177,7 @@ namespace ElearningDesktop
         #endregion
 
         #region Enviar Imagem para Servidor
+        [Headers("basic_token: 7631c0f15fc888a088c5f0c28047aaef")]
         [Multipart]
         [Post("/arquivos/")]
         Task<dynamic> SendImageToApi( ByteArrayPart file);

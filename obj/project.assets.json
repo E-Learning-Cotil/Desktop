@@ -2051,20 +2051,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mathe\\.nuget\\packages\\": {}
+    "C:\\Users\\corre\\.nuget\\packages\\": {},
+    "D:\\Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mathe\\source\\repos\\Desktop\\ElearningDesktop.csproj",
+      "projectUniqueName": "D:\\Bruno\\Documents\\GitHub\\Elearning\\Desktop\\ElearningDesktop.csproj",
       "projectName": "ElearningDesktop",
-      "projectPath": "C:\\Users\\mathe\\source\\repos\\Desktop\\ElearningDesktop.csproj",
-      "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mathe\\source\\repos\\Desktop\\obj\\",
+      "projectPath": "D:\\Bruno\\Documents\\GitHub\\Elearning\\Desktop\\ElearningDesktop.csproj",
+      "packagesPath": "C:\\Users\\corre\\.nuget\\packages\\",
+      "outputPath": "D:\\Bruno\\Documents\\GitHub\\Elearning\\Desktop\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "D:\\Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\corre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
