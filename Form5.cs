@@ -91,10 +91,17 @@ namespace ElearningDesktop
             ScreenElements.stylizePlusButton(this);
             ScreenElements.stylizeLoadingMessage(this);
 
-            await loadSeriesAsync();
-            await loadTeachersAsync();
-            await loadIcons();
-            await loadColors();
+            try
+            {
+                await loadSeriesAsync();
+                await loadTeachersAsync();
+                await loadIcons();
+                await loadColors();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             arrangeIconsColors();
 
             listTurmas(null);
