@@ -479,7 +479,8 @@ namespace ElearningDesktop
             {
                 var imageData = ImageToByteArray(image);
                 var dataResponse = await apiPath.SendImageToApi(new ByteArrayPart(imageData, "file.png"));
-                imageUrl = dataResponse;
+                var response = JsonConvert.DeserializeObject<ApiImageResponse>(dataResponse.ToString());
+                imageUrl = response.Link;
                 b.Text = "Finalizar";
                 b.Enabled = true;
             }

@@ -38,6 +38,15 @@ namespace ElearningDesktop
         public string Message { get; set; }
     }
 
+    class ApiImageResponse
+    {
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     class TeachersApiResponse
     {
         [JsonProperty("rg")]

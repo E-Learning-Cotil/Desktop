@@ -664,7 +664,7 @@ namespace ElearningDesktop
         {
             iconsList = new List<IconsFormat>();
 
-            currentIcon = 0;
+            currentIcon = 1;
             iconSelectionPanel = new Panel();
             iconSelectionPanel.Name = "iconSelectionPanel";
             iconSelectionPanel.Size = new Size(Convert.ToInt32(Styles.formSize.Width * 0.375), Convert.ToInt32(Styles.formSize.Height * 0.391));
@@ -673,9 +673,9 @@ namespace ElearningDesktop
 
             iconSelectionPanel.Controls.Add(cancelIconSelectionButton());
 
-            /*iconSelectionPanel.HorizontalScroll.Maximum = 0;
+            iconSelectionPanel.HorizontalScroll.Maximum = 0;
             iconSelectionPanel.AutoScroll = false;
-            iconSelectionPanel.VerticalScroll.Visible = false;*/
+            iconSelectionPanel.VerticalScroll.Visible = false;
             iconSelectionPanel.AutoScroll = true;
 
             Label selectIconLabel = new Label();
@@ -696,7 +696,7 @@ namespace ElearningDesktop
 
             int maxIcons = 0, iconPos = 1, posX = 0;
 
-            while (Convert.ToInt32(maxIcons * (iconButtonSize.Width) + 10) < iconSelectionPanel.Width) maxIcons++;
+            while (Convert.ToInt32(maxIcons * (iconButtonSize.Width + 10)) < iconSelectionPanel.Width) maxIcons++;
 
             if (icons == null)
             {
@@ -706,10 +706,10 @@ namespace ElearningDesktop
 
             foreach (IconsApiResponse icon in icons)
             {
-                getImageThread = new Thread(new ThreadStart(getImage));
-                getImageThread.Start();
                 Button iconButton = new Button();
                 iconButton.Name = $"iconButton{icon.ID}";
+                getImageThread = new Thread(new ThreadStart(() => getImage(icon)));
+                getImageThread.Start();
                 iconButton.FlatStyle = FlatStyle.Flat;
 
                 iconButton.BackgroundImageLayout = ImageLayout.Stretch;
@@ -720,7 +720,7 @@ namespace ElearningDesktop
 
                 iconButton.Padding = new Padding(Convert.ToInt32(Styles.formSize.Width * 0.003));
 
-                iconButton.Location = new Point(Convert.ToInt32((posX * (iconButton.Width + 20)) + 5), (heightNeeded * iconPos) + 10);
+                iconButton.Location = new Point(Convert.ToInt32((posX * (iconButton.Width + 20)) + 30), ((heightNeeded + 20) * iconPos));
 
                 posX++;
 
@@ -734,8 +734,45 @@ namespace ElearningDesktop
                 currentIcon++;
             }
 
+            Panel spacePanel = new Panel();
+            spacePanel.Location = new Point(0, ((heightNeeded + 20) * iconPos));
+            spacePanel.Size = new Size(iconSelectionPanel.Width, 20);
+            iconSelectionPanel.Controls.Add(spacePanel);
+
             parentForm.Controls.Add(iconSelectionPanel);
             iconSelectionPanel.BringToFront();
+        }
+
+        private void getImage(IconsApiResponse icon)
+        {
+                try
+                {
+                    WebResponse imageResponse = null;
+                    Stream responseStream;
+                    HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(icon.Link);
+                    imageResponse = imageRequest.GetResponse();
+                    responseStream = imageResponse.GetResponseStream();
+
+                    Control[] controlsArray = iconSelectionPanel.Controls.Find($"iconButton{icon.ID}", true);
+
+                    Image result = Image.FromStream(responseStream);
+                    IconsFormat iconFormated = new IconsFormat(icon.ID, result);
+                    iconsList.Add(iconFormated);
+
+                    if (controlsArray.Length >= 1)
+                    {
+                        Button iconButton = (Button)controlsArray[0];
+                        iconButton.BackgroundImage = result;
+                    }
+
+                    imageResponse.Close();
+                    responseStream.Close();
+                }
+                catch (Exception ex)
+                {
+                    userSelectIcon.Image = null;
+                    MessageBox.Show("Ocorreu um erro ao escolher o ícone! " + ex.ToString());
+                }
         }
 
         private void finishSelectIcon_Click(object sender, EventArgs e)
@@ -764,7 +801,7 @@ namespace ElearningDesktop
             cancelIconSelection.Font = new Font(Styles.defaultFont.FontFamily, Convert.ToInt32(Styles.defaultFont.Size * 0.75));
             cancelIconSelection.BackColor = Color.Transparent;
             cancelIconSelection.Size = new Size(Convert.ToInt32(Styles.defaultFont.Size * 1.5), Convert.ToInt32(Styles.defaultFont.Size * 1.5));
-            cancelIconSelection.Location = new Point(iconSelectionPanel.Width - cancelIconSelection.Width, 0);
+            cancelIconSelection.Location = new Point(iconSelectionPanel.Width - cancelIconSelection.Width - 20, 0);
             cancelIconSelection.Click += new EventHandler(cancelIconSelection_Click);
 
             return cancelIconSelection;
@@ -829,9 +866,9 @@ namespace ElearningDesktop
 
             colorSelectionPanel.Controls.Add(cancelColorSelectionButton());
 
-            /*colorSelectionPanel.HorizontalScroll.Maximum = 0;
+            colorSelectionPanel.HorizontalScroll.Maximum = 0;
             colorSelectionPanel.AutoScroll = false;
-            colorSelectionPanel.VerticalScroll.Visible = false;*/
+            colorSelectionPanel.VerticalScroll.Visible = false;
             colorSelectionPanel.AutoScroll = true;
 
             Label selectColorLabel = new Label();
@@ -899,42 +936,6 @@ namespace ElearningDesktop
             secondaryColor.BackColor = hexaToColor(colors[(int)selectedColor - 1].CorSec);
 
             parentForm.Controls.Remove(colorSelectionPanel);
-        }
-
-        private void getImage()
-        {
-            try
-            {
-                foreach (IconsApiResponse icon in icons)
-                {
-                    if (currentIcon == icon.ID)
-                    {
-                        WebResponse imageResponse = null;
-                        Stream responseStream;
-                        HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(icon.Link);
-                        imageResponse = imageRequest.GetResponse();
-                        responseStream = imageResponse.GetResponseStream();
-
-                        Control[] controlsArray = iconSelectionPanel.Controls.Find($"iconButton{icon.ID}", true);
-                        if (controlsArray.Length >= 1)
-                        {
-                            Button iconButton = (Button)controlsArray[0];
-                            Image result = Image.FromStream(responseStream);
-                            IconsFormat iconFormated = new IconsFormat(icon.ID, result);
-                            iconsList.Add(iconFormated);
-                            iconButton.BackgroundImage = result;
-                        }
-                        responseStream.Close();
-                        imageResponse.Close();
-                        break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                userSelectIcon.Image = null;
-                MessageBox.Show("Ocorreu um erro ao escolher o ícone! " + ex.ToString());
-            }
         }
 
         private void plusButtonPictureBox_Click(object sender, EventArgs e)
